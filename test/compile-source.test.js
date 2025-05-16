@@ -1,7 +1,11 @@
 const nock = require('nock');
 const mock = require('mock-fs');
+const path = require('path');
 const compileSource = require('../src/compile-source');
 const { TRANSFORMATIONS } = require('../src/transformations/transform');
+
+const testDirPath = path.resolve(__dirname, 'test/dir');
+const exclusionsFilePath = path.resolve(testDirPath, 'exclusions.txt');
 
 describe('Source compiler', () => {
     afterEach(() => {
@@ -12,7 +16,9 @@ describe('Source compiler', () => {
     it('compile a simple URL source', async () => {
         const scope = nock('https://example.org')
             .get('/filter.txt')
-            .reply(200, 'testrule');
+            .reply(200, 'testrule', {
+                'Content-Type': 'text/plain',
+            });
 
         const source = {
             name: 'test source',
@@ -33,6 +39,7 @@ describe('Source compiler', () => {
                 'rules.txt': 'testrule',
             },
         });
+
         const source = {
             name: 'test source',
             source: 'test/dir/rules.txt',
@@ -53,13 +60,15 @@ describe('Source compiler', () => {
 ||rule4`;
         const scope = nock('https://example.org')
             .get('/filter.txt')
-            .reply(200, rules);
+            .reply(200, rules, {
+                'Content-Type': 'text/plain',
+            });
 
         // STEP 2: MOCK EXCLUSIONS
         const exclusions = `||rule1
 ||rule3`;
         mock({
-            'test/dir': {
+            [testDirPath]: {
                 'exclusions.txt': exclusions,
             },
         });
@@ -68,7 +77,7 @@ describe('Source compiler', () => {
             name: 'test source',
             source: 'https://example.org/filter.txt',
             exclusions: ['rule4'],
-            exclusions_sources: ['test/dir/exclusions.txt'],
+            exclusions_sources: [exclusionsFilePath],
             transformations: [
                 TRANSFORMATIONS.Deduplicate,
                 TRANSFORMATIONS.Validate,
@@ -88,18 +97,20 @@ describe('Source compiler', () => {
 
     it('compile the source with transformations', async () => {
         const testList = `
-    
+
     example.org
 
-               test1.com             
+               test1.com
 
-        ! comment      
+        ! comment
  test1.com
 
   test2.com`;
         const scope = nock('https://example.org')
             .get('/test-filter.txt')
-            .reply(200, testList);
+            .reply(200, testList, {
+                'Content-Type': 'text/plain',
+            });
 
         const source = {
             name: 'test source',
@@ -119,6 +130,88 @@ describe('Source compiler', () => {
             'test2.com',
             '',
         ]);
+        scope.done();
+    });
+
+    it('compile the source with converToAscii transformation', async () => {
+        const testList = `
+        ! comment
+||*.ком^
+||*.ком^
+    ||*.укр^
+||*.мон^
+||*.ευ^
+        ||*.ελ^
+||*.հայ^`;
+        const scope = nock('https://example.org')
+            .get('/test-filter.txt')
+            .reply(200, testList, {
+                'Content-Type': 'text/plain',
+            });
+
+        const source = {
+            name: 'test source',
+            source: 'https://example.org/test-filter.txt',
+            transformations: [
+                TRANSFORMATIONS.ConvertToAscii,
+                TRANSFORMATIONS.Deduplicate,
+                TRANSFORMATIONS.RemoveComments,
+                TRANSFORMATIONS.TrimLines,
+            ],
+        };
+        const compiled = await compileSource(source);
+        expect(compiled).toEqual([
+            '||*.xn--j1aef^',
+            '||*.xn--j1amh^',
+            '||*.xn--l1acc^',
+            '||*.xn--qxa6a^',
+            '||*.xn--qxam^',
+            '||*.xn--y9a3aq^',
+        ]);
+        scope.done();
+    });
+
+    it('compile the empty local source', async () => {
+        mock({
+            'test/dir': {
+                'empty.txt': '',
+            },
+        });
+
+        const source = {
+            name: 'test source',
+            source: 'test/dir/empty.txt',
+            transformations: [
+                TRANSFORMATIONS.ConvertToAscii,
+                TRANSFORMATIONS.Deduplicate,
+                TRANSFORMATIONS.RemoveComments,
+                TRANSFORMATIONS.TrimLines,
+            ],
+        };
+        const compiled = await compileSource(source);
+        expect(compiled).toEqual(['']);
+    });
+
+    it('compile the empty external source', async () => {
+        const scope = nock('https://example.org')
+            .get('/empty.txt')
+            .reply(200, '', {
+                'Content-Type': 'text/plain',
+            });
+
+        const source = {
+            name: 'test source',
+            source: 'https://example.org/empty.txt',
+            transformations: [
+                TRANSFORMATIONS.ConvertToAscii,
+                TRANSFORMATIONS.Deduplicate,
+                TRANSFORMATIONS.RemoveComments,
+                TRANSFORMATIONS.TrimLines,
+                TRANSFORMATIONS.Compress,
+            ],
+        };
+        const compiled = await compileSource(source);
+        expect(compiled).toEqual(['']);
         scope.done();
     });
 });

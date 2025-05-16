@@ -1,4 +1,5 @@
 const _ = require('lodash');
+const { FiltersDownloader } = require('@adguard/filters-downloader');
 const utils = require('./utils');
 const ruleUtils = require('./rule');
 
@@ -15,10 +16,9 @@ async function downloadAll(sources) {
         return list;
     }
 
-    await Promise.all(sources.map(async (s) => {
-        const rulesStr = await utils.download(s);
+    await Promise.all(sources.map(async (source) => {
+        const rulesStr = await FiltersDownloader.download(source, {}, { allowEmptyResponse: true });
         const rules = rulesStr
-            .split(/\r?\n/)
             .filter((el) => el.trim().length > 0 && !ruleUtils.isComment(el));
         list = list.concat(rules);
     }));

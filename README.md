@@ -19,6 +19,7 @@ This is a simple tool that makes it easier to compile a [hosts blocklist](https:
   - [RemoveEmptyLines](#removeemptylines)
   - [TrimLines](#trimlines)
   - [InsertFinalNewLine](#insertfinalnewline)
+  - [ConvertToAscii](#convert-to-ascii)
 - [How to build](#how-to-build)
 
 ## <a name="usage"></a> Usage
@@ -150,6 +151,55 @@ Please note, that exclusion or inclusion rules may be a plain string, wildcard, 
 - `*.plainstring` - every rule that matches this wildcard will match the rule
 - `/regex/` - every rule that matches this regular expression, will match the rule. By default, regular expressions are case-insensitive.
 - `! comment` - comments will be ignored.
+
+> [!IMPORTANT]
+> Ensure that rules in the exclusion list match the format of the rules in the filter list.
+> To maintain a consistent format, add the `Compress` transformation to convert `/etc/hosts` rules to adblock syntax.
+> This is especially useful if you have multiple lists in different formats.
+
+Here is an example:
+
+Rules in HOSTS syntax: `/hosts.txt`
+
+```txt
+0.0.0.0 ads.example.com  
+0.0.0.0 tracking.example1.com  
+0.0.0.0 example.com
+```
+
+Exclusion rules in adblock syntax: `/exclusions.txt`
+
+```txt
+||example.com^
+```
+
+Configuration of the final list:
+
+```json
+{
+  "name": "List name",
+  "description": "List description",
+  "sources": [
+    {
+      "name": "HOSTS rules",
+      "source": "hosts.txt",
+      "type": "hosts",
+      "transformations": ["Compress"]
+    }
+  ],
+  "transformations": ["Deduplicate", "Compress"],
+  "exclusions_sources": ["exclusions.txt"]
+}
+```
+
+Final filter output of `/hosts.txt` after applying the `Compress` transformation and exclusions:
+
+```txt
+||ads.example.com^  
+||tracking.example1.com^
+```
+
+The last rule now `||example.com^` will correctly match the rule from the exclusion list and will be excluded.
 
 ### <a name="command-line"></a> Command-line
 
@@ -452,6 +502,28 @@ rule3
 ```
 
 `RemoveEmptyLines` doesn't delete this empty row due to the execution order.
+
+### <a name="convert-to-ascii"></a> ConvertToAscii
+
+This transformation converts all non-ASCII characters to their ASCII equivalents. It is always performed first.
+
+**Example:**
+
+Original list:
+
+```
+||*.рус^
+||*.कॉम^
+||*.セール^
+```
+
+Here's what we will have after applying this transformation:
+
+```
+||*.xn--p1acf^
+||*.xn--11b4c3d^
+||*.xn--1qqw23a^
+```
 
 ## <a name="how-to-build"></a> How to build
 
