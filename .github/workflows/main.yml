@@ -23,6 +23,9 @@ jobs:
       - name: Build DNS Filter
         run: TLS=insecure node src/cli.js -c examples/sdn/configuration.json -o filter.txt
 
+      - name: Build Allowlist
+        run: TLS=insecure node src/cli.js -c examples/whitelist/configuration.json -o whitelist.txt
+
       - name: Push to repository
         run: |
           git config --global user.name "pkrayzy"
