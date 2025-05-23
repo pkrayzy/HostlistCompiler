@@ -1,37 +1,37 @@
 {
   "name": "AdGuard Allowlist",
-  "description": "Filter composed from several other filters (English filter, Social media filter, Spyware filter, Mobile ads filter, EasyList and EasyPrivacy) and simplified specifically to be better compatible with DNS-level ad blocking.",
+  "description": "Combination of allowlists for use with AdGuard DNS.",
   "homepage": "https://github.com/AdguardTeam/AdguardSDNSFilter",
   "license": "GPLv3",
   "sources": [
     {
-      "name": "AdGuard DNS filter",
+      "name": "Hagezi Referrals",
       "source": "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/whitelist-referral.txt",
       "type": "adblock",
       "transformations": ["RemoveModifiers", "Validate"]
     },
     {
-      "name": "EasyPrivacy Admiral",
+      "name": "Hagezi Native Referrals",
       "source": "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/whitelist-referral-native.txt",
       "type": "adblock",
       "transformations": ["RemoveModifiers", "Validate"]
     }, 
     {
-      "name": "AdGuard CNAME disguised ads list",
+      "name": "AdGuard DNS Exclusions",
       "source": "https://raw.githubusercontent.com/AdguardTeam/AdGuardSDNSFilter/master/Filters/exclusions.txt",
       "type": "adblock",
       "transformations": ["RemoveModifiers", "Validate"]
     },
     {
-      "name": "AdGuard CNAME disguised trackers list",
+      "name": "NextDNS Click Tracking",
       "source": "https://raw.githubusercontent.com/nextdns/click-tracking-domains/main/domains",
       "type": "hosts",
       "transformations": ["RemoveModifiers", "Validate"]
     },
     {
       "name": "OISD Exclusions",
-      "source": "https://oisd.nl/excludes",
-      "type": "hosts",
+      "source": "https://raw.githubusercontent.com/pkrayzy/HostlistCompiler/master/OISD_Excludes.txt",
+      "type": "adblock",
       "transformations": ["RemoveModifiers", "Validate"]
     }
   ],
