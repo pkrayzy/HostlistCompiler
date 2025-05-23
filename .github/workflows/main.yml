@@ -20,6 +20,10 @@ jobs:
       - name: Install dependencies
         run: yarn install --network-concurrency 1
 
+      - name: Extract and transform OISD Excludes
+        run: |
+          curl -s https://oisd.nl/excludes.php | grep -Eo '>([^<]+)<' | sed 's/>/@@||/; s/</^/' > OISD_Excludes.txt
+          
       - name: Build DNS Filter
         run: TLS=insecure node src/cli.js -c examples/sdn/configuration.json -o filter.txt
 
