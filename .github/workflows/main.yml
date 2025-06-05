@@ -24,9 +24,9 @@ jobs:
         # run: |
           # curl -s https://oisd.nl/excludes.php | grep -Eo '>([^<]+)<' | sed 's/>/@@||/; s/</^/' > OISD_Excludes.txt
 
-      # - name: Download and transform Adguard Filters
-        # run: |
-          # curl -s https://filters.adtidy.org/extension/ublock/filters/2_optimized.txt | grep -v '!#safari_cb_affinity' > 2_optimized.txt
+      - name: Download and transform Adguard Filters
+        run: |
+          curl -s https://filters.adtidy.org/extension/ublock/filters/2_optimized.txt | grep -v '!#safari_cb_affinity' > 2_optimized.txt
           
       - name: Build DNS Filter
         run: TLS=insecure node src/cli.js -c examples/sdn/configuration.json -o filter.txt
