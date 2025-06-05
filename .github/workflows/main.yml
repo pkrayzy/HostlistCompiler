@@ -23,6 +23,10 @@ jobs:
       - name: Extract and transform OISD Excludes
         run: |
           curl -s https://oisd.nl/excludes.php | grep -Eo '>([^<]+)<' | sed 's/>/@@||/; s/</^/' > OISD_Excludes.txt
+
+      - name: Dowloan and transform Adguard Filters
+        run: |
+          curl -s https://filters.adtidy.org/extension/ublock/filters/2_optimized.txt | sed -i '<!#safari_cb_affinity>/d' > 2_optimized.txt
           
       - name: Build DNS Filter
         run: TLS=insecure node src/cli.js -c examples/sdn/configuration.json -o filter.txt
