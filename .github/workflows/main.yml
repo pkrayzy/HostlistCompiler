@@ -26,11 +26,11 @@ jobs:
 
       - name: Download and transform Adguard Filters
         run: |
-          curl -s https://filters.adtidy.org/extension/ublock/filters/2_optimized.txt | grep -v '!#safari_cb_affinity' > 2_optimized.txt
-          curl -s https://filters.adtidy.org/extension/ublock/filters/3_optimized.txt | grep -v '!#safari_cb_affinity' > 3_optimized.txt
-          curl -s https://filters.adtidy.org/extension/ublock/filters/4_optimized.txt | grep -v '!#safari_cb_affinity' > 4_optimized.txt
-          curl -s https://filters.adtidy.org/extension/ublock/filters/11_optimized.txt | grep -v '!#safari_cb_affinity' > 11_optimized.txt
-          curl -s https://filters.adtidy.org/extension/ublock/filters/14_optimized.txt | grep -v '!#safari_cb_affinity' > 14_optimized.txt
+          curl -s https://filters.adtidy.org/ios/filters/2_optimized.txt | grep -v '!#safari_cb_affinity' > ./optimized/2_optimized.txt
+          curl -s https://filters.adtidy.org/ios/filters/3_optimized.txt | grep -v '!#safari_cb_affinity' > ./optimized/3_optimized.txt
+          curl -s https://filters.adtidy.org/ios/filters/4_optimized.txt | grep -v '!#safari_cb_affinity' > ./optimized/4_optimized.txt
+          curl -s https://filters.adtidy.org/ios/filters/11_optimized.txt | grep -v '!#safari_cb_affinity' > ./optimized/11_optimized.txt
+          curl -s https://filters.adtidy.org/ios/filters/14_optimized.txt | grep -v '!#safari_cb_affinity' > ./optimized/14_optimized.txt
           
       - name: Build DNS Filter
         run: TLS=insecure node src/cli.js -c examples/sdn/configuration.json -o filter.txt
