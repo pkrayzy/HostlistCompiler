@@ -31,8 +31,6 @@ jobs:
           curl -s https://filters.adtidy.org/ios/filters/4_optimized.txt | grep -v '!#safari_cb_affinity' > ./optimized/4_optimized.txt
           curl -s https://filters.adtidy.org/ios/filters/11_optimized.txt | grep -v '!#safari_cb_affinity' > ./optimized/11_optimized.txt
           curl -s https://filters.adtidy.org/ios/filters/14_optimized.txt | grep -v '!#safari_cb_affinity' > ./optimized/14_optimized.txt
-          curl -s https://gitflic.ru/project/magnolia1234/bypass-paywalls-clean-filters/blob/raw?file=bpc-paywall-filter.txt > ./optimized/bpc.txt
-
       - name: Build DNS Filter
         run: TLS=insecure node src/cli.js -c examples/sdn/configuration.json -o filter.txt
 
