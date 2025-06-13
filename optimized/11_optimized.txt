@@ -1,9 +1,9 @@
-! Checksum: BzoU5MWUMN3f6ij3I3X3yA
-! Diff-Path: ../patches/11_optimized/11_optimized-s-1749629626-3600.patch
+! Checksum: 2HUwqLffEanQHAyIPbXwNQ
+! Diff-Path: ../patches/11_optimized/11_optimized-s-1749751996-3600.patch
 ! Title: AdGuard Mobile Ads filter (Optimized)
 ! Description: Filter for all known mobile ad networks. Useful for mobile devices.
-! Version: 2.0.61.48
-! TimeUpdated: 2025-06-11T08:09:20+00:00
+! Version: 2.0.61.52
+! TimeUpdated: 2025-06-12T18:08:59+00:00
 ! Expires: 5 days (update frequency)
 ||adx-open-service.youku.com^
 ||ad.youku.com^
@@ -265,7 +265,6 @@
 ||api-ad-adapter.wps.com^
 ||jtbo*.nqxvevk.cn^
 ||nasimobi.com^
-||wd.adcolony.xyz^
 ||im.ov.yahoo.co.jp^
 ||adx-*.dbankcloud.
 ||ad-*.appacc.dbankedge.cn^
@@ -312,7 +311,6 @@
 ||rossoad.com^
 ||athena.api.kwalee.com^
 ||mobondhrd.appspot.com^
-||a.cookpad-ads.com^
 ||api.ads.newsdigest.jp^
 ||mobi.yanosik.pl^
 ||videoads-cloud.rovio.com^
@@ -920,6 +918,7 @@
 ||oclasrv.com$popup,important
 ||n152adserv.com^
 ||smilered.com^
+mdpr.jp#%#//scriptlet('trusted-set-attr', '#gn-rwd-target-hidden', 'class', 'rewareded')
 mdpr.jp#%#//scriptlet('set-session-storage-item', 'gnrwdfreq', '1')
 @@||js.gsspcln.jp/w/ad_format/reward/gnsrwdmod.js$domain=mdpr.jp
 @@||googletagservices.com/tag/js/gpt.js$domain=mdpr.jp
@@ -1659,6 +1658,8 @@ aidoly.net,celeby-media.net,kyun2-girls.com,hapiee.com,2ch-c.net,4p.de,www-cbc-c
 chip.de,gamesworld.de,fnn.jp##.Ad
 medipalette.lotte.co.jp,genxy-net.com,m.price.com.hk,otakuma.net,nikkan-gendai.com,ranking.goo.ne.jp,m.hellporno.com,topics.smt.docomo.ne.jp,rank-king.jp,kun.uz,m.lenta.ru,m.aydin24haber.com,m.xcum.com,m.alphaporno.com,m.yourlust.com,m.3movs.com,m.sexu.com##body .banner
 sp.manga.nicovideo.jp##div[style^="--ads-width:"]
+bakusai.com##li.readMore
+w.atwiki.jp##div[style^="position: relative; padding-bottom: "]:has(> iframe[style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; border: medium;"])
 canalporno.com##.sticky-banner
 techworm.net##.td-is-sticky:has(> div[data-sticky-enabled-on])
 canalporno.com##.ads
@@ -2041,7 +2042,6 @@ wedge.ismedia.jp##.article-service > .visual-box
 lettuceclub.net##.content-container > section > div.pt-4:has(#lcn-s_all_mb_gam)
 dic.pixiv.net##div[id^="d-sp-itemarticle"]
 lovehotel.yapy.jp##.Ad_display_top
-the-3rd.net##.header_dlsite
 unite-db.com##div[id^="nn_mobile_"]
 op.gg##.w-full:has(> .flex:only-child > #mobile_takeover:only-child)
 cna.com.tw##.advertiseMobile
@@ -2142,7 +2142,6 @@ smart-flash.jp#$?#.ads_sp_image_slider { remove: true; }
 blog.livedoor.jp##.reprint + div[style*="margin:"][style*="#"]:has(img[src*="amazon."])
 fastcompany.com##div[class="min-h-[265px] bg-white fixed bottom-[82px] left-0 right-0 z-50"]
 m.slashdot.org##.ad-on
-manysex.com##.header__item
 ooxxx.com#?#.wrapper > section[style]:has(> div > span:matches-css(after, content: AD))
 ooxxx.com##.underplayer > section:has(> div > h4 > a[href^="https://clickadilla.com/"])
 hotmovs.com#?#.video-page > div[class]:has(> div > span:contains(/^AD/))
@@ -2159,7 +2158,7 @@ marieclaire.com.tw##div[class^="ad"]
 uzmanparam.milliyet.com.tr##div[style^="min-height: 250px;display: flex;justify-content: center;"]
 lol.ps##div[id^="mobile_banner-"]
 lol.ps##.flex.justify-center:has(> div:is(#mobile_mpu-champ, #mobile_takeover))
-get2ch.net##.header_dlsite
+the-3rd.net,get2ch.net##.header_dlsite
 get2ch.net##.list-group > div[style]:has(> script[src^="//d-load.org/"])
 ndtv.com##div[class^="ad-art_"]
 zestolu.cz,osobnosti.cz##div[class^="mobile-"]
@@ -2552,7 +2551,6 @@ radiotimes.com##.ad-placement
 independent.co.uk##.sc-estpub-1
 gsmservice.pl###tdi_14
 zentrum-der-gesundheit.de#?#.container > div.fixed:has(> button:contains(Interessante Produkte für Sie))
-faz.net##.iqdcontainer
 mx1b.nan-net.jp##div[style="padding:0px 0px 20px 0px;"]
 appleinsider.com###mobile-article-anchor
 redcafe.net##.adwrap
@@ -2629,7 +2627,7 @@ woman.mynavi.jp##div[style="margin:20px auto 0;text-align: center; min-height: 3
 cartune.me##div[style^="display:flex;justify-content:center;align-items:center;text-align:center;min-height:"]
 treccani.it###gmp-sticky-middlemobile
 treccani.it###gmpSkinMobileSpacer
-zeit.de##.iqdcontainer
+faz.net,zeit.de##.iqdcontainer
 amp.marca.com##.ue-c-ad
 meteoblue.com##div[id^="display_mobile_ad"]
 oreno3d.com##.video-figure > div[style^="position: absolute; top: 0px; left: 0px;"]
@@ -3190,7 +3188,7 @@ wsj.com#?#div[class^="WhatsNewsTheme"] > div[class]:has(div[class] > div[class^=
 amp.dantri.com.vn##div[id^="xds-"]
 outdoorlife.com#?##empire-unit-footer-close-btn
 outdoorlife.com#?#div[id^="empire-unit-sticky_footer__mobile"]
-xjav.tube,aniporn.com##.header__item
+manysex.com,xjav.tube,aniporn.com##.header__item
 esquire.com#?#section > div[class*="css"]:has(> div.ad-container)
 thegreatoutdoorsmag.com,amateurphotographer.com##.post-content-ad
 themanual.com##body .dtads-mobile
@@ -5573,7 +5571,7 @@ txxx.com###im-block_wrapper
 ||meijuck.com/js/dfw.js
 mobil.express.de,mobil.mopo.de##article[data-title="ANZEIGE"]
 fapality.com##.had
-||alicdn.com^$domain=m.petdianping.com|m.caomintv.com|m.6080w.com
+||alicdn.com^$domain=m.petdianping.com|m.6080w.com
 ||m.shazi8.com/mg^
 ||mm.shazi8.com/mg^
 /jx.3aym.cn\/[0-9]{1,6}.gif/$domain=3aym.cn
