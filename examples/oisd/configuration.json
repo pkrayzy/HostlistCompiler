@@ -1,0 +1,46 @@
+{
+  "name": "OISD",
+  "description": "Filter composed from several other filters (English filter, Social media filter, Spyware filter, Mobile ads filter, EasyList and EasyPrivacy) and simplified specifically to be better compatible with DNS-level ad blocking.",
+  "homepage": "https://github.com/AdguardTeam/AdguardSDNSFilter",
+  "license": "GPLv3",
+  "sources": [
+    {
+      "name": "OISD",
+      "source": "https://big.oisd.nl",
+      "type": "adblock",
+      "transformations": ["RemoveModifiers", "Compress", "Validate"]
+    },
+    {
+      "name": "EasyPrivacy Admiral",
+      "source": "https://raw.githubusercontent.com/easylist/easylist/master/easyprivacy/easyprivacy_trackingservers_admiral.txt",
+      "type": "adblock",
+      "transformations": ["RemoveModifiers", "Compress", "Validate"]
+    }, 
+    {
+      "name": "Brave CNMAME Blocklist",
+      "source": "https://raw.githubusercontent.com/brave/adblock-lists/refs/heads/master/brave-lists/brave-firstparty-cname.txt",
+      "type": "adblock",
+      "transformations": ["RemoveModifiers", "Compress", "Validate"]
+    },
+    {
+      "name": "Brave Blocklist for iOS",
+      "source": "https://raw.githubusercontent.com/brave/adblock-lists/refs/heads/master/brave-lists/brave-ios-specific.txt",
+      "type": "adblock",
+      "transformations": ["RemoveModifiers", "Compress", "Validate"]
+    },
+        {
+      "name": "uBlock filters – Badware risks",
+      "source": "https://ublockorigin.github.io/uAssetsCDN/filters/badware.min.txt",
+      "type": "adblock",
+      "transformations": ["RemoveModifiers", "Compress", "Validate"]
+    }
+  ],
+  "transformations": ["Deduplicate", "Compress"],
+  "exclusions_sources": [
+        "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/whitelist-referral.txt",
+        "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/whitelist-referral-native.txt",
+        "https://raw.githubusercontent.com/AdguardTeam/AdGuardSDNSFilter/master/Filters/exclusions.txt",
+        "https://raw.githubusercontent.com/nextdns/click-tracking-domains/main/domains",
+        "https://raw.githubusercontent.com/pkrayzy/FiltersCompiler/master/filters/DNSexclusions.txt"
+      ]
+}
