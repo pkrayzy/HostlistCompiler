@@ -3,7 +3,7 @@
 ! Description: Filter composed from several other filters (English filter, Social media filter, Spyware filter, Mobile ads filter, EasyList and EasyPrivacy) and simplified specifically to be better compatible with DNS-level ad blocking.
 ! Homepage: https://github.com/AdguardTeam/AdguardSDNSFilter
 ! License: GPLv3
-! Last modified: 2025-08-22T11:39:55.907Z
+! Last modified: 2025-08-23T03:35:00.933Z
 !
 ! Compiled by @adguard/hostlist-compiler v1.0.40
 !
@@ -16,12 +16,13 @@
 ! Description: Filter composed of several other filters (AdGuard Base filter, Social media filter, Tracking Protection filter, Mobile ads filter, EasyList, EasyPrivacy, etc) and simplified specifically to be better compatible with DNS-level ad blocking.
 ! Homepage: https://github.com/AdguardTeam/AdguardSDNSFilter
 ! License: https://github.com/AdguardTeam/AdguardSDNSFilter/blob/master/LICENSE
-! Last modified: 2025-08-22T10:06:52.605Z
+! Last modified: 2025-08-23T02:33:01.624Z
 !
 ! Compiled by @adguard/hostlist-compiler v1.0.38
 !
 !
 ! Source name: AdGuard Base filter ad servers
+! Source: https://adguardteam.github.io/AdguardFilters/BaseFilter/sections/adservers.txt
 !
 !
 ! This section contains the list of third-party advertising networks domains.
@@ -30,9 +31,16 @@
 !
 ! Good: ||doubleclick.net^$third-party
 ! Bad: /banner.jpg (should be in general_url.txt)
+! Bad: ||adssubdomain.legitwebsite.com^ (should be in adservers_firstparty.txt)
 !
 !
 !
+||bid-algorix.com^
+||loopmeedge.net^
+||kayzen.io^
+||smrtads.com^
+||foisonad.com^
+||liftyad.xyz^
 ||hjejevuwisio.com^
 ||stevungegn.com^
 ||pgnasmcdn.click^
@@ -616,6 +624,14 @@
 ! We include rules from AdGuard's cname-tracker repo here, and add some additional rules,
 ! which will be used during the optimization by /optimizeDomainBlockingRules option.
 !
+! TODO: Check for CNAME ad servers
+! Don't add monetag.com here
+||amaerodactylon.com^
+||cdn.aucey.com^
+||zk1w.com^
+||g4nd.com^
+||2ddq.com^
+!
 ! https://github.com/AdguardTeam/FiltersRegistry/pull/937
 ! To fix the issue with the CNAME trackers, add problematic domains here:
 !
@@ -691,14 +707,35 @@
 ||tuesdaysale.bid^
 ||vi.zolivexo.store^
 ||workerhome.click^
+||www.5738.ru^
 ||www.allworldinfo4.ru^
 ||www.allworldinfo4.store^
+||www.aviator-game.info^
 ||www.eshii.ru^
 ||www.fasder12.ru^
 ||www.fasder12.store^
+||www.gorrio.ru^
+||www.horpush.ru^
 ||www.mojwprb.ru^
 ||www.pc-download.ru^
+||www.pushrb.pro^
+||www.qatro.ru^
+||www.raelb2.ru^
+||www.rbdomain.ru^
+||www.rbmcnf.pro^
+||www.rbp1.ru^
+||www.rbp2.ru^
+||www.rbp2.site^
+||www.rbp3.ru^
+||www.rbp63841.ru^
+||www.rbpark1.site^
+||www.rbpark1.website^
+||www.rbpark2.ru^
+||www.rbpark3.ru^
+||www.rbprk91645.ru^
 ||www.rlrt.ru^
+||www.siterec.site^
+||www.step555.ru^
 ||zbs.etodomendlyareklamy.ru^
 !
 ! GoAdserver : go.goadserver.com disguised advertising networks
@@ -1784,11 +1821,16 @@
 ||winter05032026.shop^
 ||wn4wztsx.xyz^
 ||ww.sphinxtube.com^
+||www.akasztofa.com^
 ||www.bigboy.monster^
+||www.csaladititkok.com^
+||www.csicskalangos.com^
 ||www.forwank.com^
+||www.hazaarulo.com^
 ||www.javtvnow.xyz^
 ||www.mysalo.store^
 ||www.pleasedonotblockme.com^
+||www.xz8.ru^
 ||www4.hentai-rpg.com^
 ||www4.hentaigamecg.com^
 ||www6.freeanimesource.com^
@@ -2681,17 +2723,6 @@
 ||www.bokep.su^
 ||zone1.bestbdsm24.com^
 ||zone1.bestporn24.com^
-!
-! ads2.bid : ads.bid disguised advertising networks
-! Disabled, because does not contain any CNAME records
-! !#include https://adguardteam.github.io/cname-trackers/data/ads/ads2_bid.txt
-!
-! heleric.com : heleric.com disguised advertising networks
-!
-! Company name: heleric.com
-!
-!
-! Company name: NameSilo
 ||a.8jfbt5va3r.com^
 ||a.advantageclicks.net^
 ||a.asvsm.com^
@@ -2896,6 +2927,7 @@
 ||syndication.ouzads.com^
 ||syndication.whibd.com^
 ||syndication.whibp.com^
+||www.exaapi.com^
 ||www.exasrv.com^
 ||a.advertrek.com^
 ||a.allureanews.com^
@@ -3268,6 +3300,7 @@
 ||harrier.progress.fyi^
 ||harrier.scdamerica.com.au^
 ||hawk.makroskop.eu^
+||hawk.mjsarfatti.com^
 ||hedgehog.fightforthefuture.org^
 ||heron.joel.is^
 ||heron.notability.com^
@@ -3900,7 +3933,9 @@
 ||tltcxs.awohkn.com^
 ||www.cdnboostcache.com^
 !
+! trackwilltrk.com : trackwilltrk.com disguised advertising networks
 !
+! Company name: trackwilltrk.com
 ||r.biotrck.com^
 ||r.flatlong.shop^
 ||r.maintrck.com^
@@ -3924,6 +3959,7 @@
 ||t.trecktr.com^
 ||t.vpntrck.com^
 !
+! Webair : ak-is2.net disguised advertising networks
 ||google-analyticals.com^
 ||bidmyqps.xyz^
 ||ctrtraffic.com^
@@ -5421,12 +5457,14 @@
 ! !SECTION: CNAME disguised advertising networks
 !
 ! Source name: AdGuard Base filter ad servers first-party
+! Source: https://adguardteam.github.io/AdguardFilters/BaseFilter/sections/adservers_firstparty.txt
 !
 !
 ! This section contains the list of advertising networks domains, which are hosted on non advertising sites as subdomains.
 ! Note, that we only put rules that block full subdomains here and not URL parts (there's `general_url.txt` for that).
 !
 ! Bad: /banner.jpg (should be in general_url.txt)
+! Bad: ||legitwebsite.com^$third-party (should be in adservers.txt)
 !
 !
 ||id-msp.newsbreak.com
@@ -5788,6 +5826,7 @@
 ! This section contains the list of rules are against crypto-miners.
 !
 ! Good: ||monerominer.rocks^$third-party
+! Bad:  monerominer.rocks##.ad (should be in specific.txt)
 !
 !
 ! Do not block authedmine.com
@@ -5941,6 +5980,7 @@
 ||16pr72tb5.de^
 ||17180d187e.com^
 ||171c856581.com^
+||17282cd89c.com^
 ||173726e958.com^
 ||17c2791ec2.com^
 ||17co2k5a.de^
@@ -5972,6 +6012,7 @@
 ||1fa107ed6e.com^
 ||1fcf60d54c.com^
 ||1fd92n6t8.de^
+||1fims.com^
 ||1fkx796mw.com^
 ||1fwjpdwguvqs.com^
 ||1g46ls536.de^
@@ -6082,6 +6123,7 @@
 ||2a4snhmtm.de^
 ||2aefgbf.de^
 ||2bc533c900.com^
+||2beno.com^
 ||2bps53igop02.com^
 ||2c4rrl8pe.de^
 ||2c5d30b6f1.com^
@@ -6406,6 +6448,7 @@
 ||700f312054.com^
 ||70b7d98dec.com^
 ||7153823bf9.com^
+||717d165445.com^
 ||71df446534.com^
 ||72hdgb5o.de^
 ||730fcb332f.com^
@@ -6436,6 +6479,7 @@
 ||7bd9a61155.com^
 ||7c13b412e9.com^
 ||7ca78m3csgbrid7ge.com^
+||7d44c6ba4d.com^
 ||7d77f23c90.com^
 ||7d93f9d2f5.com^
 ||7ed58b948f.com^
@@ -7397,6 +7441,7 @@
 ||aifmpdaqommzn.store^
 ||aifolr.com^
 ||aigeersoagay.net^
+||aighauboptid.net^
 ||aigneloa.com^
 ||aiharsoreersu.net^
 ||aiiirwciki.com^
@@ -7452,6 +7497,7 @@
 ||aj2555.bid^
 ||aj2635.bid^
 ||ajautchaissaur.net^
+||ajdmejdqgf.com^
 ||ajewzcsnmnjex.site^
 ||ajfnee.com^
 ||ajgsadialtyzq.store^
@@ -7494,6 +7540,7 @@
 ||alargeredrubygsw.info^
 ||alarmenvious.com^
 ||alarming-rule.com^
+||alarummock.rest^
 ||alas4kanmfa6a4mubte.com^
 ||alasvow.com^
 ||alazorrisquee.qpon^
@@ -7817,6 +7864,7 @@
 ||apatheticdrawerscolourful.com^
 ||apatitebroomer.shop^
 ||apbozjrk.com^
+||apcdoxiqxiote.space^
 ||apczazvwydwnz.club^
 ||apdcekrulrpjd.online^
 ||apedomtesla.click^
@@ -7953,6 +8001,7 @@
 ||arkox.site^
 ||arkwglkwhnhce.store^
 ||arleavannya.com^
+||arlouppacing.click^
 ||armaturereadiness.com^
 ||armedtidying.com^
 ||armfhefszehro.site^
@@ -8037,6 +8086,7 @@
 ||ashoupsu.com^
 ||ashrivetgulped.com^
 ||ashsateamplayera.org^
+||ashtrayexportmanage.com^
 ||ashtraysuburb.com^
 ||ashturfchap.com^
 ||asiangfsex.com^
@@ -8190,6 +8240,7 @@
 ||attepigom.com^
 ||attirecideryeah.com^
 ||attqbruefzfsc.space^
+||attractiondetectivesfranchise.com^
 ||attractive-external.pro^
 ||attractivecutier9t3.com^
 ||attractivereception.com^
@@ -8267,7 +8318,6 @@
 ||autoportgen.space^
 ||autopsytan.com^
 ||auvaugushik.net^
-||auzaizouvoum.com^
 ||avads.co.uk^
 ||avads.live^
 ||avalancheofnews.com^
@@ -8362,12 +8412,14 @@
 ||axeldivision.com^
 ||axhoqjpimjfo.com^
 ||axhqzjtpfwrfg.tech^
+||axilfroisse.digital^
 ||axisdoctrine.com^
 ||axjndvucr.com^
 ||axljlsidtcge.com^
 ||axmmilepqvdyj.world^
 ||axonix.com^
 ||ay.delivery^
+||ay267.com^
 ||ay5u9w4jjc.com^
 ||ayads.co^
 ||ayagirbxqzmkt.global^
@@ -8390,6 +8442,7 @@
 ||azazyjjovmvov.top^
 ||azbbyqnaonmnq.top^
 ||azbtyfvqjuiyc.store^
+||azcvyexndzpvl.online^
 ||azeleiljkpywl.vip^
 ||azilianmazy.click^
 ||azimechgirosol.top^
@@ -8407,6 +8460,7 @@
 ||azursikseebie.net^
 ||azygotesonless.com^
 ||azyozusfpdvps.store^
+||azzncoswof.com^
 ||b-m.xyz^
 ||b02byun5xc3s.com^
 ||b0f3731d0a.com^
@@ -8481,6 +8535,7 @@
 ||bakertangiblebehaved.com^
 ||bakingbeheld.com^
 ||bakingsensitivenesswise.com^
+||baklwjoyoatfv.site^
 ||bakteso.ru^
 ||baldo-toj.com^
 ||baletingo.com^
@@ -8576,6 +8631,7 @@
 ||batheunits.com^
 ||bathtubabdomencoarse.com^
 ||baticalfelixstown.org^
+||batlanwonna.qpon^
 ||batokaenrapts.click^
 ||battepush.com^
 ||batwinggemote.life^
@@ -8708,6 +8764,7 @@
 ||bemanectricr.com^
 ||bembexguanase.shop^
 ||bemiltankor.com^
+||bemiredflain.cfd^
 ||bemobpath.com^
 ||bemobtrcks.com^
 ||bemobtrk.com^
@@ -8737,6 +8794,7 @@
 ||berapt-medii.com^
 ||bereaveencodefestive.com^
 ||berendburghs.life^
+||berinseosmetic.com^
 ||berlipurplin.com^
 ||berriesstring.com^
 ||berthfrankly.com^
@@ -8818,6 +8876,7 @@
 ||beyanmaan.com^
 ||beyondpayors.com^
 ||bezoaroocysts.rest^
+||bezzantmodesty.world^
 ||bf-ad.net^
 ||bf002bbbbb.com^
 ||bf7472b795.com^
@@ -9075,11 +9134,11 @@
 ||bnserving.com^
 ||bnsirwpidbpao.online^
 ||bnvavriytks.com^
+||bnywlkaklqago.top^
 ||bo2ffe45ss4gie.com^
 ||boacheeb.com^
 ||boardhisisa.org^
 ||boardpress-b.online^
-||boastfive.com^
 ||boatheeh.com^
 ||boatjadeinconsistency.com^
 ||bobabillydirect.org^
@@ -9486,6 +9545,7 @@
 ||butoraheadyg.com^
 ||butterflygeographyboredom.com^
 ||butteryamount.pro^
+||butterysteal.pro^
 ||buttontileaiming.com^
 ||buyfrightencheckup.com^
 ||buzzdancing.com^
@@ -9552,6 +9612,7 @@
 ||c3759f7e8a.com^
 ||c4cef5b39d.com^
 ||c4ef1d1343.com^
+||c526b6ac88.com^
 ||c5e739a769.com^
 ||c6ec2f3763.com^
 ||c7f4d1276e.com^
@@ -9988,6 +10049,7 @@
 ||chengaib.net^
 ||cheqzone.com^
 ||cherdignain.net^
+||cherriesprospectsfaith.com^
 ||chertnomisma.cfd^
 ||chesssorrydescend.com^
 ||chestedmopeds.qpon^
@@ -10414,7 +10476,6 @@
 ||comedianthirteenth.com^
 ||comelysouthbuilds.com^
 ||comerhurlentertain.com^
-||comersvowelly.cfd^
 ||comfortablepossibilitycarlos.com^
 ||comfortclick.co.uk^
 ||comicespotsie.help^
@@ -10677,6 +10738,7 @@
 ||cpaway.com^
 ||cpays.com^
 ||cpbhizaihjzaa.space^
+||cpbsdmiolplwp.website^
 ||cpjxmaecroqix.online^
 ||cpkwmmawszpkj.store^
 ||cplayer.pw^
@@ -11038,6 +11100,7 @@
 ||dailyhealthvita.com^
 ||dainouluph.net^
 ||daintyinternetcable.com^
+||daipheefona.com^
 ||daizoode.com^
 ||dalecta.com^
 ||daleelerah.info^
@@ -11226,6 +11289,7 @@
 ||deductgreedyheadroom.com^
 ||deeavouter.com^
 ||deebcards-themier.com^
+||deeddrugtask.com^
 ||deedeedwinos.com^
 ||deediergypper.cfd^
 ||deedkernelhomesick.com^
@@ -11300,6 +11364,7 @@
 ||demandedrucksackprivate.com^
 ||demanding-juice.pro^
 ||demandingoverdriveunthread.com^
+||demeanaffeer.com^
 ||demencydisrate.qpon^
 ||demidogrudloff.click^
 ||demiseskill.com^
@@ -11319,6 +11384,7 @@
 ||denoughtanot.info^
 ||denoughtanoth.com^
 ||dense-thing.pro^
+||densestress.pro^
 ||densubmarinesubdued.com^
 ||dental-drawer.pro^
 ||denthaitingshospic.com^
@@ -11510,6 +11576,7 @@
 ||discriminationseizebananas.com^
 ||discusscompetencecallous.com^
 ||disdainplayedbluster.com^
+||diseadkp.com^
 ||disguised-confidence.pro^
 ||disguised-dad.com^
 ||disguisesmashdisappearing.com^
@@ -11640,6 +11707,7 @@
 ||dodderytactite.com^
 ||dodgyresources.com^
 ||dodoismnevell.rest^
+||dodunkyouff.com^
 ||doflygonan.com^
 ||dofrhyluyqtex.online^
 ||dogeyintro.cyou^
@@ -11682,6 +11750,7 @@
 ||donkeyflower.xyz^
 ||donkeygentlesubdued.com^
 ||donttbeevils.de^
+||donutpassenger.com^
 ||doo888x.com^
 ||doodaukulilog.net^
 ||doodiwom.com^
@@ -12183,6 +12252,7 @@
 ||eelbcwcirsskl.space^
 ||eeldamage.com^
 ||eelsawheedi.net^
+||eemghktkqbkic.xyz^
 ||eemseptouby.net^
 ||eensatsoah.net^
 ||eephaush.com^
@@ -12247,6 +12317,7 @@
 ||eikegolehem.com^
 ||eiledstevermotorie.org^
 ||eimjmspwvjwll.com^
+||einkornlyses.cyou^
 ||eiohjvvxbbxsxa.xyz^
 ||eirbrightscarletcl.com^
 ||eisasbeautifulas.com^
@@ -12438,6 +12509,7 @@
 ||entaildault.world^
 ||entangleversatile.com^
 ||entertainment3x.fun^
+||enthaitingshospic.org^
 ||enthroneunborn.com^
 ||enthusiasticfibreassembly.com^
 ||entia.site^
@@ -12501,7 +12573,6 @@
 ||equipmentselfemployed.com^
 ||equirekeither.xyz^
 ||equivocalmashingreseller.com^
-||eqviibkgn.com^
 ||era67hfo92w.com^
 ||eradisciplinemomentary.com^
 ||erafterabigyello.com^
@@ -12568,8 +12639,10 @@
 ||escwxirouxscm.site^
 ||escy55gxubl6.com^
 ||esemnjeptffjb.xyz^
+||esemrvueskrke.site^
 ||eserinemersion.shop^
 ||esfljmhdtpdvj.xyz^
+||eshoubivaurubo.com^
 ||esihighlyrecomemu.com^
 ||eskarsnoxally.help^
 ||eskimi.com^
@@ -12765,7 +12838,6 @@
 ||extensionworthwhile.com^
 ||extentbananassinger.com^
 ||extenuatemusketsector.com^
-||externsbaas.click^
 ||extpxgmisex.com^
 ||extracthorizontaldashing.com^
 ||extractionalofthumiliation.com^
@@ -12929,6 +13001,7 @@
 ||faxbfxhkdjoma.icu^
 ||faxesscrewy.qpon^
 ||fayencecouril.click^
+||faylesconjoin.qpon^
 ||fayprjmlhxpnl.website^
 ||fazanppq.com^
 ||fb-plus.com^
@@ -13065,6 +13138,7 @@
 ||fhovtxzyha.com^
 ||fhpsuesupqexi.store^
 ||fhqoiuoceycun.space^
+||fhsctlfhsekqua.com^
 ||fhuwsmjjijivj.top^
 ||fhv00rxa2.com^
 ||fiannasallee.cyou^
@@ -13077,7 +13151,6 @@
 ||ficmxrutlrhig.store^
 ||fidar.site^
 ||fidelslaggy.help^
-||fideshasn.cfd^
 ||fidgethid.com^
 ||fiercenblighty.cfd^
 ||fieryinjure.com^
@@ -13170,7 +13243,6 @@
 ||fkjcuovnhzaaz.love^
 ||fkkicdtg.com^
 ||fkklcqmeqoerb.space^
-||fkpztzciioaugp.com^
 ||fkrwxzvxljbyh.website^
 ||fkwlwfjlavrcb.online^
 ||fkzmvsmbnblvu.life^
@@ -13193,6 +13265,7 @@
 ||flattendollar.com^
 ||flattenrestoration.com^
 ||flatwaremeeting.com^
+||flavinepetrous.help^
 ||flawerosion.com^
 ||flawgrandparentsmysterious.com^
 ||flawlesssubstance.com^
@@ -13414,6 +13487,7 @@
 ||fpukxcinlf.com^
 ||fpxpobaudkjzu.site^
 ||fpyf8.com^
+||fqayoymigvmbw.website^
 ||fqdqndubwixwk.website^
 ||fqjxmzlhmfmuk.online^
 ||fqnpsyjfuxmqx.website^
@@ -13564,6 +13638,7 @@
 ||functorsarigue.life^
 ||fundatingquest.fun^
 ||fundingsidenote.com^
+||fundsruffianfollows.com^
 ||fundtraveller.com^
 ||fungalsniddle.digital^
 ||fungiaoutfame.com^
@@ -13573,7 +13648,6 @@
 ||fungusshapesniff.com^
 ||funlivibioid.world^
 ||funtoday.info^
-||funyarewesbegi.com^
 ||furjoyfdoumka.site^
 ||furoidclachan.cyou^
 ||furowo.org^
@@ -13772,6 +13846,7 @@
 ||gelhp.com^
 ||gelidassurd.qpon^
 ||gelnhamforma.com^
+||gelsauceepteerg.net^
 ||geltoopsoatch.net^
 ||gemfowls.com^
 ||geminibugs.com^
@@ -13917,6 +13992,7 @@
 ||givingpokunt.shop^
 ||givingsol.com^
 ||gixiluros.com^
+||giyosmeqmfikncm.com^
 ||gizokraijaw.net^
 ||gjigle.com^
 ||gjjaefsketwgi.tech^
@@ -13937,6 +14013,7 @@
 ||glaidalr.net^
 ||glaidipt.net^
 ||glaigaunsoroogh.com^
+||glaikrahauvoam.net^
 ||glaistethab.com^
 ||glaiwhee.net^
 ||glaixich.net^
@@ -14010,6 +14087,7 @@
 ||gloveroadmap.com^
 ||glowedhyalins.com^
 ||glowingnews.com^
+||glpaacrsahpaox.com^
 ||glpares.shop^
 ||glqsxlvrhuxba.love^
 ||glsikeayvohta.site^
@@ -14208,6 +14286,7 @@
 ||gravuremiche.world^
 ||grayswing.com^
 ||grazingmarrywomanhood.com^
+||grblaenalkdnn.site^
 ||grbsgqafqhkux.store^
 ||greaseguts.com^
 ||great-coach.pro^
@@ -14281,6 +14360,7 @@
 ||groundinquiryoccupation.com^
 ||groundlesscobwebmiller.com^
 ||groupian.io^
+||groupsingusie.net^
 ||groutaissou.net^
 ||groutoazikr.net^
 ||groutoozy.com^
@@ -14625,6 +14705,7 @@
 ||heavenfull.com^
 ||heavenly-jump.pro^
 ||heavenlywhile.com^
+||heavyadviseflowerbed.com^
 ||hebhgyiqqgpkf.com^
 ||hecathedralinth.org^
 ||hectareeprosy.cyou^
@@ -14998,6 +15079,7 @@
 ||hourglassinedible.com^
 ||housemaiddevolution.com^
 ||housemaidvia.com^
+||housingjournalisminformal.com^
 ||housouokopeu.org^
 ||houvaulauchair.net^
 ||hoveltran.xyz^
@@ -15102,6 +15184,7 @@
 ||hunter-hub.com^
 ||hunterlead.com^
 ||hupot.site^
+||hurdlesawide.qpon^
 ||hurdlesomehowpause.com^
 ||hurkarubypaths.com^
 ||hurlmedia.design^
@@ -15399,6 +15482,7 @@
 ||impressexaltsculptor.com^
 ||impressioncheerfullyswig.com^
 ||imprintprototype.com^
+||improbableshunplanes.com^
 ||impropermoleculeshilling.com^
 ||improvebin.xyz^
 ||impukwweipyin.website^
@@ -15428,6 +15512,7 @@
 ||incarnatepicturesque.com^
 ||incendlaser.qpon^
 ||incentivenebulous.com^
+||inchesrecognize.com^
 ||incidenttrumpremittance.com^
 ||inclinedenemiesastray.com^
 ||incloak.com^
@@ -15516,6 +15601,7 @@
 ||inkornesto.com^
 ||inksgurjun.top^
 ||inktad.com^
+||inkvm.com^
 ||inlugiar.com^
 ||inlwhyhdnpjxk.website^
 ||inmateimpossibility.com^
@@ -15690,6 +15776,7 @@
 ||irresponsibilityprograms.com^
 ||irries.com^
 ||irritatepillssurly.com^
+||irritating-side.com^
 ||irvjwpajppvxi.site^
 ||irwyiaexxopok.love^
 ||irymountain.org^
@@ -15779,6 +15866,7 @@
 ||iviedcamus.help^
 ||ivlnszjtorszh.website^
 ||ivoristkief.shop^
+||ivoulimsilrair.com^
 ||ivuzjfkqzx.com^
 ||ivynjtsidwnqh.online^
 ||iwantuonly.com^
@@ -15795,7 +15883,6 @@
 ||ixamawwpxjchg.website^
 ||ixaxwiexuwcry.space^
 ||ixereewa.com^
-||ixiamabanshee.help^
 ||ixjqjoscayasz.website^
 ||ixnow.xyz^
 ||ixnp.com^
@@ -16012,6 +16099,7 @@
 ||jkqiweqrxsieb.website^
 ||jksmaafnkdyni.store^
 ||jktabzfgykmxa.top^
+||jkvbegvzzmrsn.website^
 ||jkzakzazlojvz.top^
 ||jl63v3fp1.com^
 ||jlavmdvzxpgqs.online^
@@ -16107,6 +16195,7 @@
 ||jravekvyeyovb.top^
 ||jravekvyeyyvq.top^
 ||jrbbavbvqmbaz.top^
+||jrbbavbvqmjzj.top^
 ||jrfarqnyvnee.com^
 ||jrfngdrodrdop.icu^
 ||jrfxjqnefkgw.com^
@@ -16209,7 +16298,6 @@
 ||jwcgmioafykme.site^
 ||jwcpgnlnwbukt.xyz^
 ||jwdyjlafpkxkf.space^
-||jwkkxtlvg.com^
 ||jwpltx.com^
 ||jwqvnbzxwiibj.one^
 ||jwskgkxnwdivg.online^
@@ -16235,6 +16323,7 @@
 ||jyusesoionsglear.info^
 ||jyvkwqjremqkz.top^
 ||jyxzaikrzaprd.site^
+||jyzzwozoamjnj.top^
 ||jzplabcvvy.com^
 ||jzqscvqlgasxh.buzz^
 ||jztwidpixa.icu^
@@ -16320,6 +16409,7 @@
 ||keajs.com^
 ||keanangelsaidthe.org^
 ||kebyarsaron.rest^
+||kecheluntie.cfd^
 ||kedgxztugonrg.space^
 ||kedrevenuedurin.com^
 ||keefoocauby.com^
@@ -16525,9 +16615,11 @@
 ||koapsuha.net^
 ||koaptouw.com^
 ||koasoophoapsoot.net^
+||kodbafryxemdz.website^
 ||kohiseewhatm.com^
 ||kohuaca.cyou^
 ||koiaripolymny.com^
+||kojtlrsjjpqcds.com^
 ||kokflrflwarlx.today^
 ||kolerevprivatedqu.com^
 ||koleyo.xyz^
@@ -16579,6 +16671,7 @@
 ||krfqlrxvmoyrj.online^
 ||krisydark.com^
 ||krjxhvyyzp.com^
+||krkstrk.com^
 ||krmnk.com^
 ||krmsqcfoluzxj.space^
 ||kronengorsier.world^
@@ -16608,6 +16701,7 @@
 ||kubachigugal.com^
 ||kudzushockday.top^
 ||kueezrtb.com^
+||kufoogroap.net^
 ||kuhcjgvmcsuun.space^
 ||kuites.click^
 ||kuiyizyzoadmf.online^
@@ -16799,6 +16893,7 @@
 ||lbobcqsbvmmjko.com^
 ||lbpodurp.cam^
 ||lbumpethohbsp.online^
+||lbwrvlxarodiv.store^
 ||lby2kd27c.com^
 ||lbylqerzmzlzq.top^
 ||lchtraf.com^
@@ -16833,18 +16928,20 @@
 ||leapsusaron.click^
 ||leaptanymore.com^
 ||leaptmagnetvertical.com^
+||leaptoffender.com^
 ||learningcontractionpolling.com^
 ||learnsakti.top^
 ||leaveoverwork.com^
 ||leaverswavy.life^
+||leavesgrece.rest^
 ||leaveundo.com^
 ||leavingaileen.com^
 ||lebbfksrknrex.website^
-||lebesdelia.digital^
 ||lecapush.net^
 ||lecqetptejakq.website^
 ||lectureolympics.com^
 ||lecubzcgozcgk.one^
+||ledgerssardana.world^
 ||leechiza.net^
 ||leefulsozines.qpon^
 ||leehlwswp.com^
@@ -16926,6 +17023,7 @@
 ||lfyynlsebgxsc.com^
 ||lgdstolfuinmi.world^
 ||lgepbups.xyz^
+||lgkjgunjzaort.website^
 ||lglxxxadsjocm.website^
 ||lgse.com^
 ||lgtdkpfnor.com^
@@ -17074,6 +17172,7 @@
 ||lixstownrusisedpriv.org^
 ||lizaitsuds.net^
 ||ljbiynvyhfteq.rocks^
+||ljbwzlmlzvmoq.top^
 ||ljbwzlmlzzezq.top^
 ||ljdzjtpnijpns.space^
 ||ljfrwpidsewus.store^
@@ -17301,12 +17400,14 @@
 ||lszydrtzsh.com^
 ||ltafuzncubta.com^
 ||ltapsxz.xyz^
+||ltassrv.com.s3.amazonaws.com^
 ||ltcpfjgmkplye.online^
 ||ltetrailwaysint.org^
 ||ltewtuwushec.xyz^
 ||ltingcoempa.org^
 ||ltnchfmuwmltz.space^
 ||ltrac4vyw.com^
+||ltvpyvhih.xyz^
 ||luagyywwmuq.xyz^
 ||luationiamcu.org^
 ||lubowitz.biz^
@@ -17398,6 +17499,7 @@
 ||lwxegrybymzah.love^
 ||lwzzgwonlrvgr.site^
 ||lx2rv.com^
+||lxeamwnhcxb.xyz^
 ||lxiapwwqfcbms.tech^
 ||lxkzcss.xyz^
 ||lxpwbzxrjazpo.com^
@@ -17487,7 +17589,6 @@
 ||magtgingleagained.org^
 ||mahalhep.qpon^
 ||mahkjru.cam^
-||mahuadrawees.click^
 ||maideninfected.com^
 ||maidr.pro^
 ||maiglair.net^
@@ -17587,6 +17688,7 @@
 ||masarisaoife.help^
 ||masaxe.xyz^
 ||masbpi.com^
+||mascotsevap.cyou^
 ||masklink.org^
 ||maskoimocmain.cyou^
 ||masogjmltljhl.one^
@@ -17656,6 +17758,7 @@
 ||mbineukdwithmef.com^
 ||mblyjustingex.org^
 ||mbpqvffspd.com^
+||mbubpaadqdhmlji.com^
 ||mbvlmx.com^
 ||mbvlmz.com^
 ||mbvndisplay.site^
@@ -17672,6 +17775,7 @@
 ||mcppsh.com^
 ||mcpuwpsh.com^
 ||mcrjmfuufhnrw.store^
+||mcrykkinighvfeq.com^
 ||mcxmke.com^
 ||mcxuorwlaqtyd.site^
 ||mcyaabdssxdlg.space^
@@ -17771,6 +17875,7 @@
 ||mepkbonqzmuvl.xyz^
 ||mercentune.com^
 ||merchenta.com^
+||merelybarbeau.qpon^
 ||mergedlava.com^
 ||mergersbogbean.rest^
 ||mericantpastellih.org^
@@ -17900,6 +18005,7 @@
 ||minutedeplorable.com^
 ||miorokkyhdjna.store^
 ||miptj.space^
+||mirandabodkin.cyou^
 ||miredindeedeisas.info^
 ||mirfakpersei.com^
 ||mirfakpersei.top^
@@ -18432,7 +18538,6 @@
 ||nannyirrationalacquainted.com^
 ||naoofdiujjiec.space^
 ||naos.ink^
-||nappedbrashly.help^
 ||nappyonsetstiffness.com^
 ||naprfjbdpqn.com^
 ||narenrosrow.com^
@@ -18590,7 +18695,6 @@
 ||newosama.com^
 ||newpartnerlover.com^
 ||newrrb.bid^
-||news-bfujufa.cc^
 ||news-bnubiko.cc^
 ||news-headlines.co^
 ||news-place1.xyz^
@@ -18660,6 +18764,7 @@
 ||nhlomywy.com^
 ||nhqkijpqeguuh.store^
 ||nhttqyswvqgpk.rocks^
+||niblicchimb.cfd^
 ||nicatethebene.info^
 ||nice-mw.com^
 ||nicecartrigezip.com^
@@ -19000,10 +19105,10 @@
 ||nwmnd.com^
 ||nwq-frjbumf.today^
 ||nwryeirpkvato.one^
+||nwsgentsyubmxfr.com^
 ||nwvulrmtxesqh.space^
 ||nwwais.com^
 ||nwwbyxlnpgaxi.today^
-||nxcpdkiexawiibr.xyz^
 ||nxfaswayrubuc.xyz^
 ||nxgzeejhs.com^
 ||nxt-psh.com^
@@ -19105,6 +19210,7 @@
 ||obligationdrummersculpture.com^
 ||obliquecensortend.com^
 ||oblong-punch.com^
+||obolestiver.cfd^
 ||obqj2.com^
 ||obqj5.com^
 ||observationtable.com^
@@ -19192,6 +19298,7 @@
 ||offergate-software11.com^
 ||offergate-software6.com^
 ||offerimage.com^
+||offeringcanvassfuzzy.com^
 ||offeringsurvey.com^
 ||offerlink.co^
 ||offersbid.net^
@@ -19224,13 +19331,13 @@
 ||ofpnpuatjhax.com^
 ||ofpodconnmtyd.space^
 ||ofptzgmiiyeod.website^
+||ofqmmcvbxdf.com^
 ||ofseedotom.com^
 ||ofsnoveran.com^
 ||ofswannator.com^
 ||oftencostbegan.com^
 ||oftheownouncillo.com^
 ||ofxbxiqadouwo.space^
-||ofyuxfqhsexkj.online^
 ||ogaku.site^
 ||ogdoasgaunt.qpon^
 ||ogercron.com^
@@ -19272,6 +19379,7 @@
 ||oihqicgerrfoo.site^
 ||oilcontainsdisaster.com^
 ||oilmvlnrgpdw.com^
+||oilstrgqtqne.com^
 ||oinkedbowls.com^
 ||ointmentapathetic.com^
 ||ointmentbarely.com^
@@ -19287,6 +19395,7 @@
 ||ojprlvavhknyk.site^
 ||ojsbriac.com^
 ||ojuvjqymmcyos.site^
+||ojyqnnqnlnqgy.top^
 ||okaidsotsah.com^
 ||okakyamoguvampom.com^
 ||okanwoesgsogw.website^
@@ -19322,6 +19431,7 @@
 ||omazeiros.com^
 ||omcbyqbvojtia.space^
 ||omcgqahejstuo.global^
+||omciecoa37tw4.com^
 ||omclacrv.com^
 ||omcrobata.com^
 ||omdittoa.com^
@@ -19429,6 +19539,7 @@
 ||onwardperishvaluables.com^
 ||onwasrv.com^
 ||onwgnrgbcozvl.store^
+||onymebonise.qpon^
 ||oo00.biz^
 ||oocecmauhe.net^
 ||oochoorgive.net^
@@ -19610,7 +19721,7 @@
 ||otdalxhhiah.com^
 ||othakegaes.click^
 ||otherwallowssheh.com^
-||otjealxropxrlsi.com^
+||otherwiserustyvenomous.com^
 ||otnolabttmup.com^
 ||otnolatrnup.com^
 ||otoadom.com^
@@ -19906,6 +20017,7 @@
 ||pardinepawdite.shop^
 ||pardyprofer.shop^
 ||paregospeltheir.com^
+||pargordauwy.net^
 ||pariesescrod.rest^
 ||paripartners.ru^
 ||parisjeroleinpg.com^
@@ -19920,6 +20032,7 @@
 ||parserskiotomy.com^
 ||parsimoniousinvincible.net^
 ||parsoninfatuatedcondole.com^
+||parsonoverdue.com^
 ||parteinroll.xyz^
 ||partelordy.world^
 ||parteonroll.xyz^
@@ -19961,6 +20074,7 @@
 ||patacajabia.com^
 ||patgsrv.com^
 ||patheticformerly.com^
+||patientconfusedperfectly.com^
 ||patsincerelyswing.com^
 ||patsyfactorygallery.com^
 ||patsypropose.com^
@@ -19998,6 +20112,7 @@
 ||pc180101.com^
 ||pc2121.com^
 ||pcaniivclwsgw.website^
+||pcbdgmicv.com^
 ||pcbvqognfewsw.online^
 ||pcbxuayssmqkn.online^
 ||pccjtxsao.com^
@@ -20016,6 +20131,7 @@
 ||pdainpzfelpch.site^
 ||pdavbtkidyyra.click^
 ||pdfsearchhq.com^
+||pdgknglzhohbi.online^
 ||pdhwgryymgvyr.website^
 ||pdn-1.com^
 ||pdn-2.com^
@@ -20054,6 +20170,7 @@
 ||peensumped.shop^
 ||peepoakewuk.com^
 ||peepoanomo.net^
+||peeptoopoo.com^
 ||peer39.net^
 ||peerlesshallucinate.com^
 ||peerskhar.top^
@@ -20217,7 +20334,6 @@
 ||phoolreekrowobs.com^
 ||phooltutoopoo.com^
 ||phoossax.net^
-||phoosuss.net^
 ||phortaub.com^
 ||phoulseertaibe.com^
 ||phounsaitchou.net^
@@ -20263,6 +20379,8 @@
 ||pierisrapgae.com^
 ||pifqpymik.com^
 ||pigeonside.com^
+||piggedsemi.com^
+||piggyquarterbackascension.com^
 ||pignuwoa.com^
 ||pigsneytooter.qpon^
 ||pigtre.com^
@@ -20417,9 +20535,11 @@
 ||plugkenneth.com^
 ||plugs.co^
 ||plumbertowards.com^
+||plumbogconnote.world^
 ||plump-feature.pro^
 ||plumpobstructionmortal.com^
 ||plundertentative.com^
+||plungesprinterscanty.com^
 ||plushpanic.com^
 ||plutothejewel.com^
 ||plyerglebes.click^
@@ -20431,12 +20551,14 @@
 ||pmisfoohysory.website^
 ||pmiswxkxztebq.xyz^
 ||pmkez.tech^
+||pmmxeavnflhkl.website^
 ||pmpvkncwwmlpd.site^
 ||pmqwceityxrlf.com^
 ||pmwbbhfazupps.space^
 ||pmwwedke.com^
 ||pmzer.com^
 ||pnd.gs^
+||pndvhjgixorbq.online^
 ||pnhorlcjtrfau.vip^
 ||pnouting.com^
 ||pnperf.com^
@@ -20707,6 +20829,7 @@
 ||prestigious-loss.pro^
 ||prestigious-other.pro^
 ||prestigiousdauntdistressed.com^
+||prestigioustrained.com^
 ||prestoris.com^
 ||prestotrocha.qpon^
 ||pretenceprevail.com^
@@ -20858,7 +20981,6 @@
 ||proteininnovationpioneer.com^
 ||proteinshippingwhether.com^
 ||protoawe.com^
-||protohagmane.world^
 ||prototypeboats.com^
 ||protrudesublimetroubling.com^
 ||protustescuatize.com^
@@ -20968,6 +21090,7 @@
 ||ptgbydghejqfz.online^
 ||ptichoolsougn.net^
 ||pticukcoyvvyu.store^
+||ptingobaugras.net^
 ||ptipsixo.com^
 ||ptirgaux.com^
 ||ptirtika.com^
@@ -21013,6 +21136,7 @@
 ||pubgalaxy.com^
 ||pubguru.net^
 ||pubimageboard.com^
+||pubjzoxav.com^
 ||publisherads.click^
 ||publpush.com^
 ||pubmatic.com^
@@ -21166,6 +21290,7 @@
 ||puzzlepursued.com^
 ||puzzlerchincof.com^
 ||puzzlertruffes.cfd^
+||pvclouds.com^
 ||pvcubbshnlzys.space^
 ||pvdafseagcfcz.site^
 ||pvdbkr.com^
@@ -21286,6 +21411,7 @@
 ||qguusmmvndeor.website^
 ||qgwlaqyxtesvv.online^
 ||qgxbluhsgad.com^
+||qgxyraechmh.com^
 ||qhiatcfrywgse.click^
 ||qhkflvounmbrq.site^
 ||qhnbqrpobwplq.online^
@@ -21405,6 +21531,7 @@
 ||quackupsilon.com^
 ||quagfa.com^
 ||quagskojima.cfd^
+||quaintanywhere.com^
 ||quaintbitter.com^
 ||qualesals.click^
 ||qualiclicks.com^
@@ -21472,6 +21599,7 @@
 ||qwpsgqyzrzcr.life^
 ||qwrwawwlrlkyr.top^
 ||qwtag.com^
+||qwuanvab.com^
 ||qwvqbeqorrobv.top^
 ||qwzbcukveymrc.online^
 ||qwzly.com^
@@ -21486,7 +21614,9 @@
 ||qxrbu.com^
 ||qxwls.rocks^
 ||qyalpbwjsmvgz.online^
+||qyczmtalenlnc.store^
 ||qyjknobdcygm.com^
+||qylmbeojmzbew.top^
 ||qylyknxkeep.com^
 ||qymkbmjssadw.top^
 ||qyrkicaqiytxdml.com^
@@ -21593,6 +21723,7 @@
 ||rashogrisy.com^
 ||rashseedlingexpenditure.com^
 ||rashtiaroon.rest^
+||rasourpuerto.help^
 ||raspedexsculp.com^
 ||rasurescaribou.com^
 ||ratbagenround.rest^
@@ -21850,6 +21981,7 @@
 ||remblaibullit.click^
 ||remedyabruptness.com^
 ||remembergirl.com^
+||rememberinfertileeverywhere.com^
 ||remindwage.com^
 ||remintrex.com^
 ||remissapricothomey.com^
@@ -21883,6 +22015,7 @@
 ||reporo.net^
 ||report1.biz^
 ||reposerversor.click^
+||reposesperoses.cfd^
 ||representhostilemedia.com^
 ||reprtqemdf.com^
 ||republicandegrademeasles.com^
@@ -21960,7 +22093,6 @@
 ||retreatregular.com^
 ||retrostingychemical.com^
 ||rettornrhema.com^
-||retundatman.help^
 ||retzianmorphos.cfd^
 ||reukandthisany.com^
 ||rev-stripe.com^
@@ -22073,6 +22205,7 @@
 ||rilelogicbuy.com^
 ||riletonesleak.com^
 ||riluaneth.com^
+||rimhysterical.com^
 ||ringersidewaysapiece.com^
 ||ringtonepartner.com^
 ||rinryesopertyva.org^
@@ -22138,6 +22271,7 @@
 ||rmwzbombkqbla.top^
 ||rmybycfedxhns.store^
 ||rmzsglng.com^
+||rnccnwtekuerb.space^
 ||rndchandelureon.com^
 ||rndhaunteran.com^
 ||rndskittytor.com^
@@ -22163,6 +22297,7 @@
 ||robustpsychology.com^
 ||rochestertrend.com^
 ||rockersbaalize.com^
+||rockershiring.cyou^
 ||rocketme.top^
 ||rockingfolders.com^
 ||rockintentiondealing.com^
@@ -22278,6 +22413,7 @@
 ||rqr97sfd.xyz^
 ||rqwdkzycggpqt.website^
 ||rqwel.com^
+||rqyjlkojuohpv.online^
 ||rrbzvmklrzwmk.top^
 ||rrentlysearchi.org^
 ||rrmlejqaqkrj.top^
@@ -22376,6 +22512,7 @@
 ||rural-report.pro^
 ||ruralhistorian.com^
 ||ruralnobounce.com^
+||ruscsehwdjbxkd.com^
 ||rusedangerous.com^
 ||rusenov.com^
 ||rushierduomos.click^
@@ -22433,6 +22570,7 @@
 ||ryshalliloveyousa.com^
 ||rytransionsco.org^
 ||ryujsqssracyc.space^
+||rzeso.com^
 ||rzneekilff.com^
 ||rzpzdlmfkizyv.store^
 ||rzvcdclxehmnd.global^
@@ -22459,6 +22597,7 @@
 ||sabonakapona.com^
 ||sabotagesophisticatedfragile.com^
 ||sackedphil.com^
+||sackenjacob.qpon^
 ||sacwumsf.com^
 ||sadbasindinner.com^
 ||safebrowsdv.com^
@@ -22552,7 +22691,6 @@
 ||sauboufougroay.net^
 ||saucingsurrein.cyou^
 ||saukndaspiratio.com^
-||saulaupady.com^
 ||saultssipibo.com^
 ||saumoupsaug.com^
 ||saunaleap.com^
@@ -22602,6 +22740,7 @@
 ||scareshortnovel.com^
 ||scaridcheths.cfd^
 ||scaridmasora.world^
+||scarvesrepaid.com^
 ||scashwl.com^
 ||scatteredhecheaper.com^
 ||scavelbuntine.life^
@@ -22650,6 +22789,7 @@
 ||scubaenterdane.com^
 ||scuffercyanean.cyou^
 ||sculkerwrite.com^
+||sculshbassy.cyou^
 ||sculshtenzon.shop^
 ||scurdygrizel.help^
 ||scurra.space^
@@ -22694,6 +22834,7 @@
 ||seatslaurelblemish.com^
 ||sebillabeside.world^
 ||sebkhapaction.com^
+||sebundyjannock.qpon^
 ||secohmfibered.digital^
 ||secondcallousnodding.com^
 ||secondcommander.com^
@@ -22819,7 +22960,6 @@
 ||serving-refor.com^
 ||servingcdn.net^
 ||servingserved.com^
-||servitekinone.shop^
 ||servsserverz.com^
 ||servtraff97.com^
 ||servustwister.rest^
@@ -22935,6 +23075,7 @@
 ||shespokheha.org^
 ||shewingunboxes.rest^
 ||shfsdvc.com^
+||shiaigrimp.shop^
 ||shikroux.net^
 ||shiksesinsipid.qpon^
 ||shilfamush.shop^
@@ -22950,6 +23091,7 @@
 ||shipmenthow.com^
 ||shipsmotorw.xyz^
 ||shipwreckclassmate.com^
+||shirdaizoongo.net^
 ||shirvansuffari.cyou^
 ||shiswashisco.com^
 ||shitcustody.com^
@@ -22984,6 +23126,7 @@
 ||shoresmmrnews.com^
 ||short-feed.com^
 ||shortcutacheless.com^
+||shortedlpm.world^
 ||shorteh.com^
 ||shorthandbakerymeal.com^
 ||shortprinciple.pro^
@@ -23141,7 +23284,6 @@
 ||skipperx.net^
 ||skitmrrsjcfho.website^
 ||skltrachqwbd.com^
-||skmezipywjqqf.store^
 ||skmwqnhqhlceg.site^
 ||skrhuf.com^
 ||skujrebczynhb.website^
@@ -23253,6 +23395,7 @@
 ||smlypotr.net^
 ||smoggy-construction.com^
 ||smoggy-twist.pro^
+||smokedmeekdub.com^
 ||smokeshiphalt.click^
 ||smooth-association.pro^
 ||smoppleloather.world^
@@ -23430,6 +23573,7 @@
 ||space-pulsar.com^
 ||spacecatholicpalmful.com^
 ||spacemancreativedom.net^
+||spacepoetic.com^
 ||spacetraff.com^
 ||spadelack.com^
 ||spaderonium.com^
@@ -23509,6 +23653,7 @@
 ||sportstoday.pro^
 ||sportstreams.xyz^
 ||sporulecaban.qpon^
+||spotless-reveal.com^
 ||spotlesspersianwhereas.com^
 ||spotofspawn.com^
 ||spotscenered.info^
@@ -23564,6 +23709,7 @@
 ||squashwithholdcame.com^
 ||squiggly-dance.pro^
 ||squiggly-fill.pro^
+||squilljettied.world^
 ||squirtpresented.com^
 ||sr7pv7n5x.com^
 ||srbtztegq.today^
@@ -23636,6 +23782,7 @@
 ||starchy-choice.pro^
 ||stareyarddecidedly.com^
 ||stargamesaffiliate.com^
+||starkrosetum.help^
 ||starkuno.com^
 ||starmeetonline.com^
 ||starmobmedia.com^
@@ -23877,6 +24024,7 @@
 ||suffocateinnhandling.com^
 ||suggestedeeriegoody.com^
 ||suggestionsmadly.com^
+||suggilzanza.com^
 ||suipqsqihrccz.online^
 ||suistsejero.qpon^
 ||suitedeatercrutch.com^
@@ -24006,6 +24154,7 @@
 ||swiftbytes.store^
 ||swiftlybloodlesseconomic.com^
 ||swiftstreamhub.com^
+||swime.online^
 ||swimsunleisure.com^
 ||swindlebeseech.com^
 ||swindleincreasing.com^
@@ -24109,6 +24258,7 @@
 ||talcoidsakis.com^
 ||talcslabbed.shop^
 ||talented3452.fun^
+||talentednowhere.com^
 ||talesteak.com^
 ||tallinitial.com^
 ||tallowsog.world^
@@ -24285,6 +24435,7 @@
 ||tevfosejxalzh.website^
 ||tevyevchjos.com^
 ||texsxhprkkljb.rocks^
+||textbookenvious.com^
 ||textbookfilamentguidance.com^
 ||textileintersectionroam.com^
 ||textureblaze.co^
@@ -24427,6 +24578,7 @@
 ||thuthoock.net^
 ||thuwhehyli.com^
 ||thwitepartlet.shop^
+||thymelecatch.click^
 ||thyroidaketon.com^
 ||tianguesatire.rest^
 ||tiangzwrvnify.website^
@@ -24439,6 +24591,7 @@
 ||ticdmgrd.com^
 ||ticielongsuched.com^
 ||ticismovernemen.org^
+||ticketsdaily.world^
 ||ticketsfrustratingrobe.com^
 ||ticketswinning.com^
 ||tickleinclosetried.com^
@@ -24593,6 +24746,8 @@
 ||tolidinlurries.digital^
 ||tolmennayaur.cyou^
 ||toluateplutons.shop^
+||toluidsonca.digital^
+||tomagumby.com^
 ||tomarnamki.shop^
 ||tomatoqqamber.click^
 ||tomawilea.com^
@@ -24795,6 +24950,7 @@
 ||trasupr.com^
 ||traumapuffyinoculate.com^
 ||traumatic-campaign.pro^
+||traumatic-somewhere.com^
 ||traumaticpower.com^
 ||travelscream.com^
 ||travelsplayboy.com^
@@ -24940,6 +25096,7 @@
 ||tslomhfys.com^
 ||tslzggdkpwvyk.online^
 ||tsml.fun^
+||tsouvwkpdg.xyz^
 ||tspops.com^
 ||tstats-13fkh44r.com^
 ||tsvnqvqvvqvr.com^
@@ -25006,6 +25163,7 @@
 ||turbotsweer.cyou^
 ||turbulent-divide.com^
 ||turbulentconformityhomes.com^
+||turbulentstructure.com^
 ||tureukworektob.info^
 ||turflivestockdetector.com^
 ||turkeeralmsman.top^
@@ -25034,6 +25192,7 @@
 ||tvphkckqchufn.space^
 ||tvprocessing.com^
 ||tvrqlfdtfxtsh.space^
+||tvwxwboysflvt.website^
 ||tvxzuiiddkbqy.online^
 ||tvybcxdxyi.com^
 ||twdgdoukcxtby.xyz^
@@ -25092,7 +25251,6 @@
 ||tzmupfzuwoqtl.space^
 ||tzsxqxxjvzfeq.one^
 ||tzvpn.site^
-||tzznjrfn.com^
 ||u-oxmzhuo.tech^
 ||u0054.com^
 ||u0064.com^
@@ -25156,6 +25314,7 @@
 ||ufjwqdmqzlquq.world^
 ||ufmdtcyprejjm.site^
 ||ufpcdn.com^
+||ufqpttpdi.com^
 ||ufqqksbtbjm.com^
 ||ufrbtrzrinhgx.top^
 ||ufxikvgvpogym.website^
@@ -25186,7 +25345,6 @@
 ||uhsiduvtblstku.com^
 ||uhsmmaq4l2n5.com^
 ||uhvsefglyttww.fun^
-||uhwxkasfmjjcm.website^
 ||ui02.com^
 ||uicjdemhdvlbmm.com^
 ||uidhhiduhkier.space^
@@ -25408,6 +25566,7 @@
 ||unwisepariet.world^
 ||unwisewithdrawalroad.com^
 ||unwitting-milk.com^
+||unwomanallude.com^
 ||unwoobater.com^
 ||unwovencoving.top^
 ||unwrapsjewship.cfd^
@@ -25421,6 +25580,7 @@
 ||uorksewkwesln.space^
 ||uparceuson.com^
 ||upblowcorbed.top^
+||upbraycedar.click^
 ||upclipper.com^
 ||updeckdagos.help^
 ||updservice.site^
@@ -25453,9 +25613,11 @@
 ||upuplet.net^
 ||upuplets.com^
 ||upwarptaal.shop^
+||upwwqfvpvbara.site^
 ||upzmuerwksotm.site^
 ||upznliourhwyz.fun^
 ||uqbcz.today^
+||uqbqarpuytxzd.site^
 ||uqecqpnnzt.online^
 ||uqmgqhhhutssb.online^
 ||uqohomcgxhtjr.space^
@@ -25467,6 +25629,7 @@
 ||uqzoyikxsfhdr.space^
 ||uraliteiodin.life^
 ||urauvipsidu.com^
+||urbanercockily.cyou^
 ||urechar.com^
 ||urewsawanincrea.com^
 ||urgingcolons.top^
@@ -25540,7 +25703,6 @@
 ||uvalaummps.cyou^
 ||uvesiehrdkiyn.com^
 ||uvfnhhyoyd.xyz^
-||uvnqqbynkur.com^
 ||uvoeyebwyvjmcal.com^
 ||uvoonaix.top^
 ||uvtbfriwugkhn.store^
@@ -25560,7 +25722,6 @@
 ||uwzaq.world^
 ||ux782mkgx.com^
 ||uxbygjzvingbv.online^
-||uxetbckbptdba.space^
 ||uxffgxaqqkiha.site^
 ||uxnrnsfybjmxgw.com^
 ||uxqudtzzbkhfq.website^
@@ -25596,8 +25757,10 @@
 ||vaikijie.net^
 ||vaimucuvikuwu.net^
 ||vainfulkmole.com^
+||vaipagraire.net^
 ||vaitotoo.net^
 ||vaitunoagoapsee.net^
+||vaiwhoojoapseet.net^
 ||vak345.com^
 ||valemedia.net^
 ||valestumble.com^
@@ -25605,6 +25768,7 @@
 ||valid-dad.com^
 ||validbid.pro^
 ||validcombine.com^
+||validcounter.com^
 ||valleylouisadick.com^
 ||valpeiros.com^
 ||valuablelayoutgodless.com^
@@ -25638,6 +25802,7 @@
 ||varietyofdisplayformats.com^
 ||varifyfullom.cyou^
 ||variouscreativeformats.com^
+||varrsoalw.com^
 ||varshacundy.com^
 ||vartoken.com^
 ||varxdptsb.xyz^
@@ -25665,6 +25830,7 @@
 ||vazypteke.pro^
 ||vbeeeleyevmow.top^
 ||vbptgoyketwhv.global^
+||vbqrzzrzazryq.top^
 ||vbtrax.com^
 ||vbykiprxfpvpt.space^
 ||vbzlokvdommwl.online^
@@ -25687,7 +25853,6 @@
 ||vdlvry.com^
 ||vdnchidrksemn.online^
 ||vdocifgpcjirs.online^
-||vdslkvblwwyrssi.com^
 ||vdukpbmavzcne.store^
 ||vdulz.org^
 ||vdzna.com^
@@ -25783,6 +25948,7 @@
 ||vgkaszpddsetc.online^
 ||vgmhmbkpkxk.com^
 ||vgtevnzhlujfv.website^
+||vgxmagbsctvdf.online^
 ||vgzglvykuyclh.store^
 ||vhfwzzdxybakb.site^
 ||vhjhmsvosxius.click^
@@ -25804,6 +25970,7 @@
 ||vicegoriest.shop^
 ||vicesus.com^
 ||victimenmesh.life^
+||victimstealwrote.com^
 ||victo-trax.com^
 ||victoryrugbyumbrella.com^
 ||vid.me^
@@ -25827,6 +25994,7 @@
 ||viewpath.xyz^
 ||viewyentreat.guru^
 ||vigilant-entry.pro^
+||vigorous-average.com^
 ||vigorouslymicrophone.com^
 ||vihub.ru^
 ||viiadaof.com^
@@ -25915,6 +26083,7 @@
 ||vloahkelmykyd.top^
 ||vlogerads.com^
 ||vlry5l4j5gbn.com^
+||vltkdwexhxpyj.xyz^
 ||vlwjbqqovvugf.site^
 ||vlwjtruuudqyl.site^
 ||vlzyxkjxfrpku.space^
@@ -26031,7 +26200,6 @@
 ||vtfnyzqii.com^
 ||vtlpkoshbpquo.online^
 ||vtmbnurtndcgo.store^
-||vtnguthuo.com^
 ||vtpyvbwtldlvl.site^
 ||vttooqksrnhun.rocks^
 ||vtveyowwjvz.com^
@@ -26045,6 +26213,7 @@
 ||vuidccfq.life^
 ||vujfreafh.com^
 ||vukrlistntcrl.online^
+||vukuckilexy.net^
 ||vukwagdfhjzbz.club^
 ||vulcandamie.cyou^
 ||vulnerableimmigrateaboveaverage.com^
@@ -26090,10 +26259,10 @@
 ||vyhxugizkaktg.tech^
 ||vyignfjyiuznx.online^
 ||vyiqsohuuoziu.store^
+||vymqazwkzanky.top^
 ||vymybkyrzvwky.top^
 ||vyoning.cfd^
 ||vypddqizgpkpo.store^
-||vyrlajoxfyljj.online^
 ||vytjbahlkcmwn.space^
 ||vyuaolnqfgoas.store^
 ||vywblbqoojbjq.top^
@@ -26408,7 +26577,6 @@
 ||wheelerabacay.life^
 ||wheelssightsdisappointed.com^
 ||wheezedbibbed.shop^
-||whegloarto.com^
 ||whemeepeerteer.com^
 ||whenasloppy.rest^
 ||whencewhence.com^
@@ -26458,6 +26626,7 @@
 ||whoarguwaghu.net^
 ||whoatsootchard.net^
 ||whoisezh.com^
+||whoksocugn.net^
 ||wholeshopping.pro^
 ||wholituaten.com^
 ||whollyindependentlylooking.com^
@@ -26584,6 +26753,7 @@
 ||wkjvzljmxdzni.top^
 ||wktyyxtvwthxp.one^
 ||wkvvzeqwomjmm.top^
+||wkyiwsiryjrke.space^
 ||wkzmxixgjobkf.site^
 ||wl-cornholio.com^
 ||wldtwlhtclyxb.website^
@@ -26705,18 +26875,21 @@
 ||wpush.org^
 ||wpushorg.com^
 ||wpushsdk.com^
+||wpvqlgdui.com^
 ||wpvvlvzpneobl.website^
 ||wpwdwbunjutwd.online^
 ||wqbfacrjkijem.com^
+||wqbuwbiuowblc.store^
 ||wqgpzmpwuchvi.one^
 ||wqkjeoqjzmmyo.online^
 ||wqmnhaxnmdvdu.space^
 ||wqmnnnsigesgf.online^
-||wqmwfawndtamb.website^
 ||wqtfijyhoppfk.website^
+||wqtpdbegijbuz.website^
 ||wqvwqxstgqjyk.fun^
 ||wqzqoobqpubx.com^
 ||wqzyxxrrep.com^
+||wrathfulletter.com^
 ||wrathyblesmol.com^
 ||wrayfulagend.digital^
 ||wrazdlwgbgrvt.online^
@@ -26780,6 +26953,7 @@
 ||wwija.com^
 ||wwizgulqatopl.online^
 ||wwlnymvkbbwyy.top^
+||wwmjzbqnjkzbl.top^
 ||wwpon365.ru^
 ||wwqsvldq.work^
 ||wwwadcntr.com^
@@ -26851,6 +27025,7 @@
 ||xdifjhbyqxdbg.website^
 ||xdisplay.site^
 ||xdiwbc.com^
+||xdmanage.com^
 ||xdmycvwgynylh.store^
 ||xeaieghqighjm.site^
 ||xecmgrhmhnixuw.xyz^
@@ -27050,6 +27225,7 @@
 ||xxzccpsbdybmx.website^
 ||xylenesoaker.shop^
 ||xylitecessant.qpon^
+||xylonleagued.rest^
 ||xylzwamxxshgw.click^
 ||xympumihvhkkv.online^
 ||xyntqqrtdrjzk.online^
@@ -27102,6 +27278,7 @@
 ||ybhyziittfg.com^
 ||ybjgdbcmispbe.store^
 ||ybmhowqhutghd.store^
+||ybowcyskuemsj.store^
 ||ybs2ffs7v.com^
 ||ybsqqegmkdonc.life^
 ||ybtwymjvpkdwn.space^
@@ -27136,7 +27313,6 @@
 ||yeomancarvist.cfd^
 ||yequiremuke.com^
 ||yeranydwould.org^
-||yerbsanders.click^
 ||yernbiconic.com^
 ||yernbzxcydxsv.site^
 ||yes-messenger.com^
@@ -27434,6 +27610,7 @@
 ||zerothtrophal.digital^
 ||zethoaceems.net^
 ||zeusadx.com^
+||zevwkbzlbkmle.top^
 ||zewkj.com^
 ||zeydoo.com^
 ||zezyjywaaqyqw.top^
@@ -27862,6 +28039,7 @@
 ||adlive.io^
 ||adlook.me^
 ||adloop.co^
+||adlooxtracking.com^
 ||adlpartner.com^
 ||adlux.com^
 ||adm.shinobi.jp^
@@ -28768,6 +28946,7 @@
 ||videostep.com^
 ||vidoomy.com^
 ||vidverto.io^
+||viewtraff.com^
 ||vistarsagency.com^
 ||vlyby.com^
 ||vupulse.com^
@@ -29028,6 +29207,7 @@
 ||w9l4tr4013tn5mo27t0w.xyz^
 ||worthequally.com^
 ||wqq881m8uwq1k5m-4p7lv7.xyz^
+||yippeewhenever.com^
 ! ad-shield https://github.com/List-KR/List-KR/pull/892
 ||img-load.com^
 ! Samsung/LG/Philips smart-TV ad domains
@@ -30812,6 +30992,7 @@
 ||zononi.com^
 !
 ! Source name: AdGuard Mobile Ads filter ad servers
+! Source: https://adguardteam.github.io/AdguardFilters/MobileFilter/sections/adservers.txt
 !
 !
 ! This section contains the list of third-party advertising networks domains for mobile devices.
@@ -30819,6 +31000,7 @@
 !
 ! Good: ||doubleclick.net^$third-party
 ! Bad: /banner.jpg (should be in general_url.txt)
+! Bad: ||adssubdomain.legitwebsite.com^ (should be in adservers_firstparty.txt)
 !
 !
 ! ||mobileapptracking.com^ - don't block this domain with all subdomains. https://forum.adguard.com/index.php?threads/23917/
@@ -30875,6 +31057,7 @@
 ! https://github.com/AdguardTeam/AdguardFilters/issues/20567
 ||bu1.duba.com^
 ! https://github.com/AdguardTeam/AdguardFilters/issues/11291
+||p-behacdn.ksmobile.net^
 ! https://github.com/AdguardTeam/AdguardFilters/issues/8642
 ||crosspromotion.weplayer.cc^
 ||ad.weplayer.cc^
@@ -30913,6 +31096,7 @@
 ||ad.auditude.com^
 ||adfiles.auditude.com^
 ||cdn.auditude.com^
+||otcdn2.auditude.com^
 ||www.auditude.com^
 ||manifest.auditude.com^
 ||mblapi.ssl2.duapps.com^
@@ -31514,6 +31698,7 @@
 !----------------------------------------------------------------
 !
 ! Source name: AdGuard Tracking Protection filter third-party trackers
+! Source: https://adguardteam.github.io/AdguardFilters/SpywareFilter/sections/tracking_servers.txt
 !
 !
 ! This section contains the list of third-party tracking networks domains.
@@ -31521,6 +31706,7 @@
 !
 ! Good: ||doubleclick.net^$third-party
 ! Bad: /banner.jpg (should be in general_url.txt)
+! Bad: ||tracker.legitwebsite.com^ (should be in tracking_servers_firstparty.txt)
 !
 !
 ! Crashlytics is commented by @ameshkov.
@@ -31577,6 +31763,8 @@
 !
 !
 !
+||openstats.co^
+||http-inputs-notion.splunkcloud.com^
 ||sentinelpro.com^
 ||openinstall.io^
 ||s.ssl.qhres2.com^
@@ -33361,6 +33549,7 @@
 ||clickdensity.com^
 ||clickening.com^
 ||clicki.cn^
+||clickmanage.com^
 ||clickmap.ch^
 ||clickmeter.com^
 ||clickpathmedia.com^
@@ -34770,6 +34959,7 @@
 ! https://github.com/AdguardTeam/FiltersCompiler/issues/190
 ! To avoid email links breakage, include email tracking lists with a modifier here:
 !
+! ActionIQ : mr-in.com disguised trackers
 !
 ! Company name: ActionIQ
 ||a.callawaygolf.com^
@@ -38826,6 +39016,7 @@
 ||info.fastroofquotes.com^
 ||info.fazzi.com^
 ||info.fifthadvertising.com^
+||info.filesanywhere.com^
 ||info.flattstationers.com^
 ||info.fleetlanding.com^
 ||info.flexibleplan.com^
@@ -39179,6 +39370,7 @@
 ||ma.brightby.se^
 ||ma.cbre.com^
 ||ma.globalhma.com^
+||ma.heatmanage.com^
 ||ma.kyloepartners.com^
 ||ma.lekab.com^
 ||ma.lexicon.se^
@@ -41266,6 +41458,7 @@
 ||www2.hnavi.co.jp^
 ||y8hxgv9m.kobetsu.co.jp^
 !
+! Adobe Experience Cloud (formerly Omniture) : 2o7.net disguised trackers
 ! Disabled for AdGuard for Safari/iOS due to the limit on the number of rules
 !
 ! Company name: Adobe Experience Cloud (formerly Omniture)
@@ -51433,7 +51626,9 @@
 ||target.sunlife.com.vn^
 !
 ! AdSpyglass : 0i0i0i0.com disguised advertising networks
+! included to BaseFilter/sections/cname_adservers.txt
 !
+! AT Internet (formerly XiTi) : at-o.net disguised trackers
 !
 ! Company name: AT Internet (formerly XiTi)
 ||71efe2183b8663ad5bf9d7a9320aeb48.leboncoin.fr^
@@ -51534,6 +51729,7 @@
 ! not included
 !
 ! Clickaine : api.clickaine.com disguised trackers
+! included to BaseFilter/sections/cname_adservers.txt
 !
 ! Commanders Act : tagcommander.com disguised trackers
 ||tagcommander.com^
@@ -54343,6 +54539,7 @@
 ||mtbflj.elementaree.ru^
 ||mtcvyv.karakartal.com^
 ||mtcvyv.sporx.com^
+||mtcvyv.superfb.com^
 ||mtcvyv.webaslan.com^
 ||mtlsyk.trendhim.ro^
 ||mtoxtg.tezenis.com^
@@ -60771,6 +60968,7 @@
 ||www.stats.spflow.com^
 !
 ! GoDaddy : ads2.bid disguised trackers
+! included to BaseFilter/sections/cname_adservers.txt
 !
 ! Ingenious Technologies : affex.org disguised trackers
 ||daraz.com^
@@ -60790,6 +60988,7 @@
 ||cache.net.jumia.co.ke^
 ||cdn.net.dz.jumia.com^
 ||cdn.net.elogia.net^
+||csprod-ss.net.jumia.com.gh^
 ||d020t3bitt4c9e5cp3k0.net.elogia.net^
 ||desordre.net.jumia.ci^
 ||dev-cenam-mobilefirst.tmx-internacional.net.iberostar.com^
@@ -60841,6 +61040,7 @@
 ||net.rewe.de^
 ||net.sparhandy.de^
 ||net.tradeers.de^
+||net56.net.jumia.com.gh^
 ||nsm.tr.netsalesmedia.pl^
 ||orl9rx6cc949w41s.ig.cubegroup.pl^
 ||partner.service.belboon.com^
@@ -60918,6 +61118,7 @@
 ||whoami.akamai.net.iberostar.com^
 ||www.clients.net.anwalt.de^
 ||www.csr31.net.anwalt.de^
+||www.desordre.net.jumia.com.gh^
 ||www.iaccede.net.jumia.ug^
 ||www.medimaging.net.mydays.de^
 ||www.netblock.net.jumia.cm^
@@ -63300,12 +63501,14 @@
 ! Lead Forensics : ghochv3eng.trafficmanager.net disguised trackers
 ! not included
 !
+! LexisNexis Risk Solutions: online-metrix.net disguised trackers
 ! removed from the blocking list - causes breakages
 ! source: https://adguardteam.github.io/cname-trackers/data/trackers/lexisnexis-risk-solutions.txt
 !
 ! Logly : logly.co.jp disguised trackers
 ! not included
 !
+! included to BaseFilter/sections/cname_adservers.txt
 !
 ! Nativo : ntv.io disguised trackers
 ! not included
@@ -66012,6 +66215,7 @@
 ||links.go.shoretel.com^
 ||m.mywd.com^
 ||marketing.adaptiveplanning.com^
+||marketing.ianywhere.com^
 ||marketing.ohaus.com^
 ||marketing.spcapitaliq.com^
 ||marketingforms.jdpa.com^
@@ -71184,6 +71388,7 @@
 ||stats.citizenos.com^
 !
 ! PopCash : popcashjs.b-cdn.net disguised advertising networks
+! included to BaseFilter/sections/cname_adservers.txt
 !
 ! RedTrack : rdtk.io disguised advertising networks
 ||trk.agency^
@@ -80245,6 +80450,7 @@
 ||api.professorinhaclaudia.com.br^
 ||api.psidanielafidelis.com^
 ||api.pulsip.com^
+||api.rafarecalcatti.com^
 ||api.ragnarflow.com^
 ||api.rainhadapapada.com.br^
 ||api.rayanepinto.com^
@@ -90711,6 +90917,7 @@
 ||stape.dollytu.com^
 ||stape.domorahomes.com.br^
 ||stape.donald.bet.br^
+||stape.donatti.com.br^
 ||stape.dondrade.com^
 ||stape.donnaguerriera.com.br^
 ||stape.dorascribe.ai^
@@ -92294,6 +92501,7 @@
 ||tatu.grupobiotipo.com.br^
 ||tatu.guilhermelemos.com^
 ||tatu.gummy.com.br^
+||tatu.guzzatti.com.br^
 ||tatu.hashem.com.br^
 ||tatu.herbarium.com.br^
 ||tatu.hubex.com.br^
@@ -93919,6 +94127,7 @@
 ! !SECTION: CNAME disguised tracking networks
 !
 ! Source name: AdGuard Tracking Protection filter first-party trackers
+! Source: https://adguardteam.github.io/AdguardFilters/SpywareFilter/sections/tracking_servers_firstparty.txt
 !
 !
 ! This section contains the list of tracking networks domains, which are hosted on non advertising sites as subdomains.
@@ -93942,6 +94151,8 @@
 ! Blocking piwik analytics subdomain(for DNS filtering)
 |piwik.
 !
+||c.bazu.cc^
+||sherlock-events-sampler.ebay.com^
 ||ads.mozilla.org^
 ||cpx.golem.de^
 ||carmen.golem.de^
@@ -94288,6 +94499,7 @@
 ||stat.pravdafrance.com^
 ||telemetry.dzen.ru^
 ||gtm.temu.com^
+.prod.pr.analytics.console.aws.a2z.com
 ||trck.*.prod-na.turntable.sonic.advertising.amazon.dev^
 ||s.pie.org^
 ||t.pie.org^
@@ -94610,6 +94822,7 @@
 ||sopr-api.cian.ru^
 ||analytics.b2.ai^
 ||tracking.ai.rakuten.co.jp^
+||supportmetrics.apple.com^
 ||securemvt.apple.com^
 ||eldoradottfha.dataplane.rudderstack.com^
 ||analytics.castel.jp^
@@ -94669,6 +94882,7 @@
 ||realtime-profiling.datarize.ai^
 ||log.pipeline.datarize.io^
 ||analyticswritenew.xerevo.com^
+||*adapt-beacon.awsprodops.movetv.com^
 ||p-cg64-slinganalytics.movetv.com^
 ||prebid-log.getpublica.com^
 ||analytics.nova.foxsports.com^
@@ -95275,6 +95489,7 @@
 ||boomerang.dell.com^
 ||broker.datazoom.io^
 ||bt.mediaimpact.de^
+||button.blogs.yandex.
 ||bwb101.goo.ne.jp^
 ||bzclk.baidu.com^
 ||c.bigmir.net
@@ -96098,6 +96313,7 @@
 ||track.buybox.click^
 ||track.catalogs.com^
 ||track.cbs.com^
+||track.datescan.info
 ||track.dictionary.com^
 ||track.easeus.com^
 ||track.elpais.com.uy^
@@ -96221,6 +96437,7 @@
 ||videostats.kakao.com^
 ||views.romaniatv.net^
 ||vortex.hulu.com^
+||wa.gmx.
 ||wa.mail.com^
 ||wa.ui-portal.de^
 ||wa.web.de^
@@ -96241,6 +96458,7 @@
 ||ymprove.gmx.net^
 ||ymprove.web.de^
 ||zion-telemetry.api.cnn.io^
+charlestownwyllie.oaklawnnonantum.com^
 !
 ! MediaNews Group Inc (blueconic.net analytics)
 !
@@ -96398,6 +96616,7 @@
 ! end:
 !
 ! Source name: AdGuard Tracking Protection filter mobile trackers
+! Source: https://adguardteam.github.io/AdguardFilters/SpywareFilter/sections/mobile.txt
 !
 ! https://github.com/AdguardTeam/AdguardForAndroid/issues/249
 ||adeventtracker.spotify.com^
@@ -96518,6 +96737,9 @@ dlsdk.appsflyer.com^
 !
 ! NOTE: Regular rules
 !
+||event.flareflow.tv^
+||api.deeplink.dev^
+||attr-logs.*.amazonaws.com^
 ||beacons.ads.fubo.tv^
 ||s3-ca-liveops.easybrain.com^
 ||trackers.fubo.tv^
@@ -96749,6 +96971,7 @@ dlsdk.appsflyer.com^
 ||mon.byteoversea.com^
 ||sdk-monitoring.ogury.co^
 ||tracker.srta.spectrum.com^
+||event-collector.moviesanywhere.com^
 ||analytics.nianticlabs.com^
 ||tracker.ulivetv.net^
 ||trackernew.ulivetv.net^
@@ -98015,6 +98238,7 @@ dlsdk.appsflyer.com^
 ||d24cze5sab2jwg.cloudfront.net^
 ||d24luoisenoi7j.cloudfront.net^
 ||d2cpw6kwpff7n5.cloudfront.net^
+||d2fj3s7h83rb61.cloudfront.net
 ||d2gbtcuv3w9qyv.cloudfront.net^
 ||d2i34c80a0ftze.cloudfront.net^
 ||d2j1fszo1axgmp.cloudfront.net^
@@ -99681,6 +99905,7 @@ dlsdk.appsflyer.com^
 ||whispermeeting.com^
 ||whoogled.com^
 ||whymaze.com^
+||wikiwhatwhere.com^
 ||wildcommittee.com^
 ||wildwoodavenue.com^
 ||wirecomic.com^
@@ -99739,6 +99964,7 @@ dlsdk.appsflyer.com^
 ||dcmn.io^
 ||digistats.de^
 ||dl8.me^
+||durchsichtig.xyz^
 ||etrust.eu^
 ||fairanalytics.de^
 ||fast-counter.net^
@@ -100016,6 +100242,7 @@ dlsdk.appsflyer.com^
 ||dmdi.pl^
 ||goprediction.com^
 ||i22lo.com^
+||naanalle.pl^
 ||nokaut.link^
 ||refericon.pl^
 ||rejestr.org^
@@ -100514,12 +100741,14 @@ dlsdk.appsflyer.com^
 ||za.zalo.me^
 !
 ! Source name: AdGuard Spanish/Portuguese filter ad servers first-party
+! Source: https://adguardteam.github.io/AdguardFilters/SpanishFilter/sections/adservers_firstparty.txt
 !
 !
 ! This section contains the list of advertising networks domains, which are hosted on non advertising sites as subdomains.
 ! Note, that we only put rules that block full subdomains here and not URL parts (there's `general_url.txt` for that).
 !
 ! Bad: /banner.jpg (should be in general_url.txt)
+! Bad: ||legitwebsite.com^$third-party (should be in adservers.txt)
 !
 !
 ||ads-redis.ecn.cl^
@@ -100529,6 +100758,7 @@ dlsdk.appsflyer.com^
 ||adv.r7.com^
 !
 ! Source name: AdGuard Spanish/Portuguese filter ad servers
+! Source: https://adguardteam.github.io/AdguardFilters/SpanishFilter/sections/adservers.txt
 !
 !
 ! This section contains the list of third-party advertising networks domains.
@@ -100536,6 +100766,7 @@ dlsdk.appsflyer.com^
 !
 ! Good: ||doubleclick.net^$third-party
 ! Bad: /banner.jpg (should be in general_url.txt)
+! Bad: ||adssubdomain.legitwebsite.com^ (should be in adservers_firstparty.txt)
 !
 !
 ! https://forum.adguard.com/index.php?threads/ivoox-com-podcasts-issues.29530/
@@ -100632,6 +100863,7 @@ dlsdk.appsflyer.com^
 !
 !
 ! Source name: AdGuard common Cyrillic filters ad servers
+! Source: https://adguardteam.github.io/AdguardFilters/CyrillicFilters/common-sections/adservers.txt
 !
 !
 ! This section contains the list of third-party advertising networks domains.
@@ -100639,6 +100871,7 @@ dlsdk.appsflyer.com^
 !
 ! Good: ||doubleclick.net^$third-party
 ! Bad: /banner.jpg (should be in general_url.txt)
+! Bad: ||adssubdomain.legitwebsite.com^ (should be in adservers_firstparty.txt)
 !
 ||cenoobi.run^
 ||adtec.ru^
@@ -101260,6 +101493,7 @@ dlsdk.appsflyer.com^
 ||adwolf.ru^
 ||adylalahb.ru^
 ||aerontre.com^
+||afdads.com
 ||affiliate.astraweb.com^
 ||affiliates.a2hosting.com^
 ||agitazio.com^
@@ -102125,24 +102359,28 @@ dlsdk.appsflyer.com^
 !+ NOT_PLATFORM(ios, ext_android_cb, ext_safari)
 !
 ! Source name: AdGuard common Cyrillic filters ad servers first-party
+! Source: https://adguardteam.github.io/AdguardFilters/CyrillicFilters/common-sections/adservers_firstparty.txt
 !
 !
 ! This section contains the list of advertising networks domains, which are hosted on non advertising sites as subdomains.
 ! Note, that we only put rules that block full subdomains here and not URL parts (there's `general_url.txt` for that).
 !
 ! Bad: /banner.jpg (should be in general_url.txt)
+! Bad: ||legitwebsite.com^$third-party (should be in adservers.txt)
 !
 ||ad.cub.red^
 ||exad.smi2.ru^
 ||tgb.hsmedia.ru^
 !
 ! Source name: AdGuard Russian filter ad servers first-party
+! Source: https://adguardteam.github.io/AdguardFilters/CyrillicFilters/RussianFilter/sections/adservers_firstparty.txt
 !
 !
 ! This section contains the list of advertising networks domains, which are hosted on non advertising sites as subdomains.
 ! Note, that we only put rules that block full subdomains here and not URL parts (there's `general_url.txt` for that).
 !
 ! Bad: /banner.jpg (should be in general_url.txt)
+! Bad: ||legitwebsite.com^$third-party (should be in adservers.txt)
 !
 !
 ||ssp.rutube.ru^
@@ -102259,12 +102497,14 @@ dlsdk.appsflyer.com^
 ||vozer.voffka.com^
 !
 ! Source name: AdGuard Ukrainian filter ad servers first-party
+! Source: https://adguardteam.github.io/AdguardFilters/CyrillicFilters/UkrainianFilter/sections/adservers_firstparty.txt
 !
 !
 ! This section contains the list of advertising networks domains, which are hosted on non advertising sites as subdomains.
 ! Note, that we only put rules that block full subdomains here and not URL parts (there's `general_url.txt` for that).
 !
 ! Bad: /banner.jpg (should be in general_url.txt)
+! Bad: ||legitwebsite.com^$third-party (should be in adservers.txt)
 !
 !
 ||stat.hdvbua.pro^
@@ -102295,6 +102535,7 @@ dlsdk.appsflyer.com^
 !
 !
 ! Source name: AdGuard Turkish filter ad servers
+! Source: https://adguardteam.github.io/AdguardFilters/TurkishFilter/sections/adservers.txt
 !
 !
 ! This section contains the list of third-party advertising networks domains.
@@ -102302,6 +102543,7 @@ dlsdk.appsflyer.com^
 !
 ! Good: ||doubleclick.net^$third-party
 ! Bad: /banner.jpg (should be in general_url.txt)
+! Bad: ||adssubdomain.legitwebsite.com^ (should be in adservers_firstparty.txt)
 !
 !
 ||azelvid.com^
@@ -102435,12 +102677,14 @@ dlsdk.appsflyer.com^
 ||youtubesave.org^
 !
 ! Source name: AdGuard Turkish filter ad servers first-party
+! Source: https://adguardteam.github.io/AdguardFilters/TurkishFilter/sections/adservers_firstparty.txt
 !
 !
 ! This section contains the list of advertising networks domains, which are hosted on non advertising sites as subdomains.
 ! Note, that we only put rules that block full subdomains here and not URL parts (there's `general_url.txt` for that).
 !
 ! Bad: /banner.jpg (should be in general_url.txt)
+! Bad: ||legitwebsite.com^$third-party (should be in adservers.txt)
 !
 !
 ||diziwatchpreroll.pages.dev^
@@ -102488,6 +102732,7 @@ dlsdk.appsflyer.com^
 ||ttauri.livescience.com^
 !
 ! Source name: AdGuard French filter ad servers
+! Source: https://adguardteam.github.io/AdguardFilters/FrenchFilter/sections/adservers.txt
 !
 !
 ! This section contains the list of third-party advertising networks domains. In that case domain should be added to the common rules.
@@ -102495,6 +102740,7 @@ dlsdk.appsflyer.com^
 !
 ! Good: ||doubleclick.net^$third-party
 ! Bad: /banner.jpg (should be in general_url.txt)
+! Bad: ||adssubdomain.legitwebsite.com^ (should be in adservers_firstparty.txt)
 !
 !
 ||lopfly.com^
@@ -102508,12 +102754,14 @@ dlsdk.appsflyer.com^
 ||ads.dugwood.com^
 !
 ! Source name: AdGuard French filter ad servers
+! Source: https://adguardteam.github.io/AdguardFilters/FrenchFilter/sections/adservers_firstparty.txt
 !
 !
 ! This section contains the list of advertising networks domains, which are hosted on non advertising sites as subdomains.
 ! Note, that we only put rules that block full subdomains here and not URL parts (there's `general_url.txt` for that).
 !
 ! Bad: /banner.jpg (should be in general_url.txt)
+! Bad: ||legitwebsite.com^$third-party (should be in adservers.txt)
 !
 !
 ||masdak.epsilonsoft.to^
@@ -102521,6 +102769,7 @@ dlsdk.appsflyer.com^
 ||adserver.icimedias.ca^
 !
 ! Source name: AdGuard Japanese filter ad servers
+! Source: https://adguardteam.github.io/AdguardFilters/JapaneseFilter/sections/adservers.txt
 !
 !
 ||lucky-website.com^
@@ -102810,12 +103059,14 @@ dlsdk.appsflyer.com^
 ||bance.jp^
 !
 ! Source name: AdGuard Japanese filter ad servers first-party
+! Source: https://adguardteam.github.io/AdguardFilters/JapaneseFilter/sections/adservers_firstparty.txt
 !
 !
 ! This section contains the list of advertising networks domains, which are hosted on non advertising sites as subdomains.
 ! Note, that we only put rules that block full subdomains here and not URL parts (there's `general_url.txt` for that).
 !
 ! Bad: /banner.jpg (should be in general_url.txt)
+! Bad: ||legitwebsite.com^$third-party (should be in adservers.txt)
 !
 ||ad.datadeliver.net^
 ||ad.firestorage.jp^
@@ -102836,6 +103087,7 @@ dlsdk.appsflyer.com^
 ||advert.punyu.com^
 !
 ! Source name: AdGuard German filter ad servers
+! Source: https://adguardteam.github.io/AdguardFilters/GermanFilter/sections/adservers.txt
 !
 !
 ! This section contains the list of third-party advertising networks domains.
@@ -102843,6 +103095,7 @@ dlsdk.appsflyer.com^
 !
 ! Good: ||doubleclick.net^$third-party
 ! Bad: /banner.jpg (should be in general_url.txt)
+! Bad: ||adssubdomain.legitwebsite.com^ (should be in adservers_firstparty.txt)
 !
 !
 ||remp-campaign.golem.de^
@@ -102875,6 +103128,7 @@ dlsdk.appsflyer.com^
 ||bauernative.com^
 !
 ! Source name: AdGuard Chinese filter ad servers
+! Source: https://adguardteam.github.io/AdguardFilters/ChineseFilter/sections/adservers.txt
 !
 !
 ! This section contains the list of third-party advertising networks domains.
@@ -102882,6 +103136,7 @@ dlsdk.appsflyer.com^
 !
 ! Good: ||doubleclick.net^$third-party
 ! Bad: /banner.jpg (should be in general_url.txt)
+! Bad: ||adssubdomain.legitwebsite.com^ (should be in adservers_firstparty.txt)
 !
 !
 ||vernaellac.com^
@@ -103053,12 +103308,14 @@ dlsdk.appsflyer.com^
 /^(mon|tue|wed|thu|fri|sat|sun)\d{1,2}\.\w{2}\d{1,6}\w{4}\.com$/
 !
 ! Source name: AdGuard Chinese filter ad servers first-party
+! Source: https://adguardteam.github.io/AdguardFilters/ChineseFilter/sections/adservers_firstparty.txt
 !
 !
 ! This section contains the list of advertising networks domains, which are hosted on non advertising sites as subdomains.
 ! Note, that we only put rules that block full subdomains here and not URL parts (there's `general_url.txt` for that).
 !
 ! Bad: /banner.jpg (should be in general_url.txt)
+! Bad: ||legitwebsite.com^$third-party (should be in adservers.txt)
 !
 !
 ||wap.qqbiquge.net^
@@ -103077,6 +103334,7 @@ dlsdk.appsflyer.com^
 ||ads.tvb.com^
 !
 ! Source name: AdGuard Dutch filter ad servers
+! Source: https://adguardteam.github.io/AdguardFilters/DutchFilter/sections/adservers.txt
 !
 !
 ! This section contains the list of third-party advertising networks domains.
@@ -103084,6 +103342,7 @@ dlsdk.appsflyer.com^
 !
 ! Good: ||doubleclick.net^$third-party
 ! Bad: /banner.jpg (should be in general_url.txt)
+! Bad: ||adssubdomain.legitwebsite.com^ (should be in adservers_firstparty.txt)
 !
 !
 ||proxy.optoutadserving.com^
@@ -103092,12 +103351,14 @@ dlsdk.appsflyer.com^
 ||adconfigproxy.azurewebsites.net^
 !
 ! Source name: AdGuard Dutch filter ad servers first-party
+! Source: https://adguardteam.github.io/AdguardFilters/DutchFilter/sections/adservers_firstparty.txt
 !
 !
 ! This section contains the list of advertising networks domains, which are hosted on non advertising sites as subdomains.
 ! Note, that we only put rules that block full subdomains here and not URL parts (there's `general_url.txt` for that).
 !
 ! Bad: /banner.jpg (should be in general_url.txt)
+! Bad: ||legitwebsite.com^$third-party (should be in adservers.txt)
 !
 !
 ||x9t7g4m2qk2.azurewebsites.net^
@@ -103321,6 +103582,7 @@ dlsdk.appsflyer.com^
 ||textklicks.de^
 ||tip-ads.de^
 ||trabro.com^
+||tracknet.twyn.com^
 ||trafficfabrik.com^
 ||traffictrack.de^
 ||trmads.eu^
@@ -103732,6 +103994,7 @@ dlsdk.appsflyer.com^
 ||heroaffiliates.com^
 ||hsadspixel.net^
 ||hyrio.se^
+||h.online-metrix.net^
 ||iba.feedblitz.com^
 ||iconosquare.com^
 ||images-ads.aland.com^
@@ -109636,6 +109899,16 @@ dlsdk.appsflyer.com^
 ||51tongji.trafficmanager.net^
 ||67.21.92.*.gif
 ||cnzz.trafficmanager.net^
+||f7eiavl95.com^
+||bjk08230ip.com^
+||bhl401f8g.com^
+||lwnxzp.icu^
+||ywakoc.icu^
+||7yt.org^
+||dfangalti.com^
+||juqk.cn^
+||cadence33.top^
+||zmkp6jvq4.com^
 ||vtongm82lz.com^
 ||2ld8mx979a.com^
 ||ftrfnx.icu^
@@ -109648,6 +109921,7 @@ dlsdk.appsflyer.com^
 ||waozmoee0c.com^
 ||bjk08221ip.com^
 ||wu2088-605.shop^
+||qhtrolik.com^
 ||nq49x3m8g.com^
 ||bjk08210ip.com^
 ||cdiuqa.icu^
@@ -115512,6 +115786,7 @@ analytics-*.aasaam.com
 @@|www.daraz.pk^|
 @@|daraz.com^|
 ! https://github.com/AdguardTeam/AdGuardSDNSFilter/issues/1820
+@@||sbs.demdex.net^|
 ! https://github.com/AdguardTeam/AdguardFilters/issues/194309
 @@||cl.link-ag.net^|
 ! https://github.com/AdguardTeam/AdGuardSDNSFilter/issues/1784
@@ -115520,6 +115795,7 @@ analytics-*.aasaam.com
 @@||www.dogpile.com^|
 ! https://github.com/AdguardTeam/AdGuardSDNSFilter/issues/1771
 ! Related to disguised tracker
+! https://github.com/AdguardTeam/AdguardFilters/blob/d77b4202c04486f0dc0488dbd56679cc586e5ad2/SpywareFilter/sections/tracking_servers.txt#L4110
 @@||acs-m.daraz.com.bd^|
 ! https://github.com/AdguardTeam/AdGuardSDNSFilter/issues/1768
 @@||f-gear.ec-optimizer.com^|
@@ -115664,6 +115940,7 @@ analytics-*.aasaam.com
 ! https://github.com/AdguardTeam/AdGuardSDNSFilter/issues/759
 ! Blocked by CNAME impactradius.com
 ! https://github.com/AdguardTeam/AdGuardSDNSFilter/issues/743
+@@||citiintl.122.2o7.net^|
 ! https://github.com/AdguardTeam/AdGuardSDNSFilter/issues/805
 @@||ma135-r.analytics.edgekey.net^|
 ! https://github.com/AdguardTeam/AdguardFilters/issues/89190
@@ -115806,13 +116083,31 @@ analytics-*.aasaam.com
 ! TimeUpdated: 2025-08-18T08:00:12+00:00
 ! Homepage: https://github.com/AdguardTeam/cname-trackers
 !
+||*.exaapi.com^
+||a.mx.go-srv.com^
 ||at.h24.news^
 ||barracuda.h24.news^
 ||c.leparisien.fr^
+||click-eu.plarimoplus.com^
+||click-rtb2-apac.newchallenges-dsp.com^
+||click-rtb2-eu.convergeselect.net^
+||click-rtb2-useast.newchallenges-dsp.com^
+||click.plarimoplus.com^
+||cpm.152media.cloud^
+||cpm.convergeselect.net^
+||cpm.xrtb.io^
+||cs.go-srv.com^
 ||de.h24.news^
+||dsp.adhunter.media^
+||exchange.go-srv.com^
+||filter-eu.plarimoplus.com^
+||filter.adhunter.media^
+||filter.plarimoplus.com^
 ||flow-prod.h24.news^
+||gate.go-srv.com^
 ||go.3ds.com^
 ||go.france24.com^
+||go.go-srv.com^
 ||go.lenouveaudetective.com^
 ||go.letelegramme.fr^
 ||go.mc-doualiya.com^
@@ -115821,6 +116116,7 @@ analytics-*.aasaam.com
 ||go.rfi.fr^
 ||go.saveurs-magazine.fr^
 ||go.solidworks.com^
+||go.static-srv.com^
 ||ie.h24.news^
 ||in.h24.news^
 ||it.h24.news^
@@ -116032,8 +116328,12 @@ analytics-*.aasaam.com
 ||l.xataka.com.br^
 ||l.xataka.com.mx^
 ||l.zdnet.fr^
+||login.newchallenges-dsp.com^
 ||mail10.h24.news^
 ||mail11.h24.news^
+||mail3.go-srv.com^
+||main.realsrv.com^
+||mx3.go-srv.com^
 ||mx3.h24.news^
 ||nr.lanouvellerepublique.fr^
 ||on.qobuz.com^
@@ -116045,19 +116345,80 @@ analytics-*.aasaam.com
 ||prod-4.moarty.com^
 ||relay.h24.news^
 ||remote.h24.news^
+||rtb-apac-v4.152media.cloud^
+||rtb-apac.152media.cloud^
+||rtb-apac.convergeselect.net^
+||rtb-apac.openrtb.in^
+||rtb-apac.rtbserve.io^
+||rtb-apac.xrtb.io^
+||rtb-eu-v4.152media.cloud^
+||rtb-eu.152media.cloud^
+||rtb-eu.adhunter.media^
+||rtb-eu.convergeselect.net^
+||rtb-eu.openrtb.in^
+||rtb-eu.rtbserve.io^
+||rtb-eu.xrtb.io^
+||rtb-useast-v4.152media.cloud^
+||rtb-useast.152media.cloud^
+||rtb-useast.adhunter.media^
+||rtb-useast.openrtb.in^
+||rtb-useast.rtbserve.io^
+||rtb-useast.xrtb.io^
+||rtb-uswest-v4.152media.cloud^
+||rtb-uswest.152media.cloud^
+||rtb-uswest.openrtb.in^
+||rtb-uswest.rtbserve.io^
+||rtb-uswest.xrtb.io^
+||rtb2-apac.convergeselect.net^
+||rtb2-apac.newchallenges-dsp.com^
+||rtb2-eu.convergeselect.net^
+||rtb2-eu.newchallenges-dsp.com^
+||rtb2-useast.adhunter.media^
+||rtb2-useast.newchallenges-dsp.com^
+||rtb2-uswest.newchallenges-dsp.com^
 ||server1.h24.news^
 ||smtp.mail.h24.news^
 ||smtp2.h24.news^
+||smtp3.go-srv.com^
 ||social.agrodistribution.fr^
 ||social.eleveur-laitier.fr^
 ||social.lafranceagricole.fr^
 ||social.terre-net-occasions.fr^
+||st.static-srv.com^
+||static-rtb2.convergeselect.net^
+||static-rtb2.newchallenges-dsp.com^
+||static.152media.cloud^
+||static.openrtb.in^
+||static.plarimoplus.com^
+||static.rtbserve.io^
+||static.xrtb.io^
 ||sur.corsematin.com^
 ||sur.laprovence.com^
+||syndication.realsrv.com^
+||tq-eu.minutelight-1.online^
+||tq.minutelight-1.online^
+||vps.go-srv.com^
+||win-rtb2-apac.newchallenges-dsp.com^
+||win-rtb2-eu.convergeselect.net^
+||www.1astrjasr.ru^
 ||www.20min.fr^
 ||www.altereco.media^
+||www.cephei-b.com^
+||www.distant-structure.pro^
+||www.go-srv.com^
 ||www.h24.news^
+||www.infocentro.ru^
+||www.letstry69.xyz^
 ||www.moarty.com^
+||www.rbp-gen1.site^
+||www.rekl1.com^
+||www.static-srv.com^
+||www.wisej1355.com^
+||www.zqwe.ru^
+||xml-eu-v4.minutelight-1.online^
+||xml-v4.minutelight-1.online^
+||xml.adhunter.media^
+||xml.plarimoplus.com^
 ||zmail.h24.news^
 !
 ! Source name: AdGuard CNAME disguised trackers list
@@ -116071,6 +116432,7 @@ analytics-*.aasaam.com
 ||1of1.skipcash.app^
 ||acdc.toolineo.de^
 ||acsweb-3dr1.dnp-cdms.jp^
+||adobedc.demdex.net^
 ||adprtm53.cardgold.it^
 ||adprtm53.cartayou.it^
 ||adprtm53.free.at^
@@ -116175,6 +116537,7 @@ analytics-*.aasaam.com
 ||assets.werally.co^
 ||assets2.ihg.com^
 ||assets2.thefirstclub.com^
+||at.sharpmarketing.eu^
 ||auth.vedacheck.com.au^
 ||auth2.corelogic.asia^
 ||authorizer-data.infinitepay.io^
@@ -116280,6 +116643,7 @@ analytics-*.aasaam.com
 ||cfaxq1.fidelity.com^
 ||cfaxq2.fidelity.com^
 ||ch.drs.wa.gov^
+||ch.sharpmarketing.eu^
 ||channel.rakbankonline.ae^
 ||check.fashionid.de^
 ||check.jaja.finance^
@@ -116530,6 +116894,7 @@ analytics-*.aasaam.com
 ||cybersource.shoplineapp.com^
 ||cybs.dhgate.com^
 ||cybs.dhpay.com^
+||czsk.sharpmarketing.eu^
 ||d.mlcdn.com.br^
 ||d0796fef.monkeyspins.com^
 ||d3tracking.rbc.com^
@@ -116537,6 +116902,7 @@ analytics-*.aasaam.com
 ||ddata.huntingtonbank.com^
 ||ddc-test.worldpay.com^
 ||ddc.worldpay.com^
+||de.sharpmarketing.eu^
 ||de9c635aa0404558bd527220ef4e6b4b.betway.ca^
 ||debs.my100bank.com^
 ||dep.gambit29.gameassists.co.uk^
@@ -116593,6 +116959,8 @@ analytics-*.aasaam.com
 ||ep.heartland.co.nz^
 ||ep.vystarcu.org^
 ||eps.uprova.com^
+||es.sharpmarketing.eu^
+||eu.sharpmarketing.eu^
 ||eve.playstation.com^
 ||event.evtm.53.com^
 ||ext.creditpartner.fr^
@@ -116645,6 +117013,7 @@ analytics-*.aasaam.com
 ||h.threatmetrix.com^
 ||hint-tmdp.opendoor.com^
 ||hooru.regence.com^
+||hu.sharpmarketing.eu^
 ||hunt.elcorteingles.es^
 ||id.charge-auth.com^
 ||id.latitudefinancial.com^
@@ -116714,6 +117083,7 @@ analytics-*.aasaam.com
 ||intm.amwager.com^
 ||invalid-qa2.threatmetrix.com^
 ||irmp.caa.com^
+||it.sharpmarketing.eu^
 ||jj203.equitablebank.ca^
 ||jpubs.zodia.io^
 ||jytrnq.cm-cic.com^
@@ -116776,6 +117146,7 @@ analytics-*.aasaam.com
 ||neo.fashionette.de^
 ||netinf.curemd.com^
 ||nexus-svc.sc.com^
+||nordics.sharpmarketing.eu^
 ||ocs.ameriprise.com^
 ||offtest.fnfis.com^
 ||olacontent.schwab.com^
@@ -116795,6 +117166,7 @@ analytics-*.aasaam.com
 ||pages.franklintempleton.com^
 ||paiement.cb4x.fr^
 ||partition.enterprise.com^
+||partner.net.jumia.com^
 ||partners.dudley.gov.uk^
 ||payments-de.lidlplus.com^
 ||payments.direct.playstation.com^
@@ -116806,6 +117178,7 @@ analytics-*.aasaam.com
 ||phyon.visit-x.net^
 ||piafapp.poste.it^
 ||pic.bankonline.ge^
+||pl.sharpmarketing.eu^
 ||plr.scb-payments.net^
 ||pn1927.coutts.com^
 ||pn1927.couttscrowndependencies.com^
@@ -116952,6 +117325,7 @@ analytics-*.aasaam.com
 ||scontent.newdaycards.com^
 ||scontent.opuscard.co.uk^
 ||scuicss.dew.sc.gov^
+||seb.sharpmarketing.eu^
 ||sec.hikaritv.net^
 ||sec.lin101.mail.goo.ne.jp^
 ||sec.login.mail.goo.ne.jp^
@@ -117281,6 +117655,7 @@ analytics-*.aasaam.com
 ||shield.boostbusiness.my^
 ||shield.legalzoom.com^
 ||skw.eve.account.sony.com^
+||solar.sharpmarketing.eu^
 ||solstice.ibotta.com^
 ||sptbb.pilates.com^
 ||src.ebay-us.com^
@@ -117513,6 +117888,247 @@ analytics-*.aasaam.com
 ||tmxjs.tokyodisneyresort.jp^
 ||tooling.ynap.biz^
 ||tprofile.goldmansachs.tech^
+||tr.aasi.espmp-agfr.net^
+||tr.afpa.espmp-cufr.net^
+||tr.alex.espmp-agfr.net^
+||tr.apou032.espmp-agfr.net^
+||tr.asp0.espmp-agfr.net^
+||tr.asp0010.espmp-nifr.net^
+||tr.asp0018.espmp-aufr.net^
+||tr.asp002p.espmp-cufr.net^
+||tr.asp002q.espmp-aufr.net^
+||tr.asp002x.espmp-cufr.net^
+||tr.asp0085.espmp-nifr.net^
+||tr.asp008y.espmp-nifr.net^
+||tr.asp009j.espmp-aufr.net^
+||tr.asp009k.espmp-cufr.net^
+||tr.asp009m.espmp-agfr.net^
+||tr.asp00a0.espmp-cufr.net^
+||tr.asp00a1.espmp-agfr.net^
+||tr.asp00a3.espmp-agfr.net^
+||tr.asp00a6.espmp-nifr.net^
+||tr.asp00ab.espmp-cufr.net^
+||tr.asp00ah.espmp-nifr.net^
+||tr.asp00am.espmp-cufr.net^
+||tr.asp1.espmp-agfr.net^
+||tr.asp102c.espmp-aufr.net^
+||tr.asp102n.espmp-cufr.net^
+||tr.asp103y.espmp-nifr.net^
+||tr.asp103z.espmp-nifr.net^
+||tr.asp104p.espmp-aufr.net^
+||tr.asp106d.espmp-cufr.net^
+||tr.asp106g.espmp-nifr.net^
+||tr.asp106m.espmp-agfr.net^
+||tr.asp108a.espmp-cufr.net^
+||tr.asp1098.espmp-cufr.net^
+||tr.asp109c.espmp-aufr.net^
+||tr.asp109e.espmp-cufr.net^
+||tr.asp109w.espmp-agfr.net^
+||tr.asp109y.espmp-agfr.net^
+||tr.asp10a7.espmp-aufr.net^
+||tr.asp10ai.espmp-nifr.net^
+||tr.asp10aj.espmp-aufr.net^
+||tr.asp10ap.espmp-nifr.net^
+||tr.asp10ar.espmp-cufr.net^
+||tr.asp10b1.espmp-nifr.net^
+||tr.asp10b3.espmp-agfr.net^
+||tr.asp10bq.espmp-nifr.net^
+||tr.asp10bs.espmp-aufr.net^
+||tr.asp10c1.espmp-agfr.net^
+||tr.asp10c8.espmp-agfr.net^
+||tr.asp10cc.espmp-nifr.net^
+||tr.asp10cg.espmp-nifr.net^
+||tr.asp10ch.espmp-nifr.net^
+||tr.asp10cp.espmp-nifr.net^
+||tr.asp10cr.espmp-nifr.net^
+||tr.asp10d7.espmp-nifr.net^
+||tr.asp10de.espmp-agfr.net^
+||tr.asp10df.espmp-agfr.net^
+||tr.asp10dq.espmp-nifr.net^
+||tr.asp10dx.espmp-nifr.net^
+||tr.asp10ea.espmp-nifr.net^
+||tr.asp10f5.espmp-agfr.net^
+||tr.asp10f6.espmp-agfr.net^
+||tr.asp10fa.espmp-cufr.net^
+||tr.asp10fg.espmp-aufr.net^
+||tr.asp10fi.espmp-nifr.net^
+||tr.asp10fl.espmp-nifr.net^
+||tr.asp10fo.espmp-nifr.net^
+||tr.asp10fp.espmp-nifr.net^
+||tr.asp10fq.espmp-aufr.net^
+||tr.asp10fx.espmp-cufr.net^
+||tr.asp10fy.espmp-agfr.net^
+||tr.asp10ga.espmp-nifr.net^
+||tr.asp10ge.espmp-nifr.net^
+||tr.asp10h2.espmp-nifr.net^
+||tr.asp10hc.espmp-aufr.net^
+||tr.asp10hf.espmp-pofr.net^
+||tr.asp10hg.espmp-cufr.net^
+||tr.asp10hi.espmp-cufr.net^
+||tr.asp10hj.espmp-pofr.net^
+||tr.asp10if.espmp-cufr.net^
+||tr.asp2.espmp-agfr.net^
+||tr.asp202u.espmp-cufr.net^
+||tr.asp2032.espmp-aufr.net^
+||tr.asp2035.espmp-nifr.net^
+||tr.asp203m.espmp-cufr.net^
+||tr.asp2045.espmp-nifr.net^
+||tr.asp204q.espmp-cufr.net^
+||tr.asp204v.espmp-cufr.net^
+||tr.asp205a.espmp-cufr.net^
+||tr.asp2063.espmp-nifr.net^
+||tr.asp206k.espmp-agfr.net^
+||tr.asp2070.espmp-aufr.net^
+||tr.asp2072.espmp-aufr.net^
+||tr.asp2075.espmp-nifr.net^
+||tr.asp2076.espmp-pofr.net^
+||tr.asp2077.espmp-nifr.net^
+||tr.asp2078.espmp-nifr.net^
+||tr.asp207e.espmp-nifr.net^
+||tr.asp207f.espmp-cufr.net^
+||tr.axa-millesimes.espmp-aufr.net^
+||tr.axa.espmp-aufr.net^
+||tr.b2d1.espmp-agfr.net^
+||tr.b2d1068.espmp-nifr.net^
+||tr.b2d106z.espmp-aufr.net^
+||tr.b2d107b.espmp-aufr.net^
+||tr.bees.espmp-aufr.net^
+||tr.bern.espmp-nifr.net^
+||tr.bobo.espmp-cufr.net^
+||tr.bouyguestelecom.espmp-aufr.net^
+||tr.bureauveritas.espmp-aufr.net^
+||tr.capu.espmp-agfr.net^
+||tr.carl.espmp-cufr.net^
+||tr.cart.espmp-cufr.net^
+||tr.cart02d.espmp-agfr.net^
+||tr.cclx.espmp-agfr.net^
+||tr.cifa.espmp-nifr.net^
+||tr.cifa02b.espmp-aufr.net^
+||tr.cifa02d.espmp-aufr.net^
+||tr.cifa02h.espmp-aufr.net^
+||tr.cifa02k.espmp-aufr.net^
+||tr.cifa02l.espmp-nifr.net^
+||tr.cnaf.espmp-nifr.net^
+||tr.cogedim.espmp-agfr.net^
+||tr.crtl.espmp-aufr.net^
+||tr.datacom.espmp-pofr.net^
+||tr.dial03g.espmp-agfr.net^
+||tr.djay.espmp-agfr.net^
+||tr.ecologie-shop.espmp-agfr.net^
+||tr.envie-de-bien-manger.espmp-aufr.net^
+||tr.espmp-agfr.net^
+||tr.fg3p.espmp-cufr.net^
+||tr.gen.espmp-agfr.net^
+||tr.gplus.espmp-nifr.net^
+||tr.grez.espmp-nifr.net^
+||tr.guys.espmp-agfr.net^
+||tr.gvbn.espmp-agfr.net^
+||tr.hmut.espmp-agfr.net^
+||tr.jend.espmp-pofr.net^
+||tr.jimb.espmp-cufr.net^
+||tr.jkcd.espmp-cufr.net^
+||tr.jkcd.espmp-pofr.net^
+||tr.jkyg.espmp-cufr.net^
+||tr.kang.espmp-cufr.net^
+||tr.kedf.espmp-nifr.net^
+||tr.klse.espmp-agfr.net^
+||tr.kpfc.espmp-nifr.net^
+||tr.kpyn.espmp-cufr.net^
+||tr.kpyn02a.espmp-cufr.net^
+||tr.kpyn02f.espmp-cufr.net^
+||tr.kpyn03r.espmp-nifr.net^
+||tr.kpyn059.espmp-pofr.net^
+||tr.krus.espmp-agfr.net^
+||tr.lbar.espmp-agfr.net^
+||tr.liberation.espmp-aufr.net^
+||tr.livrephoto.espmp-aufr.net^
+||tr.ltbu.espmp-nifr.net^
+||tr.ltbu02o.espmp-agfr.net^
+||tr.marg.espmp-agfr.net^
+||tr.marg02n.espmp-agfr.net^
+||tr.mart.espmp-agfr.net^
+||tr.mcom03b.espmp-aufr.net^
+||tr.mcom03x.espmp-aufr.net^
+||tr.mcom04p.espmp-aufr.net^
+||tr.mika.espmp-nifr.net^
+||tr.mnoc.espmp-nifr.net^
+||tr.mnpd.espmp-agfr.net^
+||tr.moes.espmp-agfr.net^
+||tr.moving.espmp-agfr.net^
+||tr.mrls.espmp-agfr.net^
+||tr.nati02d.espmp-aufr.net^
+||tr.nmcm.espmp-cufr.net^
+||tr.nmcm.espmp-nifr.net^
+||tr.ojxm.espmp-aufr.net^
+||tr.perv.espmp-agfr.net^
+||tr.phjk.espmp-nifr.net^
+||tr.pipa.espmp-aufr.net^
+||tr.pixe.espmp-cufr.net^
+||tr.ps.espmp-agfr.net^
+||tr.publicisdrugstore.espmp-agfr.net^
+||tr.ratm.espmp-agfr.net^
+||tr.raym.espmp-agfr.net^
+||tr.roxi02e.espmp-agfr.net^
+||tr.sash.espmp-aufr.net^
+||tr.sash02g.espmp-nifr.net^
+||tr.schj.espmp-aufr.net^
+||tr.sfr.espmp-aufr.net^
+||tr.sgjk.espmp-aufr.net^
+||tr.skin.espmp-agfr.net^
+||tr.solocal.espmp-aufr.net^
+||tr.sopr.espmp-agfr.net^
+||tr.sort.espmp-nifr.net^
+||tr.tdgx.espmp-cufr.net^
+||tr.tibo.espmp-nifr.net^
+||tr.ug2r.espmp-agfr.net^
+||tr.ujsv.espmp-agfr.net^
+||tr.urfk.espmp-agfr.net^
+||tr.urfk02r.espmp-nifr.net^
+||tr.urfk02t.espmp-agfr.net^
+||tr.urfk02v.espmp-cufr.net^
+||tr.urfk02z.espmp-nifr.net^
+||tr.urfk039.espmp-aufr.net^
+||tr.urfk03c.espmp-nifr.net^
+||tr.urfk03h.espmp-nifr.net^
+||tr.urfk03i.espmp-nifr.net^
+||tr.urfk03k.espmp-agfr.net^
+||tr.urfk03q.espmp-nifr.net^
+||tr.urfk03r.espmp-nifr.net^
+||tr.urfk03u.espmp-nifr.net^
+||tr.urfk03x.espmp-agfr.net^
+||tr.urfk041.espmp-cufr.net^
+||tr.urfk042.espmp-nifr.net^
+||tr.urfk044.espmp-nifr.net^
+||tr.urfk04h.espmp-nifr.net^
+||tr.urfk050.espmp-cufr.net^
+||tr.urfk052.espmp-cufr.net^
+||tr.urfk053.espmp-aufr.net^
+||tr.urfk056.espmp-nifr.net^
+||tr.urfk057.espmp-aufr.net^
+||tr.urfk05e.espmp-aufr.net^
+||tr.urfk05g.espmp-agfr.net^
+||tr.urfk05l.espmp-nifr.net^
+||tr.urfk05o.espmp-pofr.net^
+||tr.urfk06b.espmp-cufr.net^
+||tr.urfk06h.espmp-nifr.net^
+||tr.urfk06l.espmp-aufr.net^
+||tr.urfk06n.espmp-nifr.net^
+||tr.urfk06o.espmp-agfr.net^
+||tr.urfk06v.espmp-aufr.net^
+||tr.urfk06x.espmp-cufr.net^
+||tr.urfk06y.espmp-nifr.net^
+||tr.urfk076.espmp-nifr.net^
+||tr.urfk07c.espmp-aufr.net^
+||tr.urfk07e.espmp-aufr.net^
+||tr.urfk07h.espmp-agfr.net^
+||tr.urfk07j.espmp-nifr.net^
+||tr.urfk07r.espmp-agfr.net^
+||tr.urfk07s.espmp-nifr.net^
+||tr.urfk080.espmp-agfr.net^
+||tr.urfk08c.espmp-cufr.net^
+||tr.urfk08j.espmp-nifr.net^
+||tr.vf7n.espmp-agfr.net^
+||tr.wuei.espmp-agfr.net^
 ||tracking.psecu.com^
 ||transactionrisk.cashfree.com^
 ||trust.wgiftcard.com^
@@ -117520,6 +118136,7 @@ analytics-*.aasaam.com
 ||tsaian.verizonwireless.com^
 ||tst-cdna.paymentncb.cofidis.fr^
 ||tulips.metrobankonline.co.uk^
+||two.betterdomino.com^
 ||tx.n11.com^
 ||tx.suncoastcreditunion.com^
 ||txcontent.iherb.cn^
@@ -117527,6 +118144,7 @@ analytics-*.aasaam.com
 ||uafms.ocbc.com^
 ||ucfs.sendpro360.pitneybowes.com^
 ||ucfs.sendpro360.pitneycloud.com^
+||uk.sharpmarketing.eu^
 ||uldfp.srilankan.com^
 ||umst.mobile.de^
 ||utm.semilab.hu^
@@ -117550,6 +118168,7 @@ analytics-*.aasaam.com
 ||voto.credit24.com^
 ||voto.creditea.com^
 ||voto.provident.pl^
+||vpn12.net.jumia.com^
 ||vradao.bankofhope.com^
 ||w-profiling.cibc.com^
 ||w-profiling.simplii.com^
@@ -117620,6 +118239,7 @@ analytics-*.aasaam.com
 ||www.alskd34.com^
 ||www.amos5lynn.com^
 ||www.ape78cn2.com^
+||www.aqedsw4.com^
 ||www.aran9midi.com^
 ||www.arid5glop.com^
 ||www.astute-7-visionary.com^
@@ -129259,6 +129879,7 @@ analytics-*.aasaam.com
 ||link.diyatvusa.com^
 ||link.docentpro.com^
 ||link.docscribe.health^
+||link.doctorcareanywhere.com^
 ||link.dongnealba.com^
 ||link.doopage.com^
 ||link.dralilabolsanelo.com^
@@ -129816,6 +130437,7 @@ analytics-*.aasaam.com
 ||link.wearecauli.com^
 ||link.weepec.com^
 ||link.wefish.app^
+||link.wegowhere.com^
 ||link.wetrade.app^
 ||link.winndixie.com^
 ||link.winwintechnology.com^
@@ -132120,6 +132742,7 @@ analytics-*.aasaam.com
 ||rd.comm.rakuten.net^
 ||rd.insight.rakuten.net^
 ||rd.mail.fr.shopping.rakuten.com^
+||rd.tracker.adsales.rakuten.co.jp^
 ||re.ghc-j.com^
 ||re.mlgcapital.com^
 ||re.retailexpress.com.au^
@@ -133615,6 +134238,7 @@ analytics-*.aasaam.com
 ||web1.lawsquared.com^
 ||web2.eurotax.si^
 ||webform.embraerexecutivejets.com^
+||webform.polleverywhere.com^
 ||webforms.uworld.com^
 ||webinar.netcetera.com^
 ||weblink.zennya.com^
@@ -135589,14 +136213,17 @@ analytics-*.aasaam.com
 ||0-13-9-crs.ap1.datadoghq.oohmediaomprooohmedialient.ap1.datadoghq.usage-oohmediaomprooohmediadrsprofildr.ap1.datadoghq.datadoghq-confluence.datadoghq.drive-oohmediaomprooohmediadrsprofildr.datadoghq.oohmediaomprooohmediadrspage.agent.ap1.datadoghq.com^
 ||003c4786c3.fee9cd19e4.com^
 ||017ac254b5.200729a311.com^
+||02833a52b8.9d611c2d8a.com^
 ||02e1861931.35e5a40cf1.com^
 ||039ff33996.ba2448462a.com^
 ||03ca5e6daa.f9fefdd6b1.com^
 ||03rproxjqg5imz2-c.adkclicker.fr^
 ||0436e447eb.bf4a39dfe0.com^
+||0446b5647b.61847b1398.com^
 ||0460629af6.d17438cacf.com^
 ||048ifc-88ww1n-5munyx9r-l9yy0yu.xhamsterlive.info^
 ||056.omg.adult^
+||0597eef174.3b687a4e49.com^
 ||05acb9b113.8767252cb9.com^
 ||06662f4bfc.78bc47506f.com^
 ||066fb1ba95.66147a7d78.com^
@@ -135617,6 +136244,7 @@ analytics-*.aasaam.com
 ||0bql8239fmnaht4-c.adktrack55.xyz^
 ||0e29ed499b.c7ff588862.com^
 ||0earbqp9ihom1yc-p.adktrack30.xyz^
+||0efc6afddb.b240ea4ef8.com^
 ||0eyjqognbi7y6sm-p.adkclicker.fr^
 ||0f136b5745.b162f807a4.com^
 ||0fdef7vobnx5ywr-p.adkoffer.fr^
@@ -135642,11 +136270,426 @@ analytics-*.aasaam.com
 ||0wienemrn4uopkz-p.adktrack34.xyz^
 ||0yk5osmd2qjvrke-c.adktrack40.xyz^
 ||0zpvlreub1wso39-p.tck020.xyz^
+||100000006.collect.igodigital.com^
+||100000133.collect.igodigital.com^
+||100000134.collect.igodigital.com^
+||100000206.collect.igodigital.com^
+||100000227.collect.igodigital.com^
+||100000263.collect.igodigital.com^
+||100001179.collect.igodigital.com^
+||100001207.collect.igodigital.com^
+||100001230.collect.igodigital.com^
+||100001577.collect.igodigital.com^
+||100001606.collect.igodigital.com^
+||100001609.collect.igodigital.com^
+||100001623.collect.igodigital.com^
+||100001625.collect.igodigital.com^
+||100001643.collect.igodigital.com^
+||100001654.collect.igodigital.com^
+||100001660.collect.igodigital.com^
+||100001667.collect.igodigital.com^
+||100001676.collect.igodigital.com^
+||100001718.collect.igodigital.com^
+||100001726.collect.igodigital.com^
+||100001734.collect.igodigital.com^
+||100001739.collect.igodigital.com^
+||100001745.collect.igodigital.com^
+||100001759.collect.igodigital.com^
+||100001796.collect.igodigital.com^
+||100001800.collect.igodigital.com^
+||100001855.collect.igodigital.com^
+||100001912.collect.igodigital.com^
+||100001916.collect.igodigital.com^
+||100001948.collect.igodigital.com^
+||100001960.collect.igodigital.com^
+||100001962.collect.igodigital.com^
+||100001964.collect.igodigital.com^
+||100001966.collect.igodigital.com^
+||100001978.collect.igodigital.com^
+||100002000.collect.igodigital.com^
+||100002008.collect.igodigital.com^
+||100002010.collect.igodigital.com^
+||100002017.collect.igodigital.com^
+||100002025.collect.igodigital.com^
+||100002035.collect.igodigital.com^
+||100002040.collect.igodigital.com^
+||100002049.collect.igodigital.com^
+||100002066.collect.igodigital.com^
+||100002077.collect.igodigital.com^
+||100002105.collect.igodigital.com^
+||100002111.collect.igodigital.com^
+||100002114.collect.igodigital.com^
+||100002141.collect.igodigital.com^
+||100002222.collect.igodigital.com^
+||100002234.collect.igodigital.com^
+||100002237.collect.igodigital.com^
+||100002258.collect.igodigital.com^
+||100002259.collect.igodigital.com^
+||100002287.collect.igodigital.com^
+||100002290.collect.igodigital.com^
+||100002307.collect.igodigital.com^
+||100002385.collect.igodigital.com^
+||100002413.collect.igodigital.com^
+||100002414.collect.igodigital.com^
+||100002415.collect.igodigital.com^
+||100002416.collect.igodigital.com^
+||100002485.collect.igodigital.com^
+||100002486.collect.igodigital.com^
+||100002507.collect.igodigital.com^
+||100002515.collect.igodigital.com^
+||100002531.collect.igodigital.com^
+||100002532.collect.igodigital.com^
+||100002535.collect.igodigital.com^
+||100002541.collect.igodigital.com^
+||100002553.collect.igodigital.com^
+||100002572.collect.igodigital.com^
+||100002576.collect.igodigital.com^
+||100002625.collect.igodigital.com^
+||100002630.collect.igodigital.com^
+||100002641.collect.igodigital.com^
+||100002656.collect.igodigital.com^
+||100002664.collect.igodigital.com^
+||100002713.collect.igodigital.com^
+||100002715.collect.igodigital.com^
+||100002718.collect.igodigital.com^
+||100002748.collect.igodigital.com^
+||100002752.collect.igodigital.com^
+||100002766.collect.igodigital.com^
+||100002776.collect.igodigital.com^
+||100002787.collect.igodigital.com^
+||100002788.collect.igodigital.com^
+||100002789.collect.igodigital.com^
+||100002804.collect.igodigital.com^
+||100002807.collect.igodigital.com^
+||100002819.collect.igodigital.com^
+||100002836.collect.igodigital.com^
+||100002881.collect.igodigital.com^
+||100002884.collect.igodigital.com^
+||100002903.collect.igodigital.com^
+||100003000.collect.igodigital.com^
+||100003037.collect.igodigital.com^
+||100003063.collect.igodigital.com^
+||100003066.collect.igodigital.com^
+||100003073.collect.igodigital.com^
+||100003081.collect.igodigital.com^
+||100003086.collect.igodigital.com^
+||100003089.collect.igodigital.com^
+||100003140.collect.igodigital.com^
+||100003141.collect.igodigital.com^
+||100003143.collect.igodigital.com^
+||100003147.collect.igodigital.com^
+||100003215.collect.igodigital.com^
+||100003216.collect.igodigital.com^
+||100003229.collect.igodigital.com^
+||100003270.collect.igodigital.com^
+||100003273.collect.igodigital.com^
+||100003277.collect.igodigital.com^
+||100003282.collect.igodigital.com^
+||100003302.collect.igodigital.com^
+||100003364.collect.igodigital.com^
+||100003387.collect.igodigital.com^
+||100003394.collect.igodigital.com^
+||100003399.collect.igodigital.com^
+||100003427.collect.igodigital.com^
+||100003434.collect.igodigital.com^
+||100003435.collect.igodigital.com^
+||100003461.collect.igodigital.com^
+||100003465.collect.igodigital.com^
+||100003500.collect.igodigital.com^
+||100003504.collect.igodigital.com^
+||100003570.collect.igodigital.com^
+||100003628.collect.igodigital.com^
+||100003685.collect.igodigital.com^
+||100003721.collect.igodigital.com^
+||100003732.collect.igodigital.com^
+||100003733.collect.igodigital.com^
+||100003790.collect.igodigital.com^
+||100003807.collect.igodigital.com^
+||100003816.collect.igodigital.com^
+||100003983.collect.igodigital.com^
+||100004000.collect.igodigital.com^
+||100004014.collect.igodigital.com^
+||100004015.collect.igodigital.com^
+||100004018.collect.igodigital.com^
+||100004023.collect.igodigital.com^
+||100004024.collect.igodigital.com^
+||100004050.collect.igodigital.com^
+||100004093.collect.igodigital.com^
+||100004105.collect.igodigital.com^
+||100004113.collect.igodigital.com^
+||100004118.collect.igodigital.com^
+||100004126.collect.igodigital.com^
+||100004152.collect.igodigital.com^
+||100004290.collect.igodigital.com^
+||100004434.collect.igodigital.com^
+||100004437.collect.igodigital.com^
+||100004442.collect.igodigital.com^
+||100004512.collect.igodigital.com^
+||100004571.collect.igodigital.com^
+||100004590.collect.igodigital.com^
+||100004906.collect.igodigital.com^
+||100005072.collect.igodigital.com^
+||100005082.collect.igodigital.com^
+||100005222.collect.igodigital.com^
+||100005244.collect.igodigital.com^
+||100005350.collect.igodigital.com^
+||100005419.collect.igodigital.com^
+||100005424.collect.igodigital.com^
+||100005478.collect.igodigital.com^
+||100005481.collect.igodigital.com^
+||100005485.collect.igodigital.com^
+||100005530.collect.igodigital.com^
+||100005550.collect.igodigital.com^
+||100005596.collect.igodigital.com^
+||100005670.collect.igodigital.com^
+||100005671.collect.igodigital.com^
+||100005783.collect.igodigital.com^
+||100005813.collect.igodigital.com^
+||100006010.collect.igodigital.com^
+||100006044.collect.igodigital.com^
+||100006070.collect.igodigital.com^
+||100006089.collect.igodigital.com^
+||100006100.collect.igodigital.com^
+||100006101.collect.igodigital.com^
+||100006102.collect.igodigital.com^
+||100006105.collect.igodigital.com^
+||100006133.collect.igodigital.com^
+||100006236.collect.igodigital.com^
+||100006350.collect.igodigital.com^
+||100006354.collect.igodigital.com^
+||100006379.collect.igodigital.com^
+||100006426.collect.igodigital.com^
+||100006427.collect.igodigital.com^
+||100006428.collect.igodigital.com^
+||100006470.collect.igodigital.com^
+||100006472.collect.igodigital.com^
+||100006539.collect.igodigital.com^
+||100006686.collect.igodigital.com^
+||100006722.collect.igodigital.com^
+||100006727.collect.igodigital.com^
+||100006765.collect.igodigital.com^
+||100006787.collect.igodigital.com^
+||100006924.collect.igodigital.com^
+||100006969.collect.igodigital.com^
+||100007024.collect.igodigital.com^
+||100007073.collect.igodigital.com^
+||100007136.collect.igodigital.com^
+||100007183.collect.igodigital.com^
+||100007233.collect.igodigital.com^
+||100007281.collect.igodigital.com^
+||100007433.collect.igodigital.com^
+||100007444.collect.igodigital.com^
+||100007555.collect.igodigital.com^
+||100007558.collect.igodigital.com^
+||100007667.collect.igodigital.com^
+||100007671.collect.igodigital.com^
+||100007688.collect.igodigital.com^
+||100007705.collect.igodigital.com^
+||100007706.collect.igodigital.com^
+||100007707.collect.igodigital.com^
+||100007708.collect.igodigital.com^
+||100007772.collect.igodigital.com^
+||100007849.collect.igodigital.com^
+||100007958.collect.igodigital.com^
+||100008009.collect.igodigital.com^
+||100008018.collect.igodigital.com^
+||100008126.collect.igodigital.com^
+||100008130.collect.igodigital.com^
+||100008223.collect.igodigital.com^
+||100008224.collect.igodigital.com^
+||100008225.collect.igodigital.com^
+||100008233.collect.igodigital.com^
+||100008236.collect.igodigital.com^
+||100008271.collect.igodigital.com^
+||100008390.collect.igodigital.com^
+||100008444.collect.igodigital.com^
+||100008468.collect.igodigital.com^
+||100008481.collect.igodigital.com^
+||100008506.collect.igodigital.com^
+||100008573.collect.igodigital.com^
+||100008575.collect.igodigital.com^
+||100008580.collect.igodigital.com^
+||100008584.collect.igodigital.com^
+||100008592.collect.igodigital.com^
+||100008622.collect.igodigital.com^
+||100008638.collect.igodigital.com^
+||100008651.collect.igodigital.com^
+||100008662.collect.igodigital.com^
+||100008681.collect.igodigital.com^
+||100008752.collect.igodigital.com^
+||100008801.collect.igodigital.com^
+||100008823.collect.igodigital.com^
+||100008880.collect.igodigital.com^
+||100008888.collect.igodigital.com^
+||100008890.collect.igodigital.com^
+||100008924.collect.igodigital.com^
+||100008926.collect.igodigital.com^
+||100008968.collect.igodigital.com^
+||100008969.collect.igodigital.com^
+||100009015.collect.igodigital.com^
+||100009021.collect.igodigital.com^
+||100009040.collect.igodigital.com^
+||100009050.collect.igodigital.com^
+||100009064.collect.igodigital.com^
+||100009070.collect.igodigital.com^
+||100009131.collect.igodigital.com^
+||100009133.collect.igodigital.com^
+||100009182.collect.igodigital.com^
+||10000920.collect.igodigital.com^
+||100009207.collect.igodigital.com^
+||100009256.collect.igodigital.com^
+||100009314.collect.igodigital.com^
+||100009348.collect.igodigital.com^
+||100009382.collect.igodigital.com^
+||100009385.collect.igodigital.com^
+||100009407.collect.igodigital.com^
+||100009409.collect.igodigital.com^
+||100009414.collect.igodigital.com^
+||100009416.collect.igodigital.com^
+||100009418.collect.igodigital.com^
+||100009525.collect.igodigital.com^
+||100009633.collect.igodigital.com^
+||100009654.collect.igodigital.com^
+||100009658.collect.igodigital.com^
+||100009660.collect.igodigital.com^
+||100009699.collect.igodigital.com^
+||100009706.collect.igodigital.com^
+||100009747.collect.igodigital.com^
+||100009763.collect.igodigital.com^
+||100009859.collect.igodigital.com^
+||100009866.collect.igodigital.com^
+||100009874.collect.igodigital.com^
+||100009881.collect.igodigital.com^
+||100009936.collect.igodigital.com^
+||100009942.collect.igodigital.com^
+||100010164.collect.igodigital.com^
+||100010227.collect.igodigital.com^
+||100010244.collect.igodigital.com^
+||100010274.collect.igodigital.com^
+||100010281.collect.igodigital.com^
+||100010400.collect.igodigital.com^
+||100010407.collect.igodigital.com^
+||100010410.collect.igodigital.com^
+||100010412.collect.igodigital.com^
+||100010413.collect.igodigital.com^
+||100010418.collect.igodigital.com^
+||100010422.collect.igodigital.com^
+||100010427.collect.igodigital.com^
+||100010446.collect.igodigital.com^
+||100010465.collect.igodigital.com^
+||100010475.collect.igodigital.com^
+||100010481.collect.igodigital.com^
+||100010589.collect.igodigital.com^
+||100010660.collect.igodigital.com^
+||100010720.collect.igodigital.com^
+||100010763.collect.igodigital.com^
+||100010777.collect.igodigital.com^
+||100010921.collect.igodigital.com^
+||100011007.collect.igodigital.com^
+||100011008.collect.igodigital.com^
+||100011009.collect.igodigital.com^
+||100011086.collect.igodigital.com^
+||100011100.collect.igodigital.com^
+||100011101.collect.igodigital.com^
+||100011125.collect.igodigital.com^
+||100011269.collect.igodigital.com^
+||100011311.collect.igodigital.com^
+||100011333.collect.igodigital.com^
+||100011369.collect.igodigital.com^
+||100011385.collect.igodigital.com^
+||100011386.collect.igodigital.com^
+||100011463.collect.igodigital.com^
+||100011474.collect.igodigital.com^
+||100011489.collect.igodigital.com^
+||100011496.collect.igodigital.com^
+||100011507.collect.igodigital.com^
+||100011568.collect.igodigital.com^
+||100011578.collect.igodigital.com^
+||100011592.collect.igodigital.com^
+||100011608.collect.igodigital.com^
+||100011612.collect.igodigital.com^
+||100011619.collect.igodigital.com^
+||100011631.collect.igodigital.com^
+||100011661.collect.igodigital.com^
+||100011782.collect.igodigital.com^
+||100011820.collect.igodigital.com^
+||100011838.collect.igodigital.com^
+||100011850.collect.igodigital.com^
+||100011870.collect.igodigital.com^
+||100011875.collect.igodigital.com^
+||100011881.collect.igodigital.com^
+||100011939.collect.igodigital.com^
+||100012035.collect.igodigital.com^
+||100012166.collect.igodigital.com^
+||100012360.collect.igodigital.com^
+||100012390.collect.igodigital.com^
+||100012449.collect.igodigital.com^
+||100012542.collect.igodigital.com^
+||100012553.collect.igodigital.com^
+||100012768.collect.igodigital.com^
+||100012888.collect.igodigital.com^
+||100013108.collect.igodigital.com^
+||100013277.collect.igodigital.com^
+||100013309.collect.igodigital.com^
+||100013398.collect.igodigital.com^
+||100013401.collect.igodigital.com^
+||100013405.collect.igodigital.com^
+||100013426.collect.igodigital.com^
+||100013476.collect.igodigital.com^
+||100013569.collect.igodigital.com^
+||100013802.collect.igodigital.com^
+||100014069.collect.igodigital.com^
+||100014266.collect.igodigital.com^
+||100014381.collect.igodigital.com^
+||100014551.collect.igodigital.com^
+||100014588.collect.igodigital.com^
+||100014768.collect.igodigital.com^
+||100014837.collect.igodigital.com^
+||100014861.collect.igodigital.com^
+||100014979.collect.igodigital.com^
+||100015026.collect.igodigital.com^
+||100016108.collect.igodigital.com^
+||100017351.collect.igodigital.com^
+||100018296.collect.igodigital.com^
+||100021688.collect.igodigital.com^
+||100023399.collect.igodigital.com^
+||100025074.collect.igodigital.com^
+||100026903.collect.igodigital.com^
+||100028771.collect.igodigital.com^
+||100028886.collect.igodigital.com^
+||100030022.collect.igodigital.com^
+||100038611.collect.igodigital.com^
+||100039995.collect.igodigital.com^
 ||101partnerka.unenoteunjour.fr^
 ||10219.global.siteimproveanalytics.io^
+||10325380.collect.igodigital.com^
+||10515133.collect.igodigital.com^
+||1060952.collect.igodigital.com^
+||1067349.collect.igodigital.com^
+||10733449.collect.igodigital.com^
+||10733521.collect.igodigital.com^
+||10746164.collect.igodigital.com^
 ||10830.global.siteimproveanalytics.io^
+||10863811.collect.igodigital.com^
+||10959982.collect.igodigital.com^
+||10963755.collect.igodigital.com^
+||10965057.collect.igodigital.com^
+||10965227.collect.igodigital.com^
+||10966373.collect.igodigital.com^
+||10972460.collect.igodigital.com^
+||10982812.collect.igodigital.com^
+||10986319.collect.igodigital.com^
 ||10b30c035f.805bbde005.com^
+||10c0404e1b.ca197d3bbc.com^
 ||10c49e2492.d0c5bb1804.com^
+||1100051.collect.igodigital.com^
+||110005634.collect.igodigital.com^
+||110006528.collect.igodigital.com^
+||110006698.collect.igodigital.com^
+||110007143.collect.igodigital.com^
+||110007153.collect.igodigital.com^
+||110007158.collect.igodigital.com^
+||110007162.collect.igodigital.com^
 ||1111.sexfortokens.com^
 ||112.net-31.172.xhlive.org^
 ||11522d294f.c96eb4f475.com^
@@ -135658,15 +136701,22 @@ analytics-*.aasaam.com
 ||12pzh49-pno3.superchatlive.com^
 ||12zu6wphd5lbhrv-p.clead.xyz^
 ||1306634.global.siteimproveanalytics.io^
+||1307da803f.88d3a9a9a1.com^
 ||1310736.global.siteimproveanalytics.io^
 ||132.net-31.172.myavlive.com^
+||1347888.collect.igodigital.com^
+||1369801.collect.igodigital.com^
 ||13e5899e55.ed72403cf8.com^
+||13f4601147.efdfb38a2a.com^
+||1430083.collect.igodigital.com^
 ||1433114dbc.ff862f99b4.com^
 ||145.net-31.172.chiccams.com^
+||1482491.collect.igodigital.com^
 ||149.static.stripchat.webcam^
 ||15203452.global.siteimproveanalytics.io^
 ||15203558.global.siteimproveanalytics.io^
 ||153d98e509.428379eb52.com^
+||15ea0bd197.76359a95dd.com^
 ||164e5eb57e.0f89c3c813.com^
 ||165.net-31.172.stripchat.webcam^
 ||16aec8dddf.51a382f947.com^
@@ -135675,9 +136725,13 @@ analytics-*.aasaam.com
 ||171.static.freestrip.chat^
 ||171a426230.585ca31d10.com^
 ||179d1eff2c.f1cf6f66fe.com^
+||181bbda4c2.ce6fc56927.com^
+||191832.collect.igodigital.com^
 ||19298.global.siteimproveanalytics.io^
+||195720.collect.igodigital.com^
 ||1963.global.siteimproveanalytics.io^
 ||197.static.superchatlive.com^
+||19fb6df372.c921a8d3e5.com^
 ||1b31f101c7.caed7495de.com^
 ||1d4b4f7bc7.36e0626972.com^
 ||1pgtvprzsdyakbf-p.adktrack32.xyz^
@@ -135707,6 +136761,7 @@ analytics-*.aasaam.com
 ||2b52362557.22670c0b39.com^
 ||2b72ab91a5.03bcce4872.com^
 ||2bmvvx5wsy7iqo3-p.adktrack30.xyz^
+||2ce242283a.3aa2de320e.com^
 ||2cg8ce5x09jpkdr-c.adktrack40.xyz^
 ||2coordgame1000.spankbanglive.com^
 ||2e1aaa5ac9.3e1b245c19.com^
@@ -135731,16 +136786,23 @@ analytics-*.aasaam.com
 ||332e06b50b.173e1d647e.com^
 ||3338dcd372.11ef3f3e0d.com^
 ||357ceb3cef.289537e8c0.com^
+||35a9d60d1d.808ba9fe3d.com^
 ||35f1f7129e.279a342278.com^
 ||360895.global.siteimproveanalytics.io^
+||38559e1094.d175757719.com^
 ||393058c53b.97b8c93c9d.com^
+||3a0f411352.3434849c2e.com^
 ||3a6359571b.470e0f40ac.com^
 ||3aa5342c9f.8b2b018606.com^
+||3b1d253452.8ea1272194.com^
+||3b694d57dc.ff1232f5f3.com^
 ||3b71ae07b7.5bb3e0be1a.com^
 ||3c12cce224.c4db8f5827.com^
 ||3d940b49cb.84969d4e51.com^
+||3f0a8d866d.788eaddaac.com^
 ||3f3f873995.428a4db078.com^
 ||3f7ccc19aa.cae9894963.com^
+||3fedefbe70.0300acdff2.com^
 ||3sal5ek8fxhkmhv-p.unenoteunjour.fr^
 ||3wjyc8u2qse5pfj-p.adktrack30.xyz^
 ||402f670a1b.870ea458b4.com^
@@ -135750,16 +136812,20 @@ analytics-*.aasaam.com
 ||42be5b600b.fcac6f9c91.com^
 ||430e6749c9.4a93064ed9.com^
 ||43b71a0471.b18244c6c3.com^
+||447c339ed2.da7a60f765.com^
 ||448509.global.siteimproveanalytics.io^
 ||45524b3eed.7460d80586.com^
+||45c8960dbf.0c6be7f968.com^
 ||462c268c7c.4cd79ce97b.com^
 ||470583.global.siteimproveanalytics.io^
+||471a6f102f.bab3105053.com^
 ||476akgzpk3txuzh-c.adkclicker.fr^
 ||476akgzpk3txuzh-p.adkclicker.fr^
 ||49rqiyckzllyvpq-p.bonnelectureatous.fr^
 ||4a2aac440d.7e4c883e71.com^
 ||4ada3756e4.390c1c46b8.com^
 ||4bfa8970e7.8aee7f6429.com^
+||4c13387070.150791bf69.com^
 ||4d93255c75.70cf68d2ed.com^
 ||4e58ef526f.aa7a70aa38.com^
 ||4f1a213614.0f0eeca702.com^
@@ -135767,15 +136833,131 @@ analytics-*.aasaam.com
 ||4pzhkxyrqicp06f-p.bonnelectureatous.fr^
 ||4upghbfulc2qh1e-p.bonnelectureatous.fr^
 ||4uqgdju7g68otbn-p.adkclicker.fr^
+||500009820.collect.igodigital.com^
+||510000007.collect.igodigital.com^
+||510000044.collect.igodigital.com^
+||510000047.collect.igodigital.com^
+||510000628.collect.igodigital.com^
+||510000675.collect.igodigital.com^
+||510001062.collect.igodigital.com^
+||510001690.collect.igodigital.com^
+||510001778.collect.igodigital.com^
+||510002130.collect.igodigital.com^
+||510002407.collect.igodigital.com^
+||510002789.collect.igodigital.com^
+||510002839.collect.igodigital.com^
+||510004606.collect.igodigital.com^
+||510005391.collect.igodigital.com^
+||510005395.collect.igodigital.com^
+||510005604.collect.igodigital.com^
+||510006363.collect.igodigital.com^
+||510006978.collect.igodigital.com^
+||514000909.collect.igodigital.com^
+||514002129.collect.igodigital.com^
+||514003111.collect.igodigital.com^
+||514003532.collect.igodigital.com^
+||514003616.collect.igodigital.com^
+||514006760.collect.igodigital.com^
+||514006771.collect.igodigital.com^
+||514006901.collect.igodigital.com^
+||514007237.collect.igodigital.com^
+||514007990.collect.igodigital.com^
+||514008420.collect.igodigital.com^
+||514009702.collect.igodigital.com^
+||514009935.collect.igodigital.com^
+||514012741.collect.igodigital.com^
+||514013685.collect.igodigital.com^
+||514021787.collect.igodigital.com^
+||514023043.collect.igodigital.com^
+||514023214.collect.igodigital.com^
+||514025538.collect.igodigital.com^
+||514027809.collect.igodigital.com^
+||514030781.collect.igodigital.com^
+||514035692.collect.igodigital.com^
+||515001009.collect.igodigital.com^
+||515005244.collect.igodigital.com^
+||515005351.collect.igodigital.com^
+||515007710.collect.igodigital.com^
+||515008363.collect.igodigital.com^
+||515008369.collect.igodigital.com^
+||515008558.collect.igodigital.com^
+||515010815.collect.igodigital.com^
+||515010833.collect.igodigital.com^
+||515010852.collect.igodigital.com^
+||515011050.collect.igodigital.com^
+||515011129.collect.igodigital.com^
+||515011778.collect.igodigital.com^
+||515011944.collect.igodigital.com^
 ||51624.global.siteimproveanalytics.io^
+||518000635.collect.igodigital.com^
+||518000955.collect.igodigital.com^
+||518000969.collect.igodigital.com^
+||518002086.collect.igodigital.com^
+||518003117.collect.igodigital.com^
+||518004450.collect.igodigital.com^
+||518004463.collect.igodigital.com^
+||518004687.collect.igodigital.com^
+||518005082.collect.igodigital.com^
+||518006701.collect.igodigital.com^
 ||51a66f8059.ce0a43500c.com^
+||520000604.collect.igodigital.com^
+||520001618.collect.igodigital.com^
+||523001330.collect.igodigital.com^
+||523014609.collect.igodigital.com^
+||524003212.collect.igodigital.com^
+||524006080.collect.igodigital.com^
+||524006087.collect.igodigital.com^
+||526001770.collect.igodigital.com^
+||526002307.collect.igodigital.com^
+||526003393.collect.igodigital.com^
+||526003453.collect.igodigital.com^
+||52f79b55a7.93febf18c6.com^
 ||52fd9f7fa7.e65303ab96.com^
+||534001276.collect.igodigital.com^
+||534001681.collect.igodigital.com^
+||534001940.collect.igodigital.com^
+||534002007.collect.igodigital.com^
+||534002983.collect.igodigital.com^
+||534003548.collect.igodigital.com^
+||534003663.collect.igodigital.com^
+||534003721.collect.igodigital.com^
+||534004606.collect.igodigital.com^
+||534004646.collect.igodigital.com^
+||534005307.collect.igodigital.com^
+||534006214.collect.igodigital.com^
+||534007598.collect.igodigital.com^
+||534008181.collect.igodigital.com^
+||534008454.collect.igodigital.com^
+||534014733.collect.igodigital.com^
+||536001766.collect.igodigital.com^
+||536002285.collect.igodigital.com^
+||536002447.collect.igodigital.com^
+||536003066.collect.igodigital.com^
+||536003361.collect.igodigital.com^
+||536003807.collect.igodigital.com^
+||536004310.collect.igodigital.com^
+||536004560.collect.igodigital.com^
+||536006361.collect.igodigital.com^
+||536006856.collect.igodigital.com^
+||536007164.collect.igodigital.com^
 ||536a1baec3.b594cb3a32.com^
 ||5393e2d07f.a196f8c478.com^
 ||53d89e43fe.6ab90bcccc.com^
 ||53xceglbgwp9tol-c.adkoffre.fr^
 ||542130b763.144e93f0b6.com^
 ||5438d55745.8fbff00648.com^
+||546000554.collect.igodigital.com^
+||546001173.collect.igodigital.com^
+||546001856.collect.igodigital.com^
+||546002667.collect.igodigital.com^
+||546002682.collect.igodigital.com^
+||546003271.collect.igodigital.com^
+||546003834.collect.igodigital.com^
+||546004197.collect.igodigital.com^
+||546008639.collect.igodigital.com^
+||546011740.collect.igodigital.com^
+||546013038.collect.igodigital.com^
+||546014185.collect.igodigital.com^
 ||54dfda1b04.1110024a7a.com^
 ||55412.global.siteimproveanalytics.io^
 ||563113.global.siteimproveanalytics.io^
@@ -135801,7 +136983,9 @@ analytics-*.aasaam.com
 ||6005945.global.siteimproveanalytics.io^
 ||6010112.global.siteimproveanalytics.io^
 ||6010362.global.siteimproveanalytics.io^
+||6010747.collect.igodigital.com^
 ||6010917.global.siteimproveanalytics.io^
+||6010988.collect.igodigital.com^
 ||6011278.global.siteimproveanalytics.io^
 ||6012615.global.siteimproveanalytics.io^
 ||6014064.global.siteimproveanalytics.io^
@@ -135859,12 +137043,23 @@ analytics-*.aasaam.com
 ||6145465.global.siteimproveanalytics.io^
 ||614cb31132.0a82cdf4d4.com^
 ||6151854.global.siteimproveanalytics.io^
+||6165092.collect.igodigital.com^
 ||6166983.global.siteimproveanalytics.io^
 ||61682.global.siteimproveanalytics.io^
+||6168842.collect.igodigital.com^
+||6182251.collect.igodigital.com^
+||6187272.collect.igodigital.com^
+||6189532.collect.igodigital.com^
 ||6191615.global.siteimproveanalytics.io^
+||6204440.collect.igodigital.com^
 ||62290.global.siteimproveanalytics.io^
 ||6229968.global.siteimproveanalytics.io^
+||6234414.collect.igodigital.com^
 ||6239154.global.siteimproveanalytics.io^
+||6239576.collect.igodigital.com^
+||6249496.collect.igodigital.com^
+||62508028aa.b6b2d31f7e.com^
+||6252040.collect.igodigital.com^
 ||6253864.global.siteimproveanalytics.io^
 ||6254967.global.siteimproveanalytics.io^
 ||6274295.global.siteimproveanalytics.io^
@@ -135872,22 +137067,48 @@ analytics-*.aasaam.com
 ||6282269.global.siteimproveanalytics.io^
 ||6283531.global.r2.siteimproveanalytics.io^
 ||6285496.global.siteimproveanalytics.io^
+||6286455.collect.igodigital.com^
+||6286457.collect.igodigital.com^
 ||6290126.global.siteimproveanalytics.io^
 ||6290803.global.r2.siteimproveanalytics.io^
+||6290965.collect.igodigital.com^
 ||6291621.global.r2.siteimproveanalytics.io^
 ||6291993.global.siteimproveanalytics.io^
 ||6292776.global.r2.siteimproveanalytics.io^
 ||6292943.global.r2.siteimproveanalytics.io^
 ||6293744.global.r2.siteimproveanalytics.io^
+||6301360.collect.igodigital.com^
+||6311223.collect.igodigital.com^
 ||6315119.global.r2.siteimproveanalytics.io^
 ||6319400.global.siteimproveanalytics.io^
+||6322611.collect.igodigital.com^
+||6329244.collect.igodigital.com^
+||6331257.collect.igodigital.com^
 ||6334075.global.r2.siteimproveanalytics.io^
 ||6339701.global.r2.siteimproveanalytics.io^
 ||6342734.global.r2.siteimproveanalytics.io^
 ||6382dc675e.41230094f2.com^
+||6387581.collect.igodigital.com^
 ||63a98fb9e9.aba8bc155e.com^
 ||63d8c6c172.c7b4215ccd.com^
+||6407333.collect.igodigital.com^
+||6413849.collect.igodigital.com^
+||6413851.collect.igodigital.com^
+||6413852.collect.igodigital.com^
+||6413861.collect.igodigital.com^
+||6417589.collect.igodigital.com^
+||6418226.collect.igodigital.com^
+||6418990.collect.igodigital.com^
+||6419171.collect.igodigital.com^
+||6419189.collect.igodigital.com^
+||6419503.collect.igodigital.com^
+||6422499.collect.igodigital.com^
+||6425582.collect.igodigital.com^
+||6426127.collect.igodigital.com^
+||6426136.collect.igodigital.com^
+||65a1f4997b.9fe538916e.com^
 ||66.net-31.172.shemale.show^
+||662795d63c.45f467a9d4.com^
 ||66356248.global.siteimproveanalytics.io^
 ||66356275.global.siteimproveanalytics.io^
 ||66356283.global.siteimproveanalytics.io^
@@ -135927,6 +137148,7 @@ analytics-*.aasaam.com
 ||66e0734c97.744a1d2fd3.com^
 ||67172753.global.siteimproveanalytics.io^
 ||6721.global.siteimproveanalytics.io^
+||676c90ebc6.6b6c1b838a.com^
 ||67744001.global.siteimproveanalytics.io^
 ||67778039.global.siteimproveanalytics.io^
 ||67839448.global.siteimproveanalytics.io^
@@ -135952,19 +137174,151 @@ analytics-*.aasaam.com
 ||6e7966fcaf.db8a63af00.com^
 ||6e8afjd5cwd9prp-p.adkoffer.fr^
 ||6ef8637b9b.d473cd71cf.com^
+||6f6934efb4.481516ca1d.com^
 ||6fe031ebf3.ec2f57e8c7.com^
 ||6jqsb3hwm4blce8-p.adktrack34.xyz^
 ||6m3xgsoiwvajrnl-p.clickomo.fr^
 ||6zw8pecp4ycirvq-c.linkadk.fr^
+||7000413.collect.igodigital.com^
+||7003822.collect.igodigital.com^
 ||7012.global.siteimproveanalytics.io^
 ||7066.global.siteimproveanalytics.io^
 ||7085182c30.525fa10cfc.com^
 ||7089.global.siteimproveanalytics.io^
+||710ab98253.6764a4b67d.com^
 ||715e977874.e5f41a599d.com^
 ||7172.global.siteimproveanalytics.io^
+||7200718.collect.igodigital.com^
+||7200719.collect.igodigital.com^
+||7200863.collect.igodigital.com^
+||7200981.collect.igodigital.com^
+||7201710.collect.igodigital.com^
+||7202503.collect.igodigital.com^
+||7203837.collect.igodigital.com^
+||7205607.collect.igodigital.com^
+||7206223.collect.igodigital.com^
+||7206982.collect.igodigital.com^
+||7207357.collect.igodigital.com^
+||7207717.collect.igodigital.com^
+||7207718.collect.igodigital.com^
+||7208781.collect.igodigital.com^
+||7209949.collect.igodigital.com^
+||7210119.collect.igodigital.com^
+||7212122.collect.igodigital.com^
+||7217158.collect.igodigital.com^
 ||72177.global.siteimproveanalytics.io^
+||7220880.collect.igodigital.com^
+||7222928.collect.igodigital.com^
+||7223649.collect.igodigital.com^
+||7223835.collect.igodigital.com^
+||7225019.collect.igodigital.com^
+||7226716.collect.igodigital.com^
+||7227272.collect.igodigital.com^
+||7227558.collect.igodigital.com^
+||7228476.collect.igodigital.com^
+||7229597.collect.igodigital.com^
+||7229998.collect.igodigital.com^
+||7231187.collect.igodigital.com^
+||7231213.collect.igodigital.com^
+||7231222.collect.igodigital.com^
+||7231699.collect.igodigital.com^
+||7231872.collect.igodigital.com^
+||7233063.collect.igodigital.com^
+||7233599.collect.igodigital.com^
+||7234672.collect.igodigital.com^
+||7235134.collect.igodigital.com^
+||7237405.collect.igodigital.com^
+||7237686.collect.igodigital.com^
+||7238213.collect.igodigital.com^
+||7243017.collect.igodigital.com^
+||725452b440.c8be05e5a0.com^
+||7269151.collect.igodigital.com^
+||7269812.collect.igodigital.com^
+||7270039.collect.igodigital.com^
+||7275979.collect.igodigital.com^
 ||72764.global.siteimproveanalytics.io^
+||7276578.collect.igodigital.com^
+||7277025.collect.igodigital.com^
+||7277655.collect.igodigital.com^
+||7279221.collect.igodigital.com^
+||7279222.collect.igodigital.com^
+||7279336.collect.igodigital.com^
+||7279825.collect.igodigital.com^
+||7279980.collect.igodigital.com^
+||7281071.collect.igodigital.com^
+||7281313.collect.igodigital.com^
+||7283808.collect.igodigital.com^
+||7283845.collect.igodigital.com^
+||7286220.collect.igodigital.com^
+||7286855.collect.igodigital.com^
+||7287261.collect.igodigital.com^
+||7287721.collect.igodigital.com^
+||7290744.collect.igodigital.com^
+||7290999.collect.igodigital.com^
+||7291116.collect.igodigital.com^
+||7291220.collect.igodigital.com^
+||7291252.collect.igodigital.com^
+||7291971.collect.igodigital.com^
+||7292133.collect.igodigital.com^
+||7292313.collect.igodigital.com^
+||7292468.collect.igodigital.com^
+||7292906.collect.igodigital.com^
+||7292913.collect.igodigital.com^
+||7293036.collect.igodigital.com^
+||7294204.collect.igodigital.com^
+||7294693.collect.igodigital.com^
+||7294759.collect.igodigital.com^
+||7294770.collect.igodigital.com^
+||7295188.collect.igodigital.com^
+||7295370.collect.igodigital.com^
+||7295388.collect.igodigital.com^
+||7295484.collect.igodigital.com^
+||7295600.collect.igodigital.com^
+||7295740.collect.igodigital.com^
+||7296028.collect.igodigital.com^
+||7296112.collect.igodigital.com^
+||7296119.collect.igodigital.com^
+||7296650.collect.igodigital.com^
+||7296665.collect.igodigital.com^
+||7296810.collect.igodigital.com^
+||7297186.collect.igodigital.com^
+||7297500.collect.igodigital.com^
+||7297790.collect.igodigital.com^
+||7297803.collect.igodigital.com^
+||7298601.collect.igodigital.com^
+||7299776.collect.igodigital.com^
 ||72c15d592c.414e4a3698.com^
+||7300007.collect.igodigital.com^
+||7300013.collect.igodigital.com^
+||7300368.collect.igodigital.com^
+||7300863.collect.igodigital.com^
+||7301916.collect.igodigital.com^
+||7304473.collect.igodigital.com^
+||7304587.collect.igodigital.com^
+||7305611.collect.igodigital.com^
+||7306408.collect.igodigital.com^
+||7306662.collect.igodigital.com^
+||7309485.collect.igodigital.com^
+||7310692.collect.igodigital.com^
+||7315920.collect.igodigital.com^
+||7316235.collect.igodigital.com^
+||7316446.collect.igodigital.com^
+||7322496.collect.igodigital.com^
+||7323447.collect.igodigital.com^
+||7323617.collect.igodigital.com^
+||7325687.collect.igodigital.com^
+||7325997.collect.igodigital.com^
+||7326325.collect.igodigital.com^
+||7326801.collect.igodigital.com^
+||7326847.collect.igodigital.com^
+||7326848.collect.igodigital.com^
+||7327889.collect.igodigital.com^
+||7328429.collect.igodigital.com^
+||7328781.collect.igodigital.com^
+||7329370.collect.igodigital.com^
+||7329633.collect.igodigital.com^
+||7330071.collect.igodigital.com^
+||7330213.collect.igodigital.com^
 ||7376.global.siteimproveanalytics.io^
 ||7517.global.siteimproveanalytics.io^
 ||7539566c25.df548bec8c.com^
@@ -135985,6 +137339,7 @@ analytics-*.aasaam.com
 ||78834.global.siteimproveanalytics.io^
 ||78835.global.siteimproveanalytics.io^
 ||78844.global.siteimproveanalytics.io^
+||7885c8b33a.ac28816960.com^
 ||78f77febd4.b49170aaa3.com^
 ||79249.global.siteimproveanalytics.io^
 ||79672.global.siteimproveanalytics.io^
@@ -135992,7 +137347,9 @@ analytics-*.aasaam.com
 ||7a2e6c0335.ced3494312.com^
 ||7akfvczdhzmrp5c-c.adkclicker.fr^
 ||7b04ae1dbf.bb1b9b8ea2.com^
+||7b26070d7b.68d48e2725.com^
 ||7bdc97a611.469ccf55cc.com^
+||7c9edd89e2.5fbc7e29cd.com^
 ||7d9abe8eb2.53ad45898e.com^
 ||7db1b0305a.05c7f67ff8.com^
 ||7efa876ad4.d0abc3646f.com^
@@ -136004,6 +137361,8 @@ analytics-*.aasaam.com
 ||7veerrc2ubwimhl-c.adktrack34.xyz^
 ||8.net-31.172.stripchats.io^
 ||80352.global.siteimproveanalytics.io^
+||8139917f5a.342ef7c20e.com^
+||8200011.collect.igodigital.com^
 ||82079.global.siteimproveanalytics.io^
 ||82088.global.siteimproveanalytics.io^
 ||82203.global.siteimproveanalytics.io^
@@ -136012,11 +137371,13 @@ analytics-*.aasaam.com
 ||82452.global.siteimproveanalytics.io^
 ||82728.global.siteimproveanalytics.io^
 ||8309b4c5f6.602e6a55fb.com^
+||834f30b090.9832d75ae3.com^
 ||8371.global.siteimproveanalytics.io^
 ||83925.global.siteimproveanalytics.io^
 ||84133.global.siteimproveanalytics.io^
 ||8489.global.siteimproveanalytics.io^
 ||84sxwz5hecqmt2p-c.unenoteunjour.fr^
+||8591b47c8b.aada35c15f.com^
 ||85fc51cc57.b077fc96e0.com^
 ||86117.global.siteimproveanalytics.io^
 ||8655437872.1f1d9a652e.com^
@@ -136052,6 +137413,7 @@ analytics-*.aasaam.com
 ||950cjmyvgerwpbv-c.unenoteunjour.fr^
 ||9566.global.siteimproveanalytics.io^
 ||9572f39990.c90dc23040.com^
+||95cb7382fe.e6c5f295b4.com^
 ||96.net-31.172.stripchats.io^
 ||9642.global.siteimproveanalytics.io^
 ||96deb6c755.6dd1167e04.com^
@@ -136059,6 +137421,7 @@ analytics-*.aasaam.com
 ||9b27c61c1e.a07154cac7.com^
 ||9b81706c09.c161949ece.com^
 ||9bb5444a65.d1d114356e.com^
+||9db0eb07b5.8a53b29c07.com^
 ||9dxvuwzq7s2pf4l-c.adkclicker.fr^
 ||9e74beea59.5f5517c662.com^
 ||9hfx5u2q8wzmn0h-p.adktrack30.xyz^
@@ -136113,9 +137476,12 @@ analytics-*.aasaam.com
 ||a614.syracuse.com^
 ||a6a595afa0.d20591a5fd.com^
 ||a6ef6929e5.6cc5f97c91.com^
+||a7da65e0e5.17ed256d85.com^
 ||a80f715848.b9103544dc.com^
+||a8a7f3b120.d4797171fc.com^
 ||a8fa486953.b47114d926.com^
 ||a91a3eb601.68d4d1e771.com^
+||a967080464.0da6b9c880.com^
 ||aa47e07c73.f85d290a92.com^
 ||aa884225ad.84747737e0.com^
 ||aaaa.hot-india.com^
@@ -136160,6 +137526,7 @@ analytics-*.aasaam.com
 ||aerospace.stripchatgirls.com^
 ||aesir.superchatlive.com^
 ||af26280486.a1057123f0.com^
+||af62ccc4c8.153c349024.com^
 ||afd2557582.e2957dfa03.com^
 ||afe125baef.7762dc22a5.com^
 ||agatha.omg.adult^
@@ -136339,6 +137706,7 @@ analytics-*.aasaam.com
 ||b113.stripchat.global^
 ||b23097a9a2.c4691f6b54.com^
 ||b235.stripchats.io^
+||b255043e2e.3b15e41dab.com^
 ||b3b281b815.5acba06d35.com^
 ||b444707fdc.4ae2e793d9.com^
 ||b5ukp3l8fbzrein-p.bonnelectureatous.fr^
@@ -136348,6 +137716,7 @@ analytics-*.aasaam.com
 ||b7bff12888.bbbe6e2472.com^
 ||b7d69916a8.425410f96b.com^
 ||b7ooagmievxajkf-p.akming.xyz^
+||b895c86c17.ab8c7b1863.com^
 ||b8f7473cd2.91548aee74.com^
 ||b9d9e136c0.0c45fdeae9.com^
 ||ba3849f40f.b161680016.com^
@@ -136455,12 +137824,15 @@ analytics-*.aasaam.com
 ||c0zof9ohq4rmayu-p.clead.xyz^
 ||c123.xhlive.org^
 ||c141.spankbanglive.com^
+||c22366265d.8d46e91bf0.com^
+||c2a0609d8f.92d31be64a.com^
 ||c333.macworld.co.uk^
 ||c3b2cda611.b8be15ca44.com^
 ||c3dc092e5d.e365275045.com^
 ||c3o46he9dtuop8y-p.linkomo.fr^
 ||c42d357c54.8d310a6a39.com^
 ||c4i8r1xnz9s5acq-p.adkplan.fr^
+||c56b030151.fe17ba9b40.com^
 ||c63e006632.1843be0a5b.com^
 ||c6a4712ab6.91562f6de0.com^
 ||c73.freestrip.chat^
@@ -136594,9 +137966,11 @@ analytics-*.aasaam.com
 ||d220.freestrip.chat^
 ||d263c5431c.1e3afdea62.com^
 ||d2kragwbgmkfohq-p.adkoffer.fr^
+||d3ba17ed85.5a8a1b39d4.com^
 ||d3f013ea52.895c67da73.com^
 ||d3f06f58e4.7751c829ca.com^
 ||d47b55828a.de3887b464.com^
+||d4ace898f9.ed24cb4bc7.com^
 ||d4bdc31b7e.99d1f1d37e.com^
 ||d56a549e9a.4b516fd6c9.com^
 ||d603ed603c.dff6af78c7.com^
@@ -136687,6 +138061,7 @@ analytics-*.aasaam.com
 ||devlab.xhlive.org^
 ||devteam.stripchat.webcam^
 ||df5760f05b.236dd57cef.com^
+||df7e1cf1aa.51e3337e65.com^
 ||dfe2gamtua4ypyn-p.linkomo.fr^
 ||dfnsq3taix07qel-p.unenoteunjour.fr^
 ||dh2wdr1cbypqogn-c.adkclicker.fr^
@@ -136758,7 +138133,9 @@ analytics-*.aasaam.com
 ||e50dc6ad27.ca7d0bd322.com^
 ||e5f4a975e1.379b3d01c3.com^
 ||e63.superchatlive.com^
+||e6499697e6.d97d3231b2.com^
 ||e69.stripchat.global^
+||e791351c80.680642cdf3.com^
 ||e7b8fa45d6.c510a0b19c.com^
 ||e7d7103a48.dca35279ca.com^
 ||e9gjs6fzixjbyqw-p.linkomo.fr^
@@ -136776,6 +138153,8 @@ analytics-*.aasaam.com
 ||economia.strp.chat^
 ||ed29a8f5c3.7d99fa5a16.com^
 ||ed3fb005dc.546a5a69a9.com^
+||ef16276d05.22a008da69.com^
+||ef4fd13e78.bb2d37b777.com^
 ||ef506fa44f.580fbe2c4e.com^
 ||ef5222325b.8d0ec41186.com^
 ||efimu2wfbbnszqt-p.adktrack34.xyz^
@@ -136845,6 +138224,7 @@ analytics-*.aasaam.com
 ||en.superchatlive.com^
 ||enqybqtigl0d49c-p.clead.xyz^
 ||env.superchatlive.com^
+||enviedeplus.collect.igodigital.com^
 ||eric.stripchatgirls.com^
 ||erpdev.sexfortokens.com^
 ||es.aznudelive.com^
@@ -136918,29 +138298,37 @@ analytics-*.aasaam.com
 ||f1ac7cb1ae.744908dbf5.com^
 ||f221.myavlive.com^
 ||f2952c97bf.bc4de0755f.com^
+||f2b5fd31ad.24df4bd648.com^
 ||f3crrgnzjmqup0y-p.adkoffer.fr^
 ||f3ecbf9a98.95dc89f000.com^
 ||f4573d395e.9acf69ca5f.com^
 ||f476f3ffa9.eb1536c76c.com^
 ||f4tq7rrbiinozqh-p.clead.xyz^
 ||f5vy3xjl4zqen0w-p.tck020.xyz^
+||f66b42fd48.a568e472d6.com^
 ||f74e368347.ec754d917d.com^
+||f82e465fc3.538d99dc8d.com^
+||f847dacf54.c3ee303367.com^
 ||f8938ba05c.2ec5aba168.com^
 ||f97obe6pjhyt5ne-c.linkomo.fr^
 ||f9c456929e.23f9e517a6.com^
 ||fa32763d62.90757c7d6c.com^
 ||fa949fbb94.2daa3302bc.com^
+||fa9dc0e7bb.f587cad87f.com^
 ||farmers.superchatlive.com^
 ||fba5d54634.d9303988cb.com^
 ||fbaqnxczpjin82k-p.adkoffer.fr^
+||fbbe4ece23.92540760ee.com^
 ||fcln7axyymt0blq-c.adkclicker.fr^
 ||fdd5c91116.606b85787b.com^
 ||fds7ftzt3a69jwe-c.clead.xyz^
 ||fe.omg.adult^
+||fe5071dde0.7c5734761f.com^
 ||federated.stripchat.webcam^
 ||feniks.xhlive.org^
 ||fepool.chiccams.com^
 ||ff161ce5ce.c17778a8e1.com^
+||ff7318f0b1.122cafc086.com^
 ||ffsulckkynxvmx4-p.adktrack39.xyz^
 ||fg2.chiccams.com^
 ||fhoch46f1vjnyti-c.clickomo.fr^
@@ -137839,6 +139227,7 @@ analytics-*.aasaam.com
 ||no.xhlive.org^
 ||no3qvsbzkfwrop6-p.recettedubonheur.fr^
 ||node241.stripchat.webcam^
+||nova.collect.igodigital.com^
 ||nova2.sexfortokens.com^
 ||novis.stripchatgirls.com^
 ||nqsko9nxk3ixtpy-p.linkomo.fr^
@@ -137904,18 +139293,37 @@ analytics-*.aasaam.com
 ||owycnls3jhmr60u-p.bonnelectureatous.fr^
 ||ozyawy1heaczi2n-p.adkplan.fr^
 ||p.almacz.com^
+||p.awlov.info^
+||p.buawop.cloud^
 ||p.fedsy.xyz^
+||p.flaw.cloud^
 ||p.ftwpcn.com^
 ||p.gocolow.com^
+||p.hatzhq.net^
 ||p.hqwoq.com^
 ||p.jakwo.cloud^
+||p.japw.cloud^
+||p.jodl.cloud^
+||p.joluw.net^
+||p.juslxp.com^
 ||p.ktbch.cloud^
+||p.lagt.cloud^
+||p.lownoc.org^
+||p.lwxuo.com^
+||p.mhhr.cloud^
+||p.miuo.cloud^
 ||p.nejxdoy.com^
+||p.netund.com^
 ||p.noday.cloud^
 ||p.ovqds.com^
 ||p.palauw.cloud^
+||p.pbmt.cloud^
+||p.poder.cloud^
+||p.pukt.cloud^
+||p.rukanw.com^
 ||p.xbcpcn.com^
 ||p.zizulw.net^
+||p.zizulw.org^
 ||p08.omg.adult^
 ||p0fbv39qttz2vpk0.internal.pov.acceldatasolutions.net^
 ||p3jq1cgvwhfcnx5-p.adktrack30.xyz^
@@ -137939,6 +139347,7 @@ analytics-*.aasaam.com
 ||pd2.superchatlive.com^
 ||pd8xafexjhuwzy4-p.adkoffer.fr^
 ||pec8invbfzzrucp-p.unenoteunjour.fr^
+||perryellis.collect.igodigital.com^
 ||pezoh8d4xr3vlkw-p.adktrack44.xyz^
 ||pf6tjxbzsl0mjhu-c.adkclicker.fr^
 ||pf6tjxbzsl0mjhu-p.adkclicker.fr^
@@ -138108,6 +139517,7 @@ analytics-*.aasaam.com
 ||rainmaker.chiccams.com^
 ||raps.strp.chat^
 ||raq1.spankbanglive.com^
+||rbcroyalbank.fp.collect.igodigital.com^
 ||rcrk5tsyw8lqaah-c.bonnelectureatous.fr^
 ||rdns20.freestrip.chat^
 ||recife.stripchat.webcam^
@@ -139115,8 +140525,10 @@ analytics-*.aasaam.com
 ||textupload.strp.chat^
 ||tfs2010.chiccams.com^
 ||tgate.freestrip.chat^
+||therealreal.collect.igodigital.com^
 ||ticket2.stripchat.webcam^
 ||timex.strp.chat^
+||tip-euc-ice.360yield-basic.com^
 ||tms2.freestrip.chat^
 ||tob.freestrip.chat^
 ||tok.myavlive.com^
@@ -139730,6 +141142,7 @@ analytics-*.aasaam.com
 !
 ! Source name: Brave CNMAME Blocklist
 !
+! *.demdex.net (needs to be removed)
 ! *.bred4tula.com (needs to be removed)
 ! *.fp.measure.office.com (needs to be removed)
 ! *.footprintdns.com (needs to be removed)
@@ -140248,6 +141661,7 @@ analytics-*.aasaam.com
 ||tdep.suncamp.pl^
 ||tdep.teamnijhuis.com^
 !
+! at-o.net https://github.com/AdguardTeam/cname-trackers/blob/master/data/trackers/at-internet-(formerly-xiti).txt
 !
 |71efe2183b8663ad5bf9d7a9320aeb48.leboncoin.fr^
 ||ama.planet-wissen.de^
@@ -140753,6 +142167,7 @@ arketing.indianadunes.com^
 ||click.zoominformation.com^
 ||contact.marathon-sports-ec.com^
 ||direct.t-mobile.com^
+||fr.sharpmarketing.eu^
 ||go.ciscoprogram.com^
 ||info.bakercommunications.com^
 ||info.eco.ca^
@@ -140899,6 +142314,7 @@ arketing.indianadunes.com^
 ||fulmar.net.anwalt.de^
 ||ginmon.efscle.com^
 ||holtsap1.net.anwalt.de^
+||html.net.jumia.com^
 ||img.service.belboon.com^
 ||kernenergie.efscle.com^
 ||lozano.net.anwalt.de^
@@ -140908,11 +142324,13 @@ arketing.indianadunes.com^
 ||marketing.net.home24.at^
 ||marketing.net.home24.ch^
 ||marketing.net.home24.fr^
+||marketing.net.jumia.com.gh^
 ||marketing.net.x24factory.com^
 ||media-atl3-1.cdn.whatsapp.net.iberostar.com^
 ||mellamanjorge.net.anwalt.de^
 ||mholland.net.anwalt.de^
 ||neoncsr21.net.anwalt.de^
+||net.jumia.com.eg^
 ||net.steiner-vision.de^
 ||net.toom.de^
 ||net.zooplus.com^
@@ -142828,6 +144246,7 @@ arketing.indianadunes.com^
 ||vrcamdl.istaging.com^
 ||wallet.chain.com^
 ||we.getcharly.com^
+||wop-bio.ubiwhere.com^
 ||www.goldenways.fun^
 ||your.tmro.me^
 ||zombieslayer.kano.link^
@@ -144165,8 +145584,6 @@ arketing.indianadunes.com^
 ||app.kamlno.network^
 ||macclear.com^
 ://account.booking.xn--
-||onepiecegoods.com^
-||printslamdunk.com^
 ||pixiv.verificationidentity.click^
 ||complete-to-continue.pages.dev^
 ! scam sites
@@ -145434,6 +146851,8 @@ arketing.indianadunes.com^
 ||lvrc.jp^
 ||dearmonalisa.com^
 ||nogruptexn.com^
+||paulssuitswholeshop-jp.shop^
+||ralphclothing-jp.com^
 ||webogram.org^
 ||webogram.ru^
 ||xn--80affa3aj0al.xn--80asehdb^
@@ -146660,3 +148079,6 @@ arketing.indianadunes.com^
 ||faciet.client-ac.com^
 ||lazada.hnjqpm.com^
 ||sasktel.mmspos.com^
+||onepiecegoods.com^
+||printslamdunk.com^
+||jujutsukaisengoods.com^
