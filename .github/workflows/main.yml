@@ -66,7 +66,7 @@ jobs:
         run: TLS=insecure node src/cli.js -c examples/sdn/configuration.json -o filter.txt
 
       - name: Build Allowlist
-        run: TLS=insecure node src/cli.js -c examples/whitelist/configuration.json -o whitelist.txt
+        run: TLS=insecure node src/cli.js -c examples/whitelist/configuration.json -o whitelist.txt | sed 's/@@//g'
 
       # - name: Build OISD
         # run: TLS=insecure node src/cli.js -c examples/OISD/configuration.json -o oisd.txt
