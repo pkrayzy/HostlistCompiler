@@ -6,9 +6,15 @@
   "sources":[
     {
       "name": "AdGuard DNS filter",
-      "source": "https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt",
+      "source": "https://raw.githubusercontent.com/pkrayzy/HostlistCompiler/master/optimized/15_optimized.txt",
       "type": "adblock",
       "transformations": ["Deduplicate", "Validate", "RemoveComments"]
+    },
+    {
+      "name": "HaGeZi's Light DNS Blocklist",
+      "source": "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/light.txt",
+      "type": "adblock",
+      "transformations": ["RemoveComments", "Compress"]
     },
     {
       "name": "EasyPrivacy Admiral",
@@ -26,7 +32,8 @@
       "name": "Additional rules",
       "source": "https://raw.githubusercontent.com/AdguardTeam/AdGuardSDNSFilter/master/Filters/rules.txt",
       "type": "adblock",
-      "transformations": ["Deduplicate", "Validate", "RemoveComments"]
+      "transformations": ["Deduplicate", "Validate", "RemoveComments"],
+      "exclusions": ["||mobileanalytics.*.amazonaws.com^"]
     }
   ],
   "exclusions_sources": [
