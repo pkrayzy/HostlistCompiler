@@ -56,30 +56,14 @@ jobs:
 
       - name: Download and transform Adguard Filters
         run: |
-          (echo '!#safari_cb_affinity(general)' 
-            && curl -s https://filters.adtidy.org/ios/filters/2_optimized.txt | grep -v '!#safari_cb_affinity' 
-            && echo '!#safari_cb_affinity') > ./optimized/2_optimized.txt
-          (echo '!#safari_cb_affinity(general)' 
-            && curl -s https://filters.adtidy.org/ios/filters/3_optimized.txt | grep -v '!#safari_cb_affinity' 
-            && echo '!#safari_cb_affinity') > ./optimized/3_optimized.txt
-          (echo '!#safari_cb_affinity(general)' 
-            && curl -s https://filters.adtidy.org/ios/filters/4_optimized.txt | grep -v '!#safari_cb_affinity' 
-            && echo '!#safari_cb_affinity') > ./optimized/4_optimized.txt
-          (echo '!#safari_cb_affinity(general)' 
-            && curl -s https://filters.adtidy.org/ios/filters/11_optimized.txt | grep -v '!#safari_cb_affinity' 
-            && echo '!#safari_cb_affinity') > ./optimized/11_optimized.txt
-          (echo '!#safari_cb_affinity(general)' 
-            && curl -s https://filters.adtidy.org/ios/filters/14_optimized.txt | grep -v '!#safari_cb_affinity' 
-            && echo '!#safari_cb_affinity') > ./optimized/14_optimized.txt
-          (echo '!#safari_cb_affinity(general)' 
-            && curl -s https://filters.adtidy.org/ios/filters/101_optimized.txt | grep -v '!#safari_cb_affinity' 
-            && echo '!#safari_cb_affinity') > ./optimized/101_optimized.txt
-          (echo '!#safari_cb_affinity(general)' 
-            && curl -s https://filters.adtidy.org/ios/filters/118_optimized.txt | grep -v '!#safari_cb_affinity' 
-            && echo '!#safari_cb_affinity') > ./optimized/118_optimized.txt
-          (echo '!#safari_cb_affinity(general)' 
-            && curl -s https://filters.adtidy.org/ios/filters/122_optimized.txt | grep -v '!#safari_cb_affinity' 
-            && echo '!#safari_cb_affinity') > ./optimized/122_optimized.txt
+          (echo '!#safari_cb_affinity(general)' && curl -s https://filters.adtidy.org/ios/filters/2_optimized.txt | grep -v '!#safari_cb_affinity' && echo '!#safari_cb_affinity') > ./optimized/2_optimized.txt
+          (echo '!#safari_cb_affinity(privacy)' && curl -s https://filters.adtidy.org/ios/filters/3_optimized.txt | grep -v '!#safari_cb_affinity' && echo '!#safari_cb_affinity') > ./optimized/3_optimized.txt
+          (echo '!#safari_cb_affinity(social)' && curl -s https://filters.adtidy.org/ios/filters/4_optimized.txt | grep -v '!#safari_cb_affinity' && echo '!#safari_cb_affinity') > ./optimized/4_optimized.txt
+          (echo '!#safari_cb_affinity(general)' && curl -s https://filters.adtidy.org/ios/filters/11_optimized.txt | grep -v '!#safari_cb_affinity' && echo '!#safari_cb_affinity') > ./optimized/11_optimized.txt
+          (echo '!#safari_cb_affinity(social)' && curl -s https://filters.adtidy.org/ios/filters/14_optimized.txt | grep -v '!#safari_cb_affinity' && echo '!#safari_cb_affinity') > ./optimized/14_optimized.txt
+          (echo '!#safari_cb_affinity(general)' && curl -s https://filters.adtidy.org/ios/filters/101_optimized.txt | grep -v '!#safari_cb_affinity' && echo '!#safari_cb_affinity') > ./optimized/101_optimized.txt
+          (echo '!#safari_cb_affinity(privacy)' && curl -s https://filters.adtidy.org/ios/filters/118_optimized.txt | grep -v '!#safari_cb_affinity' && echo '!#safari_cb_affinity') > ./optimized/118_optimized.txt
+          (echo '!#safari_cb_affinity(social)' && curl -s https://filters.adtidy.org/ios/filters/122_optimized.txt | grep -v '!#safari_cb_affinity' && echo '!#safari_cb_affinity') > ./optimized/122_optimized.txt
           curl -s https://filters.adtidy.org/ios/filters/2_optimized.txt | grep "www.youtube.com#%#" > ./optimized/2_scriptlets.txt
           curl -s https://filters.adtidy.org/ios/filters/5_optimized.txt | grep "youtube.com#%#" > ./optimized/5_scriptlets.txt
 
