@@ -34,8 +34,12 @@ jobs:
           (echo '!#safari_cb_affinity(security)' && curl -s https://ublockorigin.github.io/uAssetsCDN/filters/privacy.min.txt | grep -v '!#safari_cb_affinity' && echo '!#safari_cb_affinity') > ./optimized/118_ublock.txt
           (echo '!#safari_cb_affinity(social)' && curl -s https://filters.adtidy.org/extension/ublock/filters/122.txt | grep -v '!#safari_cb_affinity' && echo '!#safari_cb_affinity') > ./optimized/122_optimized.txt
           (echo '!#safari_cb_affinity(social)' && curl -s https://ublockorigin.github.io/uAssetsCDN/filters/annoyances.min.txt | grep -v '!#safari_cb_affinity' && echo '!#safari_cb_affinity') > ./optimized/122_ublock.txt
-          curl -s https://filters.adtidy.org/ios/filters/2_optimized.txt | grep "www.youtube.com#%#" > ./optimized/2_scriptlets.txt
-          curl -s https://filters.adtidy.org/ios/filters/5_optimized.txt | grep "youtube.com#%#" > ./optimized/5_scriptlets.txt
+          {
+            curl -s https://filters.adtidy.org/ios/filters/2_optimized.txt | grep "www.youtube.com#%#"
+            curl -s https://filters.adtidy.org/ios/filters/5_optimized.txt | grep "youtube.com#%#"
+            curl -s https://ublockorigin.github.io/uAssetsCDN/filters/filters.min.txt | grep "youtube.com##+js(trusted-"
+            curl -s https://ublockorigin.github.io/uAssetsCDN/filters/experimental.min.txt | grep "youtube.com##+js("
+            } > ./optimized/scriptlets.txt
 
       - name: Push to repository
         run: |
