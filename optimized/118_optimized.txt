@@ -1,6 +1,7 @@
 !#safari_cb_affinity(privacy)
-! Checksum: wt3/bjSQ0BVZFYuwdV461w
-! Diff-Path: ../patches/118/118-s-1760085766-14400.patch
+![Adblock Plus 2.0]
+! Checksum: icPcODOrz+Dy4lsePjRSRQ
+! Diff-Path: ../patches/118/118-s-1760085763-14400.patch
 ! Title: EasyPrivacy
 ! Description: Privacy protection supplement for EasyList.
 ! Version: 2.1.51.76
@@ -12631,6 +12632,7 @@ $third-party,xmlhttprequest,domain=opensubtitles.org
 ! Suspect trackers (from privacy badger)
 ||jsrdn.com/s/cs.js
 ! Rewrite to internal resources filters for Adblock Plus
+||d1z2jf7jlzjs58.cloudfront.net^$redirect=noop.js,domain=voici.fr,script
 ! -----------------International third-party tracking services-----------------!
 ! *** easylist:easyprivacy/easyprivacy_thirdparty_international.txt ***
 ! German
@@ -15985,6 +15987,8 @@ $third-party,xmlhttprequest,domain=opensubtitles.org
 /misites/*
 /yozons-lib/*
 ! CSP Mining
+$csp=child-src 'none'; frame-src 'self' *; worker-src 'none',domain=fileone.tv|theappguruz.com
+$csp=child-src 'none'; frame-src *; worker-src 'none',domain=thepiratebay.org|vidoza.net
 ! *** easylist:easyprivacy/easyprivacy_specific_perimeterx.txt ***
 ! easyprivacy_specific_perimeterx.txt
 ||alaskaair.com/AlXMT4Ma/init.js
@@ -16166,6 +16170,8 @@ $third-party,xmlhttprequest,domain=opensubtitles.org
 ! easyprivacy_specific_uBO.txt
 ! #if ext_ublock
 ! https://github.com/AdguardTeam/AdguardFilters/issues/180750
+||pcoptimizedsettings.com/wp-content/plugins/koko-analytics/$script,redirect=noop.js,important
+||pcoptimizedsettings.com/wp-content/uploads/breeze/google/gtag.js$script,redirect=noop.js,important
 ! GPC
 ! Clear GPC storage item
 ! Showing "Enable Cookies Please enable cookies in your browser to access USAA."
@@ -16177,6 +16183,7 @@ $third-party,xmlhttprequest,domain=opensubtitles.org
 ! mweb.jp
 ! nicovideo.jp
 ! redstoneonline.jp
+||googletagmanager.com/gtag/js$script,xmlhttprequest,redirect=googletagmanager_gtm.js,domain=redstoneonline.jp,important
 ! abema.tv
 ! #if cap_html_filtering
 ! #else
@@ -16193,6 +16200,7 @@ $third-party,xmlhttprequest,domain=opensubtitles.org
 ||ncbi.nlm.nih.gov/core/pinger/pinger.js
 ! https://github.com/AdguardTeam/AdguardFilters/issues/209795
 ! https://github.com/AdguardTeam/AdguardFilters/issues/117006
+||r10s.jp/com/img/home/t.gif?$image,redirect=1x1.gif,domain=24.rakuten.co.jp,important
 ! https://github.com/easylist/easylist/commit/885ef7a64a7c872b99cf9e8f81de9ca28d877be8
 ! https://github.com/uBlockOrigin/uBOL-home/issues/476#issuecomment-3306448980
 ! #if !env_safari
@@ -55044,29 +55052,13 @@ $third-party,xmlhttprequest,domain=opensubtitles.org
 @@|http://r.i.ua/s?*&p*&l$image,domain=swordmaster.org
 !
 ! https://github.com/AdguardTeam/AdguardFilters/issues/103955
-@@||ups.com/track?$domain=ups.com
-@@||parcelapp.net/webtrack.$domain=parcelapp.net
 ! https://github.com/AdguardTeam/AdguardFilters/issues/86351
-!+ PLATFORM(ios, ext_safari)
-@@||toloka.to/tracker.php?$domain=toloka.to
 ! https://github.com/AdguardTeam/AdguardFilters/issues/81810
-!+ PLATFORM(ios, ext_safari)
-@@||app.tookanapp.com/tracking/index.html$domain=tookanapp.com
 ! https://github.com/AdguardTeam/AdguardFilters/issues/80453
-!+ PLATFORM(ios, ext_safari)
-@@||uniconsent.com^$domain=xda-developers.com
 ! https://github.com/AdguardTeam/AdguardFilters/issues/79058
-!+ PLATFORM(ios, ext_safari)
-@@*.list-manage.com^$domain=list-manage.com
 ! https://github.com/AdguardTeam/AdguardFilters/issues/76563
-!+ PLATFORM(ios, ext_safari)
-@@||click.email.wbez.org^$domain=click.email.wbez.org
 ! https://github.com/AdguardTeam/AdguardFilters/issues/71151
-!+ PLATFORM(ios, ext_safari)
-@@||medallia.com^$domain=medallia.com
 ! https://github.com/AdguardTeam/AdguardFilters/issues/70449
-!+ PLATFORM(ios, ext_safari)
-@@||nimiq.com^$domain=nimiq.com
 ! https://github.com/AdguardTeam/AdguardFilters/issues/31746
 @@||cbc.ca/g/stats/js/cbc-stats-top.js
 ! Fixing search on rutracker.org and mirrors
