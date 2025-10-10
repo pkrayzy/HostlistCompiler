@@ -20,6 +20,9 @@ jobs:
       - name: Install dependencies
         run: yarn install --network-concurrency 1
 
+      - name: Build DNS Filter
+        run: TLS=insecure node src/cli.js -c examples/sdn/configuration.json -o filter.txt
+
       - name: Download and transform Adguard Filters
         run: |
           curl -s https://filters.adtidy.org/extension/ublock/filters/15_optimized.txt | grep -v "\*" > ./optimized/15_optimized.txt
