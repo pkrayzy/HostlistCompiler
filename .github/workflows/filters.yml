@@ -36,7 +36,7 @@ jobs:
             # curl -s 'https://local.oisd.nl/showme.php?show=unlisted&list=245ea50cbb5830925f42b6d5b536c21a' | grep -Eo "href='[^']*" | sed "s/href='https:\/\/oisd.nl\/excludes.php?w=//"
             # curl -s 'https://local.oisd.nl/showme.php?show=unlisted&list=b372fbf196559ffd4d2990abb5468c52' | grep -Eo "href='[^']*" | sed "s/href='https:\/\/oisd.nl\/excludes.php?w=//"
             # curl -s 'https://local.oisd.nl/showme.php?show=unlisted&list=79a0c89feea638be9c8ca38616dda068' | grep -Eo "href='[^']*" | sed "s/href='https:\/\/oisd.nl\/excludes.php?w=//"
-            # } > oisd_excludes.txt
+            # } > ./optimized/oisd_excludes.txt
 
           # {
           #   echo ""  # AdGuard Base  
@@ -51,16 +51,16 @@ jobs:
           #   curl -s 'https://local.oisd.nl/showme.php?show=dead&list=b79647ca51e12651104eb9f75e3d73f4' | grep -o '[a-zA-Z0-9.-]*\.[a-z]\{2,\}' | sed 's/^/||/; s/$/^/'
           #   curl -s 'https://local.oisd.nl/showme.php?show=dead&list=245ea50cbb5830925f42b6d5b536c21a' | grep -o '[a-zA-Z0-9.-]*\.[a-z]\{2,\}' | sed 's/^/||/; s/$/^/'
           #   curl -s 'https://local.oisd.nl/showme.php?show=dead&list=b372fbf196559ffd4d2990abb5468c52' | grep -o '[a-zA-Z0-9.-]*\.[a-z]\{2,\}' | sed 's/^/||/; s/$/^/'
-          #   } > oisd_unresolved.txt
+          #   } > ./optimized/oisd_unresolved.txt
 
       # - name: Build HaGeZi Filter
-        # run: TLS=insecure node src/cli.js -c examples/HaGeZi/configuration.json -o HaGeZi.txt
+        # run: TLS=insecure node src/cli.js -c examples/HaGeZi/configuration.json -o ./optimized/HaGeZi.txt
 
       # - name: Build Allowlist
-      #   run: TLS=insecure node src/cli.js -c examples/whitelist/configuration.json -o whitelist.txt
+      #   run: TLS=insecure node src/cli.js -c examples/whitelist/configuration.json -o ./optimized/whitelist.txt
 
       - name: Build DNS Filter
-        run: TLS=insecure node src/cli.js -c examples/sdn/configuration.json -o filter.txt
+        run: TLS=insecure node src/cli.js -c examples/sdn/configuration.json -o ./optimized/filter.txt
 
       - name: Download and transform Adguard Filters
         run: |
