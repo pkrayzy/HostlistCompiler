@@ -20,44 +20,44 @@ jobs:
       - name: Install dependencies
         run: yarn install --network-concurrency 1
 
-      # - name: Extract and transform OISD Excludes
-      #   run: |
-      #     {
-      #       echo ""  # AdGuard Base  
-          #   curl -s 'https://local.oisd.nl/showme.php?show=unlisted&list=6fdddd7d71402a774685f619b3ba1f4f' | grep -Eo "href='[^']*" | sed "s/href='https:\/\/oisd.nl\/excludes.php?w=//"
-          #   curl -s 'https://local.oisd.nl/showme.php?show=unlisted&list=e850186db5657f317c0e1381b132f0ee' | grep -Eo "href='[^']*" | sed "s/href='https:\/\/oisd.nl\/excludes.php?w=//"
-          #   echo ""  # EasyList
-          #   curl -s 'https://local.oisd.nl/showme.php?show=unlisted&list=5b5f2def5bcc7a7c89a005812dbfc9c1' | grep -Eo "href='[^']*" | sed "s/href='https:\/\/oisd.nl\/excludes.php?w=//"
-          #   echo ""  # AdGuard Tracking
-            # curl -s 'https://local.oisd.nl/showme.php?show=unlisted&list=f9f2f28660bbbe3164c024b40cba5ec7' | grep -Eo "href='[^']*" | sed "s/href='https:\/\/oisd.nl\/excludes.php?w=//"
-            # curl -s 'https://local.oisd.nl/showme.php?show=unlisted&list=712b536360b7324c76d5f5712f7d2700' | grep -Eo "href='[^']*" | sed "s/href='https:\/\/oisd.nl\/excludes.php?w=//"
-            # curl -s 'https://local.oisd.nl/showme.php?show=unlisted&list=b972592b70299053e1394c2dc1bc913a' | grep -Eo "href='[^']*" | sed "s/href='https:\/\/oisd.nl\/excludes.php?w=//"
-            # curl -s 'https://local.oisd.nl/showme.php?show=unlisted&list=b79647ca51e12651104eb9f75e3d73f4' | grep -Eo "href='[^']*" | sed "s/href='https:\/\/oisd.nl\/excludes.php?w=//"
-            # curl -s 'https://local.oisd.nl/showme.php?show=unlisted&list=245ea50cbb5830925f42b6d5b536c21a' | grep -Eo "href='[^']*" | sed "s/href='https:\/\/oisd.nl\/excludes.php?w=//"
-            # curl -s 'https://local.oisd.nl/showme.php?show=unlisted&list=b372fbf196559ffd4d2990abb5468c52' | grep -Eo "href='[^']*" | sed "s/href='https:\/\/oisd.nl\/excludes.php?w=//"
-            # curl -s 'https://local.oisd.nl/showme.php?show=unlisted&list=79a0c89feea638be9c8ca38616dda068' | grep -Eo "href='[^']*" | sed "s/href='https:\/\/oisd.nl\/excludes.php?w=//"
-            # } > ./optimized/oisd_excludes.txt
+      - name: Extract and transform OISD Excludes
+        run: |
+          {
+            echo ""  # AdGuard Base  
+            curl -s 'https://local.oisd.nl/showme.php?show=unlisted&list=6fdddd7d71402a774685f619b3ba1f4f' | grep -Eo "href='[^']*" | sed "s/href='https:\/\/oisd.nl\/excludes.php?w=//"
+            curl -s 'https://local.oisd.nl/showme.php?show=unlisted&list=e850186db5657f317c0e1381b132f0ee' | grep -Eo "href='[^']*" | sed "s/href='https:\/\/oisd.nl\/excludes.php?w=//"
+            echo ""  # EasyList
+            curl -s 'https://local.oisd.nl/showme.php?show=unlisted&list=5b5f2def5bcc7a7c89a005812dbfc9c1' | grep -Eo "href='[^']*" | sed "s/href='https:\/\/oisd.nl\/excludes.php?w=//"
+            echo ""  # AdGuard Tracking
+            curl -s 'https://local.oisd.nl/showme.php?show=unlisted&list=f9f2f28660bbbe3164c024b40cba5ec7' | grep -Eo "href='[^']*" | sed "s/href='https:\/\/oisd.nl\/excludes.php?w=//"
+            curl -s 'https://local.oisd.nl/showme.php?show=unlisted&list=712b536360b7324c76d5f5712f7d2700' | grep -Eo "href='[^']*" | sed "s/href='https:\/\/oisd.nl\/excludes.php?w=//"
+            curl -s 'https://local.oisd.nl/showme.php?show=unlisted&list=b972592b70299053e1394c2dc1bc913a' | grep -Eo "href='[^']*" | sed "s/href='https:\/\/oisd.nl\/excludes.php?w=//"
+            curl -s 'https://local.oisd.nl/showme.php?show=unlisted&list=b79647ca51e12651104eb9f75e3d73f4' | grep -Eo "href='[^']*" | sed "s/href='https:\/\/oisd.nl\/excludes.php?w=//"
+            curl -s 'https://local.oisd.nl/showme.php?show=unlisted&list=245ea50cbb5830925f42b6d5b536c21a' | grep -Eo "href='[^']*" | sed "s/href='https:\/\/oisd.nl\/excludes.php?w=//"
+            curl -s 'https://local.oisd.nl/showme.php?show=unlisted&list=b372fbf196559ffd4d2990abb5468c52' | grep -Eo "href='[^']*" | sed "s/href='https:\/\/oisd.nl\/excludes.php?w=//"
+            curl -s 'https://local.oisd.nl/showme.php?show=unlisted&list=79a0c89feea638be9c8ca38616dda068' | grep -Eo "href='[^']*" | sed "s/href='https:\/\/oisd.nl\/excludes.php?w=//"
+            } > ./optimized/oisd_excludes.txt
 
-          # {
-          #   echo ""  # AdGuard Base  
-          #   curl -s 'https://local.oisd.nl/showme.php?show=dead&list=6fdddd7d71402a774685f619b3ba1f4f' | grep -o '[a-zA-Z0-9.-]*\.[a-z]\{2,\}' | sed 's/^/||/; s/$/^/'
-          #   curl -s 'https://local.oisd.nl/showme.php?show=dead&list=e850186db5657f317c0e1381b132f0ee' | grep -o '[a-zA-Z0-9.-]*\.[a-z]\{2,\}' | sed 's/^/||/; s/$/^/'
-          #   echo ""  # EasyList
-          #   curl -s 'https://local.oisd.nl/showme.php?show=dead&list=5b5f2def5bcc7a7c89a005812dbfc9c1' | grep -o '[a-zA-Z0-9.-]*\.[a-z]\{2,\}' | sed 's/^/||/; s/$/^/'
-          #   echo ""  # AdGuard Tracking
-          #   curl -s 'https://local.oisd.nl/showme.php?show=dead&list=f9f2f28660bbbe3164c024b40cba5ec7' | grep -o '[a-zA-Z0-9.-]*\.[a-z]\{2,\}' | sed 's/^/||/; s/$/^/'
-          #   curl -s 'https://local.oisd.nl/showme.php?show=dead&list=712b536360b7324c76d5f5712f7d2700' | grep -o '[a-zA-Z0-9.-]*\.[a-z]\{2,\}' | sed 's/^/||/; s/$/^/'
-          #   curl -s 'https://local.oisd.nl/showme.php?show=dead&list=b972592b70299053e1394c2dc1bc913a' | grep -o '[a-zA-Z0-9.-]*\.[a-z]\{2,\}' | sed 's/^/||/; s/$/^/'
-          #   curl -s 'https://local.oisd.nl/showme.php?show=dead&list=b79647ca51e12651104eb9f75e3d73f4' | grep -o '[a-zA-Z0-9.-]*\.[a-z]\{2,\}' | sed 's/^/||/; s/$/^/'
-          #   curl -s 'https://local.oisd.nl/showme.php?show=dead&list=245ea50cbb5830925f42b6d5b536c21a' | grep -o '[a-zA-Z0-9.-]*\.[a-z]\{2,\}' | sed 's/^/||/; s/$/^/'
-          #   curl -s 'https://local.oisd.nl/showme.php?show=dead&list=b372fbf196559ffd4d2990abb5468c52' | grep -o '[a-zA-Z0-9.-]*\.[a-z]\{2,\}' | sed 's/^/||/; s/$/^/'
-          #   } > ./optimized/oisd_unresolved.txt
+          {
+            echo ""  # AdGuard Base  
+            curl -s 'https://local.oisd.nl/showme.php?show=dead&list=6fdddd7d71402a774685f619b3ba1f4f' | grep -o '[a-zA-Z0-9.-]*\.[a-z]\{2,\}' | sed 's/^/||/; s/$/^/'
+            curl -s 'https://local.oisd.nl/showme.php?show=dead&list=e850186db5657f317c0e1381b132f0ee' | grep -o '[a-zA-Z0-9.-]*\.[a-z]\{2,\}' | sed 's/^/||/; s/$/^/'
+            echo ""  # EasyList
+            curl -s 'https://local.oisd.nl/showme.php?show=dead&list=5b5f2def5bcc7a7c89a005812dbfc9c1' | grep -o '[a-zA-Z0-9.-]*\.[a-z]\{2,\}' | sed 's/^/||/; s/$/^/'
+            echo ""  # AdGuard Tracking
+            curl -s 'https://local.oisd.nl/showme.php?show=dead&list=f9f2f28660bbbe3164c024b40cba5ec7' | grep -o '[a-zA-Z0-9.-]*\.[a-z]\{2,\}' | sed 's/^/||/; s/$/^/'
+            curl -s 'https://local.oisd.nl/showme.php?show=dead&list=712b536360b7324c76d5f5712f7d2700' | grep -o '[a-zA-Z0-9.-]*\.[a-z]\{2,\}' | sed 's/^/||/; s/$/^/'
+            curl -s 'https://local.oisd.nl/showme.php?show=dead&list=b972592b70299053e1394c2dc1bc913a' | grep -o '[a-zA-Z0-9.-]*\.[a-z]\{2,\}' | sed 's/^/||/; s/$/^/'
+            curl -s 'https://local.oisd.nl/showme.php?show=dead&list=b79647ca51e12651104eb9f75e3d73f4' | grep -o '[a-zA-Z0-9.-]*\.[a-z]\{2,\}' | sed 's/^/||/; s/$/^/'
+            curl -s 'https://local.oisd.nl/showme.php?show=dead&list=245ea50cbb5830925f42b6d5b536c21a' | grep -o '[a-zA-Z0-9.-]*\.[a-z]\{2,\}' | sed 's/^/||/; s/$/^/'
+            curl -s 'https://local.oisd.nl/showme.php?show=dead&list=b372fbf196559ffd4d2990abb5468c52' | grep -o '[a-zA-Z0-9.-]*\.[a-z]\{2,\}' | sed 's/^/||/; s/$/^/'
+            } > ./optimized/oisd_unresolved.txt
 
-      # - name: Build HaGeZi Filter
-        # run: TLS=insecure node src/cli.js -c examples/HaGeZi/configuration.json -o ./optimized/HaGeZi.txt
+      - name: Build HaGeZi Filter
+        run: TLS=insecure node src/cli.js -c examples/HaGeZi/configuration.json -o ./optimized/HaGeZi.txt
 
-      # - name: Build Allowlist
-      #   run: TLS=insecure node src/cli.js -c examples/whitelist/configuration.json -o ./optimized/whitelist.txt
+      - name: Build Allowlist
+        run: TLS=insecure node src/cli.js -c examples/whitelist/configuration.json -o ./optimized/whitelist.txt
 
       - name: Build DNS Filter
         run: TLS=insecure node src/cli.js -c examples/sdn/configuration.json -o ./optimized/filter.txt
