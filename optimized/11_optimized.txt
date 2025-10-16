@@ -1,10 +1,10 @@
 !#safari_cb_affinity(security)
-! Checksum: SgEkIBV8AsxTi1CgwoNdcA
-! Diff-Path: ../patches/11_optimized/11_optimized-s-1760516013-3600.patch
+! Checksum: Zs2Jz6knTSmCGtwsglMw4g
+! Diff-Path: ../patches/11_optimized/11_optimized-s-1760534419-3600.patch
 ! Title: AdGuard Mobile Ads filter (Optimized)
 ! Description: Filter for all known mobile ad networks. Useful for mobile devices.
-! Version: 2.0.64.98
-! TimeUpdated: 2025-10-15T08:09:42+00:00
+! Version: 2.0.65.1
+! TimeUpdated: 2025-10-15T13:16:06+00:00
 ! Expires: 5 days (update frequency)
 ||*.libaishuo.com^$third-party
 ||adx-open-service.youku.com^
@@ -88,6 +88,7 @@
 ||startup.mobile.yandex.net^
 ||startup.mobile.webvisor.com^
 ||startup-mobile.ap.yandex-net.ru^
+||reward-api.csjplatform.com^
 ||tbiwtech.com^
 ||impbid.com^
 ||bidsms.com^
@@ -1426,6 +1427,7 @@ deviantart.com#$#div[class*="dp-ad-"] {height: 0!important; width: 0!important; 
 @@||api.bufferapp.com/*/profiles.json
 @@||api.bufferapp.com/*/service/
 @@||api.bufferapp.com/*/user
+@@||cmp.inmobi.com^$domain=the-express.com
 @@||t7z.cupid.iqiyi.com/mixer$domain=iqiyi.com
 my-angers.info#@#amp-auto-ads
 watch.impress.co.jp#%#//scriptlet('trusted-replace-node-text', 'script', '/ipc.watch.js', 'ipc.loader.queue.jquery.push', 'ipc.loader.queue.ready.push')
@@ -1656,6 +1658,8 @@ opinion.cw.com.tw,aidoly.net,celeby-media.net,kyun2-girls.com,hapiee.com,2ch-c.n
 chip.de,gamesworld.de,fnn.jp##.Ad
 medipalette.lotte.co.jp,genxy-net.com,m.price.com.hk,otakuma.net,nikkan-gendai.com,m.hellporno.com,topics.smt.docomo.ne.jp,rank-king.jp,kun.uz,m.lenta.ru,m.aydin24haber.com,m.xcum.com,m.alphaporno.com,m.yourlust.com,m.3movs.com,m.sexu.com##body .banner
 sp.manga.nicovideo.jp##div[style^="--ads-width:"]
+habr.com##.header-banner-wrapper
+habr.com##.element-wrapper:has(> div.placeholder-wrapper)
 house.ettoday.net##.iframe-ad
 house.ettoday.net##div[id^="adsense_"]
 house.ettoday.net#$?#amp-ad { remove: true; }
