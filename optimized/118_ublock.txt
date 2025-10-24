@@ -1,8 +1,8 @@
 !#safari_cb_affinity(security)
 ! Title: uBlock filters – Privacy
 ! Expires: 7 days
-! Last modified: Wed, 22 Oct 2025 17:05:51 +0000
-! Diff-Path: ../patches/2025.10.22.1403.patch#ublock-privacy
+! Last modified: Thu, 23 Oct 2025 11:58:48 +0000
+! Diff-Path: ../patches/2025.10.23.1162.patch#ublock-privacy
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/privacy.txt ***
@@ -1416,9 +1416,8 @@ dmax.de##.block-user:remove-class(block-user)
 ||zoho.in/murphy/*/clientmetricslog?logtype=clientmetrics
 ||zoho.in/murphy/*/ingest/infoLogs
 ||zoho.in/murphy/*/ingest/exceptions
-! cpu/resource abuse https://github.com/uBlockOrigin/uAssets/issues/29059
-||bg-gledai.video/wp-content/plugins/crypto-converter-widget/$script,1p
-||cdn.jsdelivr.net/gh/dejurin/crypto-converter-widget$script,domain=bg-gledai.video
+||socke7.com^
+||pcoptimizedsettings.com/wp-json/caos/v1/proxy/stealth*page_view
 ! Merge in resource-abuse.txt
 ! *** uAssets:filters/resource-abuse.txt ***
 /edgemesh.*.js$script,domain=~edgemesh.com|~edgeno.de
@@ -1494,4 +1493,7 @@ netflix.com##+js(no-fetch-if, logs.netflix.com)
 lared.cl##+js(no-xhr-if, s73cloud.com/metrics/)
 jxoplay.xyz,zorroplay.xyz##+js(rmnt, script, sendFakeRequest)
 dlhd.*>>,~chatango.com##+js(rmnt, script, sendFakeRequest)
+! cpu/resource abuse https://github.com/uBlockOrigin/uAssets/issues/29059
+||bg-gledai.video/wp-content/plugins/crypto-converter-widget/$script,1p
+||cdn.jsdelivr.net/gh/dejurin/crypto-converter-widget$script,domain=bg-gledai.video
 !#safari_cb_affinity
