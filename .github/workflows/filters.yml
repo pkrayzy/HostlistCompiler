@@ -54,13 +54,13 @@ jobs:
             } > ./optimized/oisd_unresolved.txt
 
       - name: Build HaGeZi Filter
-        run: TLS=insecure node src/cli.js -c examples/HaGeZi/configuration.json -o ./optimized/HaGeZi.txt
+        run: TLS=insecure node src/cli.js -c examples/HaGeZi/configuration.json -o ./optimized/filter.txt
 
       - name: Build Allowlist
         run: TLS=insecure node src/cli.js -c examples/whitelist/configuration.json -o ./optimized/whitelist.txt
 
       - name: Build DNS Filter
-        run: TLS=insecure node src/cli.js -c examples/sdn/configuration.json -o ./optimized/filter.txt
+        run: TLS=insecure node src/cli.js -c examples/sdn/configuration.json -o ./optimized/HaGeZi.txt
 
       - name: Download and transform Adguard Filters
         run: |
