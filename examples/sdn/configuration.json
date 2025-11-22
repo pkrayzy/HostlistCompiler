@@ -3,32 +3,51 @@
   "description": "Filter composed from several other filters (English filter, Social media filter, Spyware filter, Mobile ads filter, EasyList and EasyPrivacy) and simplified specifically to be better compatible with DNS-level ad blocking.",
   "homepage": "https://github.com/AdguardTeam/AdguardSDNSFilter",
   "license": "GPLv3",
-  "sources":[
+  "sources": [
     {
       "name": "AdGuard DNS filter",
       "source": "https://raw.githubusercontent.com/pkrayzy/HostlistCompiler/master/optimized/15_optimized.txt",
       "type": "adblock",
-      "transformations": ["Deduplicate", "Validate", "RemoveComments"]
+      "transformations": [
+        "Deduplicate",
+        "Validate",
+        "RemoveComments"
+      ]
     },
     {
       "name": "HaGeZi's Pro mini",
       "source": "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/pro.mini.txt",
       "type": "adblock",
-      "transformations": ["RemoveComments", "Compress"]
+      "transformations": [
+        "RemoveComments",
+        "Compress"
+      ]
     },
     {
       "name": "EasyPrivacy Admiral",
       "source": "https://raw.githubusercontent.com/easylist/easylist/master/easyprivacy/easyprivacy_trackingservers_admiral.txt",
       "type": "adblock",
-      "transformations": ["Deduplicate", "Validate", "RemoveComments"],
-      "exclusions_sources": ["https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/light.txt"]
-    }, 
+      "transformations": [
+        "Deduplicate",
+        "Validate",
+        "RemoveComments"
+      ],
+      "exclusions_sources": [
+        "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/light.txt"
+      ]
+    },
     {
       "name": "GetAdmiral Domains Filter List",
       "source": "https://raw.githubusercontent.com/LanikSJ/ubo-filters/refs/heads/main/filters/getadmiral-domains.txt",
       "type": "adblock",
-      "transformations": ["Deduplicate", "Validate", "RemoveComments"],
-      "exclusions_sources": ["https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/light.txt"]
+      "transformations": [
+        "Deduplicate",
+        "Validate",
+        "RemoveComments"
+      ],
+      "exclusions_sources": [
+        "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/light.txt"
+      ]
     }
   ],
   "exclusions_sources": [
@@ -36,5 +55,10 @@
     "https://raw.githubusercontent.com/pkrayzy/HostlistCompiler/master/optimized/dns_exclusions.txt",
     "https://raw.githubusercontent.com/AdguardTeam/AdGuardSDNSFilter/master/Filters/exclusions.txt"
   ],
-  "transformations": ["Deduplicate", "Compress", "Validate", "RemoveComments"]
+  "transformations": [
+    "Deduplicate",
+    "Compress",
+    "Validate",
+    "RemoveComments"
+  ]
 }
