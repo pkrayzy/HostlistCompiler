@@ -53,14 +53,14 @@ jobs:
             curl -s 'https://local.oisd.nl/showme.php?show=dead&list=b372fbf196559ffd4d2990abb5468c52' | grep -o '[a-zA-Z0-9.-]*\.[a-z]\{2,\}' | sed 's/^/||/; s/$/^/'
             } > ./optimized/oisd_unresolved.txt
 
-      # - name: Build HaGeZi Filter
-      #   run: TLS=insecure node src/cli.js -c examples/HaGeZi/configuration.json -o ./optimized/filter.txt
+      - name: Build HaGeZi Filter
+        run: TLS=insecure node src/cli.js -c examples/HaGeZi/configuration.json -o ./optimized/filter.txt
 
       - name: Build Allowlist
         run: TLS=insecure node src/cli.js -c examples/whitelist/configuration.json -o ./optimized/whitelist.txt
 
-      - name: Build DNS Filter
-        run: TLS=insecure node src/cli.js -c examples/sdn/configuration.json -o ./optimized/filter.txt
+      # - name: Build DNS Filter
+        # run: TLS=insecure node src/cli.js -c examples/sdn/configuration.json -o ./optimized/filter.txt
 
       - name: Download and transform Adguard Filters
         run: |
