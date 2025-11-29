@@ -1,8 +1,8 @@
 !#safari_cb_affinity(other)
 ! Title: uBlock filters
 ! Expires: 5 days
-! Last modified: Thu, 27 Nov 2025 18:41:28 +0000
-! Diff-Path: ../patches/2025.11.28.125.patch#ublock-filters
+! Last modified: Fri, 28 Nov 2025 23:59:48 +0000
+! Diff-Path: ../patches/2025.11.29.125.patch#ublock-filters
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/filters.txt ***
@@ -5652,15 +5652,15 @@ spiegel.de##^script:has-text(homad)
 ||welt.de/homadConfigEnabled.json$xhr,replace=/"enabled":true/"enabled":false/
 ||golem.de/staticrl/scripts/radiant/rmp-rl_$script,1p,replace=/var conf = \{.*?'postrollAdTag': 'response\.empty'\s\}\;/var conf = {}/s
 ||cinema.de/sites/default/files/js/js_$script,1p,replace=/var conf=\{'globalConfig'.*?'vpaid':'true'\};var exportz=/var conf={}; var exportz=/
-||svonm.com^$xhr,replace=/"enabled":\s*true/"enabled":false/,domain=desired.de|giga.de
+||svonm.com^$xhr,replace=/"enabled":\s*true/"enabled":false/,domain=desired.de|giga.de|toggo.de
 ||cdn.greenvideo.io/adapter/player/$script,replace=/window\.__gv_org_tfa.*?templateData\:\{embedId\:[a-z0-9]{1,3}\}\}\)\}\)\}\}//
 ||cdn.player.foundation/cdn-modules/$script,replace=/\.homad\.enabled\)if\(/.homad.enabled && false)if(/
 !#else
 welt.de##+js(set, weltConfig.switches.videoAdBlockBlocker, false)
 giga.de##+js(aost, XMLHttpRequest.prototype.open, svonm.com)
 spiegel.de##+js(rmnt, script, homad)
-desired.de##+js(trusted-replace-xhr-response, /"enabled":\s*true/, "enabled":false, svonm.com)
 !#endif
+desired.de,toggo.de##+js(trusted-replace-xhr-response, /"enabled":\s*true/, "enabled":false, svonm.com)
 ||adnxs.com^$xhr,domain=welt.de,important
 ||asadcdn.com^$script,domain=welt.de,important
 plus.rtl.de##+js(json-prune, adReinsertion)
@@ -9651,7 +9651,7 @@ cheatsheet.com,pwinsider.com##+js(rmnt, script, admiral)
 c-span.org##+js(rmnt, script, "'').split(',')[4]")
 !#endif
 pcbolsa.com##^script:has-text(/"v4ac1eiZr0"|""\)\.split\(","\)\[4\]|(\.localStorage\)|JSON\.parse\(\w)\.getItem\("|["']_aQS0\w+["']/)
-15min.lt,247sports.com,abc17news.com,addictinggames.com,agrodigital.com,al.com,aliontherunblog.com,allaboutthetea.com,allmovie.com,allmusic.com,allthingsthrifty.com,amessagewithabottle.com,arstechnica.com,artforum.com,artnews.com,audiomack.com,awkward.com,barcablaugranes.com,barnsleychronicle.com,bethcakes.com,betweenenglandandiowa.com,bgr.com,billboard.com,blazersedge.com,blogher.com,blu-ray.com,bluegraygal.com,briefeguru.de,brobible.com,cagesideseats.com,cbsnews.com,cbssports.com,celiacandthebeast.com,chaptercheats.com,cleveland.com,clickondetroit.com,commercialcompetentedigitale.ro,crooksandliars.com,dailydot.com,dailykos.com,dailyvoice.com,danslescoulisses.com,deadline.com,decider.com,didyouknowfacts.com,dogtime.com,dpreview.com,ebaumsworld.com,egoallstars.com,eldiariony.com,fark.com,femestella.com,flickr.com,fmradiofree.com,forums.hfboards.com,free-power-point-templates.com,freeconvert.com,frogsandsnailsandpuppydogtail.com,funtasticlife.com,fwmadebycarli.com,golfdigest.com,grunge.com,gulflive.com,hollywoodreporter.com,homeglowdesign.com,honeygirlsworld.com,ibtimes.co.in,imgur.com,indiewire.com,intouchweekly.com,iphoneincanada.ca,jasminemaria.com,kens5.com,kion546.com,knowyourmeme.com,krem.com,last.fm,lehighvalleylive.com,lettyskitchen.com,lifeandstylemag.com,lifeinleggings.com,lizzieinlace.com,localnews8.com,lonestarlive.com,madeeveryday.com,maidenhead-advertiser.co.uk,mandatory.com,mardomreport.net,masslive.com,melangery.com,miamiherald.com,mlive.com,mmamania.com,momtastic.com,mostlymorgan.com,motherwellmag.com,motor1.com,motorsport.com,musicfeeds.com.au,naszemiasto.pl,nationalpost.com,nationalreview.com,nbcsports.com,news.com.au,ninersnation.com,nj.com,nordot.app,nothingbutnewcastle.com,nsjonline.com,nypost.com,observer.com,ontvtonight.com,oregonlive.com,pagesix.com,patheos.com,pcbolsa.com,pennlive.com,pep.ph,phillyvoice.com,playstationlifestyle.net,puckermom.com,reelmama.com,rlfans.com,robbreport.com,rollingstone.com,royalmailchat.co.uk,sandrarose.com,sbnation.com,silive.com,sheknows.com,sidereel.com,smartworld.it,sneakernews.com,sourcingjournal.com,soldionline.it,sport-fm.gr,sportico.com,sportsgamblingpodcast.com,spotofteadesigns.com,ssnewstelegram.com,stacysrandomthoughts.com,stylecaster.com,superherohype.com,syracuse.com,tastingtable.com,techcrunch.com,thecelticblog.com,thedailymeal.com,theflowspace.com,themarysue.com,thenerdstash.com,tiermaker.com,timesofisrael.com,tiscali.cz,tokfm.pl,torontosun.com,tvline.com,usmagazine.com,variety.com,wallup.net,wcnc.com,weather.com,wimp.com,worldstar.com,worldstarhiphop.com,wwd.com,wyborkierowcow.pl,wzzm13.com,yourcountdown.to##+js(rmnt, script, '/"v4ac1eiZr0"|""\)\.split\(","\)\[4\]|(\.localStorage\)|JSON\.parse\(\w)\.getItem\("|["\']_aQS0\w+["\']/')
+15min.lt,247sports.com,abc17news.com,addictinggames.com,agrodigital.com,al.com,aliontherunblog.com,allaboutthetea.com,allmovie.com,allmusic.com,allthingsthrifty.com,amessagewithabottle.com,arstechnica.com,artforum.com,artnews.com,audiomack.com,awkward.com,barcablaugranes.com,barnsleychronicle.com,bethcakes.com,betweenenglandandiowa.com,bgr.com,billboard.com,blazersedge.com,blogher.com,blu-ray.com,bluegraygal.com,briefeguru.de,brobible.com,cagesideseats.com,cbsnews.com,cbssports.com,celiacandthebeast.com,chaptercheats.com,cleveland.com,clickondetroit.com,commercialcompetentedigitale.ro,crooksandliars.com,dailydot.com,dailykos.com,dailyvoice.com,danslescoulisses.com,deadline.com,decider.com,didyouknowfacts.com,dogtime.com,dpreview.com,ebaumsworld.com,egoallstars.com,eldiariony.com,fark.com,femestella.com,flickr.com,fmradiofree.com,forums.hfboards.com,free-power-point-templates.com,freeconvert.com,frogsandsnailsandpuppydogtail.com,funtasticlife.com,fwmadebycarli.com,golfdigest.com,grunge.com,gulflive.com,hollywoodreporter.com,homeglowdesign.com,honeygirlsworld.com,ibtimes.co.in,imgur.com,indiewire.com,intouchweekly.com,iphoneincanada.ca,jasminemaria.com,kens5.com,kion546.com,knowyourmeme.com,krem.com,last.fm,lehighvalleylive.com,lettyskitchen.com,lifeandstylemag.com,lifeinleggings.com,lizzieinlace.com,localnews8.com,lonestarlive.com,madeeveryday.com,maidenhead-advertiser.co.uk,mandatory.com,mardomreport.net,masslive.com,melangery.com,miamiherald.com,mlive.com,mmamania.com,momtastic.com,mostlymorgan.com,motherwellmag.com,motor1.com,motorsport.com,musicfeeds.com.au,naszemiasto.pl,nationalpost.com,nationalreview.com,nbcsports.com,news.com.au,ninersnation.com,nj.com,nordot.app,nothingbutnewcastle.com,nsjonline.com,nypost.com,observer.com,ontvtonight.com,oregonlive.com,pagesix.com,patheos.com,pcbolsa.com,pennlive.com,pep.ph,phillyvoice.com,playstationlifestyle.net,puckermom.com,reelmama.com,rlfans.com,robbreport.com,rollingstone.com,royalmailchat.co.uk,sandrarose.com,sbnation.com,silive.com,sheknows.com,sidereel.com,smartworld.it,sneakernews.com,sourcingjournal.com,soldionline.it,sport-fm.gr,sportico.com,sportsgamblingpodcast.com,spotofteadesigns.com,ssnewstelegram.com,stacysrandomthoughts.com,stylecaster.com,superherohype.com,syracuse.com,tastingtable.com,techcrunch.com,thecelticblog.com,thedailymeal.com,theflowspace.com,themarysue.com,thenerdstash.com,tiermaker.com,timesofisrael.com,tiscali.cz,tokfm.pl,torontosun.com,tvline.com,usmagazine.com,variety.com,wallup.net,wcnc.com,weather.com,wimp.com,worldstar.com,worldstarhiphop.com,wwd.com,wyborkierowcow.pl,wzzm13.com,yourcountdown.to##+js(rmnt, script, '/"v4ac1eiZr0"|""\)\.split\(","\)\[4\]|(\.localStorage\)|JSON\.parse\(\w)\.getItem\("|["\']_aQS0\w+["\']|\[decodeURI\(decodeURI\(\'/')
 ||imasdk.googleapis.com/js/sdkloader/ima3.js$domain=givemesport.com,important
 superherohype.com##a.wp-block-button__link:is([href^="https://amzn.to/"], [href^="https://www.amazon.com/"])
 sanfoundry.com##.sf-desktop-ads
@@ -9721,7 +9721,7 @@ dogdrip.net,infinityfree.com##ins.adsbygoogle:style(height: 1px !important; visi
 ! Minute Media
 ||html-load.com^$script,xhr,redirect=noopjs,domain=12thmanrising.com|aroundthefoghorn.com|arrowheadaddict.com|badgerofhonor.com|bamahammer.com|beargoggleson.com|beyondtheflag.com|blackandteal.com|blogredmachine.com|bluemanhoop.com|boltbeat.com|bosoxinjection.com|buffalowdown.com|caneswarning.com|catcrave.com|chopchat.com|climbingtalshill.com|cubbiescrib.com|dailyknicks.com|dairylandexpress.com|dawindycity.com|dawnofthedawg.com|detroitjockcity.com|dodgersway.com|ebonybird.com|fansided.com|gbmwolverine.com|gmenhq.com|hailfloridahail.com|hardwoodhoudini.com|horseshoeheroes.com|housethathankbuilt.com|huskercorner.com|insidetheiggles.com|jaysjournal.com|justblogbaby.com|kckingdom.com|kingjamesgospel.com|lakeshowlife.com|lombardiave.com|motorcitybengals.com|musketfire.com|nflspinzone.com|ninernoise.com|nugglove.com|phinphanatic.com|pistonpowered.com|predominantlyorange.com|ramblinfan.com|redbirdrants.com|reviewingthebrew.com|riggosrag.com|ripcityproject.com|risingapple.com|rumbunter.com|scarletandgame.com|section215.com|sidelionreport.com|slapthesign.com|sodomojo.com|stillcurtain.com|stormininnorman.com|stripehype.com|thatballsouttahere.com|thejetpress.com|thelandryhat.com|thepewterplank.com|thesmokingcuban.com|thevikingage.com|thunderousintentions.com|valleyofthesuns.com|whodatdish.com|yanksgoyard.com
 ! Design by Purr sites
-||html-load.com^$script,xhr,domain=awellstyledlife.com|browneyedbaker.com|cookieandkate.com|culinaryhill.com|damndelicious.net|feelgoodfoodie.net|happyveggiekitchen.com|homemadehome.com|howsweeteats.com|hummingbirdhigh.com|kimscravings.com|littlehouseliving.com|makeitdairyfree.com|minimalistbaker.com|nocrumbsleft.net|pancakerecipes.com|pumpkinnspice.co|the-girl-who-ate-everything.com|theplantbasedschool.com|thewoksoflife.com|unefemme.net|wellnessbykay.com
+||html-load.com^$script,xhr,domain=awellstyledlife.com|bakeitwithlove.com|browneyedbaker.com|cookieandkate.com|culinaryhill.com|damndelicious.net|feelgoodfoodie.net|happyveggiekitchen.com|homemadehome.com|howsweeteats.com|hummingbirdhigh.com|kimscravings.com|littlehouseliving.com|makeitdairyfree.com|minimalistbaker.com|nocrumbsleft.net|pancakerecipes.com|pumpkinnspice.co|the-girl-who-ate-everything.com|theplantbasedschool.com|therecipecritic.com|thewoksoflife.com|unefemme.net|wellnessbykay.com
 ! CultivateWP sites
 ||html-load.com^$script,xhr,domain=amindfullmom.com|choosingchia.com|creativecanning.com|downshiftology.com|gardeninthekitchen.com|heygrillhey.com|loveinmyoven.com|modernhoney.com|mrmakeithappen.com|plainchicken.com|practicalselfreliance.com|sipandfeast.com|stellanspice.com|thecookierookie.com|thefoodcharlatan.com|tutti-dolci.com
 ! MV3 wildcard issue
@@ -9782,7 +9782,7 @@ helpdeskgeek.com##^script:has-text(';confirm(')
 ! fora software
 300cforums.com,a5oc.com,acuraworld.com,airsoftsociety.com,allfordmustangs.com,allpar.com,aquaticplantcentral.com,astraownersnetwork.co.uk,avsforum.com,babybmw.net,beesource.com,bimmerwerkz.com,can-amforum.com,canadianmoneyforum.com,catfish1.com,chevymalibuforum.com,chinacarforums.com,chihuahua-people.com,coloradofans.com,dairygoatinfo.com,digitalhome.ca,diychatroom.com,fordescape.org,fullsizebronco.com,gencoupe.com,mazda3revolution.com,mdxers.org,mytractorforum.com,odyclub.com,pelotonforum.com,robloxforum.com,rootzwiki.com,sigtalk.com,skyscrapercity.com,speypages.com,subaruoutback.org,techguy.org,techsupportforum.com,theakforum.net,tivocommunity.com,trailvoy.com,vwvortex.com##^script:has-text(html-load.com)
 ! Design by Purr sites
-awellstyledlife.com,browneyedbaker.com,cookieandkate.com,culinaryhill.com,damndelicious.net,feelgoodfoodie.net,happyveggiekitchen.com,homemadehome.com,howsweeteats.com,hummingbirdhigh.com,kimscravings.com,littlehouseliving.com,makeitdairyfree.com,minimalistbaker.com,nocrumbsleft.net,pancakerecipes.com,pumpkinnspice.com,the-girl-who-ate-everything.com,theplantbasedschool.com,unefemme.net,thewoksoflife.com,wellnessbykay.com##^script:has-text(html-load.com)
+awellstyledlife.com,bakeitwithlove.com,browneyedbaker.com,cookieandkate.com,culinaryhill.com,damndelicious.net,feelgoodfoodie.net,happyveggiekitchen.com,homemadehome.com,howsweeteats.com,hummingbirdhigh.com,kimscravings.com,littlehouseliving.com,makeitdairyfree.com,minimalistbaker.com,nocrumbsleft.net,pancakerecipes.com,pumpkinnspice.com,the-girl-who-ate-everything.com,theplantbasedschool.com,therecipecritic.com,thewoksoflife.com,unefemme.net,wellnessbykay.com##^script:has-text(html-load.com)
 ! CultivateWP sites
 amindfullmom.com,choosingchia.com,creativecanning.com,downshiftology.com,gardeninthekitchen.com,heygrillhey.com,loveinmyoven.com,modernhoney.com,mrmakeithappen.com,plainchicken.com,practicalselfreliance.com,sipandfeast.com,stellanspice.com,thecookierookie.com,thefoodcharlatan.com,tutti-dolci.com##^script:has-text(html-load.com)
 !#else
@@ -9806,7 +9806,7 @@ helpdeskgeek.com##+js(rmnt, script, ;confirm()
 ! fora software
 300cforums.com,a5oc.com,acuraworld.com,airsoftsociety.com,allfordmustangs.com,allpar.com,aquaticplantcentral.com,astraownersnetwork.co.uk,avsforum.com,babybmw.net,beesource.com,bimmerwerkz.com,can-amforum.com,canadianmoneyforum.com,catfish1.com,chevymalibuforum.com,chinacarforums.com,chihuahua-people.com,coloradofans.com,dairygoatinfo.com,digitalhome.ca,diychatroom.com,fordescape.org,fullsizebronco.com,gencoupe.com,mazda3revolution.com,mdxers.org,mytractorforum.com,odyclub.com,pelotonforum.com,robloxforum.com,rootzwiki.com,sigtalk.com,skyscrapercity.com,speypages.com,subaruoutback.org,techguy.org,techsupportforum.com,theakforum.net,tivocommunity.com,trailvoy.com,vwvortex.com##+js(rmnt, script, html-load.com)
 ! Design by Purr sites
-awellstyledlife.com,browneyedbaker.com,cookieandkate.com,culinaryhill.com,damndelicious.net,feelgoodfoodie.net,happyveggiekitchen.com,homemadehome.com,howsweeteats.com,hummingbirdhigh.com,kimscravings.com,littlehouseliving.com,makeitdairyfree.com,minimalistbaker.com,nocrumbsleft.net,pancakerecipes.com,pumpkinnspice.com,the-girl-who-ate-everything.com,theplantbasedschool.com,thewoksoflife.com,unefemme.net,wellnessbykay.com##+js(rmnt, script, html-load.com)
+awellstyledlife.comm,bakeitwithlove.com,browneyedbaker.com,cookieandkate.com,culinaryhill.com,damndelicious.net,feelgoodfoodie.net,happyveggiekitchen.com,homemadehome.com,howsweeteats.com,hummingbirdhigh.com,kimscravings.com,littlehouseliving.com,makeitdairyfree.com,minimalistbaker.com,nocrumbsleft.net,pancakerecipes.com,pumpkinnspice.com,the-girl-who-ate-everything.com,theplantbasedschool.com,therecipecritic.com,thewoksoflife.com,unefemme.net,wellnessbykay.com##+js(rmnt, script, html-load.com)
 ! CultivateWP sites
 amindfullmom.com,choosingchia.com,creativecanning.com,downshiftology.com,gardeninthekitchen.com,heygrillhey.com,loveinmyoven.com,modernhoney.com,mrmakeithappen.com,plainchicken.com,practicalselfreliance.com,sipandfeast.com,stellanspice.com,thecookierookie.com,thefoodcharlatan.com,tutti-dolci.com##+js(rmnt, script, html-load.com)
 !#endif
@@ -20879,8 +20879,8 @@ kickassanime.*##.text-center:has(> .hide-button)
 kickassanime.*##.latest-update > .row > div:has(.hide-button)
 kickassanime.ch##+js(noeval-if, shift)
 kickassanime.ch###overplay
-@@||ad-ipd.sxp.smartclip.net/select?type=vast$xhr,domain=toggo.de
-||ccstatic.toggo.de/cc-static-files/bumper-video/Toggolino_WT_$media,1p
+||ad-ipd.sxp.smartclip.net/select?type=vast$xhr,important,domain=toggo.de
+toggo.de##+js(json-prune, adRequest)
 dankmemer.lol##+js(nostif, nads)
 petri.com###enlivy-kit-popup-overlay
 petri.com##body:style(overflow: auto !important;)
@@ -24296,4 +24296,6 @@ goplay.su##+js(noeval-if, debugger)
 ||naegaithumoreragau.qpon^
 ||prissyupland.qpon^
 ||yawperalluvio.cyou^
+bandle.app##+js(set, nitroAds.abp, true)
+inyatrust.co.in##+js(set, detectAdBlock, noopFunc)
 !#safari_cb_affinity
