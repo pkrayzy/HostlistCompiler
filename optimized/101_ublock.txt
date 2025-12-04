@@ -1,8 +1,8 @@
 !#safari_cb_affinity(other)
 ! Title: uBlock filters
 ! Expires: 5 days
-! Last modified: Wed, 03 Dec 2025 00:38:31 +0000
-! Diff-Path: ../patches/2025.12.3.136.patch#ublock-filters
+! Last modified: Wed, 03 Dec 2025 17:58:24 +0000
+! Diff-Path: ../patches/2025.12.3.1234.patch#ublock-filters
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/filters.txt ***
@@ -13283,6 +13283,7 @@ samfw.com##+js(acs, jQuery, banner)
 lewdstars.com##.ads-muted-control
 lewdstars.com##.widget_custom_html
 ||biguz.net/vast$xhr,1p
+||biguz.net/static/vast$xhr,1p
 ! extratorrents. it popups
 extratorrents.*##+js(aopw, adcashMacros)
 pythonmatplotlibtips.blogspot.com##+js(acs, addEventListener, nextFunction)
@@ -16553,7 +16554,8 @@ deutschekanale.com##+js(no-fetch-if, imasdk)
 deutschekanale.com##.banner
 @@||thenetnaija.net^$ghide
 @@||sabishare.com^$ghide
-divxfilmeonline.net>>##+js(nowoif)
+divxfilmeonline.net>>,divxfilmeonline.tv>>,f16px.com##+js(nowoif)
+f16px.com##+js(acs, EventTarget.prototype.addEventListener, delete window)
 ||googlesyndication.com/favicon.ico$image,redirect-rule=1x1.gif
 ! iptvapps. net anti-adb, elements
 iptvapps.net##+js(nostif, show)
@@ -23124,6 +23126,7 @@ filecatchers.com##+js(rmnt, script, ai_adb)
 adbypass.org,bypass.city##+js(aopr, Adcash)
 *$xhr,domain=adbypass.org|bypass.city,3p,denyallow=discord.com
 afreesms.com##+js(acs, onload, adblock)
+afreesms.com##+js(nowoif)
 onlyssh.my.id,whyvpn.my.id##+js(acs, document.querySelector, akadb)
 ! http://worldlivetv.stream/ - popup
 worldlivetv.stream##.link_overlay
