@@ -83,12 +83,12 @@ jobs:
             curl -s https://raw.githubusercontent.com/brave/adblock-lists/master/brave-lists/brave-ios-specific.txt | grep -v '!#safari_cb_affinity' 
             curl -s https://raw.githubusercontent.com/brave/adblock-lists/master/brave-lists/brave-firstparty.txt | grep -v '!#safari_cb_affinity' 
             && echo '!#safari_cb_affinity'
-              }) > ./optimized/101_brave.txt
+            }) > ./optimized/101_brave.txt
           (echo '!#safari_cb_affinity(other)' && 
             {
               curl -s https://filters.adtidy.org/ios/filters/2_optimized.txt | grep "www.youtube.com#%#"
               curl -s https://filters.adtidy.org/ios/filters/5_optimized.txt | grep "youtube.com#%#"
-              }) > ./optimized/scriptlets.txt
+            }) > ./optimized/scriptlets.txt
 
       - name: Push to repository
         run: |
