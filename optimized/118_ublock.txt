@@ -1,8 +1,8 @@
 !#safari_cb_affinity(security)
 ! Title: uBlock filters – Privacy
 ! Expires: 7 days
-! Last modified: Sat, 20 Dec 2025 14:36:29 +0000
-! Diff-Path: ../patches/2025.12.21.1407.patch#ublock-privacy
+! Last modified: Tue, 23 Dec 2025 08:53:00 +0000
+! Diff-Path: ../patches/2025.12.24.140.patch#ublock-privacy
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/privacy.txt ***
@@ -489,6 +489,7 @@ musescore.com##+js(set-local-storage-item, /^rt_/, $remove$)
 ||lit.link/redirects/link-ad?redirectUrl=aHR0c$doc,urlskip=?redirectUrl -base64
 lit.link##+js(href-sanitizer, a[href^="/redirects/link-ad?redirectUrl=aHR0c"], ?redirectUrl -base64)
 ||link.fmkorea.org/link.php?url=http$doc,urlskip=?url
+||xg4ken.com/trk/*^url=http$doc,urlskip=?url
 ! Click Trackers
 html.duckduckgo.com,lite.duckduckgo.com##+js(href-sanitizer, a[href^="//duckduckgo.com/l/?uddg="], ?uddg)
 starstyle.com##+js(href-sanitizer, a[href^="https://go.skimresources.com/"][href*="&url=http"], ?url)
@@ -1449,6 +1450,7 @@ roblox.com##+js(href-sanitizer, a[href^="https://cts.businesswire.com/ct/CT?"][h
 ||click.linksynergy.com/fs-bin/click?id=*&RD_PARM1=http%$urlskip=?RD_PARM1 -uricomponent
 ! dailydot.com pageview
 dailydot.com##+js(no-fetch-if, url:/undefined method:POST)
+||spezialklinik-neukirchen.de/matomo/matomo.js$important
 ! Merge in resource-abuse.txt
 ! *** uAssets:filters/resource-abuse.txt ***
 /edgemesh.*.js$script,domain=~edgemesh.com|~edgeno.de
