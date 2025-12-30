@@ -64,32 +64,57 @@ jobs:
 
       - name: Download and transform Adguard Filters
         run: |
-          # curl -s https://filters.adtidy.org/ios/filters/15_optimized.txt | grep -v "\*" > ./optimized/15_optimized.txt
-          curl -s "https://raw.githubusercontent.com/mullvad/dns-blocklists/main/lists/doh/adblock/AdguardDNS" | sed 's/^/||/; s/$/^/' > ./optimized/15_optimized.txt
-          (echo '!#safari_cb_affinity(general)' && curl -s https://filters.adtidy.org/ios/filters/2_optimized.txt | grep -v '!#safari_cb_affinity' && echo '!#safari_cb_affinity') > ./optimized/2_optimized.txt
-          (echo '!#safari_cb_affinity(privacy)' && curl -s https://filters.adtidy.org/ios/filters/3_optimized.txt | grep -v '!#safari_cb_affinity' && echo '!#safari_cb_affinity') > ./optimized/3_optimized.txt
-          (echo '!#safari_cb_affinity(social)' && curl -s https://filters.adtidy.org/ios/filters/4_optimized.txt | grep -v '!#safari_cb_affinity' && echo '!#safari_cb_affinity') > ./optimized/4_optimized.txt
-          (echo '!#safari_cb_affinity(general)' && curl -s https://filters.adtidy.org/ios/filters/11_optimized.txt | grep -v '!#safari_cb_affinity' && echo '!#safari_cb_affinity') > ./optimized/11_optimized.txt
-          (echo '!#safari_cb_affinity(social)' && curl -s https://filters.adtidy.org/ios/filters/14_optimized.txt | grep -v '!#safari_cb_affinity' && echo '!#safari_cb_affinity') > ./optimized/14_optimized.txt
-          (echo '!#safari_cb_affinity(general)' && curl -s https://filters.adtidy.org/ios/filters/101_optimized.txt | grep -v '!#safari_cb_affinity' && echo '!#safari_cb_affinity') > ./optimized/101_optimized.txt
-          (echo '!#safari_cb_affinity(general)' && curl -s https://ublockorigin.github.io/uAssetsCDN/filters/filters.min.txt | grep -v '!#safari_cb_affinity' && echo '!#safari_cb_affinity') > ./optimized/101_ublock.txt
-          (echo '!#safari_cb_affinity(privacy)' && curl -s https://filters.adtidy.org/ios/filters/118_optimized.txt | grep -v '!#safari_cb_affinity' && echo '!#safari_cb_affinity') > ./optimized/118_optimized.txt
-          (echo '!#safari_cb_affinity(security)' && curl -s https://ublockorigin.github.io/uAssetsCDN/filters/privacy.min.txt | grep -v '!#safari_cb_affinity' && echo '!#safari_cb_affinity') > ./optimized/118_ublock.txt
-          (echo '!#safari_cb_affinity(social)' && curl -s https://filters.adtidy.org/ios/filters/122_optimized.txt | grep -v '!#safari_cb_affinity' && echo '!#safari_cb_affinity') > ./optimized/122_optimized.txt
-          (echo '!#safari_cb_affinity(social)' && curl -s https://ublockorigin.github.io/uAssetsCDN/filters/annoyances.min.txt | grep -v '!#safari_cb_affinity' && echo '!#safari_cb_affinity') > ./optimized/122_ublock.txt
-          (echo '!#safari_cb_affinity(social)' && curl -s https://gitflic.ru/project/magnolia1234/bypass-paywalls-clean-filters/blob/raw?file=bpc-paywall-filter.txt | grep -v '!#safari_cb_affinity' && echo '!#safari_cb_affinity') > ./optimized/paywalls.txt
+          curl -s https://filters.adtidy.org/ios/filters/15_optimized.txt | grep -v "\*" > ./optimized/15_optimized.txt
+          # curl -s https://raw.githubusercontent.com/mullvad/dns-blocklists/main/lists/doh/adblock/AdguardDNS | sed 's/^/||/; s/$/^/' > ./optimized/15_optimized.txt
+
+          # (echo '!#safari_cb_affinity(general)' && curl -s https://filters.adtidy.org/ios/filters/2_optimized.txt | grep -v '!#safari_cb_affinity' && echo '!#safari_cb_affinity') > ./optimized/2_optimized.txt
+          # (echo '!#safari_cb_affinity(privacy)' && curl -s https://filters.adtidy.org/ios/filters/3_optimized.txt | grep -v '!#safari_cb_affinity' && echo '!#safari_cb_affinity') > ./optimized/3_optimized.txt
+          # (echo '!#safari_cb_affinity(social)' && curl -s https://filters.adtidy.org/ios/filters/4_optimized.txt | grep -v '!#safari_cb_affinity' && echo '!#safari_cb_affinity') > ./optimized/4_optimized.txt
+          # (echo '!#safari_cb_affinity(general)' && curl -s https://filters.adtidy.org/ios/filters/11_optimized.txt | grep -v '!#safari_cb_affinity' && echo '!#safari_cb_affinity') > ./optimized/11_optimized.txt
+          # (echo '!#safari_cb_affinity(social)' && curl -s https://filters.adtidy.org/ios/filters/14_optimized.txt | grep -v '!#safari_cb_affinity' && echo '!#safari_cb_affinity') > ./optimized/14_optimized.txt
+          # (echo '!#safari_cb_affinity(general)' && curl -s https://filters.adtidy.org/ios/filters/101_optimized.txt | grep -v '!#safari_cb_affinity' && echo '!#safari_cb_affinity') > ./optimized/101_optimized.txt
+          # (echo '!#safari_cb_affinity(general)' && curl -s https://ublockorigin.github.io/uAssetsCDN/filters/filters.min.txt | grep -v '!#safari_cb_affinity' && echo '!#safari_cb_affinity') > ./optimized/101_ublock.txt
+          # (echo '!#safari_cb_affinity(privacy)' && curl -s https://filters.adtidy.org/ios/filters/118_optimized.txt | grep -v '!#safari_cb_affinity' && echo '!#safari_cb_affinity') > ./optimized/118_optimized.txt
+          # (echo '!#safari_cb_affinity(security)' && curl -s https://ublockorigin.github.io/uAssetsCDN/filters/privacy.min.txt | grep -v '!#safari_cb_affinity' && echo '!#safari_cb_affinity') > ./optimized/118_ublock.txt
+          # (echo '!#safari_cb_affinity(social)' && curl -s https://filters.adtidy.org/ios/filters/122_optimized.txt | grep -v '!#safari_cb_affinity' && echo '!#safari_cb_affinity') > ./optimized/122_optimized.txt
+          # (echo '!#safari_cb_affinity(social)' && curl -s https://ublockorigin.github.io/uAssetsCDN/filters/annoyances.min.txt | grep -v '!#safari_cb_affinity' && echo '!#safari_cb_affinity') > ./optimized/122_ublock.txt
+          # (echo '!#safari_cb_affinity(social)' && curl -s https://gitflic.ru/project/magnolia1234/bypass-paywalls-clean-filters/blob/raw?file=bpc-paywall-filter.txt | grep -v '!#safari_cb_affinity' && echo '!#safari_cb_affinity') > ./optimized/paywalls.txt
+
+          # {
+          #   echo '!#safari_cb_affinity(other)' 
+          #   curl -s https://raw.githubusercontent.com/brave/adblock-lists/master/brave-lists/brave-ios-specific.txt | grep -v '!#safari_cb_affinity' 
+          #   curl -s https://raw.githubusercontent.com/brave/adblock-lists/master/brave-lists/brave-firstparty.txt | grep -v '!#safari_cb_affinity'
+          #   echo '!#safari_cb_affinity'
+          #     } > ./optimized/101_brave.txt 
+          # {
+          #   echo '!#safari_cb_affinity(other)'
+          #   curl -s https://filters.adtidy.org/ios/filters/2_optimized.txt | grep "www.youtube.com#%#"
+          #   curl -s https://filters.adtidy.org/ios/filters/5_optimized.txt | grep "youtube.com#%#"
+          #   echo '!#safari_cb_affinity'
+          #     } > ./optimized/scriptlets.txt
+
+          curl -s https://filters.adtidy.org/ios/filters/2_optimized.txt | grep -v '!#safari_cb_affinity' > ./optimized/2_optimized.txt
+          curl -s https://filters.adtidy.org/ios/filters/3_optimized.txt | grep -v '!#safari_cb_affinity' > ./optimized/3_optimized.txt
+          curl -s https://filters.adtidy.org/ios/filters/4_optimized.txt | grep -v '!#safari_cb_affinity' > ./optimized/4_optimized.txt
+          curl -s https://filters.adtidy.org/ios/filters/11_optimized.txt | grep -v '!#safari_cb_affinity' > ./optimized/11_optimized.txt
+          curl -s https://filters.adtidy.org/ios/filters/14_optimized.txt | grep -v '!#safari_cb_affinity' > ./optimized/14_optimized.txt
+          curl -s https://filters.adtidy.org/ios/filters/101_optimized.txt | grep -v '!#safari_cb_affinity' > ./optimized/101_optimized.txt
+          curl -s https://ublockorigin.github.io/uAssetsCDN/filters/filters.min.txt | grep -v '!#safari_cb_affinity' > ./optimized/101_ublock.txt
+          curl -s https://filters.adtidy.org/ios/filters/118_optimized.txt | grep -v '!#safari_cb_affinity' > ./optimized/118_optimized.txt
+          curl -s https://ublockorigin.github.io/uAssetsCDN/filters/privacy.min.txt | grep -v '!#safari_cb_affinity' > ./optimized/118_ublock.txt
+          curl -s https://filters.adtidy.org/ios/filters/122_optimized.txt | grep -v '!#safari_cb_affinity' > ./optimized/122_optimized.txt
+          curl -s https://ublockorigin.github.io/uAssetsCDN/filters/annoyances.min.txt | grep -v '!#safari_cb_affinity' > ./optimized/122_ublock.txt
+          curl -s https://gitflic.ru/project/magnolia1234/bypass-paywalls-clean-filters/blob/raw?file=bpc-paywall-filter.txt | grep -v '!#safari_cb_affinity' > ./optimized/paywalls.txt
+
           {
-            echo '!#safari_cb_affinity(other)' 
             curl -s https://raw.githubusercontent.com/brave/adblock-lists/master/brave-lists/brave-ios-specific.txt | grep -v '!#safari_cb_affinity' 
             curl -s https://raw.githubusercontent.com/brave/adblock-lists/master/brave-lists/brave-firstparty.txt | grep -v '!#safari_cb_affinity'
-            echo '!#safari_cb_affinity'
               } > ./optimized/101_brave.txt 
           {
-            echo '!#safari_cb_affinity(other)'
             curl -s https://filters.adtidy.org/ios/filters/2_optimized.txt | grep "www.youtube.com#%#"
             curl -s https://filters.adtidy.org/ios/filters/5_optimized.txt | grep "youtube.com#%#"
-            echo '!#safari_cb_affinity'
               } > ./optimized/scriptlets.txt
+
           {
             curl -s https://raw.githubusercontent.com/easylist/easylist/master/easyprivacy/easyprivacy_specific_cname_dataunlocker.txt
             curl -s https://raw.githubusercontent.com/easylist/easylist/master/easyprivacy/easyprivacy_specific_cname_a8net.txt
