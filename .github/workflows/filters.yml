@@ -68,6 +68,7 @@ jobs:
           # curl -s https://raw.githubusercontent.com/mullvad/dns-blocklists/main/lists/doh/adblock/AdguardDNS | sed 's/^/||/; s/$/^/' > ./optimized/15_optimized.txt
 
           (echo '!#safari_cb_affinity(general)' && curl -s https://filters.adtidy.org/ios/filters/2_optimized.txt | grep -v '!#safari_cb_affinity' && echo '!#safari_cb_affinity') > ./optimized/2_optimized.txt
+          (echo '!#safari_cb_affinity(general)' && curl -s https://adguardteam.github.io/AdguardFilters/BaseFilter/sections/content_blocker.txt | grep -v '!#safari_cb_affinity' && echo '!#safari_cb_affinity') > ./optimized/cb_optimized.txt
           (echo '!#safari_cb_affinity(privacy)' && curl -s https://filters.adtidy.org/ios/filters/3_optimized.txt | grep -v '!#safari_cb_affinity' && echo '!#safari_cb_affinity') > ./optimized/3_optimized.txt
           (echo '!#safari_cb_affinity(social)' && curl -s https://filters.adtidy.org/ios/filters/4_optimized.txt | grep -v '!#safari_cb_affinity' && echo '!#safari_cb_affinity') > ./optimized/4_optimized.txt
           (echo '!#safari_cb_affinity(general)' && curl -s https://filters.adtidy.org/ios/filters/11_optimized.txt | grep -v '!#safari_cb_affinity' && echo '!#safari_cb_affinity') > ./optimized/11_optimized.txt
@@ -94,6 +95,7 @@ jobs:
               } > ./optimized/scriptlets.txt
 
           # curl -s https://filters.adtidy.org/ios/filters/2_optimized.txt | grep -v '!#safari_cb_affinity' > ./optimized/2_optimized.txt
+          # curl -s https://adguardteam.github.io/AdguardFilters/BaseFilter/sections/content_blocker.txt | grep -v '!#safari_cb_affinity' > ./optimized/cb_optimized.txt
           # curl -s https://filters.adtidy.org/ios/filters/3_optimized.txt | grep -v '!#safari_cb_affinity' > ./optimized/3_optimized.txt
           # curl -s https://filters.adtidy.org/ios/filters/4_optimized.txt | grep -v '!#safari_cb_affinity' > ./optimized/4_optimized.txt
           # curl -s https://filters.adtidy.org/ios/filters/11_optimized.txt | grep -v '!#safari_cb_affinity' > ./optimized/11_optimized.txt
