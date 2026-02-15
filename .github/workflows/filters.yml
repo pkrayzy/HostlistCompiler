@@ -59,12 +59,16 @@ jobs:
       - name: Build Allowlist
         run: TLS=insecure node src/cli.js -c examples/whitelist/configuration.json -o ./optimized/whitelist.txt
 
+      - name: Build AdGuard Allowlist
+        run: TLS=insecure node src/cli.js -c examples/allowlist/configuration.json -o ./optimized/15_whitelist.txt
+
       - name: Build DNS Filter
         run: TLS=insecure node src/cli.js -c examples/sdn/configuration.json -o ./optimized/filter.txt
 
       - name: Download and transform Adguard Filters
         run: |
           curl -s https://filters.adtidy.org/extension/safari/filters/15_optimized.txt | grep -v "\*" > ./optimized/15_optimized.txt
+          curl -s https://filters.adtidy.org/extension/safari/filters/15_optimized.txt | grep "^@@" | sed 's/^@@/||/' | sed 's/\(.*\)\.\(.*\)\.\(.*\)$/\2.\3/' | tr -d '|' > ./optimized/15_whitelist.txt
           # curl -s https://raw.githubusercontent.com/mullvad/dns-blocklists/main/lists/doh/adblock/AdguardDNS | sed 's/^/||/; s/$/^/' > ./optimized/15_optimized.txt
 
           (echo '!#safari_cb_affinity(general)' && curl -s https://filters.adtidy.org/extension/safari/filters/2_optimized.txt | grep -v '!#safari_cb_affinity' && echo '!#safari_cb_affinity') > ./optimized/2_optimized.txt
