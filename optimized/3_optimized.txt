@@ -1,10 +1,10 @@
 !#safari_cb_affinity(privacy)
-! Checksum: jge5G8RbLiZJOGlytvZ+aw
-! Diff-Path: ../patches/3_optimized/3_optimized-s-1772144205-3600.patch
+! Checksum: 3T51wPPQL9FA82zjzqdOfw
+! Diff-Path: ../patches/3_optimized/3_optimized-s-1772212740-3600.patch
 ! Title: AdGuard Tracking Protection filter (Optimized)
 ! Description: The most comprehensive list of various online counters and web analytics tools. Use this filter if you do not want your actions on the Internet to be tracked.
-! Version: 2.1.0.65
-! TimeUpdated: 2026-02-26T22:13:13+00:00
+! Version: 2.1.0.73
+! TimeUpdated: 2026-02-27T17:15:09+00:00
 ! Expires: 5 days (update frequency)
 !+ NOT_PLATFORM(ext_chromium_mv3)
 www.youtube.com#%#//scriptlet('prevent-xhr', '/\/api\/stats\/atr\?.+?&rt=\d+\.\d+.+?&volume=\d+&cbr=.+?&fexp=v1%[-%0-9C]{300,}&.+?&muted=\d(&vis=3)?&docid=/ method:POST')
@@ -249,6 +249,8 @@ biteki.com#$?#.slick-slide > div[id] + script:upward(1) { remove: true; }
 ||ib.snssdk.com^
 ||xlog.snssdk.com^
 ||log.snssdk.com^
+||siteperformancetest.net^
+||convertiser.com^
 ||signalszone.com^
 ||bidr.io^
 ||s.opensend.com^
@@ -1172,7 +1174,6 @@ biteki.com#$?#.slick-slide > div[id] + script:upward(1) { remove: true; }
 ||px*.mediahills.ru^
 ||sdk.conscent.in^$third-party
 ||tpstelemetry.tencent.com^
-||app.posthog.com^$third-party
 ||crossees.com^
 ||humanz.com^$third-party
 ||gateway.foresee.com^
@@ -2019,7 +2020,6 @@ biteki.com#$?#.slick-slide > div[id] + script:upward(1) { remove: true; }
 ||pxf.io^$image,script,third-party
 ||analytics.webads.eu^
 ||erandex.com^$third-party
-||direct-events-collector.spot.im^$third-party
 ||metrics-logger.spot.im^$third-party
 ||adwstats.com^
 ||omappapi.com^$third-party
@@ -58953,6 +58953,9 @@ biteki.com#$?#.slick-slide > div[id] + script:upward(1) { remove: true; }
 ||countly.
 ||countly-
 |piwik.
+||acollector.wb.ru^
+||journal-bt.wildberries.ru^
+-events-collector.spot.im^
 ||dap.worldota.net^
 ||dap.livemint.com^
 ||smetrics.edb.gov.sg^
@@ -62310,6 +62313,7 @@ charlestownwyllie.oaklawnnonantum.com^
 /^https:\/\/cs\d{3}\.\w+\.com\/cscript\/\d{3}\/[\w\d]+\.js$/$script,third-party,match-case
 !+ NOT_OPTIMIZED
 /.well-known/private-click-measurement
+/wp-content/plugins/burst-statistics/*
 /ad-site-i18n-sg/*$xmlhttprequest
 /wp-content/plugins/wp-analytify-pro/*
 /crm/tag/call.tracker.js
@@ -62983,6 +62987,15 @@ _tracking.php?b=
 ||tags.tiqcdn.com/utag/*/utag.sync.js$domain=yousee.dk|sibreal.org|calvinklein.ca|hosteurope.de|news.com.au
 /analytics.js$domain=tokyometro.jp|resumes.breakdownexpress.com|techcult.com|inbox.lv|kopeda.com|freexcafe.com|rusvideos.day|nakubani.ru|lun.com|songsara.net|newsmax.com|bolgehastanesi.com|ewtc.de|newsdig.tbs.co.jp|imore.com|city.kushiro.lg.jp|emeraldbridal.com.au|emarat-news.ae|imobie.jp|tikla.com.tr|jrkyushu.co.jp|amiunique.org|edit.ing|konami.com
 ||assets.adobedtm.com^$domain=rottentomatoes.com|mcclatchydc.com|elnuevoherald.com|bellinghamherald.com|sacbee.com|charlotteobserver.com|newsobserver.com|miamiherald.com|ef.ru|algida.com.tr|bmw-motorrad.co.uk|cif.com.tr|clearhaircare.com|domestos.com|dove.com|elidor.com.tr|f1sport.autorevue.cz|geico.com|hellmanns.com.tr|herkessofraya.com|johnsonsbaby.com.tr|lipton.com|lnk.to|lux.com|magnumicecream.com|neutrogena.com.tr|omo.com|rexona.com|samsung.com|sap.com|schwarzkopf.com.tr|signalturkiye.com|msnbc.com|nbcnews.com|kbb.com|eurosport.ru|timgate.it|intermiles.com|oxfordmail.co.uk|spiegel.de|hp.com|deutschepost.de|thebay.com|s.shufoo.net|tsn.ca|tabelog.com|newshub.co.nz|fredmeyer.com|viabcp.com|carsales.com.au|falabella.com|aarp.org|thehill.com|realtor.com|nzherald.co.nz|aia.com.ph|baynews9.com|thesaurus.com|dhc.co.jp|0101.co.jp|staples.com|rikunabi.com|directscout.recruit.co.jp|r-agent.com|sephora.com|chronicle.com|channelnewsasia.com|cnbc.com|bmw.hu|atu.de|songkick.com|worldshop.eu|t-mobile.com|philanthropy.com|otempo.com.br|webmotors.com.br|myglo.com.ua|meijer.com|mtvema.com|mtv.co.uk|mtv.de|mtv.it|edp24.co.uk|cloudflare.com|transfermarkt.com.tr|abbott.com|ubs.com|assets.adobedtm.com|eadt.co.uk|cineplex.com|samsung.com|mastercard.com
+||app.posthog.com/static/array.js$third-party
+||burst-statistics.com/wp-content/uploads/burst/js/burst.min.js
+||matterport.com/nextjs-assets/scripts/aapl-campaign-tracking.js
+||matterport.com/nextjs-assets/scripts/migrate-utm.js
+||matterport.com/nextjs-assets/scripts/segment.js
+||matterport.com/nextjs-assets/scripts/vwo.js
+||js.qualified.com/packs/js/analytics-
+||salesmanago.pl/api/vs?
+||bbstatic.pcmag.com/js/z0WVjCBSEeGLoxIxOQVEwQ.min.js
 ||ferienwohnungen.de/api/pxl
 ||ostrovok.ru/hotel/api/report-web-vitals/
 ||ostrovok.ru/hc/static/master/funnel-loader.js
@@ -64600,7 +64613,6 @@ natuero-dougakan.com##.side-menu:has(script[src="//accaii.com/natuero/script.js"
 ||crank-in.net/assets/common/js/sendpv.js
 joinrs.com#%#//scriptlet('set-local-storage-item', 'TRACKING_EVENTS', '$remove$')
 ||goldapple.ru/front/api/search/analytics/
-||61medya.net/wp-content/plugins/burst-statistics/
 ||tabakhero.de/widgets/cbax/analytics/
 ||kts-tv.co.jp/common/js/analytics.js
 ||mgntrn.nl/api/event
@@ -69924,6 +69936,11 @@ d4?appid*type*
 !### Temporary ###
 @@||st-*.dynamicyield.com/st*&inHead=true&id=*&jsession=*scriptVersion=*&noConsent=
 !#################
+@@||googletagmanager.com/gtm.js$script,domain=streetstyle24.pl
+!+ PLATFORM(ios, ext_safari)
+@@||officeapps.live.com^$domain=cloud.microsoft
+@@||googletagmanager.com/gtm.js$domain=puccini.pl
+@@||vansprint.de/theme/*/js/storefront/google-analytics.plugin.$domain=vansprint.de
 auto.cz#%#//scriptlet('prevent-element-src-loading', 'script', 'spir.hit.gemius.pl/gplayer.js')
 @@||cdn.optimizely.com/datafiles/*.json$domain=feverup.com
 @@||scdn.cxense.com/cx.js$domain=cdn.cxpublic.com
@@ -72800,6 +72817,7 @@ kizi.com#%#window.google_trackConversion = function() {};
 ||brownboxgroup.com^
 ||bruisebaseball.com^
 ||bubblyaction.com^
+||bucketlistbob.com^
 ||buddycanvas.com^
 ||bugpizza.com^
 ||buildingknife.com^
@@ -72819,6 +72837,7 @@ kizi.com#%#window.google_trackConversion = function() {};
 ||buzzaoutlet.com^
 ||buzzfry.com^
 ||cafefrench.com^
+||cafejunior.net^
 ||cafescampfires.com^
 ||cakeagenda.com^
 ||cakesdrum.com^
@@ -72916,6 +72935,7 @@ kizi.com#%#window.google_trackConversion = function() {};
 ||colorfulpet.com^
 ||coloringisland.com^
 ||coloroptimizer.com^
+||colorsonchain.com^
 ||colossalclouds.com^
 ||colossalcoat.com^
 ||colossalcry.com^
@@ -73012,6 +73032,7 @@ kizi.com#%#window.google_trackConversion = function() {};
 ||curbminers.com^
 ||curbneon.com^
 ||curiouschalk.com^
+||curiousmetal.com^
 ||curioussuccess.com^
 ||curlycannon.com^
 ||currentcollar.com^
@@ -73037,6 +73058,7 @@ kizi.com#%#window.google_trackConversion = function() {};
 ||daybreaklights.com^
 ||daymodern.com^
 ||dazzlingbook.com^
+||dealchocolate.com^
 ||debonairdust.com^
 ||debonairtree.com^
 ||decidedrum.com^
@@ -73171,6 +73193,7 @@ kizi.com#%#window.google_trackConversion = function() {};
 ||excitingtub.com^
 ||executeknowledge.com^
 ||exhibitsneeze.com^
+||exitblocked.com^
 ||expansioneggnog.com^
 ||exportdialog.com^
 ||exquisiteartisanship.com^
@@ -73195,6 +73218,7 @@ kizi.com#%#window.google_trackConversion = function() {};
 ||falsesight.com^
 ||familiarrod.com^
 ||fancyactivity.com^
+||fancycolorlist.net^
 ||fancydune.com^
 ||fangfeeling.com^
 ||fannybacker.com^
@@ -73218,6 +73242,7 @@ kizi.com#%#window.google_trackConversion = function() {};
 ||feedandpurr.com^
 ||feedten.com^
 ||feignedfaucet.com^
+||fencesync.com^
 ||fewjuice.com^
 ||fewkittens.com^
 ||fieldconfig.com^
@@ -73468,6 +73493,7 @@ kizi.com#%#window.google_trackConversion = function() {};
 ||idyllicjazz.com^
 ||illinvention.com^
 ||illustriousoatmeal.com^
+||imagecutie.com^
 ||immensehoney.com^
 ||imminentshake.com^
 ||importantmeat.com^
@@ -73600,6 +73626,7 @@ kizi.com#%#window.google_trackConversion = function() {};
 ||loadsurprise.com^
 ||locateskill.com^
 ||lockuplookup.com^
+||locolava.com^
 ||logicalminds.net^
 ||logoshutter.com^
 ||lonelyflavor.com^
@@ -73715,6 +73742,7 @@ kizi.com#%#window.google_trackConversion = function() {};
 ||monacobeatles.com^
 ||monkeyapes.com^
 ||monkeystyping.com^
+||monsterjokes.com^
 ||monstermemes.com^
 ||monthlyhat.com^
 ||mooncrustpizza.com^
@@ -73759,6 +73787,8 @@ kizi.com#%#window.google_trackConversion = function() {};
 ||networklast.com^
 ||newarkdriving.com^
 ||newartreview.com^
+||newsbotnet.com^
+||nexttopchef.com^
 ||nicefollows.com^
 ||nicehuh.com^
 ||niftygraphs.com^
@@ -73766,6 +73796,7 @@ kizi.com#%#window.google_trackConversion = function() {};
 ||niftyjelly.com^
 ||nightwound.com^
 ||nimbleplot.com^
+||noblecables.com^
 ||nodenotify.com^
 ||nodethisweek.com^
 ||noiselessplough.com^
@@ -73801,6 +73832,7 @@ kizi.com#%#window.google_trackConversion = function() {};
 ||offshoreassets.com^
 ||offshorecyclone.com^
 ||offshoregeology.com^
+||offshoregoods.com^
 ||okaysurethat.com^
 ||oldandindie.com^
 ||oldfashionedoffer.com^
@@ -73909,6 +73941,7 @@ kizi.com#%#window.google_trackConversion = function() {};
 ||polishedfolly.com^
 ||politeplanes.com^
 ||politicalporter.com^
+||popliquids.com^
 ||popmixradio.com^
 ||popplantation.com^
 ||possibleboats.com^
@@ -74266,6 +74299,7 @@ kizi.com#%#window.google_trackConversion = function() {};
 ||sneezecovers.com^
 ||snoresmile.com^
 ||snowmentor.com^
+||sockpacks.com^
 ||soggysponge.com^
 ||soggyzoo.com^
 ||soilcontent.com^
@@ -74289,6 +74323,7 @@ kizi.com#%#window.google_trackConversion = function() {};
 ||soretrain.com^
 ||sortstructure.com^
 ||soulclicking.com^
+||soundmachine.net^
 ||soundstocking.com^
 ||sourcecodeinfo.com^
 ||sourceoak.com^
@@ -74397,6 +74432,7 @@ kizi.com#%#window.google_trackConversion = function() {};
 ||stupidscene.com^
 ||stupidsnake.com^
 ||sturdysnail.com^
+||styleaffinity.com^
 ||stylelockers.com^
 ||stylishbuds.com^
 ||subjectivepoint.com^
@@ -74454,6 +74490,7 @@ kizi.com#%#window.google_trackConversion = function() {};
 ||tawdryson.com^
 ||taxisubsea.com^
 ||tealjewel.com^
+||teamstatus.net^
 ||tearfulglass.com^
 ||techconverter.com^
 ||tediousbear.com^
@@ -74505,6 +74542,7 @@ kizi.com#%#window.google_trackConversion = function() {};
 ||tightpowder.com^
 ||tiltonbots.com^
 ||timecrossed.com^
+||timelessyes.com^
 ||tinybluewhale.com^
 ||tinyswans.com^
 ||tinytendency.com^
@@ -74521,6 +74559,7 @@ kizi.com#%#window.google_trackConversion = function() {};
 ||topbookgifts.com^
 ||topcrazypress.com^
 ||topthrowbacks.com^
+||tortoisepage.com^
 ||touristfuel.com^
 ||toysbasics.com^
 ||toytakeover.com^
@@ -74661,6 +74700,7 @@ kizi.com#%#window.google_trackConversion = function() {};
 ||wholepagecache.com^
 ||whoogled.com^
 ||whymaze.com^
+||widgethouse.com^
 ||wikiwhatwhere.com^
 ||wildcommittee.com^
 ||wildwoodavenue.com^
