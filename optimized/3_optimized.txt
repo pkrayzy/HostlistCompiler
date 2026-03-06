@@ -1,10 +1,10 @@
 !#safari_cb_affinity(privacy)
-! Checksum: ndRqoz9UShw2ietn7etzSg
-! Diff-Path: ../patches/3_optimized/3_optimized-s-1772644943-3600.patch
+! Checksum: JypYBoJ9SHy5Ace+1cLA6g
+! Diff-Path: ../patches/3_optimized/3_optimized-s-1772748888-3600.patch
 ! Title: AdGuard Tracking Protection filter (Optimized)
 ! Description: The most comprehensive list of various online counters and web analytics tools. Use this filter if you do not want your actions on the Internet to be tracked.
-! Version: 2.1.1.1
-! TimeUpdated: 2026-03-04T17:18:32+00:00
+! Version: 2.1.1.8
+! TimeUpdated: 2026-03-05T22:11:17+00:00
 ! Expires: 5 days (update frequency)
 !+ NOT_PLATFORM(ext_chromium_mv3)
 www.youtube.com#%#//scriptlet('prevent-xhr', '/\/api\/stats\/atr\?.+?&rt=\d+\.\d+.+?&volume=\d+&cbr=.+?&fexp=v1%[-%0-9C]{300,}&.+?&muted=\d(&vis=3)?&docid=/ method:POST')
@@ -392,7 +392,6 @@ biteki.com#$?#.slick-slide > div[id] + script:upward(1) { remove: true; }
 ||tracking-api.g2.com^
 ||litix.io^
 ||audiencelab.io^$third-party
-||openpanel.dev^
 ||alphaupsell.s3.ap-northeast-2.amazonaws.com^
 ||trackingmyadsas.com^
 ||sa.openmedia.co^
@@ -61551,6 +61550,8 @@ biteki.com#$?#.slick-slide > div[id] + script:upward(1) { remove: true; }
 ||countly.
 ||countly-
 |piwik.
+||api.openpanel.dev^
+||lytics.fileditch.com^
 ||goto.suno.com^
 ||m-stratovibe.prod.suno.com^
 ||fel-api.prod.browse.bestbuy.com^
@@ -65585,6 +65586,10 @@ _tracking.php?b=
 ||tags.tiqcdn.com/utag/*/utag.sync.js$domain=yousee.dk|sibreal.org|calvinklein.ca|hosteurope.de|news.com.au
 /analytics.js$domain=tokyometro.jp|resumes.breakdownexpress.com|techcult.com|inbox.lv|kopeda.com|freexcafe.com|rusvideos.day|nakubani.ru|lun.com|songsara.net|newsmax.com|bolgehastanesi.com|ewtc.de|newsdig.tbs.co.jp|imore.com|city.kushiro.lg.jp|emeraldbridal.com.au|emarat-news.ae|imobie.jp|tikla.com.tr|jrkyushu.co.jp|amiunique.org|edit.ing|konami.com
 ||assets.adobedtm.com^$domain=rottentomatoes.com|mcclatchydc.com|elnuevoherald.com|bellinghamherald.com|sacbee.com|charlotteobserver.com|newsobserver.com|miamiherald.com|ef.ru|algida.com.tr|bmw-motorrad.co.uk|cif.com.tr|clearhaircare.com|domestos.com|dove.com|elidor.com.tr|f1sport.autorevue.cz|geico.com|hellmanns.com.tr|herkessofraya.com|johnsonsbaby.com.tr|lipton.com|lnk.to|lux.com|magnumicecream.com|neutrogena.com.tr|omo.com|rexona.com|samsung.com|sap.com|schwarzkopf.com.tr|signalturkiye.com|msnbc.com|nbcnews.com|kbb.com|eurosport.ru|timgate.it|intermiles.com|oxfordmail.co.uk|spiegel.de|hp.com|deutschepost.de|thebay.com|s.shufoo.net|tsn.ca|tabelog.com|newshub.co.nz|fredmeyer.com|viabcp.com|carsales.com.au|falabella.com|aarp.org|thehill.com|realtor.com|nzherald.co.nz|aia.com.ph|baynews9.com|thesaurus.com|dhc.co.jp|0101.co.jp|staples.com|rikunabi.com|directscout.recruit.co.jp|r-agent.com|sephora.com|chronicle.com|channelnewsasia.com|cnbc.com|bmw.hu|atu.de|songkick.com|worldshop.eu|t-mobile.com|philanthropy.com|otempo.com.br|webmotors.com.br|myglo.com.ua|meijer.com|mtvema.com|mtv.co.uk|mtv.de|mtv.it|edp24.co.uk|cloudflare.com|transfermarkt.com.tr|abbott.com|ubs.com|assets.adobedtm.com|eadt.co.uk|cineplex.com|samsung.com|mastercard.com
+||analytics-fe.digital-cloud-west.medallia.com^
+tv-tokyo.co.jp##.tbcms_plus-pickup
+||openpanel.dev/op1.js
+||tongji.90dao.com^$ping
 ||cdn1.irontive.com/apps/ironpixel.js
 ||championat.com/api/unity-id/*/init
 ||cls.rambler.ru/api/*/events
@@ -66732,7 +66737,7 @@ addons.mozilla.org#%#//scriptlet('href-sanitizer', 'a[href^="https://prod.outgoi
 ||myglo.com.ua/cdn/*/assets/adobe_tracking.js
 ||webapi-cloud.bluestacks.com/api/*/report-page-view
 ||progameguides.com/*/openweb-tracking.js
-||ticketmaster.com/*/log
+||ticketmaster.com/*/log^
 ||ticketmaster.com/logger/
 yakutia.info##.popular:has(> .js-relap-anchor)
 ||amazonaws.com/default/tracking?url=
@@ -72560,6 +72565,11 @@ d4?appid*type*
 !### Temporary ###
 @@||st-*.dynamicyield.com/st*&inHead=true&id=*&jsession=*scriptVersion=*&noConsent=
 !#################
+@@||cdn.cxense.com/cx.cce.js$domain=df.cl
+@@||cdn.cxense.com/cx.js$domain=df.cl
+@@||api.cxense.com/public/widget/data?json=$domain=df.cl
+!+ PLATFORM(ios, ext_safari)
+@@ticketmaster.com/fau/account/log
 @@||srvr.dmvs-apac.com/dm-story/*.js$domain=eldeber.com.bo|reduno.com.bo
 @@||securepubads.g.doubleclick.net/tag/js/gpt.js$domain=gallito.com.uy
 @@||googletagservices.com/tag/js/gpt.js$domain=gallito.com.uy
@@ -75369,6 +75379,7 @@ kizi.com#%#window.google_trackConversion = function() {};
 ||bedsberry.com^
 ||beewhispering.com^
 ||beginnerpancake.com^
+||bentengine.com^
 ||berserkhydrant.com^
 ||bespokesandals.com^
 ||bestboundary.com^
@@ -75419,6 +75430,7 @@ kizi.com#%#window.google_trackConversion = function() {};
 ||boilingmadsoup.com^
 ||boldbars.com^
 ||bonuscomplex.com^
+||bookbeef.com^
 ||bookprobe.com^
 ||boomboomcloud.com^
 ||boostbehavior.com^
