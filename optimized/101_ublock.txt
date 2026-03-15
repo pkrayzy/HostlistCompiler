@@ -1,7 +1,7 @@
 ! Title: uBlock filters
 ! Expires: 5 days
-! Last modified: Fri, 13 Mar 2026 17:51:59 +0000
-! Diff-Path: ../patches/2026.3.14.168.patch#ublock-filters
+! Last modified: Sun, 15 Mar 2026 02:15:12 +0000
+! Diff-Path: ../patches/2026.3.15.208.patch#ublock-filters
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/filters.txt ***
@@ -5038,17 +5038,6 @@ gulf-up.com##ins.adsbygoogle
 keysbrasil.blogspot.com##+js(nostif, nextFunction, 2000)
 @@||fiatclub.eu^$ghide
 @@||liveadexchanger.com/a/display.php$script,domain=prem.link
-multiup.io,multiup.org,multiup.eu##+js(acs, decodeURI, decodeURIComponent)
-multiup.io,multiup.org,multiup.eu##+js(nosiif, .submit)
-multiup.io##+js(nowoif, _blank)
-multiup.io##+js(rpnt, script, setInterval)
-multiup.io,multiup.org,multiup.eu##.text-center.bg-info
-multiup.io,multiup.org,multiup.eu##div.col-md-4:has(> .panel > .panel-footer > a[href^="/download-fast/"])
-multiup.io,multiup.org,multiup.eu##a[href^="/download-fast/"]
-multiup.io,multiup.org,multiup.eu##.mfp-ready
-multiup.io,multiup.org,multiup.eu##div.text-center:has(a[class="btn btn-success"][href^="abp:subscribe"])
-*$popunder,3p,domain=multiup.io|multiup.org|multiup.eu
-||multinews.me^$3p
 tmearn.*##+js(aopr, app_vars.force_disable_adblock)
 tmearn.*##+js(nowoif)
 tmearn.*##+js(set, blurred, false)
@@ -8739,6 +8728,7 @@ fsicomics.com,fsileaks.com##+js(aeld, click, popMagic)
 /^https:\/\/www\.[a-z]{8,14}\.com\/[a-z]{1,4}\.js$/$script,3p,match-case,header=x-powered-by:Express,from=~edu|~gov,to=com|~exploretock.com|~photopea.com
 /^https:\/\/www\.[a-z]{8,16}\.com\/(?:[A-Za-z]+\/)*(?:[_0-9A-Za-z]{1,20}[-.])*[_0-9A-Za-z]{1,20}\.js$/$script,xhr,3p,match-case,to=com,header=popads-node
 /^https:\/\/www\.[a-z]{8,16}\.com\/(?:[A-Za-z]+\/)*(?:[_0-9A-Za-z]{1,20}[-.])*[_0-9A-Za-z]{1,20}\.js$/$script,xhr,3p,match-case,to=com,header=link:/adsco\.re\/>;rel=preconnect/
+/^https:\/\/www\.[a-z]{8,16}\.com\/(?:[A-Za-z]+\/)*(?:[_0-9A-Za-z]{1,20}[-.])*[_0-9A-Za-z]{1,20}\.js$/$script,xhr,3p,match-case,to=com,header=x-77-pop
 ://www.*.css|$script,xhr,3p,to=com,header=link:/\/>;rel=preconnect/
 ://www.*.css|$script,xhr,3p,to=com,header=popads-node
 ://www.*/images/*.min.js|$script,xhr,3p,to=com
@@ -21521,7 +21511,7 @@ btv.bg,btvsport.bg,btvnovinite.bg,svetatnazdraveto.bg##+js(no-xhr-if, googlesynd
 btv.bg,btvsport.bg,btvnovinite.bg,svetatnazdraveto.bg##+js(no-fetch-if, googlesyndication)
 @@*$ghide,domain=btv.bg|btvsport.bg|btvnovinite.bg|svetatnazdraveto.bg
 @@*$script,1p,domain=btv.bg|btvsport.bg|btvnovinite.bg|svetatnazdraveto.bg
-btvnovinite.bg,svetatnazdraveto.bg##+js(no-fetch-if, imasdk)
+btvnovinite.bg,btvsport.bg,svetatnazdraveto.bg##+js(no-fetch-if, imasdk)
 javsek.net##+js(nosiif, pop)
 $script,3p,denyallow=facebook.net|fbcdn.net,domain=javsek.net
 1jour1film.*##a[href]#clickfakeplayer:remove-attr(href)
@@ -24310,6 +24300,18 @@ coolmathgames.com###block-adstop-otherpage-728x90
 coolmathgames.com##[class*="-ads"]
 coolmathgames.com##+js(set, start_full_screen_without_ad, false)
 coolmathgames.com##+js(set, drupalSettings.coolmath.hide_preroll_ads, true)
+multiup.io,multiup.org,multiup.eu##+js(acs, decodeURI, decodeURIComponent)
+multiup.io,multiup.org,multiup.eu##+js(nosiif, .submit)
+multiup.io,multiup.org,multiup.eu##+js(acs, document.addEventListener, window.open)
+multiup.io##+js(nowoif, _blank)
+multiup.io##+js(rpnt, script, setInterval)
+multiup.io,multiup.org,multiup.eu##.text-center.bg-info
+multiup.io,multiup.org,multiup.eu##div.col-md-4:has(> .panel > .panel-footer > a[href^="/download-fast/"])
+multiup.io,multiup.org,multiup.eu##a[href^="/download-fast/"]
+multiup.io,multiup.org,multiup.eu##.mfp-ready
+multiup.io,multiup.org,multiup.eu##div.text-center:has(a[class="btn btn-success"][href^="abp:subscribe"])
+*$popunder,3p,domain=multiup.io|multiup.org|multiup.eu
+||multinews.me^$3p
 ! END: Rules from filters.txt
 ! hostserverz detection
 hostserverz.com##+js(no-xhr-if, googlesyndication)
@@ -24506,3 +24508,9 @@ microsip.org##+js(rmnt, script, /google_esf|ins\.adsbygoogle/)
 manganato.gg##+js(nowoif)
 streamdesi.com##+js(nowoif, _blank)
 ||overplantovervaluetwine.com^
+magesy.blog##+js(nostif, /adbl/i)
+||chessgames.com/opt.js
+||kpopsingers.com/*.php?t=
+||increaserev4.static-cloudflare.workers.dev^
+||static-cloudflare.workers.dev/?target=aHR0c*$script,3p
+||minutemedia-prebid.com^
