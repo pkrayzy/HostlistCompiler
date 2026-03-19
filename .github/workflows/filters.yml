@@ -92,10 +92,9 @@ jobs:
               } > ./optimized/scriptlets.txt
           
           {
-            curl -s https://ublockorigin.github.io/uAssetsCDN/filters/filters.min.txt | grep -v "##"
-            # curl -s https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-general.txt | grep -v "##"
-            curl -s https://ublockorigin.github.io/uAssetsCDN/filters/privacy.min.txt | grep -v "##"
-              } ./optimized/ublock.txt
+            curl -s https://ublockorigin.github.io/uAssetsCDN/filters/filters.min.txt | grep -v '##' | grep -v 'redirect=' | grep -v '$removeparam'
+            curl -s https://ublockorigin.github.io/uAssetsCDN/filters/privacy.min.txt | grep -v '##' | grep -v 'redirect=' | grep -v '$removeparam'
+              } > ./optimized/ublock.txt
 
           {
             curl -s https://raw.githubusercontent.com/easylist/easylist/master/easyprivacy/easyprivacy_specific_cname_dataunlocker.txt
