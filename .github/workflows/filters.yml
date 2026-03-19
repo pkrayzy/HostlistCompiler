@@ -74,10 +74,10 @@ jobs:
           (curl -s https://filters.adtidy.org/extension/safari/filters/11_optimized.txt | grep -v '!#safari_cb_affinity') > ./optimized/11_optimized.txt
           (curl -s https://filters.adtidy.org/extension/safari/filters/14_optimized.txt | grep -v '!#safari_cb_affinity') > ./optimized/14_optimized.txt
           (curl -s https://filters.adtidy.org/extension/safari/filters/101_optimized.txt | grep -v '!#safari_cb_affinity') > ./optimized/101_optimized.txt
-          (curl -s https://ublockorigin.github.io/uAssetsCDN/filters/filters.min.txt | grep -v '!#safari_cb_affinity') > ./optimized/101_ublock.txt
           (curl -s https://filters.adtidy.org/extension/safari/filters/118_optimized.txt | grep -v '!#safari_cb_affinity') > ./optimized/118_optimized.txt
-          (curl -s https://ublockorigin.github.io/uAssetsCDN/filters/privacy.min.txt | grep -v '!#safari_cb_affinity') > ./optimized/118_ublock.txt
           (curl -s https://filters.adtidy.org/extension/safari/filters/122_optimized.txt | grep -v '!#safari_cb_affinity') > ./optimized/122_optimized.txt
+          (curl -s https://ublockorigin.github.io/uAssetsCDN/filters/filters.min.txt | grep -v '!#safari_cb_affinity') > ./optimized/101_ublock.txt
+          (curl -s https://ublockorigin.github.io/uAssetsCDN/filters/privacy.min.txt | grep -v '!#safari_cb_affinity') > ./optimized/118_ublock.txt
           (curl -s https://ublockorigin.github.io/uAssetsCDN/filters/annoyances.min.txt | grep -v '!#safari_cb_affinity') > ./optimized/122_ublock.txt
           (curl -s https://gitflic.ru/project/magnolia1234/bypass-paywalls-clean-filters/blob/raw?file=bpc-paywall-filter.txt | grep -v '!#safari_cb_affinity') > ./optimized/paywalls.txt
                
@@ -90,6 +90,12 @@ jobs:
             curl -s https://filters.adtidy.org/extension/safari/filters/2_optimized.txt | grep "www.youtube.com#%#"
             curl -s https://filters.adtidy.org/extension/safari/filters/5_optimized.txt | grep "youtube.com#%#"
               } > ./optimized/scriptlets.txt
+          
+          {
+            curl -s https://ublockorigin.github.io/uAssetsCDN/filters/filters.min.txt | grep -v "##"
+            # curl -s https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-general.txt | grep -v "##"
+            curl -s https://ublockorigin.github.io/uAssetsCDN/filters/privacy.min.txt | grep -v "##"
+              } ./optimized/ublock.txt
 
           {
             curl -s https://raw.githubusercontent.com/easylist/easylist/master/easyprivacy/easyprivacy_specific_cname_dataunlocker.txt
