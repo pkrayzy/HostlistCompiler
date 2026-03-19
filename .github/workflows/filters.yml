@@ -82,11 +82,6 @@ jobs:
           (curl -s https://gitflic.ru/project/magnolia1234/bypass-paywalls-clean-filters/blob/raw?file=bpc-paywall-filter.txt | grep -v '!#safari_cb_affinity') > ./optimized/paywalls.txt
                
           {
-            curl -s https://raw.githubusercontent.com/brave/adblock-lists/master/brave-lists/brave-ios-specific.txt 
-            curl -s https://raw.githubusercontent.com/brave/adblock-lists/master/brave-lists/brave-firstparty.txt
-              } > ./optimized/101_brave.txt 
-
-          {
             curl -s https://filters.adtidy.org/extension/safari/filters/2_optimized.txt | grep "www.youtube.com#%#"
             curl -s https://filters.adtidy.org/extension/safari/filters/5_optimized.txt | grep "youtube.com#%#"
               } > ./optimized/scriptlets.txt
@@ -94,7 +89,9 @@ jobs:
           {
             curl -s https://ublockorigin.github.io/uAssetsCDN/filters/filters.min.txt | grep -v '##' | grep -v 'redirect=' | grep -v '$removeparam'
             curl -s https://ublockorigin.github.io/uAssetsCDN/filters/privacy.min.txt | grep -v '##' | grep -v 'redirect=' | grep -v '$removeparam'
-              } > ./optimized/ublock.txt
+            curl -s https://raw.githubusercontent.com/brave/adblock-lists/master/brave-lists/brave-ios-specific.txt | grep -v '##' | grep -v 'redirect=' | grep -v '$removeparam'
+            curl -s https://raw.githubusercontent.com/brave/adblock-lists/master/brave-lists/brave-firstparty.txt | grep -v '##' | grep -v 'redirect=' | grep -v '$removeparam'
+            } > ./optimized/ublock.txt
 
           {
             curl -s https://raw.githubusercontent.com/easylist/easylist/master/easyprivacy/easyprivacy_specific_cname_dataunlocker.txt
