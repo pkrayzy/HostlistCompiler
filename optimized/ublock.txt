@@ -1,7 +1,7 @@
 ! Title: uBlock filters
 ! Expires: 5 days
-! Last modified: Fri, 20 Mar 2026 20:27:58 +0000
-! Diff-Path: ../patches/2026.3.20.1363.patch#ublock-filters
+! Last modified: Sat, 21 Mar 2026 12:13:05 +0000
+! Diff-Path: ../patches/2026.3.21.830.patch#ublock-filters
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/filters.txt ***
@@ -2302,6 +2302,7 @@ aman-dn.blogspot.com#@#.ads-ad
 @@||shrink.$ghide,domain=shrink.icu|shrink.yt
 @@*$ghide,domain=torupload.com|nathanmichaelphoto.com
 @@||cdn4ads.com/T/myaUVE/xhumane.min.js$script,domain=torupload.com|nathanmichaelphoto.com
+@@||pagead2.googlesyndication.com/pagead/js/adsbygoogle.js$script,domain=nathanmichaelphoto.com|torupload.com
 *$script,domain=torupload.com|nathanmichaelphoto.com,redirect-rule=noopjs
 *$image,redirect-rule=32x32.png,domain=torupload.com|nathanmichaelphoto.com
 |oundhertobeconsist.org^
@@ -3424,6 +3425,7 @@ infogenyus.top,saboroso.blog#@#.ad-unit:not(.adsbox, .text-ad, .textads):not([st
 @@||vix.com^$ghide
 ||mp.lura.live/vod/vast.info/
 @@||imasdk.googleapis.com/js/sdkloader/ima3_dai.js$script,3p,domain=vix.com
+@@||imasdk.googleapis.com/js/sdkloader/ima3_dai.js$domain=recordplus.com
 ! NOTE: Thai
 ! NOTE: Turkish
 /js/aclb.js^$script,1p,domain=anizle.com|anizm.net|puffytr.com
@@ -3451,6 +3453,8 @@ tranimeizle.*#@#.video-ad-container
 ||animevietsub.*/ads/$script
 /player/jwplayer-*/vast.js$script
 ! cap3. pro
+||cap3.*/api/ads
+! Video player popup
 ! !SECTION: Non-English sites
 ! noadblocker.js "Enhanced Ad Blocker Detection Script"
 /^https:\/\/[a-z0-9]{6,10}\.[a-z]{2,3}\/js\d?\/noadblocker\.js(?:\?v=\d)?$/$script,1p,match-case
@@ -7718,7 +7722,8 @@ ads.flytant.com#@#.google-ads
 ! Streamix popup
 @@||meuplayeronlinehd.com^$ghide
 ||cfd/rfdtagarg/*.js
-/^https:\/\/get[0-9]+\.host[0-9]+[a-z]\.cfd\/\?tag=[A-Z0-9]+:C[0-9]$/$all,match-case,to=cfd
+||qwik-cf-nuxt.cdn-n.net^
+/^https:\/\/get[0-9]+\.host[0-9]+[a-z]\.cfd\/\?tag=[A-Z0-9]+/$all,match-case,to=cfd
 /^https:\/\/\d+\.cfd\/[a-z]{3}tag[a-z]{3}\/v\d\/[a-zA-Z0-9]+:C\d\.js\b/$script,3p,match-case,to=cfd
 !#if env_safari
 /^https:\/\/[0-9]+\.cfd\/[a-z][a-z][a-z]tag[a-z][a-z][a-z]\/v[0-9]\/[a-zA-Z0-9]+:C[0-9]\.js\b/$script,3p,match-case,to=cfd
@@ -7745,7 +7750,7 @@ ads.flytant.com#@#.google-ads
 ! Title: uBlock filters – Privacy
 ! Expires: 7 days
 ! Last modified: Fri, 20 Mar 2026 05:28:53 +0000
-! Diff-Path: ../patches/2026.3.20.1363.patch#ublock-privacy
+! Diff-Path: ../patches/2026.3.21.830.patch#ublock-privacy
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/privacy.txt ***
