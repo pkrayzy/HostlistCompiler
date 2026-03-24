@@ -1,9 +1,9 @@
-! Checksum: zc7H5vPc6sfPDqXo905pdw
-! Diff-Path: ../patches/118_optimized/118_optimized-s-1774227710-14400.patch
+! Checksum: Q6+D0BYBlU16NWibxM6PCw
+! Diff-Path: ../patches/118_optimized/118_optimized-s-1774313655-14400.patch
 ! Title: EasyPrivacy (Optimized)
 ! Description: Privacy protection supplement for EasyList.
-! Version: 2.1.61.23
-! TimeUpdated: 2026-03-23T00:58:28+00:00
+! Version: 2.1.61.29
+! TimeUpdated: 2026-03-24T00:51:01+00:00
 ! Expires: 5 days (update frequency)
 &&sub19=undefined&sub20=undefined
 &action=js_stats
@@ -355,6 +355,7 @@
 /api/pagevisits
 /api/pixel?
 /api/reqAnalytic/*
+/api/sentry/tunnel$xmlhttprequest
 /api/stat?
 /api/track?guid
 /api/trk?
@@ -499,6 +500,7 @@
 /boomerang.js
 /boomerang/beacon
 /boomr.js
+/boost-pfs-analytics-custom.js
 /boost-sd-analytic.js
 /boost_stats.php
 /bootstrap/metrics.js
@@ -1080,6 +1082,7 @@
 /geoip_cc
 /geoLocationData/v1/*
 /geov2.js
+/get/live/web/_/*$script,~third-party
 /get_geoip?
 /get_site_data?requestUUID=
 /getbglog.js
@@ -1487,6 +1490,7 @@
 /logviewedpage?
 /ls.gif?
 /lst/universal-script?ph=
+/lti-analytics-$script
 /lunametrics-
 /m.gif?
 /madAnalytics.js
@@ -7231,6 +7235,7 @@ omni.soundestlink.com$image
 ||firstendpoint.com^
 ||firstscreenshot.com^
 ||fishersfinds.com^
+||fishingtoolsbox.com^
 ||fitmessage.com^
 ||fitnessmapper.com^
 ||fivesidedsquare.com^
@@ -9337,6 +9342,7 @@ $third-party,xmlhttprequest,domain=opensubtitles.org
 ||p24.hu^$third-party
 ||modernus.is^$third-party
 ||analytic.rocks^$third-party
+||meiro.io^$third-party
 ||props.id^$third-party
 ||0stats.com^$third-party
 ||24log.it^$third-party
@@ -9420,6 +9426,7 @@ $third-party,xmlhttprequest,domain=opensubtitles.org
 ||d2-apps.net^$third-party
 ||d2c.ne.jp^$third-party
 ||dbfocus.jp^$third-party
+||dc-tag.jp^$third-party
 ||deteql.net^$third-party
 ||dmtag.jp^$third-party
 ||docodoco.jp^$third-party
@@ -11306,6 +11313,7 @@ $third-party,xmlhttprequest,domain=opensubtitles.org
 ||lightboxcdn.com/static/identity.html
 ||limbik.com/static/tracking-script.js
 ||lingows.appspot.com/page_data/?
+||link.bhvr.com^
 ||link.cosmopolitan.com^$image
 ||link.indiegogo.com/img/
 ||link.informer.com^
@@ -11761,6 +11769,7 @@ $third-party,xmlhttprequest,domain=opensubtitles.org
 ||play.adtonos.com^
 ||play.ht/views/
 ||player-metrics.instaread.co^
+||player.mangomolo.com/stats/
 ||player.ooyala.com/errors/report?
 ||player.target-video.com/player/build/plugins/googleanalytics/
 ||playhop.com/clck/
@@ -11952,6 +11961,7 @@ $third-party,xmlhttprequest,domain=opensubtitles.org
 ||run.app/metrics/
 ||run.app/track.js
 ||rw.marchex.io^
+||rybbit.sg-app.com^
 ||s-microsoft.com/mscc/$~stylesheet
 ||s.autopilotapp.com^
 ||s.axon.ai^
@@ -12265,6 +12275,7 @@ $third-party,xmlhttprequest,domain=opensubtitles.org
 ||t.id.net/log
 ||t.irtyc.com^
 ||t.jobsyn.org^
+||t.ltiquery.com^
 ||t.mail.sony-europe.com/r/?
 ||t.menepe.com^
 ||t.metrilo.com^
@@ -14367,6 +14378,7 @@ $third-party,xmlhttprequest,domain=opensubtitles.org
 ||ampltd.medal.tv^
 ||ampltd.top.gg^
 ||ampltd2.medal.tv^
+||anal.billingserv.com^
 ||anal.doubledouble.top^
 ||analytics-api.dvdfab.
 ||analytics-batch.blitz.gg^
@@ -14406,6 +14418,7 @@ $third-party,xmlhttprequest,domain=opensubtitles.org
 ||analytics.ml.homedepot.ca^
 ||analytics.morphe.software^
 ||analytics.mouthshut.com^
+||analytics.netralex.com^
 ||analytics.nike.com^
 ||analytics.ovh.com^
 ||analytics.oyorooms.com^
@@ -15491,6 +15504,7 @@ $third-party,xmlhttprequest,domain=opensubtitles.org
 ||online-umwandeln.de/analytics.js
 ||online.marketing/a.js
 ||ontraport.com/opt_assets/static/js/logging.js
+||op.dragonfru.it^
 ||opendesktop.org/l/fp
 ||ophan.theguardian.com^
 ||oppo.com/api/country
@@ -16183,6 +16197,7 @@ $third-party,xmlhttprequest,domain=opensubtitles.org
 ||two.cm.com^
 ||tyler-brown.com/api/stats?
 ||typepad.com/t/stats?
+||u.strike.bz^
 ||u1sdata.webullfintech.com^
 ||ua.financialexpress.com/api/capture
 ||ua.indianexpress.com^
@@ -28345,7 +28360,6 @@ $third-party,xmlhttprequest,domain=opensubtitles.org
 ||styles.hautelook.com^
 ||subscription.mktg.nfl.com^
 ||subscriptions.costco.ca^
-||subscriptions.costco.com^
 ||subscriptions.e.silverfernfarms.com^
 ||subscriptions.outbound.luxair.lu^
 ||sucmetrics.hypovereinsbank.de^
@@ -54194,6 +54208,7 @@ $third-party,xmlhttprequest,domain=opensubtitles.org
 ||top.mail.ru/tc?js
 ||top.mail.ru/tpc.js
 ||top.mail.ru/tt?js
+||traces.youdo.com^
 ||trk.mail.ru^$image,script
 ||umschool.net/_jts/api/s/track
 ||vedomosti.ru/boom?
