@@ -85,7 +85,6 @@ jobs:
           {
             curl -s https://filters.adtidy.org/extension/safari/filters/2_optimized.txt | grep "www.youtube.com#%#"
             curl -s https://filters.adtidy.org/extension/safari/filters/5_optimized.txt | grep "youtube.com#%#"
-            curl -s https://ublockorigin.github.io/uAssetsCDN/filters/privacy.min.txt | grep "##+js"
               } > ./optimized/scriptlets.txt
 
       - name: Build uBlock
@@ -95,7 +94,7 @@ jobs:
             curl -s https://ublockorigin.github.io/uAssetsCDN/filters/privacy.min.txt
             curl -s https://raw.githubusercontent.com/brave/adblock-lists/master/brave-lists/brave-ios-specific.txt
             curl -s https://raw.githubusercontent.com/brave/adblock-lists/master/brave-lists/brave-firstparty.txt
-              } | grep -v "##+js" | grep -v "redirect=" | grep -v "removeparam" > ./optimized/ublock.txt
+              } > ./optimized/ublock.txt
 
       - name: Build CNAMEs
         run: |            
