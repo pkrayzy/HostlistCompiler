@@ -91,10 +91,10 @@ jobs:
       - name: Build uBlock
         run: |              
           {
-            curl -s https://ublockorigin.github.io/uAssetsCDN/filters/filters.min.txt | grep -v '##+js' | grep -v 'redirect=' | grep -v '$removeparam'
-            curl -s https://ublockorigin.github.io/uAssetsCDN/filters/privacy.min.txt | grep -v '##+js' | grep -v 'redirect=' | grep -v '$removeparam'
-            curl -s https://raw.githubusercontent.com/brave/adblock-lists/master/brave-lists/brave-ios-specific.txt | grep -v ##+js | grep -v 'redirect=' | grep -v '$removeparam'
-            curl -s https://raw.githubusercontent.com/brave/adblock-lists/master/brave-lists/brave-firstparty.txt | grep -v ##+js | grep -v 'redirect=' | grep -v '$removeparam'
+            curl -s https://ublockorigin.github.io/uAssetsCDN/filters/filters.min.txt | grep -v "##+js" | grep -v "redirect=" | grep -v "$removeparam"
+            curl -s https://ublockorigin.github.io/uAssetsCDN/filters/privacy.min.txt | grep -v "##+js" | grep -v "redirect=" | grep -v "$removeparam"
+            curl -s https://raw.githubusercontent.com/brave/adblock-lists/master/brave-lists/brave-ios-specific.txt | grep -v "##+js" | grep -v "redirect=" | grep -v "$removeparam"
+            curl -s https://raw.githubusercontent.com/brave/adblock-lists/master/brave-lists/brave-firstparty.txt | grep -v "##+js" | grep -v "redirect=" | grep -v "$removeparam"
             } > ./optimized/ublock.txt
 
       - name: Build CNAMEs
