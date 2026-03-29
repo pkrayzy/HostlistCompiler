@@ -83,12 +83,12 @@ jobs:
       - name: Build uBlock
         run: |              
           {
-            curl -s https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/ubol-filters.txt | grep -v '!#include'
-            curl -s https://raw.githubusercontent.com/uBlockOrigin/uAssets//master/filters/filters-general.txt | grep -v '!#include'
-            curl -s https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/privacy.txt | grep -v '!#include'
             curl -s https://raw.githubusercontent.com/pkrayzy/Krayzylist/main/Blocklist
             curl -s https://filters.adtidy.org/extension/safari/filters/2_optimized.txt | grep "www.youtube.com#%#"
             curl -s https://filters.adtidy.org/extension/safari/filters/5_optimized.txt | grep "youtube.com#%#"
+            curl -s https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/ubol-filters.txt | grep -v '!#include' | grep -v '!#if' | grep -v '!#endif'
+            curl -s https://raw.githubusercontent.com/uBlockOrigin/uAssets//master/filters/filters-general.txt | grep -v '!#include' | grep -v '!#if' | grep -v '!#endif'
+            curl -s https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/privacy.txt | grep -v '!#include' | grep -v '!#if' | grep -v '!#endif'
               } > ./optimized/ublock.txt
 
       - name: Build CNAMEs
