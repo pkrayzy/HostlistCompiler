@@ -85,9 +85,9 @@ jobs:
           {
             curl -s https://filters.adtidy.org/extension/safari/filters/2_optimized.txt | grep "www.youtube.com#%#"
             curl -s https://filters.adtidy.org/extension/safari/filters/5_optimized.txt | grep "youtube.com#%#"
-            curl -s https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-general.txt | grep -v '!#include' | grep -v '!#if' | grep -v '!#endif' | grep -v '!#else'
-            curl -s https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/privacy.txt | grep -v '!#include' | grep -v '!#if' | grep -v '!#endif' | grep -v '!#else'
-              } > ./optimized/ublock.txt
+            curl -s https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-general.txt | sed 's/!#if env_safari/!#if (adguard_app_ios || adguard_ext_android_cb || adguard_ext_safari || adguard_ext_chromium_mv3)/g' | sed 's/!#if !ext_ubol/!#if (!adguard_app_ios \&\& !adguard_ext_android_cb \&\& !adguard_ext_safari \&\& !adguard_ext_chromium_mv3)/g' | grep -v '!#include'
+            curl -s https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/privacy.txt | sed 's/!#if env_safari/!#if (adguard_app_ios || adguard_ext_android_cb || adguard_ext_safari || adguard_ext_chromium_mv3)/g' | sed 's/!#if !ext_ubol/!#if (!adguard_app_ios \&\& !adguard_ext_android_cb \&\& !adguard_ext_safari \&\& !adguard_ext_chromium_mv3)/g' | grep -v '!#include'
+              } > ./optimized/ublock.txt 
 
       - name: Build CNAMEs
         run: |            
