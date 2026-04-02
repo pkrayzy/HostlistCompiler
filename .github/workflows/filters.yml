@@ -64,20 +64,20 @@ jobs:
 
       - name: Download and transform Adguard Filters
         run: |
-          (curl -s https://filters.adtidy.org/extension/safari/filters/15_optimized.txt | grep -v "\*") > ./optimized/15_optimized.txt
-          (curl -s https://filters.adtidy.org/extension/safari/filters/15_optimized.txt | grep "^@@" | sed 's/^@@/||/' | sed 's/\(.*\)\.\(.*\)\.\(.*\)$/\2.\3/' | tr -d '|') > ./optimized/15_whitelist.txt
-          (curl -s https://filters.adtidy.org/extension/safari/filters/2_optimized.txt | grep -v '!#safari_cb_affinity') > ./optimized/2_optimized.txt
+          (curl -s https://filters.adtidy.org/ios/filters/15_optimized.txt | grep -v "\*") > ./optimized/15_optimized.txt
+          (curl -s https://filters.adtidy.org/ios/filters/15_optimized.txt | grep "^@@" | sed 's/^@@/||/' | sed 's/\(.*\)\.\(.*\)\.\(.*\)$/\2.\3/' | tr -d '|') > ./optimized/15_whitelist.txt
+          (curl -s https://filters.adtidy.org/ios/filters/2_optimized.txt | grep -v '!#safari_cb_affinity') > ./optimized/2_optimized.txt
           (curl -s https://adguardteam.github.io/AdguardFilters/BaseFilter/sections/content_blocker.txt | grep -v '!#safari_cb_affinity') > ./optimized/cb_optimized.txt
-          (curl -s https://filters.adtidy.org/extension/safari/filters/3_optimized.txt | grep -v '!#safari_cb_affinity') > ./optimized/3_optimized.txt
-          (curl -s https://filters.adtidy.org/extension/safari/filters/4_optimized.txt | grep -v '!#safari_cb_affinity') > ./optimized/4_optimized.txt
-          (curl -s https://filters.adtidy.org/extension/safari/filters/11_optimized.txt | grep -v '!#safari_cb_affinity') > ./optimized/11_optimized.txt
-          (curl -s https://filters.adtidy.org/extension/safari/filters/14_optimized.txt | grep -v '!#safari_cb_affinity') > ./optimized/14_optimized.txt
-          # (curl -s https://filters.adtidy.org/extension/safari/filters/101.txt | grep -v '!#safari_cb_affinity') > ./optimized/101_optimized.txt
-          # (curl -s https://filters.adtidy.org/extension/safari/filters/118.txt | grep -v '!#safari_cb_affinity') > ./optimized/118_optimized.txt
-          # (curl -s https://filters.adtidy.org/extension/safari/filters/122.txt | grep -v '!#safari_cb_affinity') > ./optimized/122_optimized.txt
-          (curl -s https://filters.adtidy.org/extension/safari/filters/101_optimized.txt | grep -v '!#safari_cb_affinity') > ./optimized/101_optimized.txt
-          (curl -s https://filters.adtidy.org/extension/safari/filters/118_optimized.txt | grep -v '!#safari_cb_affinity') > ./optimized/118_optimized.txt
-          (curl -s https://filters.adtidy.org/extension/safari/filters/122_optimized.txt | grep -v '!#safari_cb_affinity') > ./optimized/122_optimized.txt
+          (curl -s https://filters.adtidy.org/ios/filters/3_optimized.txt | grep -v '!#safari_cb_affinity') > ./optimized/3_optimized.txt
+          (curl -s https://filters.adtidy.org/ios/filters/4_optimized.txt | grep -v '!#safari_cb_affinity') > ./optimized/4_optimized.txt
+          (curl -s https://filters.adtidy.org/ios/filters/11_optimized.txt | grep -v '!#safari_cb_affinity') > ./optimized/11_optimized.txt
+          (curl -s https://filters.adtidy.org/ios/filters/14_optimized.txt | grep -v '!#safari_cb_affinity') > ./optimized/14_optimized.txt
+          # (curl -s https://filters.adtidy.org/ios/filters/101.txt | grep -v '!#safari_cb_affinity') > ./optimized/101_optimized.txt
+          # (curl -s https://filters.adtidy.org/ios/filters/118.txt | grep -v '!#safari_cb_affinity') > ./optimized/118_optimized.txt
+          # (curl -s https://filters.adtidy.org/ios/filters/122.txt | grep -v '!#safari_cb_affinity') > ./optimized/122_optimized.txt
+          (curl -s https://filters.adtidy.org/ios/filters/101_optimized.txt | grep -v '!#safari_cb_affinity') > ./optimized/101_optimized.txt
+          (curl -s https://filters.adtidy.org/ios/filters/118_optimized.txt | grep -v '!#safari_cb_affinity') > ./optimized/118_optimized.txt
+          (curl -s https://filters.adtidy.org/ios/filters/122_optimized.txt | grep -v '!#safari_cb_affinity') > ./optimized/122_optimized.txt
           (curl -s https://ublockorigin.github.io/uAssetsCDN/filters/filters.min.txt | grep -v '!#safari_cb_affinity') > ./optimized/101_ublock.txt
           (curl -s https://ublockorigin.github.io/uAssetsCDN/filters/privacy.min.txt | grep -v '!#safari_cb_affinity') > ./optimized/118_ublock.txt
           (curl -s https://ublockorigin.github.io/uAssetsCDN/filters/annoyances.min.txt | grep -v '!#safari_cb_affinity') > ./optimized/122_ublock.txt
@@ -86,8 +86,8 @@ jobs:
       - name: Build uBlock
         run: |              
           {
-            curl -s https://filters.adtidy.org/extension/safari/filters/2_optimized.txt | grep "youtube.com#%#"
-            curl -s https://filters.adtidy.org/extension/safari/filters/5_optimized.txt | grep "youtube.com#%#"
+            curl -s https://filters.adtidy.org/ios/filters/2_optimized.txt | grep "youtube.com#%#"
+            curl -s https://filters.adtidy.org/ios/filters/5_optimized.txt | grep "youtube.com#%#"
             # curl -s https://raw.githubusercontent.com/AdguardTeam/FiltersRegistry/master/platforms/ios/local_script_rules.txt | grep "youtube.com#%#"
             curl -s https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-general.txt | sed 's/!#if env_safari/!#if (adguard_app_ios || adguard_ext_android_cb || adguard_ext_safari || adguard_ext_chromium_mv3)/g' | sed 's/!#if !ext_ubol/!#if (!adguard_app_ios \&\& !adguard_ext_android_cb \&\& !adguard_ext_safari \&\& !adguard_ext_chromium_mv3)/g' | grep -v '!#include'
             curl -s https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/privacy.txt | sed 's/!#if env_safari/!#if (adguard_app_ios || adguard_ext_android_cb || adguard_ext_safari || adguard_ext_chromium_mv3)/g' | sed 's/!#if !ext_ubol/!#if (!adguard_app_ios \&\& !adguard_ext_android_cb \&\& !adguard_ext_safari \&\& !adguard_ext_chromium_mv3)/g' | grep -v '!#include'
