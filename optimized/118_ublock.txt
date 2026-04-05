@@ -1,7 +1,7 @@
 ! Title: uBlock filters – Privacy
 ! Expires: 7 days
-! Last modified: Thu, 02 Apr 2026 15:57:05 +0000
-! Diff-Path: ../patches/2026.4.3.708.patch#ublock-privacy
+! Last modified: Sun, 05 Apr 2026 03:46:37 +0000
+! Diff-Path: ../patches/2026.4.5.1140.patch#ublock-privacy
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/privacy.txt ***
@@ -1252,6 +1252,7 @@ r.mail.wowvegas.com%2Ftr%2Fop%2F*$image
 ! chegg
 /links.chegg.com/q/*$image
 *%2Flinks.chegg.com%2Fq%2F*$image
+/t.em.chegg.com/r/?$image
 ! rumble
 /em.rumble.com/t/*$image
 *%2Fem.rumble.com%2Ft%2F*$image
@@ -1307,6 +1308,7 @@ r.mail.wowvegas.com%2Ftr%2Fop%2F*$image
 ! dropbox
 .dropbox.com/l/$image
 .dropbox.com%2Fl%2F$image
+/links.dropbox.com/e/eo?$image
 ! apple
 /APPLE_EMAIL_LINK/*$image
 *%2FAPPLE_EMAIL_LINK%2F$image
@@ -1345,8 +1347,12 @@ r.mail.wowvegas.com%2Ftr%2Fop%2F*$image
 ! facebook
 /facebook.com/aymt/aa/?$image
 ! yahoo
-/email.communications.yahoo.com/t/*$image
-*%2Fpremiumservices.comms.yahoo.net%2FO%2F$image
+/comms.yahoo.net/O/*$image
+*%2Fcomms.yahoo.net%2FO%2F$image
+.communications.yahoo.com/t/*$image
+.communications.yahoo.com%2Ft%2F$image
+.comms.yahoo.net/O/$image
+.comms.yahoo.net%2FO%2F$image
 ! tes.com
 .tes.com/et/email?$image
 ! udacity
@@ -1418,6 +1424,29 @@ r.mail.wowvegas.com%2Ftr%2Fop%2F*$image
 .sparkpostmail2.com%2Fq%2F$image
 ! eset
 /enjoy.eset.com/pub/as?$image
+! unsplash
+/email.unsplash.com/o/*$image
+! start.me
+/email.start.me/o/*$image
+! instapaper
+/emails.instapaper.com/CI0/*$image
+! inoreader
+.inoreader.com/newsletter/p/?$image
+! hostinger
+/mailer.hostinger.io/o/*$image
+! softorbits
+.softorbits.com/sendy/t/$image
+! steam
+/store.steampowered.com/emi/*.gif$image
+*%2Fstore.steampowered.com%2Femi%2F*.gif*$image
+! deviantart
+/email.mkt.deviantart.com/o/*$image
+! cbc.ca
+/newsletters.cbc.ca/t/*$image
+! surfline
+/link.surfline.com/q/*$image
+! angami.com
+/clicks.anghami.com/q/*$image
 ! others
 static.adsugar.ch/img?ord=$image
 static.adsugar.ch%2Fimg%3Ford%3D*$image
@@ -1478,6 +1507,8 @@ newsletter.adnz.co%2F*$image
 .k-trk.com/$image
 .k-trk.com%2F*$image
 /c.*/CI0/*$image
+/emails.*/CI0/*$image
+*%2Femails.*%2FCI0%2F$image
 .netline.com/ltr1/$image
 .netline.com%2Fltr1%2F$image
 /mail.*/ostat.php?$image
@@ -1604,6 +1635,20 @@ newsletter.adnz.co%2F*$image
 *%2Fpub%2Fas%3F$image
 /marketing.marketdata.app/marketdata/email/*.gif$image
 *%2Fmarketing.marketdata.app%2Fmarketdata%2Femail%2F*.gif*$image
+/email.*/o/*$image
+*%2Femail*%2Fo%2F$image
+/t.em.*/r/?$image
+*%2Ft.em.*%2Fr%2F%3F$image
+/newsletter/p/?$image
+*%2Fnewsletter%2Fp%2F%3F$image
+/mailer.*/o/*$image
+*%2Fmailer.*%2Fo%2F$image
+.mail.lbry.com/o/$image
+*%2Feo%3F_t%3D*$image
+/newsletters.*/t/*$image
+*%2Fnewsletters.*%2Ft%2F$image
+/link.*/q/*$image
+*%2Flink.*%2Fq%2F$image
 ||googleusercontent.com/*/wf/open?upn=$image
 .salesforce.com%2Fservlet%2Fservlet.ImageServer%3F$image
 !/e/o/*$image
@@ -1852,6 +1897,9 @@ itmedia.co.jp##+js(set-local-storage-item, /^_cX_/, $remove$)
 ||soundcore.com/metrics/$xhr,method=post
 ! NXDOMAIN
 ||detect-ccd.creativecloud.adobe.com^
+lnk.to,smarturl.it##+js(set, linkfire.tracking, {})
+/^https:\/\/www\.[a-z0-9]{8}\.com\/i\/[A-Z0-9]{5}\/[A-Z0-9]{6}\/$/$image,3p,match-case,to=com
+||dq8i9djm.com^$3p
 ! Merge in resource-abuse.txt
 ! *** uAssets:filters/resource-abuse.txt ***
 /edgemesh.*.js$script,domain=~edgemesh.com|~edgeno.de
@@ -1931,3 +1979,4 @@ dlhd.*>>,~chatango.com##+js(rmnt, script, sendFakeRequest)
 ||bg-gledai.video/wp-content/plugins/crypto-converter-widget/$script,1p
 ||cdn.jsdelivr.net/gh/dejurin/crypto-converter-widget$script,domain=bg-gledai.video
 archive.fo,archive.is,archive.li,archive.md,archive.ph,archive.today,archive.vn,btdig.com##+js(nosiif, fetch)
+climaaovivo.com.br##+js(nosiif, location.reload)
