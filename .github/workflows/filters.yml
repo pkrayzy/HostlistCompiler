@@ -87,14 +87,14 @@ jobs:
       - name: Build Adguard Privacy
         run: |              
           {
-          curl -s  https://adguardteam.github.io/AdguardFilters/SpywareFilter/sections/general_extensions.txt| grep -v '!#safari_cb_affinity'
-          curl -s  https://adguardteam.github.io/AdguardFilters/SpywareFilter/sections/general_elemhide.txt| grep -v '!#safari_cb_affinity'
+          curl -s  https://adguardteam.github.io/AdguardFilters/SpywareFilter/sections/general_extensions.txt | grep -v '!#safari_cb_affinity'
+          curl -s  https://adguardteam.github.io/AdguardFilters/SpywareFilter/sections/general_elemhide.txt | grep -v '!#safari_cb_affinity'
           curl -s  https://adguardteam.github.io/AdguardFilters/SpywareFilter/sections/tracking_servers.txt | grep -v '!#safari_cb_affinity'| grep -v '!#include'
-          curl -s  https://adguardteam.github.io/AdguardFilters/SpywareFilter/sections/tracking_servers_firstparty.txt| grep -v '!#safari_cb_affinity'
-          curl -s  https://raw.githubusercontent.com/easylist/easylist/master/easyprivacy/easyprivacy_trackingservers_admiral.txt| grep -v '!#safari_cb_affinity'
-          curl -s  https://adguardteam.github.io/AdguardFilters/SpywareFilter/sections/general_url.txt| grep -v '!#safari_cb_affinity'
-          curl -s  https://adguardteam.github.io/AdguardFilters/SpywareFilter/sections/specific.txt| grep -v '!#safari_cb_affinity'
-          curl -s  https://adguardteam.github.io/AdguardFilters/SpywareFilter/sections/cookies_allowlist.txt| grep -v '!#safari_cb_affinity'
+          curl -s  https://adguardteam.github.io/AdguardFilters/SpywareFilter/sections/tracking_servers_firstparty.txt | grep -v '!#safari_cb_affinity'
+          curl -s  https://raw.githubusercontent.com/easylist/easylist/master/easyprivacy/easyprivacy_trackingservers_admiral.txt | grep -v '!#safari_cb_affinity'
+          curl -s  https://adguardteam.github.io/AdguardFilters/SpywareFilter/sections/general_url.txt | grep -v '!#safari_cb_affinity'
+          curl -s  https://adguardteam.github.io/AdguardFilters/SpywareFilter/sections/specific.txt | grep -v '!#safari_cb_affinity'
+          curl -s  https://adguardteam.github.io/AdguardFilters/SpywareFilter/sections/cookies_allowlist.txt | grep -v '!#safari_cb_affinity'
           curl -s  https://adguardteam.github.io/AdguardFilters/SpywareFilter/sections/cookies_general.txt| grep -v '!#safari_cb_affinity'
           curl -s  https://adguardteam.github.io/AdguardFilters/SpywareFilter/sections/cookies_specific.txt| grep -v '!#safari_cb_affinity'
           curl -s  https://adguardteam.github.io/AdguardFilters/SpywareFilter/sections/mobile.txt| grep -v '!#safari_cb_affinity'
@@ -105,13 +105,15 @@ jobs:
       - name: Build Scriptlets
         run: |              
           {
-            curl -s https://filters.adtidy.org/ios/filters/2_optimized.txt | grep "youtube.com#%#"
-            curl -s https://filters.adtidy.org/ios/filters/5_optimized.txt | grep "youtube.com#%#"
+            curl -s https://filters.adtidy.org/ios/filters/2_optimized.txt | grep "youtube.com#%#" | grep -v 'ssyoutube.com#%#'
+            curl -s https://filters.adtidy.org/ios/filters/5_optimized.txt | grep "youtube.com#%#" | grep -v 'ssyoutube.com#%#'
               } > ./optimized/scriptlets.txt 
 
       - name: Build uBlock
         run: |              
           {
+            curl -s https://filters.adtidy.org/ios/filters/2_optimized.txt | grep "youtube.com#%#" | grep -v 'ssyoutube.com#%#'
+            curl -s https://filters.adtidy.org/ios/filters/5_optimized.txt | grep "youtube.com#%#" | grep -v 'ssyoutube.com#%#'
             curl -s https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-general.txt | sed 's/!#if env_safari/!#if (adguard_app_ios || adguard_ext_android_cb || adguard_ext_safari || adguard_ext_chromium_mv3)/g' | sed 's/!#if !ext_ubol/!#if (!adguard_app_ios \&\& !adguard_ext_android_cb \&\& !adguard_ext_safari \&\& !adguard_ext_chromium_mv3)/g' | grep -v '!#include'
             curl -s https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/privacy.txt | sed 's/!#if env_safari/!#if (adguard_app_ios || adguard_ext_android_cb || adguard_ext_safari || adguard_ext_chromium_mv3)/g' | sed 's/!#if !ext_ubol/!#if (!adguard_app_ios \&\& !adguard_ext_android_cb \&\& !adguard_ext_safari \&\& !adguard_ext_chromium_mv3)/g' | grep -v '!#include'
               } > ./optimized/ublock.txt 
