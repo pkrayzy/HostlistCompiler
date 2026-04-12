@@ -68,46 +68,17 @@ jobs:
           (curl -s "https://raw.githubusercontent.com/AdguardTeam/AdGuardSDNSFilter/master/Filters/exceptions.txt" | \sed 's/^@@||//g; s/^@@|//g; s/|$//g; /^!/!s/^/||/') > ./optimized/15_whitelist.txt
           (curl -s https://filters.adtidy.org/ios/filters/2_optimized.txt | grep -v '!#safari_cb_affinity') > ./optimized/2_optimized.txt
           (curl -s https://adguardteam.github.io/AdguardFilters/BaseFilter/sections/content_blocker.txt | grep -v '!#safari_cb_affinity') > ./optimized/cb_optimized.txt
-          # (curl -s https://filters.adtidy.org/ios/filters/3_optimized.txt | grep -v '!#safari_cb_affinity') > ./optimized/3_optimized.txt
+          (curl -s https://filters.adtidy.org/ios/filters/3_optimized.txt | grep -v '!#safari_cb_affinity') > ./optimized/3_optimized.txt
           (curl -s https://filters.adtidy.org/ios/filters/4_optimized.txt | grep -v '!#safari_cb_affinity') > ./optimized/4_optimized.txt
           (curl -s https://filters.adtidy.org/ios/filters/11_optimized.txt | grep -v '!#safari_cb_affinity') > ./optimized/11_optimized.txt
           (curl -s https://filters.adtidy.org/ios/filters/14_optimized.txt | grep -v '!#safari_cb_affinity') > ./optimized/14_optimized.txt
-          # (curl -s https://filters.adtidy.org/ios/filters/101.txt | grep -v '!#safari_cb_affinity') > ./optimized/101_optimized.txt
-          # (curl -s https://filters.adtidy.org/ios/filters/118.txt | grep -v '!#safari_cb_affinity') > ./optimized/118_optimized.txt
-          # (curl -s https://filters.adtidy.org/ios/filters/122.txt | grep -v '!#safari_cb_affinity') > ./optimized/122_optimized.txt
           (curl -s https://filters.adtidy.org/ios/filters/101_optimized.txt | grep -v '!#safari_cb_affinity') > ./optimized/101_optimized.txt
-          (curl -s https://filters.adtidy.org/ios/filters/118_optimized.txt 
-          ) > ./optimized/118_optimized.txt
+          (curl -s https://filters.adtidy.org/ios/filters/118_optimized.txt | grep -v '!#safari_cb_affinity') > ./optimized/118_optimized.txt
           (curl -s https://filters.adtidy.org/ios/filters/122_optimized.txt | grep -v '!#safari_cb_affinity') > ./optimized/122_optimized.txt
           (curl -s https://ublockorigin.github.io/uAssetsCDN/filters/filters.min.txt | grep -v '!#safari_cb_affinity') > ./optimized/101_ublock.txt
           (curl -s https://ublockorigin.github.io/uAssetsCDN/filters/privacy.min.txt | grep -v '!#safari_cb_affinity') > ./optimized/118_ublock.txt
           (curl -s https://ublockorigin.github.io/uAssetsCDN/filters/annoyances.min.txt | grep -v '!#safari_cb_affinity') > ./optimized/122_ublock.txt
           (curl -s https://gitflic.ru/project/magnolia1234/bypass-paywalls-clean-filters/blob/raw?file=bpc-paywall-filter.txt | grep -v '!#safari_cb_affinity') > ./optimized/paywalls.txt          
-
-      - name: Build Adguard Privacy
-        run: |              
-          {
-          curl -s  https://adguardteam.github.io/AdguardFilters/SpywareFilter/sections/general_extensions.txt | grep -v '!#safari_cb_affinity'
-          curl -s  https://adguardteam.github.io/AdguardFilters/SpywareFilter/sections/general_elemhide.txt | grep -v '!#safari_cb_affinity'
-          curl -s  https://adguardteam.github.io/AdguardFilters/SpywareFilter/sections/tracking_servers.txt | grep -v '!#safari_cb_affinity'| grep -v '!#include'
-          curl -s  https://adguardteam.github.io/AdguardFilters/SpywareFilter/sections/tracking_servers_firstparty.txt | grep -v '!#safari_cb_affinity'
-          curl -s  https://raw.githubusercontent.com/easylist/easylist/master/easyprivacy/easyprivacy_trackingservers_admiral.txt | grep -v '!#safari_cb_affinity'
-          curl -s  https://adguardteam.github.io/AdguardFilters/SpywareFilter/sections/general_url.txt | grep -v '!#safari_cb_affinity'
-          curl -s  https://adguardteam.github.io/AdguardFilters/SpywareFilter/sections/specific.txt | grep -v '!#safari_cb_affinity'
-          curl -s  https://adguardteam.github.io/AdguardFilters/SpywareFilter/sections/cookies_allowlist.txt | grep -v '!#safari_cb_affinity'
-          curl -s  https://adguardteam.github.io/AdguardFilters/SpywareFilter/sections/cookies_general.txt| grep -v '!#safari_cb_affinity'
-          curl -s  https://adguardteam.github.io/AdguardFilters/SpywareFilter/sections/cookies_specific.txt| grep -v '!#safari_cb_affinity'
-          curl -s  https://adguardteam.github.io/AdguardFilters/SpywareFilter/sections/mobile.txt| grep -v '!#safari_cb_affinity'
-          curl -s  https://adguardteam.github.io/AdguardFilters/SpywareFilter/sections/mobile_allowlist.txt| grep -v '!#safari_cb_affinity'
-          curl -s  https://adguardteam.github.io/AdguardFilters/SpywareFilter/sections/allowlist.txt| grep -v '!#safari_cb_affinity'
-              } > ./optimized/3_optimized.txt
-
-      - name: Build Scriptlets
-        run: |              
-          {
-            curl -s https://filters.adtidy.org/ios/filters/2_optimized.txt | grep "youtube.com#%#" | grep -v 'ssyoutube.com#%#'
-            curl -s https://filters.adtidy.org/ios/filters/5_optimized.txt | grep "youtube.com#%#" | grep -v 'ssyoutube.com#%#'
-              } > ./optimized/scriptlets.txt 
 
       - name: Build uBlock
         run: |              
