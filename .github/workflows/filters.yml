@@ -84,6 +84,7 @@ jobs:
         run: |              
           {
             curl -s https://filters.adtidy.org/ios/filters/2.txt | sed -n '/! START: Youtube whitescreen fix/,/! END: Youtube whitescreen fix/p'
+            curl -s https://filters.adtidy.org/ios/filters/5.txt | sed -n '/! YouTube ads/,/! Allowlist/p'
             curl -s https://filters.adtidy.org/ios/filters/2.txt | sed -n '/! START: Ad-Shield ad reinsertion/,/! END: Ad-Shield ad reinsertion/p'
             curl -s https://filters.adtidy.org/ios/filters/2.txt | sed -n '/!------------------ General hiding rules----------------------------------------!/,/!------------------ Rules for specific web sites -------------------------------!/p'
             curl -s https://ublockorigin.github.io/uAssetsCDN/filters/privacy.min.txt | sed 's/!#if env_safari/!#if (adguard_app_ios || adguard_ext_android_cb || adguard_ext_safari || adguard_ext_chromium_mv3)/g' | sed 's/!#if !ext_ubol/!#if (!adguard_app_ios \&\& !adguard_ext_android_cb \&\& !adguard_ext_safari \&\& !adguard_ext_chromium_mv3)/g' | grep -v '!#include'
