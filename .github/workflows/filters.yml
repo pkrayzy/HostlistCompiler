@@ -87,8 +87,18 @@ jobs:
             curl -s https://filters.adtidy.org/ios/filters/5.txt | sed -n '/! YouTube ads/,/! Allowlist/p'
             curl -s https://filters.adtidy.org/ios/filters/2.txt | sed -n '/! START: Ad-Shield ad reinsertion/,/! END: Ad-Shield ad reinsertion/p'
             curl -s https://filters.adtidy.org/ios/filters/2.txt | sed -n '/!------------------ General hiding rules----------------------------------------!/,/!------------------ Rules for specific web sites -------------------------------!/p'
+            curl -s https://raw.githubusercontent.com/brave/adblock-lists/master/brave-lists/brave-firstparty.txt
+            curl -s https://raw.githubusercontent.com/brave/adblock-lists/master/brave-lists/brave-ios-specific.txt
+            curl -s https://raw.githubusercontent.com/brave/adblock-lists/master/brave-lists/brave-cookie-specific.txt
+            curl -s https://raw.githubusercontent.com/brave/adblock-lists/master/brave-lists/brave-social.txt
+            curl -s https://raw.githubusercontent.com/brave/adblock-lists/master/brave-unbreak.txt
             curl -s https://ublockorigin.github.io/uAssetsCDN/filters/privacy.min.txt | sed 's/!#if env_safari/!#if (adguard_app_ios || adguard_ext_android_cb || adguard_ext_safari || adguard_ext_chromium_mv3)/g' | sed 's/!#if !ext_ubol/!#if (!adguard_app_ios \&\& !adguard_ext_android_cb \&\& !adguard_ext_safari \&\& !adguard_ext_chromium_mv3)/g' | grep -v '!#include'
             curl -s https://ublockorigin.github.io/uAssetsCDN/filters/annoyances.min.txt | sed 's/!#if env_safari/!#if (adguard_app_ios || adguard_ext_android_cb || adguard_ext_safari || adguard_ext_chromium_mv3)/g' | sed 's/!#if !ext_ubol/!#if (!adguard_app_ios \&\& !adguard_ext_android_cb \&\& !adguard_ext_safari \&\& !adguard_ext_chromium_mv3)/g' | grep -v '!#include'
+            curl -s https://raw.githubusercontent.com/easylist/easylist/refs/heads/master/fanboy-addon/fanboy_agegate_specific_uBO.txt
+            curl -s https://raw.githubusercontent.com/easylist/easylist/refs/heads/master/fanboy-addon/fanboy_annoyance_specific_uBO.txt
+            curl -s https://raw.githubusercontent.com/easylist/easylist/refs/heads/master/fanboy-addon/fanboy_newsletter_specific_uBO.txt
+            curl -s https://raw.githubusercontent.com/easylist/easylist/refs/heads/master/fanboy-addon/fanboy_notifications_specific_uBO.txt
+            curl -s https://raw.githubusercontent.com/easylist/easylist/refs/heads/master/fanboy-addon/fanboy_social_specific_uBO.txt
             } > ./optimized/ublock.txt 
 
       - name: Build CNAMEs
