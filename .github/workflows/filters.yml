@@ -64,7 +64,7 @@ jobs:
 
       - name: Download and transform Adguard Filters
         run: |
-          (curl -s https://filters.adtidy.org/ios/filters/15_optimized.txt | grep -v "\*") > ./optimized/15_optimized.txt
+          (curl -s https://filters.adtidy.org/ios/filters/15_optimized.txt | grep -v "\*" | grep -v "^@@") > ./optimized/15_optimized.txt
           (curl -s "https://raw.githubusercontent.com/AdguardTeam/AdGuardSDNSFilter/master/Filters/exceptions.txt" | \sed 's/^@@||//g; s/^@@|//g; s/|$//g; /^!/!s/^/||/') > ./optimized/15_whitelist.txt
           (curl -s https://filters.adtidy.org/ios/filters/2_optimized.txt | grep -v '!#safari_cb_affinity') > ./optimized/2_optimized.txt
           (curl -s https://adguardteam.github.io/AdguardFilters/BaseFilter/sections/content_blocker.txt | grep -v '!#safari_cb_affinity') > ./optimized/cb_optimized.txt
