@@ -10611,8 +10611,6 @@ kanald.com.tr##.pauseroll-adv-container
 ||fundingchoicesmessages.google.com^$third-party,badfilter
 
 ! https://github.com/brave/adblock-lists/pull/2758
-youtube.com#@#+js(brave-video-bg-play)
-youtube.com##+js(brave-video-bg-play-update)
 
 ! https://community.brave.app/t/ads-not-being-blocked-and-sites-denying-access-to-content/551667
 sinensistoon.com##+js(aopr, block_ads)
@@ -10622,7 +10620,6 @@ sinensistoon.com##+js(aopr, block_ads)
 /web-vitals.$script,redirect-rule=noopjs,domain=amazon.com
 
 ! YT ads fallback on snippet
-||googlevideo.com/videoplayback*ctier=L&*%2Cxpc%2Cctier%2C$domain=m.youtube.com|music.youtube.com
 
 ! cvs.com app banner  cvs.com##cvs-smart-app-banner  not being applied
 cvs.com##+js(trusted-set-local-storage-item, appBannerClosed, $now$)
@@ -10692,7 +10689,6 @@ www.google.ac,www.google.ae,www.google.at,www.google.be,www.google.bg,www.google
 
 ! https://github.com/brave/brave-browser/issues/39296
 ! For iOS 15 users, was fix post ios 15: https://github.com/brave/brave-core/pull/24472
-@@||youtube.com/youtubei/v1/log_event
 
 ! twitch
 @@||ingest.sentry.io/api/$xhr,domain=twitch.tv
@@ -11002,35 +10998,16 @@ decrypt.co##.opacity-75
 ||sonar.viously.com^
 ! youtube anti-adblock
 ! https://www.reddit.com/r/uBlockOrigin/comments/154vtwy/getting_ads_on_youtube/jsu299l/
-youtube.com,youtubekids.com,youtube-nocookie.com##+js(set, ytInitialPlayerResponse.playerAds, undefined)
-youtube.com,youtubekids.com,youtube-nocookie.com##+js(set, ytInitialPlayerResponse.adPlacements, undefined)
-youtube.com,youtubekids.com,youtube-nocookie.com##+js(set, ytInitialPlayerResponse.adSlots, undefined)
-youtube.com,youtubekids.com,youtube-nocookie.com##+js(set, playerResponse.adPlacements, undefined)
 ! 
-www.youtube.com##+js(trusted-replace-xhr-response, /"adPlacements.*?([A-Z]"\}|"\}{2\,4})\}\]\,/, , /playlist\?list=|player\?|watch\?v=|youtubei\/v1\/player/)
-www.youtube.com##+js(trusted-replace-xhr-response, /"adPlacements.*?("adSlots"|"adBreakHeartbeatParams")/gms, $1, youtubei/v1/player)
-tv.youtube.com##+js(trusted-replace-xhr-response, '"adPlacements"', '"no_ads"', /playlist\?list=|player\?|watch\?v=|youtubei\/v1\/player/)
-www.youtube.com##+js(trusted-replace-fetch-response, /"adPlacements.*?([A-Z]"\}|"\}{2\,4})\}\]\,/, , player?)
 
-! www.youtube.com##+js(trusted-rpnt, script, (function serverContract(), 0;"YOUTUBE_PREMIUM_LOGO"!==ytInitialData?.topbar?.desktopTopbarRenderer?.logo?.topbarLogoRenderer?.iconImage?.iconType&&(location.href.startsWith("https://www.youtube.com/tv#/")||location.href.startsWith("https://www.youtube.com/embed/")||document.addEventListener("DOMContentLoaded"\,(function(){const t=()=>{const t=document.getElementById("movie_player");if(!t)return;if(!t.getStatsForNerds?.()?.debug_info?.startsWith?.("SSAP\, AD"))return;const e=t.getProgressState?.();e&&e.duration>0&&(e.loaded<e.duration||e.duration-e.current>1)&&t.seekTo?.(e.duration)};t()\,new MutationObserver((()=>{t()})).observe(document\,{childList:!0\,subtree:!0})})));(function serverContract(), sedCount, 1)
-www.youtube.com##+js(nano-stb, [native code], 17000, 0.001)
 
 ! https://github.com/uBlockOrigin/uAssets/issues/20586#issuecomment-2144781835
-www.youtube.com##+js(json-prune-fetch-response, playerAds adPlacements adSlots playerResponse.playerAds playerResponse.adPlacements playerResponse.adSlots, , propsToMatch, /playlist?)
 ! https://www.reddit.com/r/uBlockOrigin/comments/1ebwr6c/is_ublock_broken_again_or_am_i_doing_something/
-www.youtube.com##+js(json-prune-fetch-response, playerAds adPlacements adSlots playerResponse.playerAds playerResponse.adPlacements playerResponse.adSlots [].playerResponse.adPlacements [].playerResponse.playerAds [].playerResponse.adSlots, , propsToMatch, /player?)
-www.youtube.com##+js(json-prune-xhr-response, playerAds adPlacements adSlots playerResponse.playerAds playerResponse.adPlacements playerResponse.adSlots [].playerResponse.adPlacements [].playerResponse.playerAds [].playerResponse.adSlots, , propsToMatch, /\/player(?:\?.+)?$/)
 
-m.youtube.com,music.youtube.com,youtubekids.com,youtube-nocookie.com##+js(json-prune, playerResponse.adPlacements playerResponse.playerAds playerResponse.adSlots adPlacements playerAds adSlots important)
 ! https://github.com/uBlockOrigin/uAssets/commit/dcc916887449356e46aa426cae634954465dedfb
-www.youtube.com##+js(set, yt.config_.EXPERIMENT_FLAGS.web_bind_fetch, false)
 !
 ! https://github.com/uBlockOrigin/uAssets/commit/e0d1eb8cc26750f6c2c62659536b7d073cc0e34c
 ! (old) better perf youtube
-m.youtube.com##ytm-companion-slot[data-content-type] > ytm-companion-ad-renderer
-m.youtube.com##ytm-rich-item-renderer > ad-slot-renderer
-youtube.com##ytd-rich-item-renderer:has(> #content > ytd-ad-slot-renderer)
-youtube.com###shorts-inner-container > .ytd-shorts:has(> .ytd-reel-video-renderer > ytd-ad-slot-renderer)
 ! naver.com search is broken  https://m.search.naver.com/search.naver?where=m_image&sm=mtb_jum&query=brave
 @@||ssl.pstatic.net^$domain=naver.com
 ! aniwave.to

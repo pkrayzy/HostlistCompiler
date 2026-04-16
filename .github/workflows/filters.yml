@@ -88,7 +88,7 @@ jobs:
             curl -s https://filters.adtidy.org/ios/filters/2.txt | sed -n '/! START: Ad-Shield ad reinsertion/,/! END: Ad-Shield ad reinsertion/p'
             curl -s https://filters.adtidy.org/ios/filters/2.txt | sed -n '/!------------------ General hiding rules----------------------------------------!/,/!------------------ Rules for specific web sites -------------------------------!/p'
             curl -s https://raw.githubusercontent.com/brave/adblock-lists/master/brave-lists/brave-firstparty.txt
-            curl -s https://raw.githubusercontent.com/brave/adblock-lists/master/brave-lists/brave-ios-specific.txt
+            curl -s https://raw.githubusercontent.com/brave/adblock-lists/master/brave-lists/brave-ios-specific.txt | grep -v "youtube.com"
             curl -s https://raw.githubusercontent.com/brave/adblock-lists/master/brave-lists/brave-cookie-specific.txt
             curl -s https://raw.githubusercontent.com/brave/adblock-lists/master/brave-lists/brave-social.txt
             curl -s https://raw.githubusercontent.com/brave/adblock-lists/master/brave-unbreak.txt
