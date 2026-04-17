@@ -116,7 +116,7 @@ jobs:
       - name: Build uBlock
         run: |              
           {
-            curl -s https://ublockorigin.github.io/uAssetsCDN/filters/filters.min.txt
+            # curl -s https://ublockorigin.github.io/uAssetsCDN/filters/filters.min.txt
             curl -s https://ublockorigin.github.io/uAssetsCDN/filters/privacy.min.txt
             curl -s https://ublockorigin.github.io/uAssetsCDN/filters/annoyances.min.txt
             } | sed 's/!#if env_safari/!#if (adguard_app_ios || adguard_ext_android_cb || adguard_ext_safari || adguard_ext_chromium_mv3)/g' | sed 's/!#if !ext_ubol/!#if (!adguard_app_ios \&\& !adguard_ext_android_cb \&\& !adguard_ext_safari \&\& !adguard_ext_chromium_mv3)/g' | grep -v '!#include' > ./optimized/ublock.txt 
