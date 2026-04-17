@@ -93,6 +93,7 @@ jobs:
             curl -s https://raw.githubusercontent.com/easylist/easylist/refs/heads/master/fanboy-addon/fanboy_social_specific_uBO.txt   
             curl -s https://raw.githubusercontent.com/liamengland1/miscfilters/refs/heads/master/antipaywall.txt
             curl -s https://gitflic.ru/project/magnolia1234/bypass-paywalls-clean-filters/blob/raw?file=bpc-paywall-filter.txt
+            curl -s https://adguardteam.github.io/AdguardFilters/BaseFilter/sections/content_blocker.txt
           } | grep -v '!#safari_cb_affinity' > ./optimized/easylist.txt
 
       - name: Build Scriptlets
@@ -116,9 +117,10 @@ jobs:
       - name: Build uBlock
         run: |              
           {
-            # curl -s https://ublockorigin.github.io/uAssetsCDN/filters/filters.min.txt
-            curl -s https://ublockorigin.github.io/uAssetsCDN/filters/privacy.min.txt
-            curl -s https://ublockorigin.github.io/uAssetsCDN/filters/annoyances.min.txt
+            curl -s https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/ubol-filters.txt
+            curl -s https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/privacy.txt
+            curl -s https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/annoyances-cookies.txt
+            curl -s https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/annoyances-others.txt
             } | sed 's/!#if env_safari/!#if (adguard_app_ios || adguard_ext_android_cb || adguard_ext_safari || adguard_ext_chromium_mv3)/g' | sed 's/!#if !ext_ubol/!#if (!adguard_app_ios \&\& !adguard_ext_android_cb \&\& !adguard_ext_safari \&\& !adguard_ext_chromium_mv3)/g' | grep -v '!#include' > ./optimized/ublock.txt 
 
       - name: Push to repository
