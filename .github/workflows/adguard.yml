@@ -20,7 +20,7 @@ jobs:
         run: yarn install --network-concurrency 1
 
       - name: Build AdGuard Filter
-        run: TLS=insecure node src/cli.js -c examples/adguard/configuration.json -o ./optimized/adguard.txt
+        run: TLS=insecure node src/cli.js -c examples/adguard/configuration.json -o ./optimized/adguard_optimized.txt
 
       - name: Push to repository
         run: |
