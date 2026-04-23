@@ -71,13 +71,13 @@ jobs:
         run: |             
           {
             curl -s https://filters.adtidy.org/ios/filters/2_optimized.txt
-            curl -s https://adguardteam.github.io/AdguardFilters/BaseFilter/sections/content_blocker.txt
+            curl -s https://adguardteam.github.io/AdguardFilters/BaseFilter/sections/content_blocker.txt | sed '/^!#if/d; /^!#endif/d; /^!#safari_cb_affinity/d'
             curl -s https://filters.adtidy.org/ios/filters/3_optimized.txt
             curl -s https://filters.adtidy.org/ios/filters/4_optimized.txt
             curl -s https://filters.adtidy.org/ios/filters/11_optimized.txt
             curl -s https://filters.adtidy.org/ios/filters/14_optimized.txt
             curl -s https://raw.githubusercontent.com/liamengland1/miscfilters/refs/heads/master/antipaywall.txt | grep -v "##+js(trusted"
-            curl -s https://gitflic.ru/project/magnolia1234/bypass-paywalls-clean-filters/blob/raw?file=bpc-paywall-filter.txt
+            curl -s https://bpc-filter-proxy.wmailrelayb8d890.workers.dev
           } | grep -v '!#safari_cb_affinity' > ./optimized/adguard.txt
 
       - name: Build EasyList Optimized
@@ -92,8 +92,8 @@ jobs:
             curl -s https://raw.githubusercontent.com/easylist/easylist/refs/heads/master/fanboy-addon/fanboy_notifications_specific_uBO.txt
             curl -s https://raw.githubusercontent.com/easylist/easylist/refs/heads/master/fanboy-addon/fanboy_social_specific_uBO.txt   
             curl -s https://raw.githubusercontent.com/liamengland1/miscfilters/refs/heads/master/antipaywall.txt | grep -v "##+js(trusted"
-            curl -s https://gitflic.ru/project/magnolia1234/bypass-paywalls-clean-filters/blob/raw?file=bpc-paywall-filter.txt
-            curl -s https://adguardteam.github.io/AdguardFilters/BaseFilter/sections/content_blocker.txt
+            curl -s https://bpc-filter-proxy.wmailrelayb8d890.workers.dev
+            curl -s https://adguardteam.github.io/AdguardFilters/BaseFilter/sections/content_blocker.txt | sed '/^!#if/d; /^!#endif/d; /^!#safari_cb_affinity/d'
           } | grep -v '!#safari_cb_affinity' > ./optimized/easylist.txt
 
       - name: Build Scriptlets
