@@ -1,7 +1,7 @@
 ! Title: uBlock filters – Badware risks
 ! Expires: 5 days
 ! Last modified: Sun, 19 Apr 2026 15:24:53 +0000
-! Diff-Path: ../patches/2026.4.25.1430.patch#ublock-badware
+! Diff-Path: ../patches/2026.4.27.235.patch#ublock-badware
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/badware.txt ***
@@ -4665,7 +4665,7 @@ ublockorigin.app###main::before:style(content: 'This is not the official uBlock 
 ! Title: uBlock filters – Privacy
 ! Expires: 7 days
 ! Last modified: Sat, 25 Apr 2026 05:16:34 +0000
-! Diff-Path: ../patches/2026.4.25.1430.patch#ublock-privacy
+! Diff-Path: ../patches/2026.4.27.235.patch#ublock-privacy
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/privacy.txt ***
@@ -6685,8 +6685,8 @@ archive.fo,archive.is,archive.li,archive.md,archive.ph,archive.today,archive.vn,
 climaaovivo.com.br##+js(nosiif, location.reload)
 ! Title: uBlock filters – Annoyances
 ! Expires: 7 days
-! Last modified: Fri, 24 Apr 2026 17:50:53 +0000
-! Diff-Path: ../patches/2026.4.25.1430.patch#ublock-annoyances
+! Last modified: Sun, 26 Apr 2026 15:38:17 +0000
+! Diff-Path: ../patches/2026.4.27.235.patch#ublock-annoyances
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/annoyances.txt ***
@@ -6818,7 +6818,12 @@ videohelp.com###topmenu:has(> .contentlink[href="https://www.videohelp.com/donat
 /invoke.js^$script,3p,domain=asiaflix.net,redirect=noopjs
 lazyadmin.nl##+js(nostif, AdBlocker)
 iosgods.com###iGSupport
-mvlempyr.com##.ChapterContentWrapper > .ct-div-block:has(.report-ad)
+mvlempyr.*##.ChapterContentWrapper > .ct-div-block:has(.report-ad)
+mvlempyr.*##.notice-outer-wrapper:has([src*="a-ads.com"])
+mvlempyr.*##.ContentContainer > div > div:has(img[src*="ads-loading"])
+||pubfuture-ad.com^$script,redirect=noopjs,domain=mvlempyr.io|mvlempyr.com
+||pubfuture-ad.com^$xhr,redirect=nooptext,domain=mvlempyr.io|mvlempyr.com
+||ad.a-ads.com^$subdocument,redirect=noopframe,domain=mvlempyr.io|mvlempyr.com
 magesyrevolution.com##+js(aeld, load, adblock)
 pokeos.com##+js(nostif, pro-modal)
 pokeos.com##+js(no-fetch-if, doubleclick)
