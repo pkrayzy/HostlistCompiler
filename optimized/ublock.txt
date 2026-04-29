@@ -3702,7 +3702,7 @@ www.dailymotion.com>>,~google.com##+js(xml-prune, [breakId], , _VMAP_)
 ! Title: uBlock filters – Badware risks
 ! Expires: 5 days
 ! Last modified: Wed, 29 Apr 2026 04:20:34 +0000
-! Diff-Path: ../patches/2026.4.29.559.patch#ublock-badware
+! Diff-Path: ../patches/2026.4.29.866.patch#ublock-badware
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/badware.txt ***
@@ -8371,7 +8371,7 @@ ublockorigin.app###main::before:style(content: 'This is not the official uBlock 
 ! Title: uBlock filters – Privacy
 ! Expires: 7 days
 ! Last modified: Wed, 29 Apr 2026 04:54:14 +0000
-! Diff-Path: ../patches/2026.4.29.559.patch#ublock-privacy
+! Diff-Path: ../patches/2026.4.29.866.patch#ublock-privacy
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/privacy.txt ***
@@ -10393,7 +10393,7 @@ climaaovivo.com.br##+js(nosiif, location.reload)
 ! Title: uBlock filters – Annoyances
 ! Expires: 7 days
 ! Last modified: Wed, 29 Apr 2026 03:30:04 +0000
-! Diff-Path: ../patches/2026.4.29.559.patch#ublock-annoyances
+! Diff-Path: ../patches/2026.4.29.866.patch#ublock-annoyances
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/annoyances.txt ***
@@ -11130,15 +11130,6 @@ gq-magazine.co.uk##+js(set, ads_not_blocked, true)
 ! turbolab .it anti adb warning
 turbolab.it##+js(nostif, warning)
 medicalnewstoday.com##.sticky_ad_container
-m.youtube.com,music.youtube.com,tv.youtube.com,www.youtube.com,youtubekids.com##ytd-popup-container > .ytd-popup-container > #contentWrapper > .ytd-popup-container[position-type="OPEN_POPUP_POSITION_BOTTOMLEFT"]
-m.youtube.com###mealbar\:3 > ytm-mealbar.mealbar-promo-renderer
-m.youtube.com,music.youtube.com,tv.youtube.com,www.youtube.com,youtubekids.com##+js(set, ytInitialPlayerResponse.auxiliaryUi.messageRenderers.upsellDialogRenderer, undefined)
-m.youtube.com,music.youtube.com,tv.youtube.com,www.youtube.com,youtubekids.com##+js(json-prune, auxiliaryUi.messageRenderers.upsellDialogRenderer)
-! m.youtube.com,music.youtube.com,tv.youtube.com,www.youtube.com,youtubekids.com,youtube-nocookie.com##+js(href-sanitizer, a[href^="https://www.youtube.com/redirect?event=video_description"][href*="&q=http"], ?q)
-!www.youtube.com##ytd-browse[page-subtype="home"] :is(ytd-rich-grid-row, #contents.ytd-rich-grid-row):style(display: contents !important)
-! youtube.com##+js(no-xhr-if, /\/youtubei\/v1\/log_event\?|play\.google\.com\/log|\/api\/stats\/qoe\?/)
-m.youtube.com##+js(aeld, visibilitychange, /bgmobile|\{\w\.\w+\(\)\}|\.getVisibilityState\(\)/)
-m.youtube.com##+js(trusted-set, document.visibilityState, json:"visible")
 buienradar.nl##+js(set, hideBannerBlockedMessage, true)
 buienradar.nl###adholderContainerHeader
 ||lightboxcdn.com^$domain=foreignpolicy.com
@@ -14545,7 +14536,6 @@ hetek.hu###nyeremenyModal
 otpportalok.hu###pop_1:has(> .suti)
 unideb.hu##.sendi-banner-block-container
 ! imported from HU filter list - END
-music.youtube.com##ytmusic-description-shelf-renderer[is-track-lyrics-page]:style(user-select: initial !important)
 mail.yahoo.com##+js(trusted-replace-argument, navigator.registerProtocolHandler, 0, noopFunc, condition, mailto)
 thestudentroom.co.uk##+js(set-cookie, _tsr_pc, 0)
 ft.com##+js(aeld, copy, clipboardData)
