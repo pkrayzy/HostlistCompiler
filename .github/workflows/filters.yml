@@ -49,6 +49,7 @@ jobs:
         run: |             
           {
             curl -s https://filters.adtidy.org/ios/filters/101_optimized.txt
+            curl -s https://filters.adtidy.org/ios/filters/2.txt | sed -n '/!------------------ General hiding rules----------------------------------------!/,/!------------------ Rules for specific web sites -------------------------------!/p'
             # curl -s https://filters.adtidy.org/ios/filters/2_optimized.txt | grep -v 'twitter.com,x.com##'
             # curl -s https://filters.adtidy.org/ios/filters/11_optimized.txt
             curl -s https://filters.adtidy.org/ios/filters/118_optimized.txt
@@ -69,7 +70,6 @@ jobs:
             curl -s https://filters.adtidy.org/ios/filters/2.txt | sed -n '/! START: Youtube whitescreen fix/,/! END: Youtube whitescreen fix/p'
             curl -s https://filters.adtidy.org/ios/filters/5.txt | sed -n '/! YouTube ads/,/! Allowlist/p'
             curl -s https://filters.adtidy.org/ios/filters/2.txt | sed -n '/! START: Ad-Shield ad reinsertion/,/! END: Ad-Shield ad reinsertion/p'
-            # curl -s https://filters.adtidy.org/ios/filters/2.txt | sed -n '/!------------------ General hiding rules----------------------------------------!/,/!------------------ Rules for specific web sites -------------------------------!/p'
             } > ./optimized/scriptlets.txt 
 
       - name: Build uBlock
