@@ -36,21 +36,18 @@ jobs:
           {
             curl -s https://filters.adtidy.org/ios/filters/101_optimized.txt
             curl -s https://filters.adtidy.org/ios/filters/2_optimized.txt
-            # curl -s https://adguardteam.github.io/AdguardFilters/BaseFilter/sections/content_blocker.txt | sed '/^!#if/d; /^!#endif/d'
             curl -s https://filters.adtidy.org/ios/filters/3_optimized.txt
             curl -s https://filters.adtidy.org/ios/filters/4_optimized.txt
             curl -s https://filters.adtidy.org/ios/filters/11_optimized.txt
             curl -s https://filters.adtidy.org/ios/filters/14_optimized.txt
             curl -s https://raw.githubusercontent.com/liamengland1/miscfilters/refs/heads/master/antipaywall.txt | sed '/^! Bloomberg (bloomberg\.com)$/,/^$/d; /##+js(trusted/d'
             curl -s https://bpc-filter-proxy.wmailrelayb8d890.workers.dev | grep -iv "bloomberg\|##+js(trusted"
-          } | sed '/^!+ NOT_OPTIMIZED/d; /^!#safari_cb_affinity/d' > ./optimized/adguard.txt
+          } > ./optimized/adguard.txt
 
       - name: Build EasyList Optimized
         run: |             
           {
             curl -s https://filters.adtidy.org/ios/filters/101_optimized.txt
-            # curl -s https://filters.adtidy.org/ios/filters/2_optimized.txt
-            # curl -s https://filters.adtidy.org/ios/filters/11_optimized.txt
             curl -s https://filters.adtidy.org/ios/filters/118_optimized.txt
             curl -s https://filters.adtidy.org/ios/filters/122_optimized.txt
             curl -s https://raw.githubusercontent.com/easylist/easylist/refs/heads/master/fanboy-addon/fanboy_agegate_specific_uBO.txt
@@ -60,8 +57,7 @@ jobs:
             curl -s https://raw.githubusercontent.com/easylist/easylist/refs/heads/master/fanboy-addon/fanboy_social_specific_uBO.txt   
             curl -s https://raw.githubusercontent.com/liamengland1/miscfilters/refs/heads/master/antipaywall.txt | sed '/^! Bloomberg (bloomberg\.com)$/,/^$/d'
             curl -s https://bpc-filter-proxy.wmailrelayb8d890.workers.dev
-            # curl -s https://adguardteam.github.io/AdguardFilters/BaseFilter/sections/content_blocker.txt | sed '/^!#if/d; /^!#endif/d'
-          } | sed '/^!+ NOT_OPTIMIZED/d; /^!#safari_cb_affinity/d' > ./optimized/easylist.txt
+          } > ./optimized/easylist.txt
 
       - name: Build Scriptlets
         run: |              
