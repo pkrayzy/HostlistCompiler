@@ -1601,7 +1601,7 @@ nekolink.site##+js(set, PlayerConfig.config.AffiliateAdViewLevel, 3)
 
 ! SECTION: univresalP popunder
 
-141jav.com,141tube.com,aagmaal.com,camcam.cc,evojav.pro,hentaianimezone.com,javneon.tv,javsaga.ninja,torrentkitty.one,webmaal.cfd##+js(set, univresalP, noopFunc)
+141jav.com,141tube.com,aagmaal.*,camcam.cc,evojav.pro,hentaianimezone.com,javneon.tv,javsaga.ninja,kaamuu.cfd,sohot.cyou,torrentkitty.one,webmaal.*##+js(set, univresalP, noopFunc)
 
 ! !SECTION: univresalP popunder
 
@@ -1622,6 +1622,7 @@ asianpornjav.com##+js(set, puShown, true)
 ! SECTION: puTSstrpcht
 
 book18.fans,hpjav.in,jav.direct,javfan.one,javmix.tv,nyahentai.*,openload.mov##+js(aeld, load, puTSstrpcht)
+aagmaal.com##+js(aeld, click, puTSstrpcht)
 
 ! !SECTION: puTSstrpcht
 
@@ -3707,7 +3708,7 @@ www.dailymotion.com>>,~google.com##+js(xml-prune, [breakId], , _VMAP_)
 ! Title: uBlock filters – Badware risks
 ! Expires: 5 days
 ! Last modified: Wed, 29 Apr 2026 04:20:34 +0000
-! Diff-Path: ../patches/2026.4.30.238.patch#ublock-badware
+! Diff-Path: ../patches/2026.4.30.562.patch#ublock-badware
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/badware.txt ***
@@ -8376,7 +8377,7 @@ ublockorigin.app###main::before:style(content: 'This is not the official uBlock 
 ! Title: uBlock filters – Privacy
 ! Expires: 7 days
 ! Last modified: Wed, 29 Apr 2026 04:54:14 +0000
-! Diff-Path: ../patches/2026.4.30.238.patch#ublock-privacy
+! Diff-Path: ../patches/2026.4.30.562.patch#ublock-privacy
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/privacy.txt ***
@@ -10397,8 +10398,8 @@ archive.fo,archive.is,archive.li,archive.md,archive.ph,archive.today,archive.vn,
 climaaovivo.com.br##+js(nosiif, location.reload)
 ! Title: uBlock filters – Annoyances
 ! Expires: 7 days
-! Last modified: Wed, 29 Apr 2026 03:30:04 +0000
-! Diff-Path: ../patches/2026.4.30.238.patch#ublock-annoyances
+! Last modified: Thu, 30 Apr 2026 04:52:40 +0000
+! Diff-Path: ../patches/2026.4.30.562.patch#ublock-annoyances
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/annoyances.txt ***
@@ -11135,6 +11136,15 @@ gq-magazine.co.uk##+js(set, ads_not_blocked, true)
 ! turbolab .it anti adb warning
 turbolab.it##+js(nostif, warning)
 medicalnewstoday.com##.sticky_ad_container
+m.youtube.com,music.youtube.com,tv.youtube.com,www.youtube.com,youtubekids.com##ytd-popup-container > .ytd-popup-container > #contentWrapper > .ytd-popup-container[position-type="OPEN_POPUP_POSITION_BOTTOMLEFT"]
+m.youtube.com###mealbar\:3 > ytm-mealbar.mealbar-promo-renderer
+m.youtube.com,music.youtube.com,tv.youtube.com,www.youtube.com,youtubekids.com##+js(set, ytInitialPlayerResponse.auxiliaryUi.messageRenderers.upsellDialogRenderer, undefined)
+m.youtube.com,music.youtube.com,tv.youtube.com,www.youtube.com,youtubekids.com##+js(json-prune, auxiliaryUi.messageRenderers.upsellDialogRenderer)
+! m.youtube.com,music.youtube.com,tv.youtube.com,www.youtube.com,youtubekids.com,youtube-nocookie.com##+js(href-sanitizer, a[href^="https://www.youtube.com/redirect?event=video_description"][href*="&q=http"], ?q)
+!www.youtube.com##ytd-browse[page-subtype="home"] :is(ytd-rich-grid-row, #contents.ytd-rich-grid-row):style(display: contents !important)
+! youtube.com##+js(no-xhr-if, /\/youtubei\/v1\/log_event\?|play\.google\.com\/log|\/api\/stats\/qoe\?/)
+m.youtube.com##+js(aeld, visibilitychange, /bgmobile|\{\w\.\w+\(\)\}|\.getVisibilityState\(\)/)
+m.youtube.com##+js(trusted-set, document.visibilityState, json:"visible")
 buienradar.nl##+js(set, hideBannerBlockedMessage, true)
 buienradar.nl###adholderContainerHeader
 ||lightboxcdn.com^$domain=foreignpolicy.com
@@ -14541,6 +14551,7 @@ hetek.hu###nyeremenyModal
 otpportalok.hu###pop_1:has(> .suti)
 unideb.hu##.sendi-banner-block-container
 ! imported from HU filter list - END
+music.youtube.com##ytmusic-description-shelf-renderer[is-track-lyrics-page]:style(user-select: initial !important)
 mail.yahoo.com##+js(trusted-replace-argument, navigator.registerProtocolHandler, 0, noopFunc, condition, mailto)
 thestudentroom.co.uk##+js(set-cookie, _tsr_pc, 0)
 ft.com##+js(aeld, copy, clipboardData)
@@ -14581,5 +14592,5 @@ nebula.tv##+js(trusted-click-element, main div[data-theater-mode] button[type="s
 1shows.ru##+js(set, console.table, trueFunc)
 1shows.ru##+js(aeld, keydown, 123===i)
 camereliveromania.ro##+js(rmnt, script, /wpcp|contextmenu/)
-dozaanimata.net##+js(trusted-create-html, html, <details open style='display:none' ontoggle='eval(atob("KGZ1bmN0aW9uKCl7CiAgICAvLyAxLiBEZWJsb2NhcmUgY29udGV4dG1lbnUKICAgIHdpbmRvdy5hZGRFdmVudExpc3RlbmVyKCdjb250ZXh0bWVudScsIChlKSA9PiB7IGUuc3RvcEltbWVkaWF0ZVByb3BhZ2F0aW9uKCk7IHJldHVybiB0cnVlOyB9LCB0cnVlKTsKICAgIAogICAgLy8gMi4gRGVibG9jYXJlIHNlbGVjdGllIHNpIGNvcHkvcGFzdGUKICAgIGNvbnN0IGFsbG93ID0gKGUpID0+IHsgZS5zdG9wSW1tZWRpYXRlUHJvcGFnYXRpb24oKTsgcmV0dXJuIHRydWU7IH07CiAgICBkb2N1bWVudC5hZGRFdmVudExpc3RlbmVyKCdzZWxlY3RzdGFydCcsIGFsbG93LCB0cnVlKTsKICAgIGRvY3VtZW50LmFkZEV2ZW50TGlzdGVuZXIoJ2NvcHknLCBhbGxvdywgdHJ1ZSk7CiAgICAKICAgIC8vIDMuIERFQkxPQ0FSRSBDVFJMK0MKICAgIHdpbmRvdy5hZGRFdmVudExpc3RlbmVyKCdrZXlkb3duJywgKGUpID0+IHsKICAgICAgICAvLyBWZXJpZmljxINtIGRhY8SDIHV0aWxpemF0b3J1bCBhcGFzxIMgQ3RybCtDIChzYXUgQ29tbWFuZCtDKQogICAgICAgIGlmICgoZS5jdHJsS2V5IHx8IGUubWV0YUtleSkgJiYgKGUua2V5ID09PSAnYycgfHwgZS5rZXkgPT09ICdhJykpIHsKICAgICAgICAgICAgZS5zdG9wSW1tZWRpYXRlUHJvcGFnYXRpb24oKTsKICAgICAgICAgICAgLy8gTnUgYmxvY8SDbSBuaW1pYywgbMSDc8SDbSBicm93c2VydWwgc8SDIMOuyJlpIGZhY8SDIHRyZWFiYSBuYXRpdsSDCiAgICAgICAgfQogICAgfSwgdHJ1ZSk7CgogICAgLy8gQ3VyxIPIm2FyZSBlbGVtZW50ZSBleGlzdGVudGUKICAgIGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3JBbGwoJyonKS5mb3JFYWNoKGVsID0+IHsKICAgICAgICBlbC5vbmNvbnRleHRtZW51ID0gbnVsbDsKICAgICAgICBlbC5vbnNlbGVjdHN0YXJ0ID0gbnVsbDsKICAgICAgICBlbC5vbmNvcHkgPSBudWxsOwogICAgICAgIGVsLm9ua2V5ZG93biA9IG51bGw7IC8vIEN1csSDyJvEg20gyJlpIG9ua2V5ZG93biBpbmxpbmUgZGFjxIMgZXhpc3TEgwogICAgICAgIGVsLnN0eWxlLnVzZXJTZWxlY3QgPSAnYXV0byc7CiAgICB9KTsKfSkoKTs="));'></details>)
+dozaanimata.net##+js(trusted-create-html, html, <details open style='display:none' ontoggle='(function(){     window.addEventListener("contextmenu"\, (e) => { e.stopImmediatePropagation(); return true; }\, true);     const allow = (e) => { e.stopImmediatePropagation(); return true; };     document.addEventListener("selectstart"\, allow\, true);     document.addEventListener("copy"\, allow\, true);     window.addEventListener("keydown"\, (e) => {         if ((e.ctrlKey || e.metaKey) && (e.key === "c" || e.key === "a")) {             e.stopImmediatePropagation();         }     }\, true);     document.querySelectorAll("*").forEach(el => {         el.oncontextmenu = null;         el.onselectstart = null;         el.oncopy = null;         el.onkeydown = null;         el.style.userSelect = "auto";     }); })();'></details>)
 fontsquirrel.com###bottom_banner_ad_container
