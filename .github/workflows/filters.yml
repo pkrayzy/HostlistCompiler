@@ -100,9 +100,6 @@ jobs:
             curl -s https://raw.githubusercontent.com/easylist/easylist/master/easyprivacy/easyprivacy_specific_cname_branch.txt
               } > ./optimized/cname.txt
 
-      - name: Build Quick Fixes Filter
-        run: TLS=insecure node src/cli.js -c examples/quickfix/configuration.json -o ./optimized/quickfix_optimized.txt
-
       - name: Push to repository
         run: |
           git config --global user.name "pkrayzy"
