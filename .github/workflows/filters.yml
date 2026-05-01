@@ -50,8 +50,8 @@ jobs:
             curl -s https://filters.adtidy.org/ios/filters/101_optimized.txt
             curl -s https://filters.adtidy.org/ios/filters/118_optimized.txt
             curl -s https://filters.adtidy.org/ios/filters/122_optimized.txt
-            curl -s https://raw.githubusercontent.com/liamengland1/miscfilters/refs/heads/master/antipaywall.txt | sed '/^! Bloomberg (bloomberg\.com)$/,/^$/d'
-            curl -s https://bpc-filter-proxy.wmailrelayb8d890.workers.dev | grep -iv "bloomberg\|##+js(trusted"
+            # curl -s https://raw.githubusercontent.com/liamengland1/miscfilters/refs/heads/master/antipaywall.txt | sed '/^! Bloomberg (bloomberg\.com)$/,/^$/d'
+            # curl -s https://bpc-filter-proxy.wmailrelayb8d890.workers.dev | grep -iv "bloomberg\|##+js(trusted"
           } > ./optimized/easylist.txt
 
       - name: Build Scriptlets
@@ -59,21 +59,21 @@ jobs:
           {
             curl -s https://filters.adtidy.org/ios/filters/2.txt | sed -n '/! START: Youtube whitescreen fix/,/! END: Youtube whitescreen fix/p'
             curl -s https://filters.adtidy.org/ios/filters/5.txt | sed -n '/! YouTube ads/,/! Allowlist/p'
-            curl -s https://filters.adtidy.org/ios/filters/2.txt | sed -n '/! START: Ad-Shield ad reinsertion/,/! END: Ad-Shield ad reinsertion/p'
+            # curl -s https://filters.adtidy.org/ios/filters/2.txt | sed -n '/! START: Ad-Shield ad reinsertion/,/! END: Ad-Shield ad reinsertion/p'
             } > ./optimized/scriptlets.txt 
 
-      # - name: Build uBlock
-      #   run: |              
-      #     {
-            # curl -s https://ublockorigin.github.io/uAssetsCDN/filters/filters.min.txt | sed '/www\.youtube\.com/d'
+      - name: Build uBlock
+        run: |              
+          {
+            curl -s https://ublockorigin.github.io/uAssetsCDN/filters/filters.min.txt | sed '/www\.youtube\.com/d'
             # curl -s https://ublockorigin.github.io/uAssetsCDN/filters/filters-general.txt
             # curl -s https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/ubol-filters.txt
-            # curl -s https://ublockorigin.github.io/uAssetsCDN/filters/badware.min.txt
-            # curl -s https://ublockorigin.github.io/uAssetsCDN/filters/privacy.min.txt
+            curl -s https://ublockorigin.github.io/uAssetsCDN/filters/badware.min.txt
+            curl -s https://ublockorigin.github.io/uAssetsCDN/filters/privacy.min.txt
             # curl -s https://ublockorigin.github.io/uAssetsCDN/filters/quick-fixes.min.txt
             # curl -s https://ublockorigin.github.io/uAssetsCDN/filters/unbreak.min.txt
-            # curl -s https://ublockorigin.github.io/uAssetsCDN/filters/annoyances.min.txt
-            # } | sed 's/!#if env_safari/!#if (adguard_app_ios || adguard_ext_android_cb || adguard_ext_safari || adguard_ext_chromium_mv3)/g' | sed 's/!#if !ext_ubol/!#if (!adguard_app_ios \&\& !adguard_ext_android_cb \&\& !adguard_ext_safari \&\& !adguard_ext_chromium_mv3)/g' | grep -v '!#include' > ./optimized/ublock.txt 
+            curl -s https://ublockorigin.github.io/uAssetsCDN/filters/annoyances.min.txt
+            } | sed 's/!#if env_safari/!#if (adguard_app_ios || adguard_ext_android_cb || adguard_ext_safari || adguard_ext_chromium_mv3)/g' | sed 's/!#if !ext_ubol/!#if (!adguard_app_ios \&\& !adguard_ext_android_cb \&\& !adguard_ext_safari \&\& !adguard_ext_chromium_mv3)/g' | grep -v '!#include' > ./optimized/ublock.txt 
 
       - name: Build CNAMEs
         run: |            
