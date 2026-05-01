@@ -1,8 +1,8 @@
-name: Build EasyList
+name: Build Quick Fixes
 
 on:
   schedule:
-  - cron: "15 2 * * *"
+  - cron: "30 2 * * *"
   # For manual run builds
   workflow_dispatch:
 
@@ -19,8 +19,8 @@ jobs:
       - name: Install dependencies
         run: yarn install --network-concurrency 1
 
-      - name: Build EasyList Filter
-        run: TLS=insecure node src/cli.js -c examples/easylist/configuration.json -o ./optimized/easylist_optimized.txt
+      - name: Build Quick Fixes Filter
+        run: TLS=insecure node src/cli.js -c examples/quickfix/configuration.json -o ./optimized/quickfix_optimized.txt
 
       - name: Push to repository
         run: |
