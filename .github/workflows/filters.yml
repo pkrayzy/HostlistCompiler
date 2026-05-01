@@ -50,13 +50,13 @@ jobs:
             curl -s https://filters.adtidy.org/ios/filters/101_optimized.txt
             curl -s https://filters.adtidy.org/ios/filters/118_optimized.txt
             curl -s https://filters.adtidy.org/ios/filters/122_optimized.txt
-            curl -s https://raw.githubusercontent.com/easylist/easylist/refs/heads/master/fanboy-addon/fanboy_agegate_specific_uBO.txt
-            curl -s https://raw.githubusercontent.com/easylist/easylist/refs/heads/master/fanboy-addon/fanboy_annoyance_specific_uBO.txt
-            curl -s https://raw.githubusercontent.com/easylist/easylist/refs/heads/master/fanboy-addon/fanboy_newsletter_specific_uBO.txt
-            curl -s https://raw.githubusercontent.com/easylist/easylist/refs/heads/master/fanboy-addon/fanboy_notifications_specific_uBO.txt
-            curl -s https://raw.githubusercontent.com/easylist/easylist/refs/heads/master/fanboy-addon/fanboy_social_specific_uBO.txt   
+            curl -s https://raw.githubusercontent.com/easylist/easylist/refs/heads/master/fanboy-addon/fanboy_agegate_specific_uBO.txt | sed '/reddit\.com/d'
+            curl -s https://raw.githubusercontent.com/easylist/easylist/refs/heads/master/fanboy-addon/fanboy_annoyance_specific_uBO.txt | sed '/reddit\.com/d'
+            curl -s https://raw.githubusercontent.com/easylist/easylist/refs/heads/master/fanboy-addon/fanboy_newsletter_specific_uBO.txt | sed '/reddit\.com/d'
+            curl -s https://raw.githubusercontent.com/easylist/easylist/refs/heads/master/fanboy-addon/fanboy_notifications_specific_uBO.txt | sed '/reddit\.com/d'
+            curl -s https://raw.githubusercontent.com/easylist/easylist/refs/heads/master/fanboy-addon/fanboy_social_specific_uBO.txt | sed '/reddit\.com/d'
             curl -s https://raw.githubusercontent.com/liamengland1/miscfilters/refs/heads/master/antipaywall.txt | sed '/^! Bloomberg (bloomberg\.com)$/,/^$/d'
-            curl -s https://bpc-filter-proxy.wmailrelayb8d890.workers.dev
+            curl -s https://bpc-filter-proxy.wmailrelayb8d890.workers.dev | grep -iv "bloomberg\|##+js(trusted"
           } > ./optimized/easylist.txt
 
       - name: Build Scriptlets
