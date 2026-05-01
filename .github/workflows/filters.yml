@@ -62,9 +62,9 @@ jobs:
             curl -s https://filters.adtidy.org/ios/filters/2.txt | sed -n '/! START: Ad-Shield ad reinsertion/,/! END: Ad-Shield ad reinsertion/p'
             } > ./optimized/scriptlets.txt 
 
-      - name: Build uBlock
-        run: |              
-          {
+      # - name: Build uBlock
+      #   run: |              
+      #     {
             # curl -s https://ublockorigin.github.io/uAssetsCDN/filters/filters.min.txt | sed '/www\.youtube\.com/d'
             # curl -s https://ublockorigin.github.io/uAssetsCDN/filters/filters-general.txt
             # curl -s https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/ubol-filters.txt
@@ -73,7 +73,7 @@ jobs:
             # curl -s https://ublockorigin.github.io/uAssetsCDN/filters/quick-fixes.min.txt
             # curl -s https://ublockorigin.github.io/uAssetsCDN/filters/unbreak.min.txt
             # curl -s https://ublockorigin.github.io/uAssetsCDN/filters/annoyances.min.txt
-            } | sed 's/!#if env_safari/!#if (adguard_app_ios || adguard_ext_android_cb || adguard_ext_safari || adguard_ext_chromium_mv3)/g' | sed 's/!#if !ext_ubol/!#if (!adguard_app_ios \&\& !adguard_ext_android_cb \&\& !adguard_ext_safari \&\& !adguard_ext_chromium_mv3)/g' | grep -v '!#include' > ./optimized/ublock.txt 
+            # } | sed 's/!#if env_safari/!#if (adguard_app_ios || adguard_ext_android_cb || adguard_ext_safari || adguard_ext_chromium_mv3)/g' | sed 's/!#if !ext_ubol/!#if (!adguard_app_ios \&\& !adguard_ext_android_cb \&\& !adguard_ext_safari \&\& !adguard_ext_chromium_mv3)/g' | grep -v '!#include' > ./optimized/ublock.txt 
 
       - name: Build CNAMEs
         run: |            
