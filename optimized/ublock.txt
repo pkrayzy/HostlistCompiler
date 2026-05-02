@@ -1,7 +1,7 @@
 ! Title: uBlock filters
 ! Expires: 5 days
-! Last modified: Sat, 02 May 2026 01:43:12 +0000
-! Diff-Path: ../patches/2026.5.2.225.patch#ublock-filters
+! Last modified: Sat, 02 May 2026 09:56:01 +0000
+! Diff-Path: ../patches/2026.5.2.606.patch#ublock-filters
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/filters.txt ***
@@ -10513,6 +10513,11 @@ playeriframe.sbs##body > a[href][target="_blank"][rel*="noopener"]
 cloud.hownetwork.xyz###overlay
 podjav.tv##.sidebar-box:has(> div[data-banner-id])
 podjav.tv##.player-banner-ads-top
+kuyhaa.me###protected-content
+kuyhaa.me##+js(acs, document.addEventListener, window.open)
+||meong.club/go/?aHR0c*$doc,urlskip=/\/go\/\?(aHR0c.+)/ -base64
+||kuyhaa.me/pmbut.js
+||kuyhaa.me/*.php
 ! NOTE: Japanese
 bus-location.1507t.xyz##+js(nostif, ()=>, 2900-3100)
 ! NOTE: Korean
@@ -24887,10 +24892,11 @@ world-iptv.club##+js(acs, setTimeout, /eeea5e31|new\s+Function/)
 9mod.com##+js(nano-stb, timeLeft--, *)
 zxcprime.icu##+js(trusted-set-session-storage-item, lastAdTime, $now$)
 zxcprime.icu##+js(nowoif)
+zxcprime.icu##a[href][data-slot="popover-trigger"]:remove-attr(href)
 ! Title: uBlock filters – Badware risks
 ! Expires: 5 days
 ! Last modified: Wed, 29 Apr 2026 04:20:34 +0000
-! Diff-Path: ../patches/2026.5.2.225.patch#ublock-badware
+! Diff-Path: ../patches/2026.5.2.606.patch#ublock-badware
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/badware.txt ***
@@ -29558,8 +29564,8 @@ ublockorigin.app###main::before:style(content: 'This is not the official uBlock 
 ||www-rarlab.com^$all
 ! Title: uBlock filters – Privacy
 ! Expires: 7 days
-! Last modified: Wed, 29 Apr 2026 04:54:14 +0000
-! Diff-Path: ../patches/2026.5.2.225.patch#ublock-privacy
+! Last modified: Sat, 02 May 2026 05:02:10 +0000
+! Diff-Path: ../patches/2026.5.2.606.patch#ublock-privacy
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/privacy.txt ***
@@ -30731,6 +30737,7 @@ r.mail.wowvegas.com%2Ftr%2Fop%2F*$image
 ! twitter
 /twitter.com/scribe/ibis?$image
 *%2Ftwitter.com%2Fscribe%2Fibis%3F*$image
+||api.x.com/1.1/graphql/error_log.json
 ! shopee
 /tracking.mail.shopee.$image
 *%2Ftracking.mail.shopee.$image
@@ -31579,7 +31586,7 @@ dlhd.*>>,~chatango.com##+js(rmnt, script, sendFakeRequest)
 archive.fo,archive.is,archive.li,archive.md,archive.ph,archive.today,archive.vn,btdig.com##+js(nosiif, fetch)
 climaaovivo.com.br##+js(nosiif, location.reload)
 ! Title: uBlock filters – Cookie Notices
-! Last modified: Fri, 01 May 2026 04:54:58 +0000
+! Last modified: Sat, 02 May 2026 04:05:56 +0000
 ! Expires: 7 days
 ! Description: Filters optimized for uBlock Origin, to be used with EasyList's and/or Adguard's "Cookie Notices" list(s)
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
@@ -36552,7 +36559,7 @@ sourcepoint.theguardian.com##+js(trusted-click-element, button[title="Accept all
 sourcepoint.theguardian.com##+js(trusted-click-element, button[title="Do not sell or share my personal information"], , 1000)
 ! NZ IP (Reject)
 www.theguardian.com##+js(trusted-set-cookie, consentDate, $currentISODate$)
-www.theguardian.com##+js(trusted-set-cookie, consentUUID, 37ab4eb6-4bfa-4619-8ee5-71b4a40871d7_52)
+www.theguardian.com##+js(trusted-set-cookie, consentUUID, 37ab4eb6-4bfa-4619-8ee5-71b4a40871d7_52_55)
 
 ! https://github.com/uBlockOrigin/uAssets/issues/27488
 max.com##+js(trusted-set-cookie, eupubconsent-v2, CQQt_NAQQt_NAAcABBENBnFgAAAAAAAAABpYJQMB3CJ8BSFDYSZ1IIskaIUXwRABxkQhAgLBAwABiBKAOIQAkCAgAABANCACAAIAMHBAAAFADIAAAAAAIAgAIAAMIAAQAABIIABAAAAAAAAQCAgAAABAAQAQgmAEAAcAgAAlgAIoAFAAAABCAACBAAAAEAAFAAEAAAAAAAAAAAAIICwABQAAjAAAAAAAABgQAAAAAAAEAAABoQAIAA4ATgD9wIVhIEQACwAKgAcAA8ACAAGQANAAeABMACkAFUAN4AegA_ACEAEcAJoAYYAygBzgDuAH6AP8AkoBfQEiAJ2AUOAtgBeYDLgGxgQYAheKgBABMAEcMgBABMAEcOADQAOAA8ANAAjgCEAP3AhWOgSAALAAqABwAEAAMgAaAA8ACYAFIAKoAYgA3gB6AD8AJoATgAwwBlADRAHOAO4AfoA_wCLAEdAJKAiwBF4CRAE7AKHAWwAvMBlgDLgIMEAAYADwA0AQrIQDgAFgBMACqAGIAN4AegBHADnAHcAP8AvoCFgEWAQYJAAwB3AMsAfuSgHgALAA4ADwAJgAUgAqgBiAEcAhYBFgCLwEiALYAXmBBgoAJAEcAJwAdwB_wFSAKyAfuBCsCF5SA-AAsACoAHAAQAAyABoADwAJgAUgAqgBiAD8AMoAaIA5wB-gEWAI6ASUAuoB7QELAIvASIAnYBQ4C2AF5gMsAZcBBgsAYAAeABkAFQAQgAkABsAEcAKQAdwBRQCmgF2AMIAZwA04B1QD2gIFAQsAtgBj4DYwICgQwA.YAAAAAAAAAAA, , , domain, .max.com, reload, 1)
@@ -37140,7 +37147,7 @@ ladbible.com##+js(trusted-click-element, .cmp-banner .accept-all)
 ! Title: uBlock filters – Annoyances
 ! Expires: 7 days
 ! Last modified: Fri, 01 May 2026 08:41:05 +0000
-! Diff-Path: ../patches/2026.5.2.225.patch#ublock-annoyances
+! Diff-Path: ../patches/2026.5.2.606.patch#ublock-annoyances
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/annoyances.txt ***
@@ -41917,7 +41924,7 @@ adweek.com##.paywall, .zephr-form-container, .aw-article-content+div[style*="gra
 ! Homepage: https://gitflic.ru/project/magnolia1234/bypass-paywalls-clean-filters
 ! License: MIT; https://gitflic.ru/project/magnolia1234/bypass-paywalls-clean-filters/blob/raw?file=LICENSE
 ! Last modified: 
-! Version: 4.3.5.1
+! Version: 4.3.5.2
 
 ! General
 
@@ -42142,6 +42149,7 @@ kurier.at##div#cfs-paywall-container
 ||glanacion.com/*/metering/*.js$script,domain=lanacion.com.ar
 lanacion.com.ar##+js(cookie-remover, /^metering_arc/)
 lanacion.com.ar##+js(set-local-storage-item, /^/, $remove$)
+lance.com.br##+js(rc, h-[550px], div.paywall-content[class*="h-\["], stay)
 ||latimes.com/meteringjs/$script,~third-party
 ||californiatimes.com/caltimes/latimes/Bootstrap.js$script,third-party,domain=latimes.com
 ||ev.lavanguardia.com$xmlhttprequest,~third-party
@@ -42496,6 +42504,8 @@ policorner.ca##div.free-text,div.subscribe-box
 ||jeuneafrique.com/cdn-cgi/trace$xmlhttprequest,~third-party
 ||assets.guim.co.uk/assets/SignInGate*.js$script,domain=theguardian.com
 theguardian.com##[name="SlotBodyEnd"],div[data-cy="contributions-liveblog-epic"]
+timesofindia.indiatimes.com##+js(ra, style, body[style], stay)
+timesofindia.indiatimes.com##div[class]:has(>div.loginWallPopUP)
 
 @@||consentmanager.net$script,third-party
 #@#.cmpwrapper
