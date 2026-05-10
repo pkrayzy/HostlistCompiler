@@ -1,7 +1,7 @@
 ! Title: uBlock filters
 ! Expires: 5 days
-! Last modified: Sat, 09 May 2026 01:36:43 +0000
-! Diff-Path: ../patches/2026.5.9.230.patch#ublock-filters
+! Last modified: Sun, 10 May 2026 02:53:21 +0000
+! Diff-Path: ../patches/2026.5.10.248.patch#ublock-filters
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/filters.txt ***
@@ -9777,6 +9777,8 @@ usatoday.com##body > div.gnt_n_w_w:style(margin-bottom: 0 !important;)
 kinobox.cz##+js(prevent-innerHTML, script, .cmd.unshift)
 ranker.com##+js(aeld, /admiral/)
 ranker.com##+js(set, runtimeConfig.AM_PATH, undefined)
+lostcoastoutpost.com##+js(aost, decodeURI, CACHE)
+lostcoastoutpost.com##+js(rmnt, script, /\.cmd\.unshift|adblockerDisabled/, excludes, \,\")
 ! Sinclair sites
 komonews.com,wpgh53.com##+js(json-edit, ..props[?.id=="admiral-initializer"].children)
 athlonsports.com,autoblog.com,bikemag.com,dengarden.com,mensfitness.com,mensjournal.com,parade.com,paradehomeandgarden.com,paradepets.com,pethelpful.com,powder.com,shophq.com,surfer.com,thespun.com,thestreet.com,travelhost.com##+js(json-edit, ..props.children.*[?.key=="admiral-script"])
@@ -9921,7 +9923,7 @@ oricon.co.jp##+js(rmnt, script, /\(async\(\)=>\{try\{(const|var)/)
 chloeting.com##+js(prevent-innerHTML, script, html-load.com)
 calculatorsoup.com##+js(trusted-replace-argument, HTMLScriptElement.prototype.setAttribute, 0, repl:/"$//)
 9gag.com,adrenaline.com.br,and-more.co,astro-seek.com,autofrage.net,bab.la,babla.*,base64decode.org,boardingarea.com,buchstaben.com,businessua.com,calculatorsoup.com,canuckaudiomart.com,chloeting.com,collinsdictionary.com,computerfrage.net,consejosytrucos.co,conselhosetruques.com,consiglietrucchi.com,crosswordsolver.com,dict.cc,dictionary.cambridge.org,dictionnaire.lerobert.com,dnevnik.hr,doviz.com,edinburghnews.scotsman.com,egitim.net.tr,egolf.jp,elnacional.cat,euronews.com,exceljet.net,finanzfrage.net,fizzlefacts.com,fizzlefakten.de,fossbytes.com,gerbeaud.com,gesundheitsfrage.net,gezondnu.nl,girlschannel.net,gutefrage.net,happyinshape.com,hechosfizzle.com,helpdeskgeek.com,hollywoodlife.com,houseandgarden.co,infinityfree.com,inverse.com,itavisen.no,km77.com,kreuzwortraetsel.de,kuruma-news.jp,ldoceonline.com,leckerschmecker.me,lejdd.fr,lettersolver.com,liveandletsfly.com,livescience.com,lootlemon.com,magmix.jp,mamastar.jp,manchesterworld.uk,merinfo.se,moin.de,motorradfrage.net,motscroises.fr,mrexcel.com,nemzetisport.hu,neoseeker.com,netflixlife.com,newatlas.com,nextchessmove.com,nouvelobs.com,oeffnungszeitenbuch.de,omnicalculator.com,oraridiapertura24.it,oricon.co.jp,otonanswer.jp,oxfordlearnersdictionaries.com,pcgamer.com,perezhilton.com,picrew.me,pinterpoin.com,play.gamezop.com,pons.com,popdaily.com.tw,poradyiwskazowki.pl,reisefrage.net,rotowire.com,scribd.com,singjupost.com,slideshare.net,songfacts.com,sourceforge.net,sportlerfrage.net,sussexexpress.co.uk,the-crossword-solver.com,thefirearmblog.com,thelayoff.com,thetruthaboutcars.com,thingiverse.com,timeful.app,tippsundtricks.co,tips-and-tricks.co,tipsandtricksarab.com,tipsandtricksjapan.com,tipsandtrickskorea.com,torontosun.com,toyokeizai.net,trafficnews.jp,travelingformiles.com,trucs-et-astuces.co,tvtv.ca,tvtv.us,ukaudiomart.com,upgradedhome.com,urbandictionary.com,urldecoder.org,usaudiomart.com,vague.style,watchdocumentaries.com,weatherzone.com.au,welt.de,willyweather.*,winfuture.de,winteriscoming.net,word-grabber.com,wordshake.com,woxikon.de,yorkshirepost.co.uk##+js(trusted-replace-argument, HTMLScriptElement.prototype.setAttribute, 1, , condition, '/error-report|new Promise|;await new|:\[?window|&&window,|void 0\]|location\.href|void 0\|\|window/')
-euronews.com##+js(ra, onerror, script[id][onerror], asap stay)
+euronews.com,welt.de##+js(ra, onerror, script[id][onerror], asap stay)
 akinator.com##+js(trusted-replace-argument, HTMLScriptElement.prototype.setAttribute, 1, `json:"setTimeout((()=>{if(!location.pathname.startsWith('/game'))return;const t=document.getElementById('question-label');t&&(window.animation=lottie.loadAnimation({container:t,renderer:'svg',loop:!0,autoplay:!1,path:'/assets/animationsLottielab/gameDots.json'}))}),1e3);"`, condition, '/error-report|new Promise|;await new|:\[?window|&&window,|void 0\]|location\.href|void 0\|\|window/')
 akinator.com##+js(set, __cfRLUnblockHandlers, true)
 huffpost.com##+js(set, disableAdShield, true)
@@ -10664,6 +10666,8 @@ daemon-hentai.com##+js(nostif, openPopunder)
 daemon-hentai.com##+js(aeld, load, .getComputedStyle)
 daemonanime.net##+js(aeld, , STORAGE2)
 daemonanime.net##+js(aeld, DOMContentLoaded, app_advert)
+||google-analytics.com^$3p,image,redirect=1x1.gif,from=daemon-hentai.com
+daemon-hentai.com##+js(rmnt, script, adblock)
 ||imasdk.googleapis.com/js/sdkloader/ima3.js$redirect=google-ima.js,domain=cooperativa.cl
 lared.cl##+js(no-fetch-if, doubleclick)
 lared.cl##+js(set, googletag._loaded_, true)
@@ -19735,7 +19739,6 @@ satdl.com##+js(set, xtime, 0)
 easybib.com##+js(trusted-click-element, button[data-test="watch-ad-button"])
 easybib.com##+js(nano-sib)
 realmadryt.pl##+js(no-fetch-if, method:GET)
-realmadryt.pl##+js(aeld, , adb)
 ! filmydown .site/fast-dl .co/.biz popups
 fast-dl.*,filmydown.*##+js(nowoif)
 ||toptdspup.com^
@@ -20184,8 +20187,9 @@ linkneverdie.net##body:style(overflow: auto !important;)
 linkneverdie.net#@#+js(nostif, t)
 @@||quantumdex.io^$script,domain=linkneverdie.net
 porntrex.com###index-link
-*$script,3p,denyallow=blazingcdn.net|cdntrex.com|fastly.net|google.com|googleapis.com|gstatic.com|h-cdn.com|stackpathcdn.com,domain=porntrex.com
-porntrex.com##+js(acs, readCookieDelit)
+*$script,3p,denyallow=b-cdn.net|blazingcdn.net|cdntrex.com|fastly.net|google.com|googleapis.com|gstatic.com|h-cdn.com|stackpathcdn.com,domain=porntrex.com
+porntrex.com##+js(rpnt, script, this.config.pop.enabled, false, sedCount, 10)
+! porntrex.com##+js(acs, readCookieDelit)
 porntrex.com##+js(disable-newtab-links)
 ||porndoe.com/movie/preroll/*$media,redirect=noopmp4-1s,domain=porntrex.com
 ||porndoe.com/sitePreRoll/
@@ -22464,6 +22468,7 @@ msn.com##msft-article-card:not(.contentCard)
 www.msn.com##+js(json-prune-fetch-response, configs.*.properties.componentConfigs.slideshowConfigs.*.interstitialNativeAds, , propsToMatch, url:/config)
 www.msn.com##+js(json-prune-fetch-response, *, list.[].link.kicker, propsToMatch, /content/v1/cms/api/amp/Document)
 msn.com##.vd-ad
+msn.com##.gem-display-ad
 www.msn.com##+js(json-prune-fetch-response, properties.tiles.[-].isAd, , propsToMatch, /mestripewc/default/config)
 camhub.world##+js(nostif, visibility, 2000)
 ||camhub.world/player/player_ads.html$frame,1p,redirect=noopframe
@@ -23161,6 +23166,7 @@ theorg.com##[href="/advertise"]:upward(1)
 servustv.com##+js(nostif, , 10000-15000)
 servustv.com##+js(nostif, /adex|loadAds|adCollapsedCount|ad-?block/i)
 servustv.com##+js(nosiif, /adex|loadAds|adCollapsedCount|ad-?block/i)
+servustv.com##+js(norafif, location.reload)
 servustv.com##+js(aeld, load, /^function\(\).*requestIdleCallback.*/)
 servustv.com##+js(aeld, error, /function\([a-z]\){[a-z]\([a-z]\)}/)
 servustv.com##+js(no-fetch-if, doubleclick)
@@ -24996,10 +25002,11 @@ stereogum.com##+js(trusted-json-edit, .props.pageProps.globalData.publisherFeatu
 @@||stereogum.com^$ghide
 hyperosthemes.org##+js(no-fetch-if, adsbygoogle)
 scloud.ws##a[class*="download"]
+bzzhr.to##+js(set, AdLink, '')
 ! Title: uBlock filters – Badware risks
 ! Expires: 5 days
 ! Last modified: Fri, 08 May 2026 13:55:25 +0000
-! Diff-Path: ../patches/2026.5.9.230.patch#ublock-badware
+! Diff-Path: ../patches/2026.5.10.248.patch#ublock-badware
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/badware.txt ***
@@ -29718,7 +29725,7 @@ ublockorigin.app###main::before:style(content: 'This is not the official uBlock 
 ! Title: uBlock filters – Privacy
 ! Expires: 7 days
 ! Last modified: Wed, 06 May 2026 04:47:26 +0000
-! Diff-Path: ../patches/2026.5.9.230.patch#ublock-privacy
+! Diff-Path: ../patches/2026.5.10.248.patch#ublock-privacy
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/privacy.txt ***
@@ -37313,7 +37320,7 @@ tlc.com##+js(trusted-click-element, .btn.btn-primary)
 ! Title: uBlock filters – Annoyances
 ! Expires: 7 days
 ! Last modified: Thu, 07 May 2026 09:08:38 +0000
-! Diff-Path: ../patches/2026.5.9.230.patch#ublock-annoyances
+! Diff-Path: ../patches/2026.5.10.248.patch#ublock-annoyances
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/annoyances.txt ***
