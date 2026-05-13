@@ -35,6 +35,7 @@ jobs:
         run: |             
           {
             curl -s https://filters.adtidy.org/ios/filters/2_optimized.txt
+            curl -s https://filters.adtidy.org/ios/filters/5.txt | sed -n '/! YouTube ads/,/! Allowlist/p'
             curl -s https://filters.adtidy.org/ios/filters/3_optimized.txt
             curl -s https://filters.adtidy.org/ios/filters/4_optimized.txt
             curl -s https://filters.adtidy.org/ios/filters/11_optimized.txt
