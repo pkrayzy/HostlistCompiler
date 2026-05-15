@@ -1218,7 +1218,7 @@ www.youtube.com#%#(()=>{const e={apply:(e,t,n)=>{const o=Reflect.apply(e,t,n);tr
 www.youtube.com#%#//scriptlet('adjust-setTimeout', '[native code]', '17000', '0.001')
 www.youtube.com#%#(()=>{let t=document.location.href,e=[],n=[],o="",r=!1;const i=Array.prototype.push,a={apply:(t,o,a)=>(window.yt?.config_?.EXPERIMENT_FLAGS?.html5_enable_ssap_entity_id&&a[0]&&a[0]!==window&&"number"==typeof a[0].start&&a[0].end&&"ssap"===a[0].namespace&&a[0].id&&(r||0!==a[0]?.start||n.includes(a[0].id)||(e.length=0,n.length=0,r=!0,i.call(e,a[0]),i.call(n,a[0].id)),r&&0!==a[0]?.start&&!n.includes(a[0].id)&&(i.call(e,a[0]),i.call(n,a[0].id))),Reflect.apply(t,o,a))};window.Array.prototype.push=new Proxy(window.Array.prototype.push,a),document.addEventListener("DOMContentLoaded",(function(){if(!window.yt?.config_?.EXPERIMENT_FLAGS?.html5_enable_ssap_entity_id)return;const i=()=>{const t=document.querySelector("video");if(t&&e.length){const i=Math.round(t.duration),a=Math.round(e.at(-1).end/1e3),c=n.join(",");if(!1===t.loop&&o!==c&&i&&i===a){const n=e.at(-1).start/1e3;t.currentTime<n&&(t.currentTime=n,r=!1,o=c)}else if(!0===t.loop&&i&&i===a){const n=e.at(-1).start/1e3;t.currentTime<n&&(t.currentTime=n,r=!1,o=c)}}};i();new MutationObserver((()=>{t!==document.location.href&&(t=document.location.href,e.length=0,n.length=0,r=!1),i()})).observe(document,{childList:!0,subtree:!0})}))})();
 ! Fix ads with a specific Google account and for case when JSON.stringify is not writable
-www.youtube.com#%#(()=>{const e="pyv",t="param_first",a="param_second",n="client_screen",c="ad_type",o="none",r="eAFgAQ",l="8AUB",i="YAHI",s="CHANNEL",y=t;let p=y,u=null;const d=Object.getOwnPropertyDescriptor(Document.prototype,"visibilityState"),b=()=>{try{Object.defineProperty(document,"visibilityState",{get:()=>"visible",configurable:!0})}catch(e){}},m=window.JSON.stringify,f=e=>{p=e};(()=>{try{const e=Object.getOwnPropertyDescriptor(window.JSON,"parse");return!!e&&e.writable}catch(e){return!1}})()||((()=>{const e={apply:(e,t,a)=>{try{const e=t;e?.includes('"minimumPlaybackRate":100,"maximumPlaybackRate":100')&&(t=e.replace('"minimumPlaybackRate":100,"maximumPlaybackRate":100','"minimumPlaybackRate":25,"maximumPlaybackRate":200'))}catch(e){}return Reflect.apply(e,t,a)}};window.String.prototype.replace=new Proxy(window.String.prototype.replace,e)})(),f(n));const x=e=>{(e.playbackContext||e.playerRequest)&&delete e.context?.client?.configInfo?.appInstallData},C=(p,m,C)=>{try{if(!p||!m||!C)return;(e=>{const t=e?.videoId;t&&(u&&u!==t&&f(y),u=t)})(p);const R=document.getElementById("movie_player")?.getPlayerResponse()?.playabilityStatus?.status;if("LOGIN_REQUIRED"!==R&&"CONTENT_CHECK_REQUIRED"!==R||(C=o),C===t&&p.context?.client?.clientScreen!==s&&!p.params?.startsWith(i))return p.params=r,p.playerRequest&&p.playerRequest.params!==r&&(p.playerRequest.params=r),p.playbackContext&&p.playbackContext.params!==r&&(p.playbackContext.params=r),m.contentPlaybackContext.lactMilliseconds=String(Date.now()),b(),void x(p);if(C===a&&p.context?.client?.clientScreen!==s&&!p.params?.startsWith(i))return p.params!==l&&(p.params=l),p.playerRequest&&p.playerRequest.params!==l&&(p.playerRequest.params=l),p.playbackContext&&p.playbackContext.params!==l&&(p.playbackContext.params=l),p.playlistId||(p.context.client.clientScreen=s),m.contentPlaybackContext.lactMilliseconds=String(Date.now()),b(),void x(p);if(!(C!==e||p.context?.client?.clientScreen===s||m.params?.startsWith(r)&&m.params?.startsWith(l)))return m.adPlaybackContext={pyv:!0},m.contentPlaybackContext.lactMilliseconds=String(Date.now()),void x(p);if(C===n&&"WEB"===p.context?.client?.clientName)return p.context.client.clientScreen=s,m.contentPlaybackContext.lactMilliseconds=String(Date.now()),b(),void x(p);if(C===c)return m.adPlaybackContext={adType:"AD_TYPE_INSTREAM"},m.contentPlaybackContext.lactMilliseconds=String(Date.now()),b(),void x(p);if(C===o)return delete m.adPlaybackContext,void(()=>{try{Object.defineProperty(document,"visibilityState",d)}catch(e){}})()}catch(e){}},R=["playerErrorMessageRenderer","UNPLAYABLE"],k={apply:(r,l,i)=>{if(location.href.includes("/shorts/")||location.href.includes("youtube.com/tv")||location.href.includes("youtube.com/embed/")||p===o)return Reflect.apply(r,l,i);let s;try{if(s=Reflect.apply(r,l,i),!s.responseContext&&!s.playabilityStatus)return s;const y=m(s);return R.some((e=>y.includes(e)))&&!y.includes("CONTENT_CHECK_REQUIRED")?p===t?(f(a),s):p===a?(f(e),s):p===e?(f(n),s):p===n?(f(c),s):(f(o),s):(p===t&&s.playerConfig?.audioConfig?.muteOnStart&&(location.href.includes("/watch")||s.cards&&!s.playabilityStatus?.miniplayer)&&(delete s.playerConfig.audioConfig.muteOnStart,s.messages[0]?.youThereRenderer&&delete s.messages[0].youThereRenderer),p===c&&s.playerConfig?.granularVariableSpeedConfig&&(s.playerConfig.granularVariableSpeedConfig.maximumPlaybackRate=200,s.playerConfig.granularVariableSpeedConfig.minimumPlaybackRate=25),s)}catch(e){}return s}};window.JSON.parse=new Proxy(window.JSON.parse,k);const w={apply:(e,t,a)=>{if(location.href.includes("/shorts/")||location.href.includes("youtube.com/tv")||location.href.includes("youtube.com/embed/"))return Reflect.apply(e,t,a);try{let n=a[0];if(n&&(n.includes('"contentPlaybackContext"')||n.includes('"adSignalsInfo"'))){const c=JSON.parse(n);if(!c.context?.client)return Reflect.apply(e,t,a);c.playbackContext&&C(c,c.playbackContext,p),c.playerRequest&&C(c,c.playerRequest.playbackContext,p),n=m(c),a[0]=n}}catch(e){}return Reflect.apply(e,t,a)}};window.TextEncoder.prototype.encode=new Proxy(window.TextEncoder.prototype.encode,w);const g={apply:(e,t,a)=>{if(location.href.includes("/shorts/")||location.href.includes("youtube.com/tv")||location.href.includes("youtube.com/embed/"))return Reflect.apply(e,t,a);try{const n=a[0];if(!n?.context?.client)return Reflect.apply(e,t,a);n.playbackContext&&void 0===n.playbackContext.adPlaybackContext&&C(n,n.playbackContext,p),n.playerRequest&&void 0===n.playerRequest.playbackContext.adPlaybackContext&&C(n,n.playerRequest.playbackContext,p),a[0]=n}catch(e){}return Reflect.apply(e,t,a)}};window.JSON.stringify=new Proxy(window.JSON.stringify,g);const S={construct:(e,t,a)=>{try{const n=t[0];let c=t[1]?.body;if(!n?.includes("youtubei")||location.href.includes("/shorts/")||location.href.includes("youtube.com/tv")||location.href.includes("youtube.com/embed/")||!c)return Reflect.construct(e,t,a);if(c.includes('"contentPlaybackContext"')||c.includes('"adSignalsInfo"')){const n=JSON.parse(c);if(!n.context?.client)return Reflect.construct(e,t,a);n.playbackContext&&C(n,n.playbackContext,p),n.playerRequest&&C(n,n.playerRequest.playbackContext,p),c=m(n),t[1].body=c}}catch(e){}return Reflect.construct(e,t,a)}};window.Request=new Proxy(window.Request,S)})();
+www.youtube.com#%#(()=>{const e="pyv",t="param_first",a="param_second",n="client_screen",c="ad_type",o="none",r="eAFgAQ",l="8AUB",i="YAHI",s="CHANNEL",y=t;let p=y,u=null;const d=Object.getOwnPropertyDescriptor(Document.prototype,"visibilityState"),b=()=>{try{Object.defineProperty(document,"visibilityState",{get:()=>"visible",configurable:!0})}catch(e){}},m=window.JSON.stringify,f=e=>{p=e};(()=>{try{const e=Object.getOwnPropertyDescriptor(window.JSON,"parse");return!!e&&e.writable}catch(e){return!1}})()||((()=>{const e={apply:(e,t,a)=>{try{const e=t;e?.includes('"minimumPlaybackRate":100,"maximumPlaybackRate":100')&&(t=e.replace('"minimumPlaybackRate":100,"maximumPlaybackRate":100','"minimumPlaybackRate":25,"maximumPlaybackRate":200'))}catch(e){}return Reflect.apply(e,t,a)}};window.String.prototype.replace=new Proxy(window.String.prototype.replace,e)})(),f(n));const x=e=>{(e.playbackContext||e.playerRequest)&&delete e.context?.client?.configInfo?.appInstallData},C=(p,m,C)=>{try{if(!p||!m||!C)return;(e=>{const t=e?.videoId;t&&(u&&u!==t&&f(y),u=t)})(p);const R=document.getElementById("movie_player")?.getPlayerResponse()?.playabilityStatus?.status;if("LOGIN_REQUIRED"!==R&&"CONTENT_CHECK_REQUIRED"!==R||(C=o),C===t&&p.context?.client?.clientScreen!==s&&!p.params?.startsWith(i))return p.params=r,p.playerRequest&&p.playerRequest.params!==r&&(p.playerRequest.params=r),p.playbackContext&&p.playbackContext.params!==r&&(p.playbackContext.params=r),m.contentPlaybackContext.lactMilliseconds=String(Date.now()),b(),void x(p);if(C===a&&p.context?.client?.clientScreen!==s&&!p.params?.startsWith(i))return p.params!==l&&(p.params=l),p.playerRequest&&p.playerRequest.params!==l&&(p.playerRequest.params=l),p.playbackContext&&p.playbackContext.params!==l&&(p.playbackContext.params=l),p.playlistId||(p.context.client.clientScreen=s),m.contentPlaybackContext.lactMilliseconds=String(Date.now()),b(),void x(p);if(!(C!==e||p.context?.client?.clientScreen===s||m.params?.startsWith(r)&&m.params?.startsWith(l)))return m.adPlaybackContext={pyv:!0},m.contentPlaybackContext.lactMilliseconds=String(Date.now()),void x(p);if(C===n&&"WEB"===p.context?.client?.clientName)return p.context.client.clientScreen=s,m.contentPlaybackContext.lactMilliseconds=String(Date.now()),b(),void x(p);if(C===c)return m.adPlaybackContext={adType:"AD_TYPE_INSTREAM"},m.contentPlaybackContext.lactMilliseconds=String(Date.now()),b(),void x(p);if(C===o)return delete m.adPlaybackContext,void(()=>{try{Object.defineProperty(document,"visibilityState",d)}catch(e){}})()}catch(e){}},R=["playerErrorMessageRenderer","UNPLAYABLE"],k={apply:(r,l,i)=>{if(location.href.includes("/shorts/")||location.href.includes("youtube.com/tv")||location.href.includes("youtube.com/embed/")||p===o)return Reflect.apply(r,l,i);let s;try{if(s=Reflect.apply(r,l,i),!s.responseContext&&!s.playabilityStatus)return s;const y=m(s);return R.some((e=>y.includes(e)))&&!y.includes("CONTENT_CHECK_REQUIRED")?p===t?(f(a),s):p===a?(f(e),s):p===e?(f(n),s):p===n?(f(c),s):(f(o),s):(p===t&&s.playerConfig?.audioConfig?.muteOnStart&&(location.href.includes("/watch")||s.cards&&!s.playabilityStatus?.miniplayer)&&(delete s.playerConfig.audioConfig.muteOnStart,s.messages[0]?.youThereRenderer&&delete s.messages[0].youThereRenderer),p===c&&s.playerConfig?.granularVariableSpeedConfig&&(s.playerConfig.granularVariableSpeedConfig.maximumPlaybackRate=200,s.playerConfig.granularVariableSpeedConfig.minimumPlaybackRate=25),s)}catch(e){}return Reflect.apply(r,l,i)}};window.JSON.parse=new Proxy(window.JSON.parse,k);const w={apply:(e,t,a)=>{if(location.href.includes("/shorts/")||location.href.includes("youtube.com/tv")||location.href.includes("youtube.com/embed/"))return Reflect.apply(e,t,a);try{let n=a[0];if(n&&(n.includes('"contentPlaybackContext"')||n.includes('"adSignalsInfo"'))){const c=JSON.parse(n);if(!c.context?.client)return Reflect.apply(e,t,a);c.playbackContext&&C(c,c.playbackContext,p),c.playerRequest&&C(c,c.playerRequest.playbackContext,p),n=m(c),a[0]=n}}catch(e){}return Reflect.apply(e,t,a)}};window.TextEncoder.prototype.encode=new Proxy(window.TextEncoder.prototype.encode,w);const g={apply:(e,t,a)=>{if(location.href.includes("/shorts/")||location.href.includes("youtube.com/tv")||location.href.includes("youtube.com/embed/"))return Reflect.apply(e,t,a);try{const n=a[0];if(!n?.context?.client)return Reflect.apply(e,t,a);n.playbackContext&&void 0===n.playbackContext.adPlaybackContext&&C(n,n.playbackContext,p),n.playerRequest&&void 0===n.playerRequest.playbackContext.adPlaybackContext&&C(n,n.playerRequest.playbackContext,p),a[0]=n}catch(e){}return Reflect.apply(e,t,a)}};window.JSON.stringify=new Proxy(window.JSON.stringify,g);const S={construct:(e,t,a)=>{try{const n=t[0];let c=t[1]?.body;if(!n?.includes("youtubei")||location.href.includes("/shorts/")||location.href.includes("youtube.com/tv")||location.href.includes("youtube.com/embed/")||!c)return Reflect.construct(e,t,a);if(c.includes('"contentPlaybackContext"')||c.includes('"adSignalsInfo"')){const n=JSON.parse(c);if(!n.context?.client)return Reflect.construct(e,t,a);n.playbackContext&&C(n,n.playbackContext,p),n.playerRequest&&C(n,n.playerRequest.playbackContext,p),c=m(n),t[1].body=c}}catch(e){}return Reflect.construct(e,t,a)}};window.Request=new Proxy(window.Request,S)})();
 www.youtube.com#%#(()=>{const e="movie_player",t="ytd-watch-flexy[player-unavailable]",r=`#${e} > .ytp-error`,n="yt-playability-error-supported-renderers#error-screen:has(>*)",a='yt-playability-error-supported-renderers#error-screen a[href^="//support.google.com/youtube/answer/2802245"]',o="LOGIN_REQUIRED",i="CONTENT_CHECK_REQUIRED",l="pyv",c="param_first",s="param_second",y="client_screen",p="ad_type",d="none",u="eAFgAQ",m="8AUB",f="YAHI",b="CHANNEL",S=c;let v=S,x=null;const g=new Set,C=()=>{const t=document.getElementById(e),r=window.location.search,n=new URLSearchParams(r).get("v")||t?.getVideoData?.().video_id,a=new URLSearchParams(r).get("t")??"0";return{videoId:n,timeInSeconds:parseInt(a,10)}},R=()=>{q();const t=document.getElementById(e);if(t&&"function"==typeof t.loadVideoById)try{const{videoId:e,timeInSeconds:r}=C();t.loadVideoById(e,r)}catch(e){}},I=(()=>{let e=null,t=null,r=0;return n=>{try{if(!n)return!1;const{videoId:a}=C();return!!a&&(e===a&&t===n?r++:(e=a,t=n,r=1),r>=2&&(r=0,!0))}catch(e){return!1}}})(),P=e=>{v=e},h=Object.getOwnPropertyDescriptor(Document.prototype,"visibilityState"),k=()=>{try{Object.defineProperty(document,"visibilityState",{get:()=>"visible",configurable:!0})}catch(e){}},q=()=>{const r=document.getElementById(e),l=document.querySelector(n),c=document.querySelector("yt-playability-error-supported-renderers.ytdMiniplayerPlayerContainerPlayabilityError:has(>*)"),s=document.querySelector(t),y=document.querySelector(a);if(!r||y)return;const p=r.getPlayerResponse?.();p?.playabilityStatus?.status!==o&&p?.playabilityStatus?.status!==i?(s||c)&&(l?.style.setProperty("display","none","important"),c?.style.setProperty("display","none","important"),s?.removeAttribute("player-unavailable")):l?.style.setProperty("display","block","important")},w=e=>{(e.playbackContext||e.playerRequest)&&delete e.context?.client?.configInfo?.appInstallData},E=(e,t,r)=>{try{if(!e||!t||!r)return;if((e=>{const t=e?.videoId;t&&(x&&x!==t&&P(S),x=t)})(e),r===c&&e.context?.client?.clientScreen!==b&&!e.params?.startsWith(f))return e.params=u,e.playerRequest&&e.playerRequest.params!==u&&(e.playerRequest.params=u),e.playbackContext&&e.playbackContext.params!==u&&(e.playbackContext.params=u),t.contentPlaybackContext.lactMilliseconds=String(Date.now()),k(),void w(e);if(r===s&&e.context?.client?.clientScreen!==b&&!e.params?.startsWith(f))return e.params!==m&&(e.params=m),e.playerRequest&&e.playerRequest.params!==m&&(e.playerRequest.params=m),e.playbackContext&&e.playbackContext.params!==m&&(e.playbackContext.params=m),e.playlistId||(e.context.client.clientScreen=b),t.contentPlaybackContext.lactMilliseconds=String(Date.now()),k(),void w(e);if(!(r!==l||e.context?.client?.clientScreen===b||t.params?.startsWith(u)&&t.params?.startsWith(m)))return t.adPlaybackContext={pyv:!0},t.contentPlaybackContext.lactMilliseconds=String(Date.now()),k(),void w(e);if(r===y&&"WEB"===e.context?.client?.clientName)return e.context.client.clientScreen=b,t.contentPlaybackContext.lactMilliseconds=String(Date.now()),k(),void w(e);if(r===p)return t.adPlaybackContext={adType:"AD_TYPE_INSTREAM"},t.contentPlaybackContext.lactMilliseconds=String(Date.now()),k(),void w(e);if(r===d)return delete t.adPlaybackContext,void(()=>{try{Object.defineProperty(document,"visibilityState",h)}catch(e){}})()}catch(e){}};(()=>{const e={apply:(e,t,r)=>{try{let n=r[0];if(!n||location.href.includes("youtube.com/tv")||location.href.includes("youtube.com/embed/"))return Reflect.apply(e,t,r);const a=Array.isArray(n),o=a?n[0]:n;if("string"!=typeof o)return Reflect.apply(e,t,r);if(!o.includes('"contentPlaybackContext"')&&!o.includes('"adSignalsInfo"'))return Reflect.apply(e,t,r);const i=JSON.parse(o);if(!i.context?.client)return Reflect.apply(e,t,r);i.playbackContext&&E(i,i.playbackContext,v),i.playerRequest&&E(i,i.playerRequest.playbackContext,v);const l=JSON.stringify(i);a?r[0][0]=l:r[0]=l}catch(e){}return Reflect.apply(e,t,r)}};window.XMLHttpRequest.prototype.send=new Proxy(window.XMLHttpRequest.prototype.send,e)})();const D=document.documentElement;new MutationObserver((()=>{if(document.querySelector(n)&&q(),!(()=>{const l=document.getElementById(e),c=document.querySelector(r),s=document.querySelector(n),y=document.querySelector(t),p=document.querySelector(a);if(!l||p)return!1;const d=l.getPlayerResponse?.();if(d?.playabilityStatus?.status===o||d?.playabilityStatus?.status===i)return!1;const u=l.getVideoData?.();return(s||y||c)&&null!=u?.errorCode})())return;const{videoId:u}=C();(e=>{if(e)for(const t of g)t!==e&&g.delete(t)})(u),(()=>{if(v===c){if(!I(s))return void R();P(s),R()}else if(v===s){if(!I(l))return void R();P(l),R()}else if(v===l){if(!I(y))return void R();P(y),R()}else if(v===y){if(!I(p))return void R();P(p),R()}else if(v===p){if(!I(d))return void R();P(d),R()}else if(v===d){const{videoId:e}=C();if(!e||g.has(e))return void q();g.add(e),R()}})()})).observe(D,{attributes:!0,childList:!0,subtree:!0})})();
 ! Fix ads on https://www.youtube.com/shorts/
 ! https://github.com/AdguardTeam/AdguardFilters/issues/172033#issuecomment-1991263854
@@ -1655,8 +1655,8 @@ tz.de##article > p[class^="id-Story-"] ~ div[class*="img_"]
 ! END: Ad-Shield ad reinsertion
 ! Title: uBlock filters
 ! Expires: 5 days
-! Last modified: Thu, 14 May 2026 07:31:17 +0000
-! Diff-Path: ../patches/2026.5.14.471.patch#ublock-filters
+! Last modified: Thu, 14 May 2026 19:04:50 +0000
+! Diff-Path: ../patches/2026.5.14.1388.patch#ublock-filters
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/filters.txt ***
@@ -9563,8 +9563,6 @@ torupload.com,nathanmichaelphoto.com##+js(nowoif, , 10, obj)
 @@||googleads.g.doubleclick.net/pagead/ads$subdocument,domain=nathanmichaelphoto.com
 @@||googlesyndication.com^$subdocument,domain=nathanmichaelphoto.com
 @@||dash.ezmob.com/ss/js/ads.js$script,domain=nathanmichaelphoto.com
-@@*$script,xhr,from=nathanmichaelphoto.com,to=cdn4ads.com|doubleclick.net|cloudfront.net|googlesyndication.com|adtrafficquality.google|adsco.re
-nathanmichaelphoto.com##+js(rpnt, script, /\(\);$/m, `();(function(){'use strict';const _e=[{url:"https://s0-greate.net/p/2507871",type:"script",d:1058},{url:"https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516",type:"script",d:36},{url:"https://cdn.jsdelivr.net/npm/disable-devtool",type:"script",d:47}];const generateEntry=(item)=>({name:item.url,initiatorType:item.type,duration:item.d,startTime:Math.random()*100,entryType:"resource",nextHopProtocol:"h2",renderBlockingStatus:"non-blocking",workerStart:0,redirectStart:0,redirectEnd:0,fetchStart:10,domainLookupStart:10,domainLookupEnd:12,connectStart:12,connectEnd:15,secureConnectionStart:13,requestStart:16,responseStart:20,responseEnd:item.d+20,transferSize:Math.floor(Math.random()*5000)+1000,encodedBodySize:1000,decodedBodySize:3000,serverTiming:[]});const _p=Performance.prototype;const _getEntries=_p.getEntries;const _getEntriesByType=_p.getEntriesByType;const _getEntriesByName=_p.getEntriesByName;_p.getEntries=function(){const original=_getEntries.apply(this,arguments);const fakes=_e.map(generateEntry);return[...original,...fakes];};_p.getEntriesByType=function(type){if(type==='resource'){const original=_getEntriesByType.apply(this,arguments);const fakes=_e.map(generateEntry);return[...original,...fakes];}return _getEntriesByType.apply(this,arguments);};_p.getEntriesByName=function(name){const item=_e.find(x=>x.url===name);if(item)return[generateEntry(item)];return _getEntriesByName.apply(this,arguments);};})();`, sedCount, 1)
 nathanmichaelphoto.com#@##gdpr-cookie-notice
 torupload.com##+js(nano-sib, /seconds--|timeLeft--/, *)
 torupload.com##+js(trusted-replace-argument, document.addEventListener, 0, json:"click", condition, visibilitychange)
@@ -11213,8 +11211,10 @@ zdrz.xyz,zecchino-doro.it,zeijakunahiko.com,zien.pl,ziminvestors.com,ziontutoria
 bedavahesap.org##+js(no-xhr-if, adsbygoogle)
 fastcars1.com##center
 ||theadsparks.com^
-pcoptimizedsettings.com,oldcamera.pl,ralli.ee,stbemuiptv.com,tvappapk.com,vipotv.com,whentostream.com##+js(noeval-if, js_func_decode_base_64)
+pcoptimizedsettings.com,oldcamera.pl,ralli.ee,stbemuiptv.com,thesaltysoldier.com,tvappapk.com,vipotv.com,whentostream.com##+js(noeval-if, js_func_decode_base_64)
 hardwaretimes.com##+js(acs, document.createElement, js_func_decode_base_64)
+thesaltysoldier.com##.boxzilla-overlay
+thesaltysoldier.com##.boxzilla-the-salty-soldier-uncensored
 thefightingcock.co.uk##+js(noeval-if, decodeURIComponent(atob)
 123multihub.*,3xyaoi.com,bellezashot.com##+js(noeval-if, adsbygoogle)
 arcadepunks.com##+js(aeld, load, innerHTML)
@@ -11392,8 +11392,7 @@ pcbolsa.com##^script:has-text(/"v4ac1eiZr0"|""\)\.split\(","\)\[4\]|(\.localStor
 ! split
 followfollow.com,sporcle.com##+js(rmnt, script, admiral, excludes, \,\")
 huskermax.com,iphoneincanada.ca##+js(rmnt, script, adblockerDisabled, excludes, \,\")
-apnews.com##+js(rmnt, script, /admiral|-engaged/, excludes, \,\")
-pcgamebenchmark.com##+js(rmnt, script, .cmd.unshift, excludes, \,\")
+apnews.com,rust-servers.net##+js(rmnt, script, /admiral|-engaged/, excludes, \,\")
 ! PMC sites
 ampav.com,artforum.com,artnews.com,atxtv.co,bgr.com,billboard.com,deadline.com,dickclark.com,footwearnews.com,goldderby.com,hollywoodreporter.com,indiewire.com,la3c.com,lifeisbeautiful.com,luminatedata.com,robbreport.com,rollingstone.com,shemedia.com,sourcingjournal.com,sportico.com,spy.com,sxsw.com,tvline.com,variety.com,vibe.com,wwd.com##^script.pmc-admiral
 ampav.com,artforum.com,artnews.com,atxtv.co,bgr.com,billboard.com,deadline.com,dickclark.com,footwearnews.com,goldderby.com,hollywoodreporter.com,indiewire.com,la3c.com,lifeisbeautiful.com,luminatedata.com,robbreport.com,rollingstone.com,shemedia.com,sourcingjournal.com,sportico.com,spy.com,sxsw.com,tvline.com,variety.com,vibe.com,wwd.com##+js(rmnt, script, adblockerDisabled, excludes, \,\")
@@ -11605,8 +11604,8 @@ pickleball.com,pickleballclubs.com,pickleballleagues.com,pickleballteamleagues.c
 pickleball.com,pickleballclubs.com,pickleballleagues.com,pickleballteamleagues.com,pickleballtournaments.com,ppatour.com##+js(trusted-replace-argument, HTMLScriptElement.prototype.setAttribute, 1, , condition, '/error-report|new Promise|;await new|:\[?window|&&window,|void 0\]|location\.href|void 0\|\|window|,window,/')
 !#if cap_html_filtering
 interfootball.co.kr,a-ha.io,cboard.net,joongdo.co.kr,viva100.com,maketecheasier.com,tweaksforgeeks.com,m.inven.co.kr,mlbpark.donga.com##^script:has-text(KCgpPT57bGV0IGU)
-9gag.com,akinator.com,and-more.co,astro-seek.com,autofrage.net,bab.la,babla.*,badmouth1.com,boardingarea.com,businessua.com,canuckaudiomart.com,collinsdictionary.com,computerfrage.net,consejosytrucos.co,conselhosetruques.com,consiglietrucchi.com,dict.cc,dictionnaire.lerobert.com,dictionary.cambridge.org,dnevnik.hr,doviz.com,egitim.net.tr,egolf.jp,eurointegration.com.ua,exceljet.net,finanzfrage.net,fizzlefacts.com,fizzlefakten.de,flatpanelshd.com,footballtransfer.com.ua,footballtransfer.ru,fossbytes.com,freemcserver.net,gadgets360.com,gazetaprawna.pl,gesundheitsfrage.net,gezondnu.nl,girlschannel.net,gutefrage.net,happyinshape.com,hechosfizzle.com,helpdeskgeek.com,hoyme.jp,houseandgarden.co,index.hr,infinityfree.com,issuya.com,iusm.co.kr,lamire.jp,ldoceonline.com,leckerschmecker.me,liveandletsfly.com,logicieleducatif.fr,lootlemon.com,missyusa.com,magmix.jp,mamastar.jp,manchesterworld.uk,moin.de,motorradfrage.net,motscroises.fr,neoseeker.com,neowin.net,newatlas.com,nextchessmove.com,onlinegdb.com,otonanswer.jp,oxfordlearnersdictionaries.com,palabr.as,perezhilton.com,picrew.me,pinterpoin.com,pons.com,poradyiwskazowki.pl,pravda.com.ua,pressian.com,razzball.com,reisefrage.net,reportera.co.kr,rotowire.com,sinemalar.com,singjupost.com,sportanalytic.com,sportlerfrage.net,sportsrec.com,sportsseoul.com,text-compare.com,the-crossword-solver.com,thelayoff.com,tippsundtricks.co,tipsandtricksarab.com,tipsandtricksjapan.com,tipsandtrickskorea.com,torontosun.com,toyokeizai.net,trafficnews.jp,travelingformiles.com,trucs-et-astuces.co,tweaksforgeeks.com,tz.de,ukaudiomart.com,usaudiomart.com,vague.style,w.grapps.me,watchdocumentaries.com,welt.de,wfmz.com,winfuture.de,worldhistory.org##^script[onload*="error-report.com"]
-adrenaline.com.br,base64decode.org,buchstaben.com,calculatorsoup.com,euronews.com,gerbeaud.com,itavisen.no,km77.com,livescience.com,mamastar.jp,merinfo.se,mrexcel.com,nemzetisport.hu,pcgamer.com,ppatour.com,thingiverse.com,timeful.app,tvtv.ca,tvtv.us,urbandictionary.com,urldecoder.org,welt.de,willyweather.*,wordshake.com##^script[src*="html-load.com"]
+9gag.com,akinator.com,and-more.co,astro-seek.com,autofrage.net,bab.la,babla.*,badmouth1.com,boardingarea.com,businessua.com,canuckaudiomart.com,collinsdictionary.com,computerfrage.net,consejosytrucos.co,conselhosetruques.com,consiglietrucchi.com,dict.cc,dictionnaire.lerobert.com,dictionary.cambridge.org,dnevnik.hr,doviz.com,egitim.net.tr,egolf.jp,eurointegration.com.ua,exceljet.net,finanzfrage.net,fizzlefacts.com,fizzlefakten.de,flatpanelshd.com,footballtransfer.com.ua,footballtransfer.ru,fossbytes.com,freemcserver.net,gadgets360.com,gazetaprawna.pl,gesundheitsfrage.net,gezondnu.nl,girlschannel.net,gutefrage.net,happyinshape.com,hechosfizzle.com,helpdeskgeek.com,hoyme.jp,houseandgarden.co,infinityfree.com,issuya.com,iusm.co.kr,lamire.jp,ldoceonline.com,leckerschmecker.me,liveandletsfly.com,logicieleducatif.fr,lootlemon.com,missyusa.com,magmix.jp,mamastar.jp,manchesterworld.uk,moin.de,motorradfrage.net,motscroises.fr,neoseeker.com,neowin.net,newatlas.com,nextchessmove.com,onlinegdb.com,otonanswer.jp,oxfordlearnersdictionaries.com,palabr.as,perezhilton.com,picrew.me,pinterpoin.com,pons.com,poradyiwskazowki.pl,pravda.com.ua,pressian.com,razzball.com,reisefrage.net,reportera.co.kr,rotowire.com,sinemalar.com,singjupost.com,sportanalytic.com,sportlerfrage.net,sportsrec.com,sportsseoul.com,text-compare.com,the-crossword-solver.com,thelayoff.com,tippsundtricks.co,tipsandtricksarab.com,tipsandtricksjapan.com,tipsandtrickskorea.com,torontosun.com,toyokeizai.net,trafficnews.jp,travelingformiles.com,trucs-et-astuces.co,tweaksforgeeks.com,tz.de,ukaudiomart.com,usaudiomart.com,vague.style,w.grapps.me,watchdocumentaries.com,welt.de,wfmz.com,winfuture.de,worldhistory.org##^script[onload*="error-report.com"]
+adrenaline.com.br,base64decode.org,buchstaben.com,calculatorsoup.com,euronews.com,gerbeaud.com,index.hr,itavisen.no,km77.com,livescience.com,mamastar.jp,merinfo.se,mrexcel.com,nemzetisport.hu,pcgamer.com,ppatour.com,thingiverse.com,timeful.app,tvtv.ca,tvtv.us,urbandictionary.com,urldecoder.org,welt.de,willyweather.*,wordshake.com##^script[src*="html-load.com"]
 crosswordsolver.com,gutefrage.net,kreuzwortraetsel.de,motscroises.fr,oeffnungszeitenbuch.de,oraridiapertura24.it,word-grabber.com,wort-suchen.de##^script[src*="://loader."]
 automobile-catalog.com##^script[src$="/core.js"]
 bleepingcomputer.com,pravda.com.ua##^script:has-text(Ad-Shield)
@@ -13618,8 +13617,7 @@ megadede.*##[href="#tab-ad"]
 movidy.*##+js(nowoif)
 thepoorcoder.com##+js(aopr, adblockDetector)
 ! brave issue google funding
-globo.com,latimes.com##+js(nostif, f.parentNode.removeChild(f), 100)
-globo.com##+js(trusted-set-cookie, _ga, GA1.1.000000000.1900000000, , , domain, globo.com)
+latimes.com##+js(nostif, f.parentNode.removeChild(f), 100)
 *$script,3p,denyallow=fastly.net|fastlylb.net|jquery.com|hwcdn.net|hcaptcha.com|recaptcha.net|cloudflare.com|cloudflare.net|google.com|googleapis.com|gstatic.com,domain=13x4.com
 camsclips.*##+js(nostif, innerText, 2000)
 camsclips.*##.place
@@ -18830,7 +18828,6 @@ sitefilme.com##+js(nowoif)
 smgplaza.com##+js(nostif, modal)
 smgplaza.com##+js(aeld, , modal)
 smgplaza.com##+js(acs, eval, replace)
-||imasdk.googleapis.com/js/sdkloader/ima3.js$script,domain=dobreprogramy.pl,redirect=noopjs
 uberhumor.com##+js(nowoif)
 ! artribune. com lcickable background
 artribune.com##+js(set, td_ad_background_click_link, undefined)
@@ -19857,10 +19854,12 @@ wirtualnemedia.pl##.wm-categoryteasersection-ad-large
 wirtualnemedia.pl##.wp-screening-placeholder-container
 wirtualnemedia.pl##body div[class]:not([id]):has(> img[src="/staticfiles/wm-placeholder.png"])
 wirtualnemedia.pl##.py-12:not([data-testid="screening-main"]):has(img[src="/staticfiles/wm-placeholder.png"])
+||imasdk.googleapis.com/js/sdkloader/ima3.js$script,domain=dobreprogramy.pl,redirect=noopjs
 dobreprogramy.pl##+js(trusted-edit-inbound-object, Object.keys, 0, [?.context.bidRequestId].*)
 !#if env_chromium
 dobreprogramy.pl##+js(trusted-replace-argument, RegExp.prototype.test, 0, json:"wirtualnemedia", condition, /^dobreprogramy$/)
 !#endif
+dobreprogramy.pl##div[class*=" "]:not([class*="-"], [id]):has(> img[src^="https://v.wpimg.pl/"])
 tralhasvarias.blogspot.com##+js(nano-stb, decodeURL, *)
 tralhasvarias.blogspot.com##+js(nano-sib, updateProgress, *)
 tralhasvarias.blogspot.com##.cellAd
@@ -24844,7 +24843,6 @@ servustv.com##+js(nostif, , 10000-15000)
 servustv.com##+js(nostif, /adex|loadAds|adCollapsedCount|ad-?block/i)
 servustv.com##+js(nosiif, /adex|loadAds|adCollapsedCount|ad-?block/i)
 servustv.com##+js(norafif, location.reload)
-servustv.com##+js(aeld, load, /^function\(\).*requestIdleCallback.*/)
 servustv.com##+js(aeld, error, /function\([a-z]\){[a-z]\([a-z]\)}/)
 servustv.com##+js(no-fetch-if, doubleclick)
 servustv.com##+js(set, OneTrust, {})
@@ -24852,6 +24850,9 @@ servustv.com##+js(set, OneTrust.IsAlertBoxClosed, trueFunc)
 servustv.com##.backdrop-filter
 @@||servustv.com^$ghide
 servustv.com##.ad-wrap
+servustv.com##.ha52x01.ha52x00.ha52x07
+servustv.com##.ha52x04.ha52x05.ha52x00.ha52x06
+servustv.com##._1tu2i3m0
 filespayouts.com##+js(rmnt, script, window.open)
 /public/js/dublocker.js^$script,1p
 ! An EL rule is not applied to player. 
@@ -26688,6 +26689,7 @@ purediablo.com##+js(set, nitroAds.abp, true)
 nakastream.tv##+js(trusted-json-edit-fetch-response, .adsEnabled=false, propsToMatch, /access)
 nakastream.tv##+js(json-prune-fetch-response, adsterraSmartLink adsterraSmartLink2, , propsToMatch, /access)
 ||ay.live/st/*^url=http$doc,urlskip=?url
+anihq.org>>##+js(nowoif)
 !
 ! This section contains the list of generic blocking rules.
 !
@@ -27435,7 +27437,7 @@ _tracking.php?b=
 ! Title: uBlock filters – Badware risks
 ! Expires: 5 days
 ! Last modified: Thu, 14 May 2026 03:46:36 +0000
-! Diff-Path: ../patches/2026.5.14.471.patch#ublock-badware
+! Diff-Path: ../patches/2026.5.14.1388.patch#ublock-badware
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/badware.txt ***
@@ -32148,8 +32150,8 @@ top##body > center + .A + .post
 ||armour-inc-down.net^$all
 ! Title: uBlock filters – Privacy
 ! Expires: 7 days
-! Last modified: Tue, 12 May 2026 16:31:36 +0000
-! Diff-Path: ../patches/2026.5.14.471.patch#ublock-privacy
+! Last modified: Thu, 14 May 2026 14:11:34 +0000
+! Diff-Path: ../patches/2026.5.14.1388.patch#ublock-privacy
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/privacy.txt ***
@@ -33225,8 +33227,6 @@ forum.blu-ray.com##+js(ra, onclick|oncontextmenu|onmouseover, a[href][onclick*="
 ||gog.com/productcard/users/activity/log
 ||onual.com/*^link_t=$doc,uritransform=/#[^\/?]+//
 onual.com##+js(href-sanitizer, a.btn[href^="https://zxro.com/u/?url=http"], ?url)
-globo.com##+js(trusted-set, libAnalytics, json: {"status":{"dataAvailable":false}\,"data":{}})
-globo.com##+js(set, libAnalytics.data.get, noopFunc)
 ||videovak.com/log/
 dailystar.co.uk,mirror.co.uk##+js(no-xhr-if, cmp.inmobi.com/geoip)
 mirror.co.uk##+js(trusted-set-cookie, _sharedid, , 0, , domain, .mirror.co.uk)
@@ -43935,8 +43935,8 @@ zenskirecenziraj.com##+js(trusted-set-cookie, zenski_cmp, basic)
 tlc.com##+js(trusted-click-element, .btn.btn-primary)
 ! Title: uBlock filters – Annoyances
 ! Expires: 7 days
-! Last modified: Mon, 11 May 2026 06:44:28 +0000
-! Diff-Path: ../patches/2026.5.14.471.patch#ublock-annoyances
+! Last modified: Thu, 14 May 2026 11:46:29 +0000
+! Diff-Path: ../patches/2026.5.14.1388.patch#ublock-annoyances
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/annoyances.txt ***
@@ -44918,7 +44918,7 @@ mangaku.*##+js(aeld, contextmenu)
 ! gamebanana anti adblock notice
 gamebanana.com##+js(aopr, adBlockDetected)
 gamebanana.com##+js(nostif, vSiteRefresher)
-www.reddit.com###configured-xpromo-blocking_xpromo_nsfw_blocking_desktop
+www.reddit.com##div[id*="_xpromo_nsfw_blocking_"]
 www.reddit.com###blocking-modal, body > div[style="position: fixed; inset: 0px; backdrop-filter: blur(4px);"], #nsfw-qr-dialog
 www.reddit.com##body[style*="overflow"]:style(overflow: auto !important;)
 www.reddit.com##body:has(#blocking-modal):style(pointer-events: auto !important;)
