@@ -3,7 +3,7 @@
 ! Description: Filter to quickly resolve content filtering issues on popular websites without updating the extension
 ! Homepage: https://github.com/AdguardTeam/AdguardSDNSFilter
 ! License: GPLv3
-! Last modified: 2026-05-15T10:58:45.998Z
+! Last modified: 2026-05-18T06:09:15.193Z
 !
 ! Compiled by @adguard/hostlist-compiler v2.1.0
 !
@@ -141,12 +141,10 @@ mygolfspy.com##form
 nbcsports.com##.ArticlePage-lead,bsp-banner,bsp-reverse-scroll-ad.Page-ad,.ArticlePage-actions-wrapper,bsp-mpxplayer
 nfl.com##.d3-l-adv-row
 nfl.com##article[class]:style(margin-top: 0px !important;)
-nypost.com##.entry-content.featured-image.featured-image__wrapper,.membership-comments-container,.membership-reactions-module,.nyp-zephr-flyout,.scrollingdown.hide,.widget--vividseats,amp-video-iframe,.recirc,.wp-block-nypost-editor-newsletter
+nypost.com##.entry-content.featured-image.featured-image__wrapper,.membership-comments-container,.membership-reactions-module,.nyp-zephr-flyout,.scrollingdown.hide,.widget--vividseats,amp-video-iframe,.recirc,.wp-block-nypost-editor-newsletter,.nyp-s2n-wrapper
 nypost.com##div:has([data-adm-url])
 nypost.com##iframe[src^="https://embeds.nypost.com/protected-iframe/"]
-nytimes.com#?#div[data-hierarchy] div:has(> div > div[class] > div[class] > div[data-testid="StandardAd"])
-nytimes.com###mid1-wrapper
-nytimes.com###masthead-bar-one
+nytimes.com###mid1-wrapper,[aria-label="Disclosure",]#masthead-bar-one
 nytimes.com##app > #site-content > div[class] > div[class^="css-"] > div[class^="css-"][class*=" "]:has( div[class^="css-"][class*=" "] > .ad)
 nytimes.com##div:has(> div[data-testid="StandardAd"]:only-child)
 nytimes.com##div[data-hierarchy] div:has(> div > div[class] > div[class] > div[data-testid="StandardAd"])
@@ -175,7 +173,8 @@ vox.com,theverge.com##.duet--layout--rail > div[class]:has(> div[class] > div[da
 whathifi.com##.slice-container-newsletterForm,.sponsored-post--placeholder,#top-leaderboard,.ad-unit,.sponsored-card
 wikipedia.org###centralNotice
 windowscentral.com##[class="ad-unit"]
-wsj.com##[aria-label="What to Read Next"]
+wsj.com##[aria-label="What to Read Next"],[data-inset_type="newsletterinset"]
+wsj.com##article > [class^="css-"] > [class^="css-"]:has([class$="-VideoWrapper"])
 x.com##div[aria-label="Home timeline"] > div:has([data-testid="tweetTextarea_0_label"])
 yahoo.com##.responsive-sda,#sda-body,#sda-top
 yahoo.com##[class*="max-md"]:has(.ad-container)
@@ -397,6 +396,7 @@ bellinghamherald.com,bnd.com,bradenton.com,centredaily.com,charlotteobserver.com
 ||streamtheworld.com^*/idsync.js
 ||vast.adtonos.com^
 ! Naviga Global / Connext / Flittz
+||czx5eyk0exbhwp43ya.biz^
 ||ayc0zsm69431gfebd.info^
 ||ayc0zsm69431gfebd.xyz^
 ||flittz-cdn.azureedge.net^
