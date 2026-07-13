@@ -585,7 +585,7 @@ afr.com##+js(rpnt, script, /tp = window.tp/, 'setTimeout(function(){eval=window.
 ! Homepage: https://gitflic.ru/project/magnolia1234/bypass-paywalls-clean-filters
 ! License: MIT; https://gitflic.ru/project/magnolia1234/bypass-paywalls-clean-filters/blob/raw?file=LICENSE
 ! Last modified: 
-! Version: 4.3.8.8
+! Version: 4.3.9.1
 
 ! General
 
@@ -869,6 +869,7 @@ nzz.ch##+js(ra, class, div.barrier, stay)
 ||tms.danzz.ch/scripts/t.min.js$script,domain=nzz.ch|themarket.ch
 ||observador.pt/wp-content/*/paywall-price-*.js$script,~third-party
 /\.ogj\.com\/.+\/\d{8,}\//$inline-script
+||oko.press/_next/static/chunks/pages/%5Bslug*.js$script,~third-party
 paloaltoonline.com##+js(cookie-remover, /^/)
 ||pastemagazine.com/wp-content/cache/autoptimize/js/autoptimize_*.js$script,~third-party
 pb.pl##+js(ra, class, section.o-article-content, stay)
@@ -935,6 +936,8 @@ tes.com##div.js-paywall-info,div.tg-paywall-message
 texasmonthly.com##div.promo-in-body
 the-scientist.com##+js(rc, paywall, div.paywall)
 the-scientist.com##div.gated-fader,div#Modal
+the-star.co.ke##+js(ra, class, div.premium-gate__content, stay)
+the-star.co.ke##div.premium-gate__paywall,div.premium-content figure:not(:has(img))
 ||theartnewspaper.com/_next/static/chunks/pages/access-allowed-*.js$script,~third-party
 ||theatlantic.com/zephr/decision-engine$xmlhttprequest,~third-party
 theatlantic.com##aside#paywall,div[class^="LostInventoryMessage_"]
@@ -1022,13 +1025,12 @@ dailymail.co.uk,mailonsunday.co.uk,thisismoney.co.uk##+js(rc, is-paywalled-artic
 ||dailymail.co.uk/static/mol-adverts/$script
 
 ! GEDI.it sites
-||huffingtonpost.it/*/news/$inline-script
 ||lastampa.it/*/news/$inline-script
-huffingtonpost.it,lastampa.it##+js(cookie-remover, blaize_session)
-huffingtonpost.it,lastampa.it##aside#widgetDP,div[id^="adv"]
-||scripts.repubblica.it/pw/pw.js$script,domain=italian.tech|moda.it
-italian.tech,moda.it##div#ph-paywall:remove()
-italian.tech,moda.it##+js(ra, style, div#article-body, stay)
+lastampa.it##+js(cookie-remover, blaize_session)
+lastampa.it##aside#widgetDP,div[id^="adv"]
+||scripts.repubblica.it/pw/pw.js$script,domain=italian.tech
+italian.tech##div#ph-paywall:remove()
+italian.tech##+js(ra, style, div#article-body, stay)
 
 ! Groupe La Dépêche
 centrepresseaveyron.fr,journaldemillau.fr,ladepeche.fr,lindependant.fr,midilibre.fr,nrpyrenees.fr,petitbleu.fr,rugbyrama.fr##+js(ra, style|data-state, div.p402_premium)
@@ -1363,8 +1365,6 @@ subscriptioninsider.com##div.dialog-widget
 !#if (adguard_app_ios)
 /\.subscriptioninsider\.com\/.+\/(\w+-){3,}/$inline-script,domain=subscriptioninsider.com
 !#endif
-the-star.co.ke##+js(ra, class, div.premium-gate__content, stay)
-the-star.co.ke##div.premium-gate__paywall,div.premium-content figure:not(:has(img))
 thecore.in##+js(ra, class, div.paywall-content)
 thecore.in##div.story,div#subscription_paid_message,div#footer_login_wall
 thecountersignal.com##+js(ra, class, body.single div.elementor-widget-container)
