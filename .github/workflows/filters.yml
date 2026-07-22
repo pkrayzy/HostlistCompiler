@@ -77,7 +77,9 @@ jobs:
       - name: Build EasyList Optimized
         run: |             
           {
-            curl -s https://filters.adtidy.org/ios/filters/101_optimized.txt | grep -v "^bing\.com#"
+            # curl -s https://filters.adtidy.org/ios/filters/101_optimized.txt | grep -v "^bing\.com#"
+            curl -s https://filters.adtidy.org/ios/filters/2_optimized.txt | grep -v "^bing\.com#"
+            curl -s https://filters.adtidy.org/ios/filters/11_optimized.txt | grep -v "^bing\.com#"
             } | sed '/!#safari_cb_affinity/d' > ./optimized/easylist.txt
 
       - name: Build EasyPrivacy
