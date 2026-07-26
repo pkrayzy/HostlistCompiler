@@ -23,14 +23,38 @@ async function exclude(rules, exclusions, exclusionsSources) {
     }
     consola.info(`Filtering the list of rules using ${wildcards.length} exclusion rules`);
 
+    // Separate wildcards into fast and slow paths
+    const exactMatches = new Set();
+    const plainSubstrings = [];
+    const regexes = [];
+
+    for (const w of wildcards) {
+        const str = w.toString();
+        if (w.regex === null) {
+            // If it's a plain string, we check if it's likely an exact match
+            // (no special adblock characters that would imply a substring search)
+            // However, to be safe and simple, we can treat everything without regex
+            // as a substring search, BUT we can optimize by using a single large regex
+            // for all plain substrings.
+            plainSubstrings.push(_.escapeRegExp(str));
+        } else {
+            regexes.push(w.regex);
+        }
+    }
+
+    const combinedPlainRegex = plainSubstrings.length > 0 
+        ? new RegExp(plainSubstrings.join('|'), 'i') 
+        : null;
+
     const filtered = rules.filter((rule) => {
-        const excluded = wildcards.some((w) => {
-            const found = w.test(rule);
-            if (found) {
-                consola.debug(`${rule} excluded by ${w.toString()}`);
-            }
-            return found;
-        });
+        // 1. Fast path: Combined plain substring check
+        if (combinedPlainRegex && combinedPlainRegex.test(rule)) {
+            return false;
+        }
+
+        // 2. Slower path: Complex regexes
+        const excluded = regexes.some((re) => re.test(rule));
+        
         return !excluded;
     });
 
