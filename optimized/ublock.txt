@@ -17688,7 +17688,7 @@ _europecookielaw.
 ! !SECTION: Popups - Generic rules
 !
 ! Title: uBlock filters – Cookie Notices
-! Last modified: Fri, 24 Jul 2026 13:01:50 +0000
+! Last modified: Sat, 25 Jul 2026 19:20:50 +0000
 ! Expires: 7 days
 ! Description: Filters optimized for uBlock Origin, to be used with EasyList's and/or Adguard's "Cookie Notices" list(s)
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
@@ -17750,8 +17750,8 @@ groupeapocom.com###website_cookies_bar
 businessinsider.com##.related-posts
 ! https://github.com/uBlockOrigin/uAssets/issues/16581#issuecomment-4650988602
 /wrapperMessagingWithoutDetection.js$domain=autosport.com
-! https://github.com/uBlockOrigin/uAssets/issues/32524#issuecomment-4712732765
-pinterest.com##+js(trusted-click-element, xpath://div[@id="__PWS_ROOT__"]/following-sibling::div[@style="z-index: 1000;"]//div[@name="trap-focus"]/div[@role="dialog"]//button[.//div[text()="Reject all"]])
+! https://github.com/uBlockOrigin/uAssets/issues/33803
+||sindicateuropol.ro/wp-content/plugins/elementor/assets/lib/dialog/dialog.min.js
 ! https://github.com/uBlockOrigin/uAssets/issues/33734
 /wp-content/plugins/privacy-policy-popup/*
 yeshinvoice.co.il##.cookie
@@ -18251,9 +18251,6 @@ dimensione.com##+js(trusted-click-element, button#CybotCookiebotDialogBodyButton
 hvr-amazon.my.site.com##+js(trusted-set-cookie, apex__cookiePreferences, Operational)
 ! https://bockscornerbrewery.com/
 bockscornerbrewery.com##+js(trusted-set-cookie, website_cookies_bar, '{"required": true, "optional": false}', 1year)
-! https://www.vpd.fi/
-vpd.fi##+js(trusted-set-cookie, amcookie_allowed, 1, 1year, , domain, www.vpd.fi)
-vpd.fi##+js(trusted-set-cookie, amcookie_disallowed, recently_viewed_product%2Crecently_viewed_product_previous%2Crecently_compared_product%2Crecently_compared_product_previous%2C_ga%2C_gid%2C_gat, 1year, , domain, www.vpd.fi)
 ! https://github.com/uBlockOrigin/uAssets/issues/29884
 @@||cmp.pubtech.ai/*/pubtech-cmp-v2*.js$script,domain=everyeye.it
 @@||cmp-assets.pubtech.ai/vendorList/*.json$xhr,domain=everyeye.it
@@ -18373,6 +18370,14 @@ tfw.wales##+js(trusted-set-cookie, cookiesjsr, '{"base":false,"functional":false
 docs.netbird.io##+js(trusted-click-element, xpath://div[@id="__next"]/div[@class="Toastify"]/following-sibling::div[1]//button[text()="Required only cookies"])
 ! https://satualumni.itb.ac.id
 satualumni.itb.ac.id##+js(trusted-set-local-storage-item, kc_cookie_consent, '{"analytics":false,"functional":false,"marketing":false,"ai":false,"necessary":true,"consentedAt":"$currentISODate$","version":"1.1"}')
+! https://github.com/uBlockOrigin/uAssets/issues/22837 - Functionality + Social
+! https://github.com/uBlockOrigin/uAssets/pull/33829
+20min.ch##+js(trusted-click-element, #onetrust-consent-sdk button.ot-pc-refuse-all-handler)
+! https://github.com/uBlockOrigin/uAssets/issues/32524#issuecomment-4712732765
+pinterest.com##+js(trusted-click-element, xpath://div[@id="__PWS_ROOT__"]/following-sibling::div[@style="z-index: 1000;"]//div[@name="trap-focus"]/div[@role="dialog"]//button[.//div[text()="Reject all"]])
+! https://www.makeuseof.com/how-youtubes-you-tab-makes-it-easier-to-find-content/
+makeuseof.com>>##+js(trusted-click-element, button[title="More Options"])
+makeuseof.com>>##+js(trusted-click-element, button.sp_choice_type_REJECT_ALL, , 500)
 
 !! Needs additional cookies
 
@@ -19052,11 +19057,6 @@ sogeti.com##+js(trusted-set-cookie, ConsentCookie, 'required:1,functional:1,anal
 
 ! https://www.transferxl.com/ - Functional
 transferxl.com##+js(trusted-set-cookie, txl_consent_status, functional, , , domain, transferxl.com)
-
-! https://github.com/uBlockOrigin/uAssets/issues/22837 - Functionality + Social
-20min.ch##+js(trusted-set-cookie, OptanonConsent, groups=C0001%3A1%2CC0002%3A0%2CC0003%3A1%2CC0004%3A0%2CC0005%3A1%2CV2STACK42%3A0, , , domain, 20min.ch)
-20min.ch##+js(trusted-set-cookie, OptanonAlertBoxClosed, $currentDate$)
-20min.ch##+js(trusted-set-cookie, eupubconsent-v2, CQn0VdgQn0VdgAcABBDECoFgAAAAAEPgAAQ4L4JB_C7dbWFD-DZ3aLokeYwP99hBIsQhAAaAAmAFTBOQ4IQCw0EYBASAFCACGAIAo3RBIAJkEABEAUCAIIgFIQBEAAwQoBAKAABAgAERAgBACAgCCIAAUQAIAAANAkUAmAiAKYKEWEAgwIAACACBAAABAACAAQMACEAwBBAAAQIAQKBAgwJAuAKBAAEAARgAAAAAAAAAIAAAQAAAoACAACgABCAAEAAAAAAAAAAAAQAAAAAAAAACBAIAAAAAAEAEF5AATBQqIICiIBAgEBACBAAIKwgAgEAQAAJAAQAAJggIcAIAKKCJAAAAAAAAAAAAQYAAgAAEAAQiACAAAEAIEAAQAAYAEAAEAAAgAAAAoQAAAAQBAEAAIIAAAAACAKAAQIQAEAAALCAAIAAAFABAAEAAAABAAAAACAAQAAAAABAAQAAgQAEAXAFAAAAAAAAACAAAAAAAEAAgAAAAEAAAAAAAAgAAAAAAAAAAAEAAAAAAAAAAAAAAAgEAAAAAACACCAAgBNAA.YAAACHwAAAAA.IL4JB_C7dbWFH-DZ3aLokeYwf99hBIsQhAAaAAmAFTBOQ4IQC00EaBASAFCACGAIAo3RBIAJsEAhEAUCAIIgVIQBkAAwQoBAKAABAgAERQgBACAgCCIAAUQAIAAANA0UAmQiAKYKEWEAgwIAAKACBAIABAACAAQMAGEAwBBAAASIAwKBAgwJAuAKBAAEAARgAEAAAAAAAIABAQAAAoACAACgABCAAEAAAAAAAAIAAAQAAAAAAAAACBAIAAAAAAEAEAAA)
 
 ! https://github.com/uBlockOrigin/uAssets/issues/22871 - Accept all
 ! Didomi.setUserAgreeToAll()
@@ -21312,9 +21312,6 @@ letec.be##+js(trusted-set-cookie, GDPR_Consent, '{"essential":true,"functional":
 ! reject
 smythstoys.com##+js(trusted-click-element, button.ios-modal-cookie, , 1000)
 
-! necessary
-cotswoldoutdoor.com##+js(trusted-set-cookie, consent_setting, analytics:0|functional:1|marketing:0, , ,reload, 1)
-
 ! reject
 neonet.pl##+js(trusted-set-local-storage-item, user_cookies_acceptance, '{"necessary":true,"analytics":false,"functional":false,"marketing":false}')
 
@@ -23376,8 +23373,8 @@ hel.fi##+js(trusted-click-element, .hds-cc__target >>> .hds-cc__all-cookies-butt
 finna.fi##+js(trusted-click-element, .js-accept-all, , 1000)
 ! Title: uBlock filters – Annoyances
 ! Expires: 7 days
-! Last modified: Fri, 24 Jul 2026 08:44:27 +0000
-! Diff-Path: ../patches/2026.7.24.1392.patch#ublock-annoyances
+! Last modified: Sat, 25 Jul 2026 14:26:49 +0000
+! Diff-Path: ../patches/2026.7.26.8.patch#ublock-annoyances
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/annoyances.txt ***
@@ -23492,6 +23489,11 @@ videohelper.com##body:style(-webkit-user-select: text !important; -ms-user-selec
 megatrax.com##.collection-tracks:style(-webkit-touch-callout: default !important; -webkit-user-select: text !important; -khtml-user-select: text !important; -moz-user-select: text !important; -ms-user-select: text !important; user-select: text !important; -webkit-user-drag: auto !important; user-drag: auto !important;)
 fpmmusic.com##+js(aeld, mousedown, , elements, .trackContainer)
 milesofmusik.com##+js(aeld, mousedown, , elements, .fancybox-container)
+javx357.com##+js(rmnt, script, disableRightClick)
+ing-sat.hu##+js(set, document.oncontextmenu, null)
+ing-sat.hu##+js(set, document.onmousedown, null)
+primariasector2.ro##+js(rmnt, script, .blockContextMenu)
+posturi.gov.ro##:root:style(user-select: unset !important)
 ! END: Anti copy, right-click etc.
 ! START: Anti-adblock
 @@||socialblade.com^$ghide
@@ -23556,8 +23558,11 @@ flamecomics.xyz##+js(trusted-set-local-storage-item, adBlockedModal:lastDismiss,
 anizone.to##.h-\[90px\].w-\[728px\]:has(iframe[src^="//ad.a-ads.com/"])
 scmp3.org,soundcloudmp3.org##+js(set, detectAdBlock, noopFunc)
 vaughn.live##+js(trusted-click-element, button#vs_modal_v9_notice_dismiss)
-civitai.red##a[href="/pricing"] img
-civitai.red##div.relative.flex[style="min-height:90px"]:has(> button[aria-label="Close ad"])
+civitai.com,civitai.red##a[href="/pricing"] img
+civitai.com,civitai.red##div.relative.flex[style="min-height:90px"]:has(> button[aria-label="Close ad"])
+civitai.com,civitai.red##+js(trusted-replace-argument, String.prototype.endsWith, 0, , condition, /edit)
+jelonka.com##+js(trusted-set-local-storage-item, jelonka_news_ad_access_gate_first_detected_at, $now$)
+jelonka.com##+js(trusted-set-local-storage-item, jelonka_news_ad_access_gate_soft_dismissed_at, $now$)
 ! END: Anti-adblock
 ||holyclock.com^$3p
 ||shomershabes.com^$3p
@@ -27610,7 +27615,3 @@ civitai.com##.dark\:bg-dark-9.dark\:border-dark-4:has([aria-label="Close ad"])
 dejure.org##+js(set, ad_allowed, true)
 dejure.org#@##AdsDiv
 dejure.org##+js(remove-cookie, adblock_counter)
-ing-sat.hu##+js(set, document.oncontextmenu, null)
-ing-sat.hu##+js(set, document.onmousedown, null)
-javx357.com##+js(rmnt, script, disableRightClick)
-primariasector2.ro##+js(rmnt, script, .blockContextMenu)
