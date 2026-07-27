@@ -8666,8 +8666,8 @@ howtogeek.com,247sports.com,cbsnews.com,cbssports.com,indiewire.com,masslive.com
 ||zonewedgeshaft.com^
 ! Title: uBlock filters
 ! Expires: 5 days
-! Last modified: Sun, 26 Jul 2026 12:21:47 +0000
-! Diff-Path: ../patches/2026.7.26.1268.patch#ublock-filters
+! Last modified: Mon, 27 Jul 2026 03:21:48 +0000
+! Diff-Path: ../patches/2026.7.27.238.patch#ublock-filters
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/filters.txt ***
@@ -33815,6 +33815,7 @@ stereogum.com##+js(trusted-json-edit, .props.pageProps.globalData.publisherFeatu
 @@||stereogum.com^$ghide
 hyperosthemes.org##+js(no-fetch-if, adsbygoogle)
 scloud.ws##article > div[class][style^="text-align:"] > a[href]:not([href*="/"])
+scloud.ws##a[href^="javascript:"]
 purediablo.com##+js(set, nitroAds.abp, true)
 @@||cinewatch.top^$ghide
 nakastream.tv##+js(trusted-json-edit-fetch-response, .adsEnabled=false, propsToMatch, /access)
@@ -34316,7 +34317,7 @@ www.dailymotion.com>>,~google.com##+js(xml-prune, [breakId], , _VMAP_)
 ! Title: uBlock filters – Quick fixes
 ! Expires: 12 hours
 ! Last modified: Sun, 26 Jul 2026 12:15:35 +0000
-! Diff-Path: ../patches/2026.7.26.1268.patch#ublock-quick-fixes
+! Diff-Path: ../patches/2026.7.27.238.patch#ublock-quick-fixes
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/quick-fixes.txt ***
@@ -34685,7 +34686,7 @@ twitch.tv##.chat-shell > div[class^="Layout-sc-"]  > div[style^="transition:"]:h
 ! Title: uBlock filters – Privacy
 ! Expires: 7 days
 ! Last modified: Sun, 26 Jul 2026 19:14:18 +0000
-! Diff-Path: ../patches/2026.7.26.1268.patch#ublock-privacy
+! Diff-Path: ../patches/2026.7.27.238.patch#ublock-privacy
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/privacy.txt ***
@@ -38145,7 +38146,7 @@ designboom.com,livescience.com,pbtech.co.nz,peoplesworld.org,space.com##.fa-face
 ! https://github.com/AdguardTeam/AdguardFilters/issues/222591
 ##div[data-testid="share-menu"]
 ! Title: uBlock filters – Cookie Notices
-! Last modified: Sat, 25 Jul 2026 19:20:50 +0000
+! Last modified: Mon, 27 Jul 2026 00:59:48 +0000
 ! Expires: 7 days
 ! Description: Filters optimized for uBlock Origin, to be used with EasyList's and/or Adguard's "Cookie Notices" list(s)
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
@@ -43828,10 +43829,12 @@ hel.fi##+js(trusted-click-element, .hds-cc__target >>> .hds-cc__all-cookies-butt
 
 ! Accept (for embeds)
 finna.fi##+js(trusted-click-element, .js-accept-all, , 1000)
-! Title: uBlock filters – Annoyances
+
+! https://github.com/AdguardTeam/AdguardFilters/issues/236739
+hornbach.ro##+js(trusted-click-element, #usercentrics-cmp-ui >>> button.uc-deny-button)! Title: uBlock filters – Annoyances
 ! Expires: 7 days
 ! Last modified: Sun, 26 Jul 2026 10:47:41 +0000
-! Diff-Path: ../patches/2026.7.26.1268.patch#ublock-annoyances
+! Diff-Path: ../patches/2026.7.27.238.patch#ublock-annoyances
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/annoyances.txt ***
