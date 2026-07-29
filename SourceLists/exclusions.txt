@@ -1,0 +1,40 @@
+
+! Bing
+||bing.com/fd/ls/GLinkPing.aspx?
+||bing.com/fd/ls/l?IG=
+||bing.com/fd/ls/lsp.aspx
+
+! Bloomberg
+||bwbx.io/s3/javelin/public/hub/js/abba/$script,domain=bloomberg.co.jp|bloomberg.com
+bloomberg.com###fortress-container-root
+@@||assets.bwbx.io/s3/fence/fortress-client/v1/app.bundle.js
+||assets.bwbx.io/s3/javelin/public/javelin/js/foundation/transporter/foundation_transporter-*.js$script,domain=bloomberg.com
+||assets.bwbx.io^*/fence/$script
+||assets.bwbx.io^*/pianola/$script
+||bloombergadria.com/*/news$inline-script
+||cm.bloomberg.com^$xmlhttprequest,~third-party
+||bwbx.io/s3/fence/$script,third-party,domain=bloomberg.com
+bloomberg.com###pathfinder-tout
+bloomberg.com##+js(ra, data-paywall-overlay-status, body[data-paywall-overlay-status], stay)
+bloomberg.com##+js(set-local-storage-item, history, $remove$)
+bloomberg.com##+js(trusted-replace-fetch-response, /\"eligible\":false/, "eligible":true, gatehouse)
+bloomberg.com##div[id^="fortress-"]
+bloombergadria.com##+js(ra, style, article.single-news[style], stay)
+
+! The New York Times (nytimes.com)
+nytimes.com##.gdpr
+nytimes.com##.magnoliaDock
+nytimes.com##[id*="story-ad-"][id*="wrapper"]
+nytimes.com###credential_picker_container
+nytimes.com##+js(no-fetch-if, headers:x-nyt-entitlements)
+nytimes.com##div[data-test-id="RecommendedNewsletter"]
+nytimes.com##div[data-testid="expanded-dock"]
+nytimes.com##div[data-testid="inline-message"]
+nytimes.com#%#//scriptlet('ubo-no-fetch-if.js', 'headers:x-nyt-entitlements')
+
+! Google
+||google.com/log^$domain=~accounts.google.com
+
+irishexaminer.com/#%#//scriptlet('ubo-cookie-remover', 'blaize_session')
+irishexaminer.com/##+js(cookie-remover, blaize_session)
+afr.com##+js(rpnt, script, /tp = window.tp/, 'setTimeout(function(){eval=window.eval,eval(atob("YT1bLi4uZG9jdW1lbnQuZ2V0RWxlbWVudHNCeVRhZ05hbWUoInNjcmlwdCIpXS5maWx0ZXIoZT0+ZS5pbm5lckhUTUwmJmUuaW5uZXJIVE1MLmluY2x1ZGVzKCJfX3N0YXRpY1JvdXRlckh5ZHJhdGlvbkRhdGEgPSBKU09OLnBhcnNlIikpWzBdLmlubmVySFRNTCxiPWEuc3Vic3RyaW5nKGEuaW5kZXhPZignSlNPTi5wYXJzZSgiJykpLHQ9ZXZhbChiKS5sb2FkZXJEYXRhLGZvdW5kPU9iamVjdC52YWx1ZXModCkuZmlsdGVyKGU9PmUpWzBdLGJvZHk9RG9jdW1lbnQucGFyc2VIVE1MVW5zYWZlKGZvdW5kLmNvbnRlbnQuYXNzZXQuYm9keSkscGxhY2Vob2xkZXJWYWx1ZXM9Zm91bmQuY29udGVudC5hc3NldC5ib2R5UGxhY2Vob2xkZXJzLHBsYWNlaG9sZGVyRWxlbWVudHM9Ym9keS5xdWVyeVNlbGVjdG9yQWxsKCJ4LXBsYWNlaG9sZGVyIikuZm9yRWFjaChlPT57c3dpdGNoKHg9cGxhY2Vob2xkZXJWYWx1ZXNbZS5pZF0sdHlwZT14LnR5cGUsZGF0YT14LmRhdGEsdHlwZSl7Y2FzZSJsaW5rRXh0ZXJuYWwiOmUuaW5uZXJIVE1MPWA8YSBocmVmPSIke2RhdGEudXJsfSIke2RhdGEubmV3VGFiPycgdGFyZ2V0PSJfYmxhbmsiJzoiIn0ke2RhdGEubm9Gb2xsb3c/JyByZWw9Im5vZm9sbG93Iic6IiJ9PiR7ZGF0YS50ZXh0fTwvYT5gO2JyZWFrO2Nhc2UiaW1hZ2UiOmUuaW5uZXJIVE1MPWA8YnI+PGJyPjxpbWcgc3JjPSJodHRwczovL3N0YXRpYy5mZnguaW8vaW1hZ2VzLyR7ZGF0YS5maWxlTmFtZX0iIGFsdD0iJHtkYXRhLmFsdFRleHR9IiBzdHlsZT0iZGlzYWJsZWQtYXNwZWN0LXJhdGlvOiAke2RhdGEuYXNwZWN0fTsgd2lkdGg6IDUwdnciIC8+PGZpZ2NhcHRpb24gc3R5bGU9ImNvbG9yOiAjNTU1O2ZvbnQtZmFtaWx5OiBzdWVjYW5hbm9fcmVndWxhcixhcmlhbCxsdWNpZGEgZ3JhbmRlLHNhbnMtc2VyaWY7Zm9udC1zaXplOiAuNzVyZW07bGluZS1oZWlnaHQ6IDEuMzsiPiR7ZGF0YS5jYXB0aW9ufTwvZmlnY2FwdGlvbj5gO2JyZWFrO2RlZmF1bHQ6ZS5pbm5lckhUTUw9IiJ9fSk7CmRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoJ1tjbGFzcyQ9ImFydGljbGVCb2R5Il0nKS5pbm5lckhUTUw9Ym9keS5nZXRFbGVtZW50c0J5VGFnTmFtZSgiYm9keSIpWzBdLmlubmVySFRNTDs="))}, 2500); tp = window.tp', sedCount, 1)
