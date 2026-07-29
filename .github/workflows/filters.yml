@@ -28,8 +28,8 @@ jobs:
 
       - name: Download and transform Adguard Filters
         run: |
-          (curl -s https://filters.adtidy.org/ios/filters/15_optimized.txt | grep -v "\*" | grep -v "^@@") > ./optimized/dns_optimized.txt
-          (curl -s "https://raw.githubusercontent.com/AdguardTeam/AdGuardSDNSFilter/master/Filters/exceptions.txt" | \sed 's/^@@||//g; s/^@@|//g; s/|$//g; /^!/!s/^/||/') > ./optimized/dns_whitelist.txt
+          (curl -s https://filters.adtidy.org/ios/filters/15_optimized.txt | grep -v "\*" | grep -v "^@@") > ./SourceLists/adguard_dns.txt
+          (curl -s "https://raw.githubusercontent.com/AdguardTeam/AdGuardSDNSFilter/master/Filters/exceptions.txt" | \sed 's/^@@||//g; s/^@@|//g; s/|$//g; /^!/!s/^/||/') > ./SourceLists/dns_whitelist.txt
 
       - name: Build Adguard Optimized
         run: |             
@@ -39,13 +39,13 @@ jobs:
             curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/BaseFilter/sections/banner_sizes.txt
             curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/BaseFilter/sections/general_extensions.txt
             curl -s https://filters.adtidy.org/ios/filters/5.txt | sed -n '/! YouTube ads/,/! Allowlist/p'
-            curl -s https://filters.adtidy.org/ios/filters/2_optimized.txt
+            curl -s https://filters.adtidy.org/ios/SourceLists/2_optimized.txt
 
             curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/MobileFilter/sections/general_url.txt
             curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/MobileFilter/sections/general_extensions.txt
             curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/MobileFilter/sections/general_elemhide.txt
             curl -s https://filters.adtidy.org/ios/filters/11_optimized.txt
-          } | sed '/!#safari_cb_affinity/d' > ./optimized/adguard.txt
+          } | sed '/!#safari_cb_affinity/d' > ./SourceLists/adguard.txt
 
       - name: Build Adguard Privacy Protection
         run: |             
@@ -53,7 +53,7 @@ jobs:
             curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/SpywareFilter/sections/general_url.txt
             curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/SpywareFilter/sections/general_extensions.txt
             curl -s https://filters.adtidy.org/ios/filters/3_optimized.txt            
-          } | sed '/!#safari_cb_affinity/d' > ./optimized/adguard_privacy.txt
+          } | sed '/!#safari_cb_affinity/d' > ./SourceLists/adguard_privacy.txt
 
       - name: Build Adguard Annoyances
         run: |             
@@ -72,76 +72,80 @@ jobs:
             curl -s https://filters.adtidy.org/ios/filters/20_optimized.txt
             # curl -s https://filters.adtidy.org/ios/filters/21_optimized.txt
             # curl -s https://filters.adtidy.org/ios/filters/22_optimized.txt      
-          } | sed '/!#safari_cb_affinity/d' > ./optimized/adguard_annoyances.txt
+          } | sed '/!#safari_cb_affinity/d' > ./SourceLists/adguard_annoyances.txt
 
       - name: Build EasyList Optimized
         run: |             
           {
             curl -s https://filters.adtidy.org/ios/filters/101_optimized.txt | grep -v "^bing\.com#"
+            # curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/BaseFilter/sections/general_elemhide.txt
+            # curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/BaseFilter/sections/general_extensions.txt
+            # curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/BaseFilter/sections/general_url.txt
             # curl -s https://filters.adtidy.org/ios/filters/2_optimized.txt | grep -v "^bing\.com#"
+            # curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/MobileFilter/sections/adservers.txt
+            # curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/MobileFilter/sections/general_elemhide.txt
+            # curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/MobileFilter/sections/general_extensions.txt
+            # curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/MobileFilter/sections/general_url.txt
             # curl -s https://filters.adtidy.org/ios/filters/11_optimized.txt | grep -v "^bing\.com#"
-            } | sed '/!#safari_cb_affinity/d' > ./optimized/easylist.txt
+            curl -s https://raw.githubusercontent.com/brave/adblock-lists/master/brave-lists/brave-firstparty.txt
+            curl -s https://raw.githubusercontent.com/brave/adblock-lists/master/brave-lists/brave-ios-specific.txt
+            } | sed '/!#safari_cb_affinity/d' > ./SourceLists/easylist.txt
 
       - name: Build EasyPrivacy
         run: |             
           {
             curl -s https://filters.adtidy.org/ios/filters/118_optimized.txt
-            } | sed '/!#safari_cb_affinity/d' > ./optimized/easyprivacy.txt
+            # curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/SpywareFilter/sections/general_url.txt
+            # curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/SpywareFilter/sections/general_extensions.txt 
+            } | sed '/!#safari_cb_affinity/d' > ./SourceLists/easyprivacy.txt
 
       - name: Build EasyCookie
         run: |             
           {
             curl -s https://filters.adtidy.org/ios/filters/122_optimized.txt
-            } | sed '/!#safari_cb_affinity/d' > ./optimized/easycookie.txt
+            } | sed '/!#safari_cb_affinity/d' > ./SourceLists/easycookie.txt
 
-      - name: Build uBlock
+      - name: Build Scriptlets
         run: |              
           {
             curl -s https://filters.adtidy.org/ios/filters/2.txt | sed -n '/! This section contains the list of domain-specific rules that block ads./,/! NOTE: Specific rules/p'
             # curl -s https://filters.adtidy.org/ios/filters/2.txt | sed -n '/! START: Youtube whitescreen fix/,/! END: Youtube whitescreen fix/p'
             curl -s https://filters.adtidy.org/ios/filters/5.txt | sed -n '/! YouTube ads/,/! Allowlist/p'
-            # curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/BaseFilter/sections/general_elemhide.txt
-            # curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/BaseFilter/sections/general_extensions.txt
-            # curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/BaseFilter/sections/general_url.txt
-            # curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/MobileFilter/sections/adservers.txt
-            # curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/MobileFilter/sections/general_elemhide.txt
-            # curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/MobileFilter/sections/general_extensions.txt
-            # curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/MobileFilter/sections/general_url.txt
+            } | sed '/!#safari_cb_affinity/d' > ./SourceLists/adguard_scriptlets.txt
 
+      - name: Build uBlock filters
+        run: |              
+          {
             # curl -s https://ublockorigin.github.io/uAssetsCDN/filters/filters-general.txt | sed -E '/youtube\.com.*##\+js|##\+js.*youtube\.com/d'
-            curl -s https://raw.githubusercontent.com/brave/adblock-lists/master/brave-lists/brave-firstparty.txt
-            curl -s https://raw.githubusercontent.com/brave/adblock-lists/master/brave-lists/brave-ios-specific.txt
             curl -s https://ublockorigin.github.io/uAssetsCDN/filters/filters.min.txt | sed -E '/youtube\.com.*##\+js|##\+js.*youtube\.com/d'
             curl -s https://ublockorigin.github.io/uAssetsCDN/filters/ubol-filters.txt | sed -E '/youtube\.com.*##\+js|##\+js.*youtube\.com/d'
             curl -s https://ublockorigin.github.io/uAssetsCDN/filters/quick-fixes.min.txt | sed -E '/youtube\.com.*##\+js|##\+js.*youtube\.com/d'
             # curl -s https://ublockorigin.github.io/uAssetsCDN/filters/unbreak.min.txt | sed -E '/youtube\.com.*##\+js|##\+js.*youtube\.com/d'
+            } | sed 's/!#if env_safari/!#if (adguard_app_ios || adguard_ext_android_cb || adguard_ext_safari || adguard_ext_chromium_mv3)/g' | sed 's/!#if !ext_ubol/!#if (!adguard_app_ios \&\& !adguard_ext_android_cb \&\& !adguard_ext_safari \&\& !adguard_ext_chromium_mv3)/g' | grep -v '!#include' > ./SourceLists/ublock_filters.txt 
 
-            # curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/SpywareFilter/sections/general_url.txt
-            # curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/SpywareFilter/sections/general_extensions.txt 
+      - name: Build uBlock Privacy
+        run: |              
+          {
             # curl -s https://ublockorigin.github.io/uAssetsCDN/filters/badware.min.txt | sed -E '/youtube\.com.*##\+js|##\+js.*youtube\.com/d'
             curl -s https://ublockorigin.github.io/uAssetsCDN/filters/privacy.min.txt | sed -E '/youtube\.com.*##\+js|##\+js.*youtube\.com/d'
 
-            curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/SocialFilter/sections/general_url.txt
-            curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/SocialFilter/sections/general_elemhide.txt
-            # curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/SocialFilter/sections/general_extensions.txt
-            # curl -s https://filters.adtidy.org/ios/filters/4_optimized.txt
-
-            # curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/AnnoyancesFilter/Cookies/sections/cookies_general.txt
-            # curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/AnnoyancesFilter/Popups/sections/subscriptions_general.txt
-            # curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/AnnoyancesFilter/Popups/sections/push-notifications_general.txt
-            # curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/AnnoyancesFilter/Popups/sections/popups_general.txt
-            # curl -s https://filters.adtidy.org/ios/filters/18_optimized.txt
-            
             curl -s https://ublockorigin.github.io/uAssetsCDN/filters/annoyances-cookies.txt | sed -E '/youtube\.com.*##\+js|##\+js.*youtube\.com/d'
             curl -s https://ublockorigin.github.io/uAssetsCDN/filters/annoyances.min.txt | sed -E '/youtube\.com.*##\+js|##\+js.*youtube\.com/d'
-            } | sed 's/!#if env_safari/!#if (adguard_app_ios || adguard_ext_android_cb || adguard_ext_safari || adguard_ext_chromium_mv3)/g' | sed 's/!#if !ext_ubol/!#if (!adguard_app_ios \&\& !adguard_ext_android_cb \&\& !adguard_ext_safari \&\& !adguard_ext_chromium_mv3)/g' | grep -v '!#include' > ./optimized/ublock.txt 
+            } | sed 's/!#if env_safari/!#if (adguard_app_ios || adguard_ext_android_cb || adguard_ext_safari || adguard_ext_chromium_mv3)/g' | sed 's/!#if !ext_ubol/!#if (!adguard_app_ios \&\& !adguard_ext_android_cb \&\& !adguard_ext_safari \&\& !adguard_ext_chromium_mv3)/g' | grep -v '!#include' > ./SourceLists/ublock_privacy.txt 
 
-      - name: Build Paywalls
+      - name: Build uBlock Annoyances
+        run: |              
+          {
+            curl -s https://ublockorigin.github.io/uAssetsCDN/filters/annoyances.min.txt | sed -E '/youtube\.com.*##\+js|##\+js.*youtube\.com/d'
+            curl -s https://ublockorigin.github.io/uAssetsCDN/filters/annoyances-cookies.txt | sed -E '/youtube\.com.*##\+js|##\+js.*youtube\.com/d'
+            } | sed 's/!#if env_safari/!#if (adguard_app_ios || adguard_ext_android_cb || adguard_ext_safari || adguard_ext_chromium_mv3)/g' | sed 's/!#if !ext_ubol/!#if (!adguard_app_ios \&\& !adguard_ext_android_cb \&\& !adguard_ext_safari \&\& !adguard_ext_chromium_mv3)/g' | grep -v '!#include' > ./SourceLists/ublock_annoyances.txt 
+
+      - name: Build Anti-paywall filters
         run: |              
           {
             curl -s https://raw.githubusercontent.com/liamengland1/miscfilters/refs/heads/master/antipaywall.txt | sed '/^! Bloomberg (bloomberg\.com)$/,/^$/d'
             curl -s https://bpc-filter-proxy.wmailrelayb8d890.workers.dev | grep -iv "bloomberg\|##+js(trusted"
-            } > ./optimized/paywalls.txt
+            } > ./SourceLists/paywalls.txt
 
       - name: Build CNAMEs
         run: |            
@@ -166,7 +170,7 @@ jobs:
             curl -s https://raw.githubusercontent.com/easylist/easylist/master/easyprivacy/easyprivacy_specific_cname_webtrekk.txt
             curl -s https://raw.githubusercontent.com/easylist/easylist/master/easyprivacy/easyprivacy_specific_cname_wizaly.txt
             curl -s https://raw.githubusercontent.com/easylist/easylist/master/easyprivacy/easyprivacy_specific_cname_branch.txt
-              } > ./optimized/cname.txt
+              } > ./SourceLists/cname.txt
 
       - name: Push to repository
         run: |
