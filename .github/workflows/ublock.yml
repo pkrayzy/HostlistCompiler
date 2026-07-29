@@ -1,4 +1,4 @@
-name: Build Quick Fixes
+name: Build uBlock Filters
 
 on:
   workflow_run:
@@ -27,6 +27,8 @@ jobs:
           TLS=insecure node src/cli.js -c examples/ublock/configuration.json -o ./optimized/ublock_optimized.txt
           TLS=insecure node src/cli.js -c examples/ublock_privacy/configuration.json -o ./optimized/ublock_privacy_optimized.txt
           TLS=insecure node src/cli.js -c examples/ublock_annoyances/configuration.json -o ./optimized/ublock_annoyances_optimized.txt
+          TLS=insecure node src/cli.js -c examples/paywalls/configuration.json -o ./optimized/paywalls_optimized.txt
+          TLS=insecure node src/cli.js -c examples/krayzylist/configuration.json -o ./optimized/krayzylist.txt
 
       - name: Push to repository
         run: |
