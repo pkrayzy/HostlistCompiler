@@ -1874,7 +1874,7 @@ travelchannel.com,animalplanet.com,hgtv.com,cookingchanneltv.com,discoveryplus.*
 ! https://github.com/AdguardTeam/AdguardFilters/issues/230981#issuecomment-4525726716
 play.discoveryplus.com,play.hbomax.com,play.max.com#%#//scriptlet('json-prune', 'ssaiInfo fallback.ssaiInfo')
 play.discoveryplus.com,play.hbomax.com,play.max.com#%#//scriptlet('json-prune', 'adtech-brightline adtech-google-pal adtech-iab-om')
-play.discoveryplus.com,play.hbomax.com#%#//scriptlet('xml-prune', 'xpath(//*[name()="MPD"]/@mediaPresentationDuration | //*[name()="Period"]/@start | //*[name()="Period"][not(.//*[name()="SegmentTimeline"] or .//*[name()="ContentProtection"])] | //*[name()="Period"][./*[name()="BaseURL"]][not(.//*[name()="ContentProtection"])])', '', '.mpd')
+play.discoveryplus.com#%#//scriptlet('xml-prune', 'xpath(//*[name()="MPD"]/@mediaPresentationDuration | //*[name()="Period"]/@start | //*[name()="Period"][not(.//*[name()="SegmentTimeline"] or .//*[name()="ContentProtection"])] | //*[name()="Period"][./*[name()="BaseURL"]][not(.//*[name()="ContentProtection"])])', '', '.mpd')
 ! https://github.com/AdguardTeam/AdguardFilters/issues/166545
 onejav.com#%#//scriptlet('abort-on-stack-trace', 'Number', '_0x')
 ! https://github.com/AdguardTeam/AdguardFilters/issues/166723
@@ -5531,8 +5531,8 @@ developer.android.com,adssettings.google.com##sc-survey-survey-manager
    <li>Code: NoSuchKey</li>
    <li>Message: </li>
    <li>BucketName: adguard-filters-test</li>
-   <li>RequestId: tx00000455bb3b7797a2748-006a69e0e7-c7dff30-prg</li>
-   <li>HostId: c7dff30-prg-eu-1</li>
+   <li>RequestId: tx00000926d33b2b507aad5-006a6aacf5-c807316-prg</li>
+   <li>HostId: c807316-prg-eu-1</li>
   </ul>
  </body>
 </html>
@@ -6240,12 +6240,12 @@ motherless.xxx$$script[tag-content="awentw.com"][min-length="2000"][max-length="
 ###ad-300x250_mobile
 !+ NOT_OPTIMIZED
 ##body > style + div[id="ics"]
-! Checksum: PVg8+NaDqxaawxpvYQP0HA
-! Diff-Path: ../patches/11_optimized/11_optimized-s-1785301961-3600.patch
+! Checksum: hBWHbOYU2yfK70WZwNODug
+! Diff-Path: ../patches/11_optimized/11_optimized-s-1785322786-3600.patch
 ! Title: AdGuard Mobile Ads filter (Optimized)
 ! Description: Filter for all known mobile ad networks. Useful for mobile devices.
-! Version: 2.0.71.15
-! TimeUpdated: 2026-07-29T05:09:37+00:00
+! Version: 2.0.71.16
+! TimeUpdated: 2026-07-29T10:56:09+00:00
 ! Expires: 5 days (update frequency)
 ||yodo1.com^
 ||banner.bet365partners.com^
@@ -8000,6 +8000,8 @@ healthyplace.com,qlife.jp,wiki.yjsnpi.nu,opinion.cw.com.tw,aidoly.net,celeby-med
 chip.de,gamesworld.de,fnn.jp##.Ad
 medipalette.lotte.co.jp,genxy-net.com,m.price.com.hk,otakuma.net,nikkan-gendai.com,m.hellporno.com,topics.smt.docomo.ne.jp,rank-king.jp,kun.uz,m.lenta.ru,m.aydin24haber.com,m.xcum.com,m.alphaporno.com,m.yourlust.com,m.3movs.com,m.sexu.com##body .banner
 sp.manga.nicovideo.jp##div[style^="--ads-width:"]
+gulfnews.com##.FtYUO
+gulfnews.com##.story-grid div[class]:has(> div[class] > div[id^="display_"])
 itmedia.co.jp###Billboard
 rbc.ru##.fox-main-mobile-banner
 jmty.jp##.no-bullet > .p-articles-list-item:has(> a.gtm-recommend-alliance)
