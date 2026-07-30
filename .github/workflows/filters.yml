@@ -129,9 +129,6 @@ jobs:
           {
             # curl -s https://ublockorigin.github.io/uAssetsCDN/filters/badware.min.txt | sed -E '/youtube\.com.*##\+js|##\+js.*youtube\.com/d'
             curl -s https://ublockorigin.github.io/uAssetsCDN/filters/privacy.min.txt | sed -E '/youtube\.com.*##\+js|##\+js.*youtube\.com/d'
-
-            curl -s https://ublockorigin.github.io/uAssetsCDN/filters/annoyances-cookies.txt | sed -E '/youtube\.com.*##\+js|##\+js.*youtube\.com/d'
-            curl -s https://ublockorigin.github.io/uAssetsCDN/filters/annoyances.min.txt | sed -E '/youtube\.com.*##\+js|##\+js.*youtube\.com/d'
             } | sed 's/!#if env_safari/!#if (adguard_app_ios || adguard_ext_android_cb || adguard_ext_safari || adguard_ext_chromium_mv3)/g' | sed 's/!#if !ext_ubol/!#if (!adguard_app_ios \&\& !adguard_ext_android_cb \&\& !adguard_ext_safari \&\& !adguard_ext_chromium_mv3)/g' | grep -v '!#include' > ./SourceLists/ublock_privacy.txt 
 
       - name: Build uBlock Annoyances
