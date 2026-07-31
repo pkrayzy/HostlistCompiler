@@ -1,6 +1,6 @@
 !
 ! Title: uBlock filters – Annoyances
-! Last modified: 2026-07-30T12:54:45.811Z
+! Last modified: 2026-07-31T02:17:06.516Z
 !
 ! Compiled by @adguard/hostlist-compiler v2.1.0
 !
@@ -11,7 +11,7 @@
 ! Title: uBlock filters – Annoyances
 ! Expires: 7 days
 ! Last modified: Mon, 27 Jul 2026 16:59:59 +0000
-! Diff-Path: ../patches/2026.7.30.576.patch#ublock-annoyances
+! Diff-Path: ../patches/2026.7.31.12.patch#ublock-annoyances
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/annoyances.txt ***
@@ -4000,7 +4000,7 @@ dejure.org##+js(set, ad_allowed, true)
 dejure.org#@##AdsDiv
 dejure.org##+js(remove-cookie, adblock_counter)
 ! Title: uBlock filters – Cookie Notices
-! Last modified: Tue, 28 Jul 2026 14:43:11 +0000
+! Last modified: Thu, 30 Jul 2026 12:50:05 +0000
 ! Expires: 7 days
 ! Description: Filters optimized for uBlock Origin, to be used with EasyList's and/or Adguard's "Cookie Notices" list(s)
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
@@ -4639,6 +4639,9 @@ makeuseof.com>>##+js(trusted-click-element, button[title="More Options"])
 makeuseof.com>>##+js(trusted-click-element, button.sp_choice_type_REJECT_ALL, , 500)
 ! https://github.com/AdguardTeam/AdguardFilters/issues/236917
 rainews.it##+js(trusted-click-element, button.AvacyOverlay__CloseWithoutConsent)
+! https://github.com/uBlockOrigin/uAssets/pull/33872
+vodafone.pt##+js(trusted-set-cookie, OPTOUTCONSENT, 1:1&2:0&3:0&4:0, , , domain, .vodafone.pt)
+alpinclub-berlin.de##+js(trusted-set-cookie, dav-cookie-banner-already-shown, $now$)
 !! Needs additional cookies
 ! Aceepting most cookies are required to view the content without payment
 ! https://github.com/AdguardTeam/AdguardFilters/issues/210256
