@@ -169,13 +169,6 @@ jobs:
             curl -s https://raw.githubusercontent.com/easylist/easylist/master/easyprivacy/easyprivacy_specific_cname_branch.txt
               } > ./SourceLists/cname.txt
 
-      - name: Build Referrals
-        run: |            
-          {
-            curl -s https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/blocklist-referral-native.txt
-            curl -s https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/blocklist-referral-native.txt | sed '/^||/s/$/ $third-party/'
-          }  > ./SourceLists/referrals.txt
-
       - name: Push to repository
         run: |
           git config --global user.name "pkrayzy"
