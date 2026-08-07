@@ -1,6 +1,6 @@
 !
 ! Title: uBlock filters – Privacy
-! Last modified: 2026-08-07T04:23:24.859Z
+! Last modified: 2026-08-07T13:46:40.870Z
 !
 ! Compiled by @adguard/hostlist-compiler v2.1.0
 !
@@ -10,8 +10,8 @@
 !
 ! Title: uBlock filters – Privacy
 ! Expires: 7 days
-! Last modified: Sat, 01 Aug 2026 04:27:44 +0000
-! Diff-Path: ../patches/2026.8.7.10.patch#ublock-privacy
+! Last modified: Fri, 07 Aug 2026 12:57:21 +0000
+! Diff-Path: ../patches/2026.8.7.811.patch#ublock-privacy
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/privacy.txt ***
@@ -1879,6 +1879,7 @@ $uritransform=/#Echobox=[\d]{10}$//,to=iltalehti.fi|hs.fi
 ! Merge in resource-abuse.txt
 ! *** uAssets:filters/resource-abuse.txt ***
 /edgemesh.*.js$script,domain=~edgemesh.com|~edgeno.de
+||safelinkconverter.com^$script,3p
 /adsensebase.js$script
 ! other miners
 ://api.*/lib/native.wasm$3p
@@ -1958,3 +1959,4 @@ climaaovivo.com.br##+js(nosiif, location.reload)
 ||static.tblcontent.com/*/loader.privacy.js$redirect=noop.js,domain=israelnationalnews.com
 israelnationalnews.com##+js(rmnt, script, loadTaboola)
 igniteseurope.com##+js(no-xhr-if, igniteseurope.com/stats/)
+kick.com##+js(no-fetch-if, litix.io)
