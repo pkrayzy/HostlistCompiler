@@ -1,7 +1,7 @@
 ! Title: uBlock filters
 ! Expires: 5 days
-! Last modified: Sun, 09 Aug 2026 13:54:52 +0000
-! Diff-Path: ../patches/2026.8.9.886.patch#ublock-filters
+! Last modified: Sun, 09 Aug 2026 17:18:21 +0000
+! Diff-Path: ../patches/2026.8.9.1183.patch#ublock-filters
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/filters.txt ***
@@ -7284,7 +7284,8 @@ financacerta.com,encurtads.net##+js(nostif, checkAdBlock)
 financacerta.com,encurtads.net###wpsafe-link:style(display: block !important;)
 financacerta.com,encurtads.net###wpsafe-link, .text-center.wpsafe-top > div > h1:others()
 financacerta.com,encurtads.net##+js(rmnt, script, popUp)
-lokerwfh.net,app.khaddavi.net,go.gociwidey.com###verify, #second_open_placeholder:others()
+lokerwfh.net,app.khaddavi.net,go.gociwidey.com##+js(trusted-replace-argument, document.getElementById, 0, json:"body", condition, xnjThB)
+lokerwfh.net,app.khaddavi.net,go.gociwidey.com##li, ol, ul, h2, h3, .entry-meta, .entry-title
 lokerwfh.net,app.khaddavi.net,go.gociwidey.com##+js(no-fetch-if, googlesyn)
 lokerwfh.net,app.khaddavi.net,go.gociwidey.com##+js(nano-stb, /.?/, *)
 ! sfl.gl
@@ -8678,10 +8679,6 @@ simpcity.*##.node--link
 saint2.cr##^script:has-text(WebAssembly)
 !#else
 saint2.cr##+js(acs, WebAssembly, Promise)
-!#endif
-pdftoshokan.com##+js(aeld, , /exoJsPop|venor\.php|document\.location\.protocol/)
-!#if cap_html_filtering
-pdftoshokan.com##^script:has-text(/adConfig|preparePop|\/popunder1000/)
 !#endif
 ! !SECTION: popMagic-sites
 ! SECTION: hilltopads-sites
@@ -25455,7 +25452,7 @@ octavestreaming.com##+js(norafif, ()=>e())
 /^https:\/\/nekostream\.site\/[a-f0-9]{32}\.js(?:$|\?)/$script,third-party
 xprivo.com##+js(json-prune, sponsored_ads)
 ! Title: uBO Lite filters
-! Last modified: Tue, 04 Aug 2026 09:27:45 +0000
+! Last modified: Sun, 09 Aug 2026 17:34:26 +0000
 ! Expires: 4 days
 ! Description: Filters optimized for uBO Lite
 ! Homepage: https://github.com/uBlockOrigin/uAssets
@@ -25514,11 +25511,15 @@ casabasics.es##+js(rmnt, script, String.fromCharCode)
 ! https://www.reddit.com/r/Scams/comments/1vaebfy/usasaltair_deodorant_scam_websites_saltaiircom/
 ||saltairus.it.com^$all
 
+! https://github.com/uBlockOrigin/uBOL-home/issues/734
+! All "fixes" related to above issue should be added below
+! 
 ! https://github.com/uBlockOrigin/uAssets/issues/33927
 ||bc0a.com/autopilot/$domain=njtransit.com,important
-
 ! https://github.com/uBlockOrigin/uAssets/issues/33941
 .com/4/js/$3p,important
+! https://github.com/uBlockOrigin/uBOL-home/issues/739
+||s8ey.com^$important
 
 !#endif
 
@@ -25725,8 +25726,8 @@ www.dailymotion.com>>,~google.com##+js(xml-prune, [breakId], , _VMAP_)
 !#endif
 ! Title: uBlock filters – Quick fixes
 ! Expires: 12 hours
-! Last modified: Sat, 08 Aug 2026 19:54:26 +0000
-! Diff-Path: ../patches/2026.8.9.886.patch#ublock-quick-fixes
+! Last modified: Sun, 09 Aug 2026 17:04:53 +0000
+! Diff-Path: ../patches/2026.8.9.1183.patch#ublock-quick-fixes
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/quick-fixes.txt ***
@@ -26110,3 +26111,8 @@ fo76db.com###fo-ad-modal
 fo76db.com##body.swiper:style(overflow: auto !important; position: static !important;)
 fo76db.com##+js(trusted-rpnt, script, / ads\.map[\S\s\n]+?join\(''\)/)
 flipkart.com#@#div[data-id][style]:has([width][height][fill])
+pdftoshokan.com##+js(aeld, /click|load/, /document\.location|pop\.|exo|cookie|\.php/)
+pdftoshokan.com##+js(nowoif, ok_)
+!#if cap_html_filtering
+pdftoshokan.com##^script:has-text(/ad.?Config|prepare.?Pop|\/popunder|ads_host/)
+!#endif
