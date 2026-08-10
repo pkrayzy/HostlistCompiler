@@ -103,11 +103,11 @@ jobs:
         run: |             
           {
             curl -s https://filters.adtidy.org/ios/filters/122_optimized.txt
-            curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/AnnoyancesFilter/Cookies/sections/cookies_general.txt
-            curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/AnnoyancesFilter/Popups/sections/subscriptions_general.txt
-            curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/AnnoyancesFilter/Popups/sections/push-notifications_general.txt
-            curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/AnnoyancesFilter/Popups/sections/popups_general.txt
-            curl -s https://filters.adtidy.org/ios/filters/18_optimized.txt
+            # curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/AnnoyancesFilter/Cookies/sections/cookies_general.txt
+            # curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/AnnoyancesFilter/Popups/sections/subscriptions_general.txt
+            # curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/AnnoyancesFilter/Popups/sections/push-notifications_general.txt
+            # curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/AnnoyancesFilter/Popups/sections/popups_general.txt
+            # curl -s https://filters.adtidy.org/ios/filters/18_optimized.txt
             } | sed '/!#safari_cb_affinity/d' > ./SourceLists/easycookie.txt
 
       - name: Build Scriptlets
@@ -135,17 +135,12 @@ jobs:
             curl -s https://ublockorigin.github.io/uAssetsCDN/filters/privacy.min.txt | sed -E '/youtube\.com.*##\+js|##\+js.*youtube\.com/d'
             } | sed 's/!#if env_safari/!#if (adguard_app_ios || adguard_ext_android_cb || adguard_ext_safari || adguard_ext_chromium_mv3)/g' | sed 's/!#if !ext_ubol/!#if (!adguard_app_ios \&\& !adguard_ext_android_cb \&\& !adguard_ext_safari \&\& !adguard_ext_chromium_mv3)/g' | grep -v '!#include' > ./SourceLists/ublock_privacy.txt 
 
-      # - name: Build uBlock Annoyances
-        # run: |              
-          # {
-            # curl -s https://ublockorigin.github.io/uAssetsCDN/filters/annoyances.min.txt | sed -E '/youtube\.com.*##\+js|##\+js.*youtube\.com/d'
-            # curl -s https://ublockorigin.github.io/uAssetsCDN/filters/annoyances-cookies.txt | sed -E '/youtube\.com.*##\+js|##\+js.*youtube\.com/d'
-            # curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/AnnoyancesFilter/Cookies/sections/cookies_general.txt
-            # curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/AnnoyancesFilter/Popups/sections/subscriptions_general.txt
-            # curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/AnnoyancesFilter/Popups/sections/push-notifications_general.txt
-            # curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/AnnoyancesFilter/Popups/sections/popups_general.txt
-            # curl -s https://filters.adtidy.org/ios/filters/18_optimized.txt
-            # } | sed 's/!#if env_safari/!#if (adguard_app_ios || adguard_ext_android_cb || adguard_ext_safari || adguard_ext_chromium_mv3)/g' | sed 's/!#if !ext_ubol/!#if (!adguard_app_ios \&\& !adguard_ext_android_cb \&\& !adguard_ext_safari \&\& !adguard_ext_chromium_mv3)/g' | grep -v '!#include' > ./SourceLists/ublock_annoyances.txt 
+      - name: Build uBlock Annoyances
+        run: |              
+          {
+            curl -s https://ublockorigin.github.io/uAssetsCDN/filters/annoyances.min.txt | sed -E '/youtube\.com.*##\+js|##\+js.*youtube\.com/d'
+            curl -s https://ublockorigin.github.io/uAssetsCDN/filters/annoyances-cookies.txt | sed -E '/youtube\.com.*##\+js|##\+js.*youtube\.com/d'
+            } | sed 's/!#if env_safari/!#if (adguard_app_ios || adguard_ext_android_cb || adguard_ext_safari || adguard_ext_chromium_mv3)/g' | sed 's/!#if !ext_ubol/!#if (!adguard_app_ios \&\& !adguard_ext_android_cb \&\& !adguard_ext_safari \&\& !adguard_ext_chromium_mv3)/g' | grep -v '!#include' > ./SourceLists/ublock_annoyances.txt 
 
       - name: Build Anti-paywall filters
         run: |              
