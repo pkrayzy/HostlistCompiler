@@ -77,6 +77,10 @@ jobs:
       - name: Build EasyList Optimized
         run: |             
           {
+            curl -s https://filters.adtidy.org/ios/filters/2.txt | sed -n '/! START: Youtube whitescreen fix/,/! END: Youtube whitescreen fix/p'
+            curl -s https://filters.adtidy.org/ios/filters/5.txt | sed -n '/! YouTube ads/,/! Allowlist/p'
+            curl -s https://filters.adtidy.org/ios/filters/2.txt | sed -n '/! This section contains the list of domain-specific rules that block ads./,/! NOTE: Specific rules/p'
+
             curl -s https://filters.adtidy.org/ios/filters/101_optimized.txt | grep -v "^bing\.com#"
             # curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/BaseFilter/sections/general_elemhide.txt
             # curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/BaseFilter/sections/general_extensions.txt
@@ -87,8 +91,12 @@ jobs:
             # curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/MobileFilter/sections/general_extensions.txt
             # curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/MobileFilter/sections/general_url.txt
             # curl -s https://filters.adtidy.org/ios/filters/11_optimized.txt | grep -v "^bing\.com#"
+            
             curl -s https://raw.githubusercontent.com/brave/adblock-lists/master/brave-lists/brave-firstparty.txt
             curl -s https://raw.githubusercontent.com/brave/adblock-lists/master/brave-lists/brave-ios-specific.txt
+
+            curl -s https://raw.githubusercontent.com/liamengland1/miscfilters/refs/heads/master/antipaywall.txt | sed '/^! Bloomberg (bloomberg\.com)$/,/^$/d'
+            curl -s https://bpc-filter-proxy.wmailrelayb8d890.workers.dev | grep -iv "bloomberg\|##+js(trusted"
             } | sed '/!#safari_cb_affinity/d' > ./SourceLists/easylist.txt
 
       - name: Build EasyPrivacy
