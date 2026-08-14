@@ -7798,6 +7798,330 @@ howtogeek.com,247sports.com,cbsnews.com,cbssports.com,indiewire.com,masslive.com
 ||zippywind.com^
 ||zlp6s.pw^
 ||zonewedgeshaft.com^
+! Title: Amazon annoyances
+! Expires: 3 days
+! Description: Block annoyances, ads, and tracking on Amazon sites
+! Homepage: https://github.com/liamengland1/miscfilters
+! License: https://github.com/liamengland1/miscfilters/blob/master/LICENSE
+
+! Network rules 
+! ||amazonpay.com^$3p
+! ||payments-amazon.com^$3p
+||amazon-adsystem.com^$3p
+! ||amazon.dev^$3p
+||micpn.com^$3p
+||stats.live-video.net^
+||frontier.a2z.com^
+||associates-amazon.com/abid/
+||cloudfront-labs.amazonaws.com^
+||landingpagepixels.s3.amazonaws.com^
+||experiment.routing.cloudfront.aws.a2z.com^
+||profile.*.cloudfront.net^$domain=amazon.*|primevideo.com|imdb.com
+||execute-api.*.amazonaws.com/gamma$xhr,domain=amazon.*
+||client.rum.*.amazonaws.com^$script,domain=amazon.*
+://aax-*.amazon.$important
+://fls-*.amazon.$important
+://unagi.amazon.$important
+://unagi-*.amazon.$important
+/uedata?*&v=$important
+||amazon.*/1/*/OE$important
+||amazon.*/*msa/vowels/
+||amazon.*/af/feedback-link
+!/metrics$xmlhttprequest,other,image
+!stats/logImpressions
+||amazon.*/logImp
+||amazon.*/log-metrics
+||amazon.*/track_framework_metrics
+!||amazon.com/vap/*
+||amazon.*/vap/*/feedback$xhr
+||amazon.*/stream-logging
+||amazon.*/log-data
+||amazon.*/recordWeblabTrigger.html
+||amazon.*/recImpression
+||amazon.*/ajax-refmarker
+||amazon.*/ajax/blank.html
+!/refMarkerTarget.html
+||media-amazon.com^*/metrics.
+||ssl-images-amazon.com^*vowels$important
+||amazon.*/ReportEvent?
+||amazon.*/Clickstream?
+||ssl-images-amazon.com/images/G/01/advertising/
+||ssl-images-amazon.com/images/G/01/csm/
+@@||ssl-images-amazon.com/images/G/01/csm/showads.v2.js
+||ssl-images-amazon.com/images/G/01/dacx/
+@@||ssl-images-amazon.com/images/G/01/dacx/js/react/
+@@||ssl-images-amazon.com/images/G/01/dacx/js/videojs/
+@@||ssl-images-amazon.com/images/G/01/dacx/img/
+!||ssl-images-amazon.com/images/G/01/marketing/
+||ssl-images-amazon.com/images/I/31BVuidgT8L.js
+||ssl-images-amazon.com/images/I/*.js?AUIClients/Maestrojs|$important
+||ssl-images-amazon.com/images/I/*.js?AUIClients/RetailWebsiteOverlayAUIAssets|$important
+||ssl-images-amazon.com/images/I/*.js?AUIClients/CSHelpOmnitureJS|$important
+||media-amazon.com/images/G/01/advertising/
+||media-amazon.com/images/G/01/csm/
+@@||media-amazon.com/images/G/01/csm/showads.v2.js
+||media-amazon.com/images/G/01/dacx/
+@@||media-amazon.com/images/G/01/dacx/js/react/
+@@||media-amazon.com/images/G/01/dacx/js/videojs/
+@@||m.media-amazon.com/images/G/01/dacx/img/
+!||media-amazon.com/images/G/01/marketing/
+||media-amazon.com/images/I/31BVuidgT8L.js
+||media-amazon.com/images/I/*.js?AUIClients/Maestrojs|$important
+||media-amazon.com/images/I/*.js?AUIClients/RetailWebsiteOverlayAUIAssets|$important
+||media-amazon.com/images/I/*.js?AUIClients/CSHelpOmnitureJS|$important
+/apesafeframe/*$important,domain=amazon.*
+||amazon.*/images/G/01/advertising/
+||amazon.*/images/G/01/csm/
+@@||amazon.*/images/G/01/csm/showads.v2.js
+||amazon.*/images/G/01/dacx/
+@@||amazon.*/images/G/01/dacx/js/react/
+!||amazon.*/images/G/01/marketing/
+||amazon.*/images/I/31BVuidgT8L.js
+||amazon.*/images/I/*.js?AUIClients/Maestrojs|$important
+||amazon.*/images/I/*.js?AUIClients/RetailWebsiteOverlayAUIAssets|$important
+||amazon.*/images/I/*.js?AUIClients/CSHelpOmnitureJS|$important
+||amazon.*/analytics
+/ajax/analytics.html$domain=amazon.*|primevideo.com|imdb.com
+/ajax/simple-pixels.html$domain=amazon.*|primevideo.com|imdb.com
+||amazon.*/monitoring.html
+||amazon.*/eventtracker.html
+||amazon.*/is-si-with-triggers.html
+||amazon.*/reftag.html
+||amazon.*/recordRefTag?
+||amazon.*/gc/reftag
+||amazon.*/reftagCall.
+||amazon.*/record-ref.html
+||amazon.*/record-metric.html
+||amazon.*/ref-tag
+||amazon.*/record-promo-
+||amazon.*/acp/*/track?*&hitType=
+||amazon.*/dppui/event
+||amazon.*/dram/renderLazyLoaded
+||amazon.*/gp/*/log?s=
+||amazon.*/gp/cerberus/
+||amazon.*/gp/*/promotions/
+||amazon.*/gp/redirection/
+||amazon.*/gp/aq-feedback/
+||amazon.*/api/stats/
+||amazon.*/gp/audible/sample-player/log/
+||amazon.*/gp/*/ajax/weblab-trigger.html
+||amazon.*/gp/product/du/bbop-ms3-ajax-endpoint.html
+||amazon.*/gp/*/ajax/track.html
+||amazon.*/gp/p13n-
+||amazon.*/gp/ubp/misc/crossDomainLocalStorageWriter.html
+||amazon.*/gp/ubp/misc/ping_pages/
+||amazon.*/gp/video/acquisition/utilities/monitoring
+||amazon.*/gp/recent-history-
+||amazon.*/gp/*/ajax/countMetrics.html
+||amazon.*/gp/nemo/spd
+||amazon.*/api/weblabs/
+||amazon.*/cross_border_interstitial/
+||amazon.*/ah/ajax/counter
+||gaming.amazon.com/fiber
+||cloudfront.net/primesignup/$3p,domain=amazon.*
+/cdp/usage/*
+/cdp/insights/*
+@@/cdp/usage/GetAppStartupConfig?$xhr,domain=amazon.*|primevideo.com|imdb.com|twitch.tv
+||aiv-delivery.net^$3p
+||amazon.com/*/metrics/
+://device-metrics-*.amazon.$important
+||a2z.com/telemetry
+||a2z.com/metric-batch
+||amazon.com/p/log/1/
+! Ads on Amazon Prime Video / IMDB TV
+||videorolls.row.aiv-cdn.net^$media,redirect=noopmp3-0.1s,domain=amazon.com|imdb.com,important
+||aiv-cdn.net/interstitial/$media,redirect=noopmp3-0.1s,domain=amazon.com|imdb.com,important
+||akamaihd.net/interstitial/$media,redirect=noopmp3-0.1s,domain=amazon.com|imdb.com,important
+! Amazon Music
+||app-performance.music.amazon.dev^
+||music.amazon.*/api/cirrus/
+||a2z.com/api/*refMarker
+||a2z.com/api/*metricsToken
+||a2z.com/api/*metricsInfo
+@@||a2z.com/api/next?$xhr
+@@||a2z.com/api/thumbsDown?$xhr
+@@||a2z.com/api/playbackFinished?$xhr
+@@||a2z.com/api/audioAdStarted?$xhr
+@@||a2z.com/api/audioAdFinished?$xhr
+||a2z.com/api/actionDenied?info=
+||a2z.com/api/showDynamicMessage|
+||a2z.com/api/*Viewed|
+||a2z.com/api/playbackStarted|
+||a2z.com/api/*Clicked|
+||a2z.com/api/autoPlayNotificationDismissed|
+! ||a2z.com/api/audioAdStarted|
+||a2z.com/api/actionDenied|
+||telemetry.insights.video.a2z.com^
+||cloudfront.net^*.mp3|$media,redirect=noopmp3-0.1s,domain=music.amazon.com|music.amazon.ca|music.amazon.co.uk|music.amazon.fr|music.amazon.de|music.amazon.it|music.amazon.es|music.amazon.co.jp|music.amazon.com.au|music.amazon.com.mx,important
+! Amazon Music product pages
+||amazon.*/growth/jsi/rwdp-*/dataBundle.js
+||cloudfront.net/jsi/assets/rwdp-*/init.js
+||execute-api.*.amazonaws.com/Prod/JSILogger
+||execute-api.*.amazonaws.com/Prod/recordWeblabTriggers
+! Kindle Cloud Reader
+||amazon.*/uploadMetrics
+||ssl-images-amazon.com^*/ClientSideMetrics
+! Livestreams
+||spade.twitch.tv^
+! IMDB
+||cloudfront.net/jwplayer-*/vast.js
+! Abebooks
+||abebookscdn.com^*/coremetrics-$script
+||abebookscdn.com^*/digitaldata/
+||abebookscdn.com^*/PixelRenderer.js
+! Audible
+/metrics/log-values
+/audible-seo-analytics/*
+||audible.*/webplayer/*/logcounter
+||audible.*/api/set-stat
+
+! Amazon element hiding
+
+!amazon.*##.acswidget
+!amazon.*##.acsUxWidget
+amazon.*##div[class*="pd_rd_"][cel_widget_id]:has(a[href^="/b/ref"])
+amazon.*##.bx-root
+amazon.*##div:has(>script:has-text(/^var IS_3P=true;$/))
+amazon.*###percolate-ui-ilm_div
+amazon.*##.celwidget[cel_widget_id^="percolate-ui-"]
+amazon.*###universal-detail-ilm
+amazon.*###dp > table:has(a[href*="&pf_rd_r="])
+amazon.*##.celwidget[cel_widget_id^="adplacements:"]
+amazon.*##.celwidget[data-cel-widget^="desktop-dp-atf_"]
+amazon.*##.celwidget[data-cel-widget$="-SHOPPING_ADVISER"]
+amazon.*##.celwidget[data-cel-widget="MAIN-RELATED_VIDEOS"]
+amazon.*##.celwidget[data-cel-widget="MAIN-VIDEO_SINGLE_PRODUCT"]
+amazon.*##.celwidget[data-cel-widget^="huc-"][data-cel-widget*="-upsell-"]
+amazon.*##.celwidget[data-cel-widget*="-prominentUpsellSlot-"]
+amazon.*##.celwidget[data-cel-widget*="SponsoredProducts"]
+! amazon.*##.celwidget[data-cel-widget*="-sims_"]
+amazon.*##.celwidget[data-cel-widget^="atf"]:has(>[id^="content-grid-widget-"])
+! amazon.*##.celwidget[data-cel-widget^="p13n-"]
+amazon.*##.celwidget[data-cel-widget="MultiBrandCreativeDesktopCombined"]
+amazon.*##.celwidget[data-cel-widget="desktop-yo-postdelivery_customerbehavior_Wishlist"]
+amazon.*##.celwidget[data-cel-widget^="retail-kindle-typ-shovelers_"]
+amazon.*##.celwidget[class*="loom-desktop-"]
+amazon.*##.celwidget[data-feature-name="heroQuickPromo"]
+! amazon.*##.celwidget[data-feature-name="attachAccessoryModal"]
+amazon.*##.celwidget[data-feature-name="cerberus"]
+amazon.*##.celwidget[data-feature-name="heimdallShoppingCxFeedback"]
+amazon.*##.celwidget[data-feature-name="ebooksEmailSubscription"]
+amazon.*##.celwidget[data-feature-name="pBookUpsell"]
+amazon.*##.celwidget[data-feature-name="valuePick"]:has(a:has-text(/AmazonBasics/))
+amazon.*##.celwidget[data-feature-name="heroQuickPromoContainer"]
+amazon.*##.celwidget[data-feature-name="primeDPUpsellStaticContainer"]
+amazon.*##.s-result-item:has(.celwidget[class*="loom-desktop"])
+amazon.*###desktop-banner
+amazon.*###hero-quick-promo
+amazon.*###quickPromoBucketContent
+amazon.*###rhf
+amazon.*###dmusicPrimeButton_feature_div
+! amazon.*##[id^="p13n-"]
+! amazon.*##div[data-p13n-feature-metadata]
+! amazon.*##div[data-p13n-global]
+! amazon.*,~music.amazon.*,~aws.amazon.com##[role="banner"]>*:not(br)
+amazon.*##table[cellspacing="0"]:has(img[usemap^="#AMU"])
+amazon.*###gc-redemption-container>table:has(map[name*="THANKYOU"])
+amazon.*##.maple-banner
+! amazon.*##[id^="sims-"]
+! amazon.*###promotions_feature_div
+amazon.*##tr:has(>td>img[src*="/G/01/AmazonCoins/Divtest/"][width="80%"])
+amazon.*##.acs-shwcs-widget
+amazon.*###nav-swmslot
+amazon.*##.tst-superhero
+amazon.*###UnlimitedUpsellContainer
+amazon.*###zg-other-container
+amazon.*###watchNow_feature_div
+amazon.*##div[data-feature-name="acBadge"]
+amazon.*##span[aria-label="Amazon's Choice"]
+amazon.*##[data-ad-details]
+amazon.*##.MP3Swatch:has-text(/Unlimited/)
+amazon.*###dmusic_library_section
+amazon.*##.nav-flyout[id*="-streaming-"]
+amazon.*###priceMessagingText1:has-text(/Unlimited/)
+amazon.*##.mom-nudge-card-item
+amazon.*###WLHUC_recs
+amazon.*###WLHUC_footer
+amazon.*##.hushpuppyWidget
+amazon.*###hpUpsellLanding
+! amazon.*##.celwidget[href][data-cel-widget=""]:upward(.a-section)
+amazon.*##.kindle-typ-recs-wrapper
+! amazon.*##.a-carousel-container:upward(.a-row)
+! amazon.*##.a-row:has(a[href*="&pf_rd_r"]):has-text(moreInfoExpandedRefTag)
+! amazon.*##.a-carousel-container
+! amazon.*##[data-a-carousel-options="{}"]
+amazon.*##a[href*="_bark_"]:upward(.a-section)
+amazon.*##.subscribe-bottom-bar
+amazon.*##.ku-promo-message:upward(.a-section)
+amazon.*###upsell-button
+amazon.*##.botmORDivider
+amazon.*###cbcc_banner
+amazon.*###cart-recs-carousel
+amazon.*###sc-rec-right
+amazon.*###sc-rec-bottom
+amazon.*###bia_content
+amazon.*###bx-root
+! amazon.*##.mako-v2
+amazon.*##.wlp-prime-partnerWidget-container
+amazon.*##.rush-component[data-component-type="s-bottom-slot"]
+amazon.*##.rush-component[data-component-type="s-brand-footer-slot"]
+amazon.*###myx_banner
+amazon.*##.vse-vwdp-video-block-wrapper
+amazon.*###huc-v2-box-warranty
+! amazon.*##.bxw-content-grid
+amazon.*##table:has(map>area[href*="/redirect.html/ref="]):has(img[onload*="uet"])
+amazon.*###customer-survey_feature_div
+amazon.*###sitbReaderSB-recs
+amazon.*###fiona-publisher-signup-link:upward(#rightRail)
+amazon.*##.pr-fb-intro-tooltip
+amazon.*##.vse-empty-view-container
+! amazon.*##.a-popover-modal:upward(.a-modal-scroller)
+! amazon.*###a-popover-lgtbox
+amazon.*##body:style(overflow:auto!important;margin-right:0!important)
+amazon.*###universal-hero-quick-promo
+amazon.*##^.amzn-safe-frame
+!amazon.*###merchandised-content
+amazon.*##.digital-deals-banner
+amazon.*##.recommendation-widget.a-section
+! amazon.*###ewc-smart-wagon-desktop-sideSheet:has(#smart-wagon-recommendations)
+amazon.*###promoGrid
+amazon.*##.nfcx-gok-flag-container:upward(.celwidget)
+amazon.*##[name="goKindleStaticPopDiv"]
+amazon.*##[data-automation-id="top-banner-promo"]
+amazon.*##[data-automation-id="hero-quick-promo"]
+amazon.*##.olpMp3Slot
+amazon.*###desktop-editorial
+amazon.*##.one-click-survey-card.a-cardui:upward(1)
+amazon.*###widget-rightUpsellSlot
+amazon.*###sc-new-upsell
+
+blog.aboutamazon.com##.PromoImage
+
+music.amazon.*###nightwing-station-upsell
+music.amazon.*##music-barker
+music.amazon.*##.bannerContainer
+music.amazon.*##.status.hideExtra
+music.amazon.*##music-notification-ribbon
+
+! Amazon CN element hiding
+
+amazon.cn###desktop-sidekick-5
+amazon.cn###ctads
+amazon.cn###dpx-promotion-upsell_feature_div
+
+! IMDB element hiding 
+
+imdb.com##.promoted-watch-ad
+imdb.com##.buybox__modal
+imdb.com##.promoted-provider
+imdb.com##.mini-article:has(.ab_zergnet)
+imdb.com##.mini-article:has(.ab_widget)
+! imdb.com##.article:has(.ab_widget)
+imdb.com##.pro_logo_main_title
+imdb.com##.slot_wrapper
+
+! Scriptlets (experimental)
+
 ! Title: uBO Lite filters
 ! Last modified: Sun, 09 Aug 2026 17:34:26 +0000
 ! Expires: 4 days
