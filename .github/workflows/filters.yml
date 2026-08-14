@@ -122,6 +122,7 @@ jobs:
           {
             curl -s https://raw.githubusercontent.com/brave/adblock-lists/master/brave-lists/brave-firstparty.txt
             curl -s https://raw.githubusercontent.com/brave/adblock-lists/master/brave-lists/brave-ios-specific.txt
+            curl -s https://raw.githubusercontent.com/liamengland1/miscfilters/master/amazonannoyances.txt
             # curl -s https://ublockorigin.github.io/uAssetsCDN/filters/filters-general.txt | sed -E '/youtube\.com.*##\+js|##\+js.*youtube\.com/d'            
             # curl -s https://ublockorigin.github.io/uAssetsCDN/filters/filters.min.txt | sed -E '/youtube\.com.*##\+js|##\+js.*youtube\.com/d'
             curl -s https://ublockorigin.github.io/uAssetsCDN/filters/ubol-filters.txt | sed -E '/youtube\.com.*##\+js|##\+js.*youtube\.com/d'
@@ -146,7 +147,7 @@ jobs:
       - name: Build Anti-paywall filters
         run: |              
           {
-            curl -s https://raw.githubusercontent.com/liamengland1/miscfilters/refs/heads/master/antipaywall.txt | sed '/^! Bloomberg (bloomberg\.com)$/,/^$/d'
+            curl -s https://raw.githubusercontent.com/liamengland1/miscfilters/master/antipaywall.txt | sed '/^! Bloomberg (bloomberg\.com)$/,/^$/d'
             curl -s https://bpc-filter-proxy.wmailrelayb8d890.workers.dev | grep -iv "bloomberg\|##+js(trusted"
             } > ./SourceLists/paywalls.txt
 
