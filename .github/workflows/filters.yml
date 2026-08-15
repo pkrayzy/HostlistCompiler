@@ -97,7 +97,7 @@ jobs:
             curl -s https://filters.adtidy.org/ios/filters/118_optimized.txt
             # curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/SpywareFilter/sections/general_url.txt
             # curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/SpywareFilter/sections/general_extensions.txt 
-            } | sed '/!#safari_cb_affinity/d' > ./SourceLists/easyprivacy.txt
+            } | grep -v "^nytimes\.com#" | sed '/!#safari_cb_affinity/d' > ./SourceLists/easyprivacy.txt
 
       - name: Build EasyCookie
         run: |             
