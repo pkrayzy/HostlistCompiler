@@ -89,7 +89,7 @@ jobs:
             # curl -s https://filters.adtidy.org/ios/filters/11_optimized.txt | grep -v "^bing\.com#"
             curl -s https://filters.adtidy.org/extension/android-content-blocker/filters/2_optimized.txt
             curl -s https://filters.adtidy.org/extension/android-content-blocker/filters/11_optimized.txt
-            } | sed '/!#safari_cb_affinity/d' > ./SourceLists/easylist.txt | grep -v "^nytimes\.com#"
+            } | grep -v "^nytimes\.com#" | sed '/!#safari_cb_affinity/d' > ./SourceLists/easylist.txt
 
       - name: Build EasyPrivacy
         run: |             
