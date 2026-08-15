@@ -80,6 +80,9 @@ jobs:
             # curl -s https://filters.adtidy.org/ios/filters/101_optimized.txt | grep -v "^bing\.com#"
             curl -s https://filters.adtidy.org/extension/android-content-blocker/filters/2_optimized.txt
             curl -s https://filters.adtidy.org/extension/android-content-blocker/filters/11_optimized.txt
+            curl -s https://raw.githubusercontent.com/brave/adblock-lists/master/brave-lists/brave-firstparty.txt
+            curl -s https://raw.githubusercontent.com/brave/adblock-lists/master/brave-lists/brave-ios-specific.txt
+            curl -s https://raw.githubusercontent.com/liamengland1/miscfilters/master/amazonannoyances.txt
             } | sed '/!#safari_cb_affinity/d' > ./SourceLists/easylist.txt
 
       - name: Build EasyPrivacy
@@ -118,8 +121,8 @@ jobs:
             curl -s https://raw.githubusercontent.com/liamengland1/miscfilters/master/amazonannoyances.txt
             # curl -s https://ublockorigin.github.io/uAssetsCDN/filters/filters-general.txt | sed -E '/youtube\.com.*##\+js|##\+js.*youtube\.com/d'            
             # curl -s https://ublockorigin.github.io/uAssetsCDN/filters/filters.min.txt | sed -E '/youtube\.com.*##\+js|##\+js.*youtube\.com/d'
-            curl -s https://ublockorigin.github.io/uAssetsCDN/filters/ubol-filters.txt | sed -E '/youtube\.com.*##\+js|##\+js.*youtube\.com/d'
-            curl -s https://ublockorigin.github.io/uAssetsCDN/filters/quick-fixes.min.txt | sed -E '/youtube\.com.*##\+js|##\+js.*youtube\.com/d'
+            # curl -s https://ublockorigin.github.io/uAssetsCDN/filters/ubol-filters.txt | sed -E '/youtube\.com.*##\+js|##\+js.*youtube\.com/d'
+            # curl -s https://ublockorigin.github.io/uAssetsCDN/filters/quick-fixes.min.txt | sed -E '/youtube\.com.*##\+js|##\+js.*youtube\.com/d'
             # curl -s https://ublockorigin.github.io/uAssetsCDN/filters/unbreak.min.txt | sed -E '/youtube\.com.*##\+js|##\+js.*youtube\.com/d'
             } | sed 's/!#if env_safari/!#if (adguard_app_ios || adguard_ext_android_cb || adguard_ext_safari || adguard_ext_chromium_mv3)/g' | sed 's/!#if !ext_ubol/!#if (!adguard_app_ios \&\& !adguard_ext_android_cb \&\& !adguard_ext_safari \&\& !adguard_ext_chromium_mv3)/g' | grep -v '!#include' > ./SourceLists/ublock_filters.txt 
 
