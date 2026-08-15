@@ -82,11 +82,13 @@ jobs:
             # curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/BaseFilter/sections/general_extensions.txt
             # curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/BaseFilter/sections/general_url.txt
             # curl -s https://filters.adtidy.org/ios/filters/2_optimized.txt | grep -v "^bing\.com#"
-            curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/MobileFilter/sections/adservers.txt
-            curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/MobileFilter/sections/general_elemhide.txt
-            curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/MobileFilter/sections/general_extensions.txt
-            curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/MobileFilter/sections/general_url.txt
-            curl -s https://filters.adtidy.org/ios/filters/11_optimized.txt | grep -v "^bing\.com#"
+            # curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/MobileFilter/sections/adservers.txt
+            # curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/MobileFilter/sections/general_elemhide.txt
+            # curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/MobileFilter/sections/general_extensions.txt
+            # curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/MobileFilter/sections/general_url.txt
+            # curl -s https://filters.adtidy.org/ios/filters/11_optimized.txt | grep -v "^bing\.com#"
+            curl -s https://filters.adtidy.org/extension/android-content-blocker/filters/2_optimized.txt
+            curl -s https://filters.adtidy.org/extension/android-content-blocker/filters/11_optimized.txt
             } | sed '/!#safari_cb_affinity/d' > ./SourceLists/easylist.txt
 
       - name: Build EasyPrivacy
