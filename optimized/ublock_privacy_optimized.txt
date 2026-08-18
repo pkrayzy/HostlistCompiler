@@ -1,6 +1,6 @@
 !
 ! Title: uBlock filters – Privacy
-! Last modified: 2026-08-17T02:55:42.630Z
+! Last modified: 2026-08-18T02:51:34.090Z
 !
 ! Compiled by @adguard/hostlist-compiler v2.1.0
 !
@@ -10,8 +10,8 @@
 !
 ! Title: uBlock filters – Badware risks
 ! Expires: 5 days
-! Last modified: Sun, 16 Aug 2026 12:09:32 +0000
-! Diff-Path: ../patches/2026.8.16.1290.patch#ublock-badware
+! Last modified: Mon, 17 Aug 2026 13:33:10 +0000
+! Diff-Path: ../patches/2026.8.17.1355.patch#ublock-badware
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/badware.txt ***
@@ -399,6 +399,7 @@ howtoremove.guide###gray_de
 ||playfulmilfs.com^$all
 ||vcnbbtrack.com^$all
 ||latenightlovers.com^$all
+||date2night.b-cdn.net^
 ||ntfck.com^$all
 ||malenirt.site^$all
 /post/FileRotator_ID*/download.php?subid=$xhr
@@ -1211,7 +1212,6 @@ cracksmid.com##div[style=""] > center > center
 ||uraaka.net^$doc
 ||peraichi.com/landing_pages/view/s8j8k/$doc
 ||majiainc.com^$doc
-||n43vr.com^$doc
 ||qf6tm5ug.com^$doc
 ||candycandypop.com^$doc
 ||showa-klub.com^$doc
@@ -1922,6 +1922,7 @@ $doc,ipaddress=185.100.85.248
 monster###bw-rc-host[style="position: fixed !important; inset: 0px !important; z-index: 2147483647 !important;"]
 .monster/index*.php?flow_id=$doc
 ||sites.google.com/view/codex-desktop-app$doc
+##body > .main-wrapper > .main-content > .intro > #checkbox-window
 ##div.card > div#cbRow.checkbox-row[onclick="startVerify()"]
 gemfellowship.org##+js(rmnt, script, TextDecoder)
 ##html > #bw-cf-root
@@ -2679,7 +2680,6 @@ www.cambe.pr.gov.br##+js(noeval-if, tigervip2)
 ||msoftupdate.*.linodeobjects.com^$all
 ||outloksupportbuzoningreso.glitch.me^$all
 ||outloksupport*.glitch.me^$doc
-||scanlonchiro.com^$all
 *$doc,ipaddress=178.16.53.131
 ! telegram
 ||telegramhcn.com^$all
@@ -3053,7 +3053,6 @@ app##center#yangchen > iframe#external-frame[src="https://im136.mom/"]:not([clas
 ||kmsauto.org^$doc
 ||furykms.com^$doc
 ||union.macoms.la^$all
-||polyfill-js.cn^$all
 ||highwaycpmrevenue.social-previews.top^$all
 ||clicksocialimage.top^$all
 ||blue-softs.com^$all
@@ -3475,6 +3474,7 @@ pages.dev##html:not([class]) > body.gradient-bg.min-h-screen.flex.items-center.j
 *$doc,ipaddress=31.59.58.163
 ||lastpassrecovery.com^$all
 ||kgms.top^$all
+||arrakis2.com^$all
 sport.elwatannews.com##+js(aost, Array.prototype.indexOf, isWin)
 ||gomabalerainc.top^$all
 ||gamefiledo6.pages.dev^$all
@@ -3502,7 +3502,6 @@ sport.elwatannews.com##+js(aost, Array.prototype.indexOf, isWin)
 ||imessagegreetins.de^$all
 ||outertune.org^$doc,reason="Not the official site"
 ||popcornpump.xyz^$all
-||smartdefend.net^$all
 ||anget-direct.info^$all
 ||dokopka.icu^$all
 ||aftop10.com^$all
@@ -3946,10 +3945,11 @@ top##body > center + .A + .post
 ||kai-search.com^$all
 ||robtipsyt50kli.blogspot.com^$all
 ##body > .wrapper > .card-box > #step-1
+||luhxepremiumbags.com^$all
 ! Title: uBlock filters – Privacy
 ! Expires: 7 days
-! Last modified: Fri, 14 Aug 2026 06:04:56 +0000
-! Diff-Path: ../patches/2026.8.16.1290.patch#ublock-privacy
+! Last modified: Mon, 17 Aug 2026 17:56:06 +0000
+! Diff-Path: ../patches/2026.8.17.1355.patch#ublock-privacy
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/privacy.txt ***
@@ -4483,6 +4483,7 @@ arstechnica.com,dermnetnz.org##.gsc-webResult a[data-cturl]:remove-attr(/^data-c
 ! petametrics
 /wp-content/plugins/google-site-kit/dist/assets/js/googlesitekit-consent-mode-
 /wp-content/plugins/google-site-kit/dist/assets/js/googlesitekit-events-provider-
+! /wp-content/plugins/tmbi-*/js/*
 ||petametrics.com/*/__activity.
 ||paytr.com/securemetric/
 ||youtube.com/youtubei/v1/log_event
@@ -5840,6 +5841,7 @@ $uritransform=/#Echobox=[\d]{10}$//,to=iltalehti.fi|hs.fi
 ||nuviatoon.com/nuvia-api/analytics/
 ||index.hr/tracking-beacon
 ||index.hr/api/Stats/
+||sms24.me/numbers/pixel
 ! Merge in resource-abuse.txt
 ! *** uAssets:filters/resource-abuse.txt ***
 /edgemesh.*.js$script,domain=~edgemesh.com|~edgeno.de
