@@ -5,6 +5,10 @@ const compileSource = require('./compile-source');
 const { transform, TRANSFORMATIONS } = require('./transformations/transform');
 const packageJson = require('../package.json');
 
+// Version is not stored in the repo: CI stamps it into package.json at build
+// time (see publish-release.yml). Fall back to 0.0.0 in development.
+const packageVersion = packageJson.version || '0.0.0';
+
 /**
  * Prepares list header
  *
@@ -35,7 +39,7 @@ function prepareHeader(configuration) {
     lines.push('!');
 
     // Compiler info
-    lines.push(`! Compiled by ${packageJson.name} v${packageJson.version}`);
+    lines.push(`! Compiled by ${packageJson.name} v${packageVersion}`);
     lines.push('!');
     return lines;
 }

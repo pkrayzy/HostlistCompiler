@@ -4,6 +4,11 @@
 
 This is a simple tool that makes it easier to compile a [hosts blocklist](https://adguard-dns.io/kb/general/dns-filtering-syntax/) compatible with AdGuard Home or any other AdGuard product with **DNS filtering**.
 
+> **Note on repositories:** Active development happens in the private
+> [AdGuardSoftwareLimited/filters-hostlist-compiler](https://github.com/AdGuardSoftwareLimited/filters-hostlist-compiler)
+> repository; this public [AdguardTeam/HostlistCompiler](https://github.com/AdguardTeam/HostlistCompiler)
+> repository is a read-only mirror that is updated automatically from it.
+
 - [Usage](#usage)
   - [Configuration](#configuration)
   - [Command-line](#command-line)

@@ -5,6 +5,10 @@ const consola = require('consola');
 const compile = require('./index');
 const packageJson = require('../package.json');
 
+// Version is not stored in the repo: CI stamps it into package.json at build
+// time (see publish-release.yml). Fall back to 0.0.0 in development.
+const packageVersion = packageJson.version || '0.0.0';
+
 // eslint-disable-next-line import/order
 const { argv } = require('yargs')
     .usage('Usage: $0 [options]')
@@ -47,7 +51,7 @@ const { argv } = require('yargs')
         description: 'Run with verbose logging',
     })
     .demandOption(['o'])
-    .version()
+    .version(packageVersion)
     .help('h')
     .alias('h', 'help');
 
@@ -56,7 +60,7 @@ if (argv.verbose) {
     consola.level = 5;
 }
 
-consola.info(`Starting ${packageJson.name} v${packageJson.version}`);
+consola.info(`Starting ${packageJson.name} v${packageVersion}`);
 
 /**
  * Reads the configuration file and returns the parsed JSON.
