@@ -1,7 +1,7 @@
 ! Title: uBlock filters – Badware risks
 ! Expires: 5 days
-! Last modified: Tue, 18 Aug 2026 12:29:49 +0000
-! Diff-Path: ../patches/2026.8.20.106.patch#ublock-badware
+! Last modified: Thu, 20 Aug 2026 10:14:14 +0000
+! Diff-Path: ../patches/2026.8.21.113.patch#ublock-badware
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/badware.txt ***
@@ -2281,6 +2281,8 @@ monster###bw-rc-host[style="position: fixed !important; inset: 0px !important; z
 ||sites.google.com/view/codex-desktop-app$doc
 ||gta-six-leaks.com^$all
 ||whirlpoploaderfast.com^
+||analysis-id-lfg.info^
+||chief-ignite.pro^
 ##body > .main-wrapper > .main-content > .intro > #checkbox-window
 ##div.card > div#cbRow.checkbox-row[onclick="startVerify()"]
 gemfellowship.org##+js(rmnt, script, TextDecoder)
@@ -4505,8 +4507,8 @@ top##body > center + .A + .post
 
 ! Title: uBlock filters – Privacy
 ! Expires: 7 days
-! Last modified: Tue, 18 Aug 2026 09:28:10 +0000
-! Diff-Path: ../patches/2026.8.20.106.patch#ublock-privacy
+! Last modified: Thu, 20 Aug 2026 18:53:18 +0000
+! Diff-Path: ../patches/2026.8.21.113.patch#ublock-privacy
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/privacy.txt ***
@@ -4551,6 +4553,7 @@ www.reddit.com##+js(json-prune, data.children.[].data.outbound_link)
 ||reddit.com^$doc,removeparam=ref_campaign
 ||reddit.com^$doc,removeparam=ref_source
 ||reddit.com^$doc,removeparam=utm_content
+||pi.reddit.com^
 ||click.redditmail.com/CL0/$urlskip=/\/CL0\/(http.*?)\/\d\/[a-f0-9-]+\// -uricomponent
 ! remove.bg
 ||rd.remove.bg/CL0/http$doc,urlskip=/\/CL0\/(http.*?)\/\d\/[a-f0-9-]+\// -uricomponent
@@ -6634,3 +6637,4 @@ kick.com##+js(no-fetch-if, litix.io)
 xhamster.com##+js(no-xhr-if, /hpyjmp|marzaent/)
 xhamster.com##+js(no-fetch-if, /hpyjmp|marzaent/)
 ||juneworewyjyna.com^
+play.hbomax.com##+js(no-xhr-if, brightline.tv)
