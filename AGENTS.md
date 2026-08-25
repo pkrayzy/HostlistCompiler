@@ -53,10 +53,9 @@ inclusion/exclusion rules, and `!#include` directive resolution via
 ├── test/                       # Jest test suites mirroring src/
 │   ├── resources/              # Test fixture files
 │   └── transformations/        # Transformation-specific tests
-├── tools/                      # Build helper scripts
-│   └── build-txt.js            # Generates transformations docs
 ├── examples/                   # Example configurations (sdn, energized, etc.)
-├── bamboo-specs/               # CI/CD pipeline definitions (Bamboo)
+├── .github/workflows/          # GitHub Actions CI (ci, mirror, prepare-release, publish-release)
+├── Dockerfile                  # Multi-stage build: test-output / build-output targets
 ├── package.json                # Package manifest and scripts
 ├── jest.config.js              # Jest configuration
 ├── .eslintrc.js                # ESLint configuration
@@ -70,25 +69,25 @@ inclusion/exclusion rules, and `!#include` directive resolution via
 **Full verification sequence** (run all of these before considering a task done):
 
 ```bash
-yarn lint
-yarn test
+pnpm lint
+pnpm test
 ```
 
 | Action  | Command |
 |---------|---------|
-| Install | `yarn install` |
-| Lint    | `yarn lint` |
-| Test    | `yarn test` |
+| Install | `pnpm install` |
+| Lint    | `pnpm lint` |
+| Test    | `pnpm test` |
 | Run CLI (example) | `node src/cli.js -c examples/sdn/configuration.json -o filter.txt` |
-| Version bump | `yarn increment` |
+| Version bump | `pnpm increment` |
 
 ## Verification
 
 You MUST follow these rules for EVERY task you perform:
 
-1. **Run the linter**: `yarn lint`. Fix all warnings and errors before
+1. **Run the linter**: `pnpm lint`. Fix all warnings and errors before
    proceeding. The project uses ESLint with `airbnb-base`.
-2. **Run the tests**: `yarn test`. All tests must pass. If you changed
+2. **Run the tests**: `pnpm test`. All tests must pass. If you changed
    behavior, verify that existing tests still reflect correct expectations.
 3. **Check the outcome**. If either command fails, fix the issues and re-run
    until both pass. A task is not complete until all checks are green.
@@ -99,7 +98,7 @@ For every task you perform, you MUST:
 
 - **Update or add unit tests** for any changed or new code. Mirror the source
   file structure under `test/`.
-- **Run the full verification sequence** (`yarn lint` and `yarn test`) and
+- **Run the full verification sequence** (`pnpm lint` and `pnpm test`) and
   confirm both pass.
 - **Update `AGENTS.md`** if you change the project structure, add new build
   commands, or discover a recurring agent mistake that should become a rule.
@@ -116,9 +115,9 @@ For every task you perform, you MUST:
 
 ## Contribution Instructions
 
-1. **Install** dependencies with `yarn install`.
-2. **Lint** before committing: `yarn lint`. Fix all warnings and errors.
-3. **Test** before committing: `yarn test`. All tests must pass. Add tests for
+1. **Install** dependencies with `pnpm install`.
+2. **Lint** before committing: `pnpm lint`. Fix all warnings and errors.
+3. **Test** before committing: `pnpm test`. All tests must pass. Add tests for
    new functionality — mirror the source file structure under `test/`.
 4. **Do not commit** generated files, `node_modules`, or editor configs.
 5. **Do not create git commits or PRs** unless explicitly asked.
@@ -139,7 +138,7 @@ For every task you perform, you MUST:
 
 ### Code Quality
 
-- **ESLint airbnb-base** rules apply — run `yarn lint` to check. See
+- **ESLint airbnb-base** rules apply — run `pnpm lint` to check. See
   `.eslintrc.js` for project-specific overrides.
 - Use `lodash` helpers (e.g., `_.startsWith`, `_.isEmpty`, `_.trim`) where they
   are already used — stay consistent with the existing style.

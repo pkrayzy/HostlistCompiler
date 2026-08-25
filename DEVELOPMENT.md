@@ -7,8 +7,8 @@ For code guidelines and architectural decisions, see [AGENTS.md](AGENTS.md).
 
 ## Prerequisites
 
-- **Node.js** — current LTS version (20.x or later)
-- **Yarn** — classic (1.x)
+- **Node.js** — current LTS version (22.x recommended; CI builds with Node 22)
+- **pnpm** — 10.x (`npm install -g pnpm@10`)
 - **Git**
 
 ## Getting Started
@@ -23,26 +23,25 @@ For code guidelines and architectural decisions, see [AGENTS.md](AGENTS.md).
 2. Install dependencies:
 
    ```bash
-   yarn install
+   pnpm install
    ```
 
 3. Verify the setup by running linter and tests:
 
    ```bash
-   yarn lint
-   yarn test
+   pnpm lint
+   pnpm test
    ```
 
 ## Available Commands
 
 | Command | Description |
 |---------|-------------|
-| `yarn install` | Install all dependencies |
-| `yarn lint` | Run ESLint (`airbnb-base` config) |
-| `yarn test` | Run Jest test suite (`--runInBand --detectOpenHandles`) |
-| `yarn increment` | Bump the patch version in `package.json` |
-| `yarn build-txt` | Generate transformations documentation |
-| `yarn compile` | Run the compiler CLI (`node src/cli.js`) |
+| `pnpm install` | Install all dependencies |
+| `pnpm lint` | Run ESLint (`airbnb-base` config) |
+| `pnpm test` | Run Jest test suite (`--runInBand --detectOpenHandles`) |
+| `pnpm increment` | Bump the patch version in `package.json` |
+| `pnpm compile` | Run the compiler CLI (`node src/cli.js`) |
 
 ## Running the Compiler Locally
 
@@ -77,8 +76,8 @@ The `examples/` directory contains several ready-made configurations (`sdn`,
 4. Run the full verification sequence:
 
    ```bash
-   yarn lint
-   yarn test
+   pnpm lint
+   pnpm test
    ```
 
 5. Fix any issues until both commands pass.
@@ -88,7 +87,7 @@ The `examples/` directory contains several ready-made configurations (`sdn`,
 Run the full test suite:
 
 ```bash
-yarn test
+pnpm test
 ```
 
 Run a specific test file:
@@ -109,7 +108,7 @@ interception. Test fixtures live in `test/resources/`.
 ### Linting
 
 ```bash
-yarn lint
+pnpm lint
 ```
 
 ESLint is configured in `.eslintrc.js` with the `airbnb-base` preset. The
@@ -128,7 +127,7 @@ ESLint is configured in `.eslintrc.js` with the `airbnb-base` preset. The
 4. Update `src/index.d.ts` with the new transformation name in the type union.
 5. Create a test file in `test/transformations/`.
 6. Update `CHANGELOG.md`.
-7. Run `yarn lint && yarn test`.
+7. Run `pnpm lint && pnpm test`.
 
 ### Updating the Configuration Schema
 
@@ -155,7 +154,7 @@ cache:
 
 ```bash
 rm -f .eslintcache
-yarn lint
+pnpm lint
 ```
 
 ### Network Errors When Running the Compiler
