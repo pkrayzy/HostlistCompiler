@@ -1,6 +1,6 @@
 !
 ! Title: uBlock filters – Privacy
-! Last modified: 2026-08-26T03:00:00.670Z
+! Last modified: 2026-08-27T12:15:57.355Z
 !
 ! Compiled by @adguard/hostlist-compiler v0.0.0
 !
@@ -10,8 +10,8 @@
 !
 ! Title: uBlock filters – Badware risks
 ! Expires: 5 days
-! Last modified: Tue, 25 Aug 2026 15:56:02 +0000
-! Diff-Path: ../patches/2026.8.26.113.patch#ublock-badware
+! Last modified: Thu, 27 Aug 2026 04:23:07 +0000
+! Diff-Path: ../patches/2026.8.27.573.patch#ublock-badware
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/badware.txt ***
@@ -1213,6 +1213,7 @@ cracksmid.com##div[style=""] > center > center
 ||uraaka.net^$doc
 ||peraichi.com/landing_pages/view/s8j8k/$doc
 ||majiainc.com^$doc
+||n43vr.com^$doc
 ||qf6tm5ug.com^$doc
 ||candycandypop.com^$doc
 ||showa-klub.com^$doc
@@ -1935,6 +1936,7 @@ $doc,ipaddress=185.100.85.248
 monster###bw-rc-host[style="position: fixed !important; inset: 0px !important; z-index: 2147483647 !important;"]
 .monster/index*.php?flow_id=$doc
 ||sites.google.com/view/codex-desktop-app$doc
+||chief-ignite.pro^
 ##body > .main-wrapper > .main-content > .intro > #checkbox-window
 ##div.card > div#cbRow.checkbox-row[onclick="startVerify()"]
 gemfellowship.org##+js(rmnt, script, TextDecoder)
@@ -1972,6 +1974,17 @@ casabasics.es##+js(rmnt, script, String.fromCharCode)
 /landing/windows.html?src=$frame,3p
 ##.wp-singular > div[data-sm][style*="2147483647"] > iframe[style*="100%"][allow*="clipboard-write"]
 ||cleandev.cc^$all
+-Verify-Cloudflare-$doc
+abogadosrosarinos.com,aptisweb.com,avene-hebergement.com,caesarjaco.co.id,https-xhamster.com,skybap.shop##+js(acs, fetch, _0x, /^data:/)
+abogadosrosarinos.com,aptisweb.com,avene-hebergement.com,caesarjaco.co.id,https-xhamster.com,skybap.shop##+js(aopw, ai_front)
+##.cjs-container > #checkbox-window
+##.cjs-container > #verify-window
+strand-co.com##+js(acs, document.createElement, .onerror)
+##body > .cf-root
+/^https:\/\/[a-z]{7,}\.(com|icu)\/[Tt]raffic\/api$/$script,match-case,3p,to=com|icu
+||biscottirbh.lol^$all
+##body > div.mw[role="main"] > .mc
+||faceit-account.com^$all
 ! !SECTION: ClickFix
 ||pccdirect.site^$all
 ||templatesearch.org^$all
@@ -2694,6 +2707,7 @@ www.cambe.pr.gov.br##+js(noeval-if, tigervip2)
 ||msoftupdate.*.linodeobjects.com^$all
 ||outloksupportbuzoningreso.glitch.me^$all
 ||outloksupport*.glitch.me^$doc
+||scanlonchiro.com^$all
 *$doc,ipaddress=178.16.53.131
 ! telegram
 ||telegramhcn.com^$all
@@ -3287,7 +3301,6 @@ rapidkil.com.au##+js(aost, XMLHttpRequest, /wp-content)
 /captcha-loader.js?
 ! fake dating
 /^https:\/\/[0-9a-z]{7}\.([0-9a-z]{7})\.top\/[0-9a-z]{7}\?t=\1&cid=[0-9a-z]+/$doc,to=top,match-case
-||dtioykqj1u8de.cloudfront.net^$all
 !?id=*&p1=*&p2=*&p3=*&p4=$doc
 ||sentinelbotcore.co.in^$all
 ||kexornero.co.in^$all
@@ -3966,10 +3979,11 @@ top##body > center + .A + .post
 ||fluentcleaner.org^$all
 ||ruthcottillionuchylf.github.io^$all
 ||vencord.cc^$all
+||hoka-uk.com^$all
 ! Title: uBlock filters – Privacy
 ! Expires: 7 days
-! Last modified: Tue, 25 Aug 2026 11:30:43 +0000
-! Diff-Path: ../patches/2026.8.26.113.patch#ublock-privacy
+! Last modified: Thu, 27 Aug 2026 05:40:47 +0000
+! Diff-Path: ../patches/2026.8.27.573.patch#ublock-privacy
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/privacy.txt ***
@@ -4505,11 +4519,11 @@ arstechnica.com,dermnetnz.org##.gsc-webResult a[data-cturl]:remove-attr(/^data-c
 ||zoom.us/*/fingerprintjs-
 ||zoom.us/user/anonymous/telemetry
 ! 1st-party google tag manager script
-/^https:\/\/(www\.)?[a-z0-9]+\.[a-z]+(\.[a-z]+)?\/[a-z0-9]{4}\/$/$script,1p,match-case,to=~xsso.leagueoflegends.com|~xsso.lolesports.com|~xsso.playvalorant.com|~xsso.riotgames.com|~xsso.valorantesports.com
-/^https:\/\/(www\.)?[a-z0-9]+\.[a-z]+(\.[a-z]+)?\/[a-z0-9]{4,9}\/\?id=$/$script,1p,match-case,to=~xsso.leagueoflegends.com|~xsso.lolesports.com|~xsso.playvalorant.com|~xsso.riotgames.com|~xsso.valorantesports.com
-/^https:\/\/(www\.)?[a-z0-9]+\.[a-z]+(\.[a-z]+)?\/[a-z0-9]{4,6}\/\?id=AW-\d+/$script,1p,match-case,to=~xsso.leagueoflegends.com|~xsso.lolesports.com|~xsso.playvalorant.com|~xsso.riotgames.com|~xsso.valorantesports.com
-/^https:\/\/(www\.)?[a-z0-9]+\.[a-z]+(\.[a-z]+)?\/[a-z0-9]{3,6}\/\?id=G(TM)?-[A-Z0-9]+/$script,1p,match-case,to=~xsso.leagueoflegends.com|~xsso.lolesports.com|~xsso.playvalorant.com|~xsso.riotgames.com|~xsso.valorantesports.com
-/^https:\/\/(www\.)?[a-z0-9]+\.[a-z]+(\.[a-z]+)?\/(?:analyticsdata|gemets|gtm[a-z]+|metrics|securegtm)\/?$/$script,1p,match-case
+/^https:\/\/(www\.)?[a-z0-9-]+\.[a-z]+(\.[a-z]+)?\/[a-z0-9]{4}\/$/$script,1p,match-case,to=~xsso.leagueoflegends.com|~xsso.lolesports.com|~xsso.playvalorant.com|~xsso.riotgames.com|~xsso.valorantesports.com
+/^https:\/\/(www\.)?[a-z0-9-]+\.[a-z]+(\.[a-z]+)?\/[a-z0-9]{4,9}\/\?id=$/$script,1p,match-case,to=~xsso.leagueoflegends.com|~xsso.lolesports.com|~xsso.playvalorant.com|~xsso.riotgames.com|~xsso.valorantesports.com
+/^https:\/\/(www\.)?[a-z0-9-]+\.[a-z]+(\.[a-z]+)?\/[a-z0-9]{4,6}\/\?id=AW-\d+/$script,1p,match-case,to=~xsso.leagueoflegends.com|~xsso.lolesports.com|~xsso.playvalorant.com|~xsso.riotgames.com|~xsso.valorantesports.com
+/^https:\/\/(www\.)?[a-z0-9-]+\.[a-z]+(\.[a-z]+)?\/[a-z0-9]{3,6}\/\?id=G(TM)?-[A-Z0-9]+/$script,1p,match-case,to=~xsso.leagueoflegends.com|~xsso.lolesports.com|~xsso.playvalorant.com|~xsso.riotgames.com|~xsso.valorantesports.com
+/^https:\/\/(www\.)?[a-z0-9-]+\.[a-z]+(\.[a-z]+)?\/(?:analyticsdata|gemets|gtm[a-z]+|metrics|securegtm)\/?$/$script,1p,match-case
 ! @@/jsi18n/|$script,1p
 ! @@/^https:\/\/(www\.)?[a-z0-9]+\.[a-z]+(\.[a-z]+)?\/config\/?$/$script,1p
 ||bilet.com/gtmcf/
