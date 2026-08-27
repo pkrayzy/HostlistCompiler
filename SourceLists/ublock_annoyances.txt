@@ -1,7 +1,7 @@
 ! Title: uBlock filters – Annoyances
 ! Expires: 7 days
-! Last modified: Sun, 23 Aug 2026 05:01:36 +0000
-! Diff-Path: ../patches/2026.8.27.573.patch#ublock-annoyances
+! Last modified: Thu, 27 Aug 2026 10:20:43 +0000
+! Diff-Path: ../patches/2026.8.27.1220.patch#ublock-annoyances
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/annoyances.txt ***
@@ -1052,6 +1052,7 @@ reddit.com#@#body:style(pointer-events: auto !important; overflow: auto !importa
 reddit.com##body:style(overflow: auto !important;)
 sh.reddit.com,www.reddit.com##+js(trusted-set-local-storage-item, xpromo-consolidation, $currentDate$)
 !#endif
+sh.reddit.com,www.reddit.com##+js(prevent-setTimeout, '{e(n,t,r)}', 30000)
 fotor.com##+js(nostif, offsetHeight)
 fotor.com##._1Pece
 fotor.com##.guanggao_close_group
@@ -4271,7 +4272,7 @@ t3.chat##+js(nostif, .abort();, 1000)
 parsatv.com##+js(rmnt, script, .offsetHeight)
 
 ! Title: uBlock filters – Cookie Notices
-! Last modified: Tue, 25 Aug 2026 19:45:54 +0000
+! Last modified: Thu, 27 Aug 2026 10:38:45 +0000
 ! Expires: 7 days
 ! Description: Filters optimized for uBlock Origin, to be used with EasyList's and/or Adguard's "Cookie Notices" list(s)
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
@@ -9734,10 +9735,6 @@ codewars.com##+js(trusted-click-element, a[fs-consent-element="deny"], , 2000)
 ! cookies formazionepro.it
 formazionepro.it##+js(trusted-click-element, button.c_link, , 1000)
 
-! Accept, needed for embedded content
-! https://kotimikro.fi/kuva/video/video-testaa-koneen-kaynnistys-ennen-siivousta-ja-sen-jalkeen
-kotimikro.fi##+js(trusted-click-element, #didomi-notice-agree-button)
-
 ! https://github.com/uBlockOrigin/uAssets/issues/30867
 memegenqc.app##+js(trusted-set-local-storage-item, memegenqc-cookie-consent, '{"analytics":false,"advertising":false,"timestamp":$now$}')
 
@@ -9825,7 +9822,9 @@ camaramar.com##+js(trusted-click-element, button.button.accept, , 2000)
 
 ! https://github.com/uBlockOrigin/uAssets/issues/32054
 ! https://github.com/uBlockOrigin/uAssets/issues/33279
-futurezone.at,maxjeune-tgvinoui.sncf##+js(trusted-click-element, #didomi-notice-agree-button)
+! https://kotimikro.fi/kuva/video/video-testaa-koneen-kaynnistys-ennen-siivousta-ja-sen-jalkeen - embed
+! https://github.com/uBlockOrigin/uAssets/issues/34242
+clubic.com,futurezone.at,kotimikro.fi,maxjeune-tgvinoui.sncf##+js(trusted-click-element, #didomi-notice-agree-button)
 
 ! https://github.com/uBlockOrigin/uAssets/issues/32077
 gold.ac.uk##+js(trusted-click-element, button.ccc-accept-button)
