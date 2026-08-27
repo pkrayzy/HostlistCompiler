@@ -1,6 +1,6 @@
 !
 ! Title: uBlock filters
-! Last modified: 2026-08-27T18:00:47.218Z
+! Last modified: 2026-08-27T22:42:21.376Z
 !
 ! Compiled by @adguard/hostlist-compiler v0.0.0
 !
@@ -10,8 +10,8 @@
 !
 ! Title: uBlock filters
 ! Expires: 5 days
-! Last modified: Thu, 27 Aug 2026 04:24:15 +0000
-! Diff-Path: ../patches/2026.8.27.573.patch#ublock-filters
+! Last modified: Thu, 27 Aug 2026 17:30:33 +0000
+! Diff-Path: ../patches/2026.8.27.1220.patch#ublock-filters
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/filters.txt ***
@@ -22803,6 +22803,7 @@ huoqwk.com##+js(nostif, touchstart, 1000)
 ! v2movies.me/click ads
 v2movies.click,v2movies.me##+js(nowoif)
 v2movies.click,v2movies.me##[href^="https://refpa58144.com/"]
+@@||goplay.su^$ghide
 goplay.su##+js(nowoif, !addons.mozilla.org)
 goplay.ml,goplay.su##+js(json-prune, *, rot_url)
 ! goplay.ml,goplay.su##+js(json-prune, *, pop_type)
@@ -23608,7 +23609,15 @@ openlua.cloud##+js(set, HTMLScriptElement.prototype.onerror, undefined)
 openlua.cloud##+js(json-prune-fetch-response, sponsor ad_provider, , propsToMatch, api.openlua.cloud)
 @@||openlua.cloud^$ghide
 openlua.cloud##+js(aeld, error, script-error)
-@@||openlua.cloud/*.js?$1p,script
+@@||openlua.cloud/*.gif$1p
+@@||openlua.cloud/ads-common.js$1p
+@@||openlua.cloud/jquery.popunder.js$1p
+@@||openlua.cloud/admanager.js$1p
+@@||openlua.cloud/exitpopup.js$1p
+@@||openlua.cloud/gpt-prebid.js$1p
+openlua.cloud##a[href^="https://boostmania.gg/"]
+openlua.cloud##div.fixed.backdrop-blur-xl
+openlua.cloud##+js(nostif, /probePlan|abort|void 0|a\(\)/)
 @@||luciferdonghua.in^$ghide
 luciferdonghua.in##+js(rmnt, script, baits.push)
 luciferdonghua.in##div[data-afuhost]
@@ -23804,6 +23813,7 @@ pixhost.*##+js(rmnt, script, AdProvider)
 pixhost.*##.content-companion
 selfhostt.com,ssdhostting.com##+js(no-xhr-if, googlesyndication)
 bdjobs.com##+js(json-edit, .bannerConfig..advertise.*)
+||goodreads.com/weblab
 ! Title: uBO Lite filters
 ! Last modified: Thu, 27 Aug 2026 02:42:47 +0000
 ! Expires: 4 days
@@ -23956,7 +23966,7 @@ geo.dailymotion.com##+js(set, DMP_ENABLE_ADS, false)
 ! Title: uBlock filters – Quick fixes
 ! Expires: 12 hours
 ! Last modified: Tue, 25 Aug 2026 15:25:43 +0000
-! Diff-Path: ../patches/2026.8.27.573.patch#ublock-quick-fixes
+! Diff-Path: ../patches/2026.8.27.1220.patch#ublock-quick-fixes
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/quick-fixes.txt ***
