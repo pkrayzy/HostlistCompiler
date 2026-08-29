@@ -1,6 +1,6 @@
 !
 ! Title: uBlock filters
-! Last modified: 2026-08-28T18:17:41.238Z
+! Last modified: 2026-08-29T08:31:27.510Z
 !
 ! Compiled by @adguard/hostlist-compiler v0.0.0
 !
@@ -10,8 +10,8 @@
 !
 ! Title: uBlock filters
 ! Expires: 5 days
-! Last modified: Fri, 28 Aug 2026 05:09:13 +0000
-! Diff-Path: ../patches/2026.8.28.319.patch#ublock-filters
+! Last modified: Sat, 29 Aug 2026 01:37:59 +0000
+! Diff-Path: ../patches/2026.8.29.126.patch#ublock-filters
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/filters.txt ***
@@ -6651,10 +6651,13 @@ pngreal.com##.adb
 ryuugames.com###wpsafe-link:style(display: block !important;)
 ryuugames.com###wpsafe-wait1,#wpsafe-link:others()
 ! intercelestial.com skip countdown (https://pahe.me/monster-2023-web-dl-480p-720p-1080p/)
-||intercelestial.com^$csp=script-src 'self' * 'unsafe-inline'
-intercelestial.com##+js(nano-stb, , *, 0.1)
-intercelestial.com###landing, .soractrl:others()
-linegee.net##.kecil:others()
+pahe.plus##footer, .text-left, #link-view > [href], .box-main > [href]
+pahe.plus##+js(set, blurred, false), 
+pahe.plus,intercelestial.com,teknoasian.com##+js(no-fetch-if, mode:no-cors)
+intercelestial.com,teknoasian.com##+js(nowoif)
+intercelestial.com,teknoasian.com##.right-sidebar.penci_sidebar.container,.penci-home-popular-posts.container,p,ul,li,[href*="s0-greate"],#sidebar,.post-pagination,.single-breadcrumb.penci-breadcrumb.container,.penci-move-title-above.post-image,#footer-section, .post-related, #comments
+intercelestial.com#@#+js(adjust-setTimeout, '', *, 0.1)
+/_ac/s/*.js|$script,1p
 laweducationinfo.com,godstoryinfo.com,armypowerinfo.com,phonereviewinfo.com,gknutshell.com,vichitrainfo.com,workproductivityinfo.com,dopomininfo.com,artoffocas.com##+js(trusted-replace-outbound-text, decodeURIComponent, Math.random() <= 0.15, false)
 !laweducationinfo.com,savemoneyinfo.com,worldaffairinfo.com,godstoryinfo.com,successstoryinfo.com,cxissuegk.com,learnmarketinfo.com,bhugolinfo.com,armypowerinfo.com,rsgamer.app,phonereviewinfo.com,makeincomeinfo.com,gknutshell.com,vichitrainfo.com,workproductivityinfo.com##+js(set, Math.random, 1, as, function)
 laweducationinfo.com,godstoryinfo.com,armypowerinfo.com,phonereviewinfo.com,gknutshell.com,vichitrainfo.com,workproductivityinfo.com,dopomininfo.com,artoffocas.com##+js(set-cookie, __gads, 1)
@@ -9133,7 +9136,7 @@ automobile-catalog.com,hna.de,index.hr,motorbikecatalog.com,skinmc.net##+js(rmnt
 9gag.com,animalia.bio,daveockop.com,doviz.com,looopings.nl,pakkotoisto.com##+js(rmnt, script, void 0||window\,)
 greenwichmeantime.com,higherorlowergame.com##+js(rmnt, script, void 0 || window\,)
 freemcserver.net##+js(rmnt, script, window\,void 0)
-base64decode.org,fandom.com,gamewith.jp,sms24.me,urldecoder.org##+js(rmnt, script, ').join(String.fromCharCode')
+base64decode.org,fandom.com,gamewith.jp,savvytime.com,sms24.me,urldecoder.org##+js(rmnt, script, ').join(String.fromCharCode')
 singjupost.com##+js(rmnt, script, domain=?eventId=&error=)
 helpdeskgeek.com##+js(rmnt, script, ;confirm()
 thingiverse.com##+js(rmnt, script, /:\"length\"\}\);$/)
@@ -9542,9 +9545,9 @@ gayxx.net##+js(aopr, adsbyjuicy)
 explorecams.com,minecraft.buzz,rarepike.com##+js(aeld, np.detect)
 ! !SECTION: np.detect
 ! SECTION: Temporal
-community-scripts.org,massgrave.dev#@#+js(prevent-clipboard-write, /^mshta |^msiexec |^(bash <<<|curl -kfsSL) \$\(echo .+? base64 -d |^cmd \/c .*?\bcurl .+?(\.exe|\.bat)\b|^cmd\b.+?\bfor \/f\b.+?\bdelims\b.+?\bpow\b|^powershell.+?-w(indowStyle)? h(idden)?\b|^powershell.+?-W H(idden)?\b|^powershell.+?-NoP\b|^powershell.+?-ep bypass\b|^powershell.+?-EP (B|U)\b|^powershell.+?-ExecutionPolicy (Bypass|Unrestricted)|\\PowerShell\.exe.+?-ep bypass\b|^powershell.+?\biex\(|^powershell.+?Invoke-Expression|^powershell.+?Invoke-WebRequest|^powershell.+?-UseBasicParsing|^cmd .*?\/c .+? -nop .+? iex\b|^(cmd|powershell)\b.+?recaptcha|^(cmd|powershell)\b.+?#(Verification|     )|^(cmd|powershell)\b.+?     #|^osascript .+?\bcurl http|^curl -s\b.+?\| (bash|sh|zsh)\b|^\/bin\/(bash|sh|zsh) -c\b.+?\bcurl|^bash -c\b.+?\$\(curl|^python3? -c\b.+?\b(exec|urllib|subprocess)\b|^echo .+?base64 .+?\b(bash|osascript|z?sh)\b|openssl base64 -d|^curl\b .+?chmod \+x.+?&&|^(bash|sh|osascript)\b.+?recaptcha|^(bash|sh|osascript)\b.+?#(Verification|     )|^(bash|sh|osascript)\b.+?     #|^wget .+?\| (bash|sh)\b|^curl\b.+?-o\b.+?\/tmp\/.+?&&|^nc .+?-e \/bin\/(bash|sh)\b|^\/tmp\/.+?chmod \+x.+?&&|^wget -q.+?\.(sh|py|bin|elf)\b|^cmd .+?\bcertutil .+?\b(\.exe|\.bat)\b|^powershell .+?\birm .+?\.[a-z]+\/.+?powershell|\bpcalua(\.exe)? .+?\bcurl\b|^cmd .+?\bcmdkey .+?\bschtasks|^Invoke-Command .+?FromBase64String|^conhost .*?--headless .*?\bcmd\b|^iex\(irm |^irm .+? iex\b/msi, domAlert, 'Beware, uBlock Origin blocked a potential ClickFix attack: ${text}', excludeMatches, /Maintainer|Contributor|^import /i)
+community-scripts.org,massgrave.dev#@#+js(prevent-clipboard-write, /^mshta |^msiexec |^(bash <<<|curl -kfsSL) \$\(echo .+? base64 -d\b|^cmd \/c .*?\bcurl .+?(\.exe|\.bat)\b|^cmd .*?\bfor \/f .*?\bdelims .*?\bpow |^powershell.+?-w(indowStyle)? h(idden)?\b|^powershell.+?-W H(idden)?\b|^powershell.+?-NoP\b|^powershell.+?-ep bypass\b|^powershell.+?-EP (B|U)\b|^powershell.+?-ExecutionPolicy (Bypass|Unrestricted)|\\PowerShell\.exe.+?-ep bypass\b|^powershell.+?\biex\(|^powershell.+?Invoke-Expression|^powershell.+?Invoke-WebRequest|^powershell.+?-UseBasicParsing|^cmd .*?\/c .+? -nop .+? iex\b|^(cmd|powershell)\b.+?recaptcha|^(cmd|powershell)\b.+?#(Verification|     )|^(cmd|powershell)\b.+?     #|^osascript .+?\bcurl http|^curl -s\b.+?\| (bash|sh|zsh)\b|^\/bin\/(bash|sh|zsh) -c\b.+?\bcurl|^bash -c\b.+?\$\(curl|^python3? -c\b.+?\b(exec|urllib|subprocess)\b|^echo .+?base64 .+?\b(bash|osascript|z?sh)\b|openssl base64 -d|^curl\b .+?chmod \+x.+?&&|^(bash|sh|osascript)\b.+?recaptcha|^(bash|sh|osascript)\b.+?#(Verification|     )|^(bash|sh|osascript)\b.+?     #|^wget .+?\| (bash|sh)\b|^curl\b.+?-o\b.+?\/tmp\/.+?&&|^nc .+?-e \/bin\/(bash|sh)\b|^\/tmp\/.+?chmod \+x.+?&&|^wget -q.+?\.(sh|py|bin|elf)\b|^cmd .+?\bcertutil .+?\b(\.exe|\.bat)\b|^powershell .+?\birm .+?\.[a-z]+\/.+?powershell|\bpcalua(\.exe)? .+?\bcurl\b|^cmd .+?\bcmdkey .+?\bschtasks|^Invoke-Command .+?FromBase64String|^conhost .*?--headless .*?\bcmd\b|^iex\(irm |^irm .+? iex\b/msi, domAlert, 'Beware, uBlock Origin blocked a potential ClickFix attack: ${text}', excludeMatches, /Maintainer|Contributor|^import /i)
 ! Specific cases
-sites.google.com##+js(prevent-clipboard-write, /^mshta |^msiexec |^(bash <<<|curl -kfsSL) \$\(echo .+? base64 -d |^cmd \/c .*?\bcurl .+?(\.exe|\.bat)\b|^cmd\b.+?\bfor \/f\b.+?\bdelims\b.+?\bpow\b|^powershell.+?-w(indowStyle)? h(idden)?\b|^powershell.+?-W H(idden)?\b|^powershell.+?-NoP\b|^powershell.+?-ep bypass\b|^powershell.+?-EP (B|U)\b|^powershell.+?-ExecutionPolicy (Bypass|Unrestricted)|\\PowerShell\.exe.+?-ep bypass\b|^powershell.+?\biex\(|^powershell.+?Invoke-Expression|^powershell.+?Invoke-WebRequest|^powershell.+?-UseBasicParsing|^cmd .*?\/c .+? -nop .+? iex\b|^(cmd|powershell)\b.+?recaptcha|^(cmd|powershell)\b.+?#(Verification|     )|^(cmd|powershell)\b.+?     #|^osascript .+?\bcurl http|^curl -s\b.+?\| (bash|sh|zsh)\b|^\/bin\/(bash|sh|zsh) -c\b.+?\bcurl|^bash -c\b.+?\$\(curl|^python3? -c\b.+?\b(exec|urllib|subprocess)\b|^echo .+?base64 .+?\b(bash|osascript|z?sh)\b|openssl base64 -d|^curl\b .+?chmod \+x.+?&&|^(bash|sh|osascript)\b.+?recaptcha|^(bash|sh|osascript)\b.+?#(Verification|     )|^(bash|sh|osascript)\b.+?     #|^wget .+?\| (bash|sh)\b|^curl\b.+?-o\b.+?\/tmp\/.+?&&|^nc .+?-e \/bin\/(bash|sh)\b|^\/tmp\/.+?chmod \+x.+?&&|^wget -q.+?\.(sh|py|bin|elf)\b|^cmd .+?\bcertutil .+?\b(\.exe|\.bat)\b|^powershell .+?\birm .+?\.[a-z]+\/.+?powershell|\bpcalua(\.exe)? .+?\bcurl\b|^cmd .+?\bcmdkey .+?\bschtasks|^Invoke-Command .+?FromBase64String|^conhost .*?--headless .*?\bcmd\b|^iex\(irm |^irm .+? iex\b/msi, domAlert, 'Beware. uBlock Origin blocked a potential ClickFix attack: ${text}', excludeMatches, /Maintainer|Contributor|^import /i)
+sites.google.com##+js(prevent-clipboard-write, /^mshta |^msiexec |^(bash <<<|curl -kfsSL) \$\(echo .+? base64 -d\b|^cmd \/c .*?\bcurl .+?(\.exe|\.bat)\b|^cmd .*?\bfor \/f .*?\bdelims .*?\bpow |^powershell.+?-w(indowStyle)? h(idden)?\b|^powershell.+?-W H(idden)?\b|^powershell.+?-NoP\b|^powershell.+?-ep bypass\b|^powershell.+?-EP (B|U)\b|^powershell.+?-ExecutionPolicy (Bypass|Unrestricted)|\\PowerShell\.exe.+?-ep bypass\b|^powershell.+?\biex\(|^powershell.+?Invoke-Expression|^powershell.+?Invoke-WebRequest|^powershell.+?-UseBasicParsing|^cmd .*?\/c .+? -nop .+? iex\b|^(cmd|powershell)\b.+?recaptcha|^(cmd|powershell)\b.+?#(Verification|     )|^(cmd|powershell)\b.+?     #|^osascript .+?\bcurl http|^curl -s\b.+?\| (bash|sh|zsh)\b|^\/bin\/(bash|sh|zsh) -c\b.+?\bcurl|^bash -c\b.+?\$\(curl|^python3? -c\b.+?\b(exec|urllib|subprocess)\b|^echo .+?base64 .+?\b(bash|osascript|z?sh)\b|openssl base64 -d|^curl\b .+?chmod \+x.+?&&|^(bash|sh|osascript)\b.+?recaptcha|^(bash|sh|osascript)\b.+?#(Verification|     )|^(bash|sh|osascript)\b.+?     #|^wget .+?\| (bash|sh)\b|^curl\b.+?-o\b.+?\/tmp\/.+?&&|^nc .+?-e \/bin\/(bash|sh)\b|^\/tmp\/.+?chmod \+x.+?&&|^wget -q.+?\.(sh|py|bin|elf)\b|^cmd .+?\bcertutil .+?\b(\.exe|\.bat)\b|^powershell .+?\birm .+?\.[a-z]+\/.+?powershell|\bpcalua(\.exe)? .+?\bcurl\b|^cmd .+?\bcmdkey .+?\bschtasks|^Invoke-Command .+?FromBase64String|^conhost .*?--headless .*?\bcmd\b|^iex\(irm |^irm .+? iex\b/msi, domAlert, 'Beware. uBlock Origin blocked a potential ClickFix attack: ${text}', excludeMatches, /Maintainer|Contributor|^import /i)
 ! !SECTION: Temporal
 ! SECTION: Placeholder by EasyPrivacy
 ! rcm.shinobi.jp and cnobi.jp
@@ -9901,6 +9904,7 @@ fakt.pl,plejada.pl##+js(nostif, offsetHeight)
 portal.librus.pl##advertisement-module:remove()
 tuwroclaw.com##.grid__ad
 tuwroclaw.com##.grid__col:has(> .adv)
+stalowemiasto.pl##+js(aeld, load, detect)
 ! NOTE: Portuguese/Spanish
 ||static-cloud.mediaset.net/misc/ad/adanalytics.js^$redirect=noopjs
 ||static-cloud.mediaset.net/misc/ad/adanalytics.js^$redirect=noopjs,domain=mediasetinfinity.es,important
@@ -19791,7 +19795,7 @@ m4u.*,xprime4u.*##.onclick-input
 fiuxy2.co##+js(rmnt, script, mega-enlace.com/ext.php?o=)
 voltupload.com##+js(nano-stb, download, 1000, 0.001)
 mylocal.co.uk##main > div > [id].scroll-mt-20:has(.items-center + div:has-text(/^Sponsored$/))
-@@||poweredby.jads.co^$script,frame,domain=video.pemersatu.org
+video.pemersatu.org##+js(set-attr, iframe#pmt-smart-frame[src="about:blank"][data-pmt-player-src^="http"], src, [data-pmt-player-src])
 fastapi.tiangolo.com###announce-right .item:has(.sponsor-badge)
 voodc.com##+js(json-prune, *, *.adserverDomain)
 roystream.com##+js(acs, JSON.parse, atob)
@@ -22237,6 +22241,7 @@ cuevana.is##+js(nowoif)
 leeapk.com##+js(acs, document.querySelectorAll, localStorage)
 leeapk.com##+js(rmnt, script, /adblock|abd/i)
 leeapk.com##+js(aeld, click, window.open)
+leeapk.com##+js(aeld, scroll, start)
 leeapk.com###ad-link
 ###zdn-adblock-overlay
 ! detection https://condorsoft.co/post/china-lidera-revolucion-seguridad-digital-criptografia-cuantica/9ZssEh9S
@@ -22249,7 +22254,7 @@ condorsoft.co##+js(no-xhr-if, googlesyndication)
 gsmarena.com##div.align-center.justify-center.flex-column.d-flex:has(.ad-c-label)
 gsmarena.com###opt300x250
 gsmarena.com##.ad-label
-gsmarena.com##+js(aeld, DOMContentLoaded, /doubleclick|atob|return new Promise/)
+gsmarena.com##+js(aeld, DOMContentLoaded, /doubleclick|atob|return new Promise|aHR0c/)
 gsmarena.com##+js(remove-cookie, /DeviceID|lpe/)
 gsmarena.com##+js(no-fetch-if, doubleclick)
 remotejobzone.online##+js(no-fetch-if, adsbygoogle)
@@ -23813,6 +23818,7 @@ pixhost.*##.content-companion
 selfhostt.com,ssdhostting.com##+js(no-xhr-if, googlesyndication)
 bdjobs.com##+js(json-edit, .bannerConfig..advertise.*)
 ||goodreads.com/weblab
+||startuphub.ai/api/*^placement=
 ! Title: uBO Lite filters
 ! Last modified: Fri, 28 Aug 2026 05:03:23 +0000
 ! Expires: 4 days
@@ -23965,7 +23971,7 @@ geo.dailymotion.com##+js(set, DMP_ENABLE_ADS, false)
 ! Title: uBlock filters – Quick fixes
 ! Expires: 12 hours
 ! Last modified: Tue, 25 Aug 2026 15:25:43 +0000
-! Diff-Path: ../patches/2026.8.28.319.patch#ublock-quick-fixes
+! Diff-Path: ../patches/2026.8.29.126.patch#ublock-quick-fixes
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/quick-fixes.txt ***
