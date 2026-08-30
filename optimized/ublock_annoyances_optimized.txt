@@ -1,6 +1,6 @@
 !
 ! Title: uBlock filters – Annoyances
-! Last modified: 2026-08-29T17:34:38.574Z
+! Last modified: 2026-08-30T07:45:20.908Z
 !
 ! Compiled by @adguard/hostlist-compiler v0.0.0
 !
@@ -11,7 +11,7 @@
 ! Title: uBlock filters – Annoyances
 ! Expires: 7 days
 ! Last modified: Thu, 27 Aug 2026 10:20:43 +0000
-! Diff-Path: ../patches/2026.8.29.864.patch#ublock-annoyances
+! Diff-Path: ../patches/2026.8.30.393.patch#ublock-annoyances
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/annoyances.txt ***
@@ -4020,7 +4020,7 @@ readcomicsonline.lol##+js(nano-stb, e=>e-1)
 t3.chat##+js(nostif, .abort();, 1000)
 parsatv.com##+js(rmnt, script, .offsetHeight)
 ! Title: uBlock filters – Cookie Notices
-! Last modified: Sat, 29 Aug 2026 06:01:45 +0000
+! Last modified: Sun, 30 Aug 2026 05:57:45 +0000
 ! Expires: 7 days
 ! Description: Filters optimized for uBlock Origin, to be used with EasyList's and/or Adguard's "Cookie Notices" list(s)
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
@@ -8218,3 +8218,6 @@ groupsumi.fi##+js(trusted-set-local-storage-item, @sumi/consent, {"essential":tr
 nv-allesbestens.de##+js(trusted-click-element, '#BorlabsCookieBox input#checkbox-external-media,100,#BorlabsCookieBox a#CookieBoxSaveButton')
 ! Accept
 glowfestival.fi##+js(trusted-click-element, .cky-btn-accept)
+! https://github.com/uBlockOrigin/uAssets/issues/34283 - functional
+gamescom.global##+js(trusted-set-cookie, OptanonConsent, groups=C0001%3A1%2CC0002%3A1%2CC0003%3A0%2CC0004%3A0%2CC0005%3A0, , , domain, gamescom.global)
+gamescom.global##+js(trusted-set-cookie, OptanonAlertBoxClosed, $currentDate$)
