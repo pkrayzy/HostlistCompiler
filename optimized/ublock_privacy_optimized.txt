@@ -1,6 +1,6 @@
 !
 ! Title: uBlock filters – Privacy
-! Last modified: 2026-09-02T06:43:14.186Z
+! Last modified: 2026-09-03T06:45:34.595Z
 !
 ! Compiled by @adguard/hostlist-compiler v0.0.0
 !
@@ -10,8 +10,8 @@
 !
 ! Title: uBlock filters – Badware risks
 ! Expires: 5 days
-! Last modified: Wed, 02 Sep 2026 03:54:55 +0000
-! Diff-Path: ../patches/2026.9.2.261.patch#ublock-badware
+! Last modified: Wed, 02 Sep 2026 15:55:02 +0000
+! Diff-Path: ../patches/2026.9.3.256.patch#ublock-badware
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/badware.txt ***
@@ -680,6 +680,7 @@ cracksmid.com##div[style=""] > center > center
 ||fanbox.autos^$all
 ||luxoriahub.shop^$all
 ||claude-ai.cyou^$all
+||cdn.streameet.top^$all
 ! scam sites
 ||webuzz.me^$doc
 ||coup-ling.net^$all
@@ -1988,6 +1989,7 @@ abogadosrosarinos.com,aptisweb.com,avene-hebergement.com,caesarjaco.co.id,https-
 strand-co.com##+js(acs, document.createElement, .onerror)
 ##body > .cf-root
 /^https:\/\/[a-z]{7,}\.(com|icu)\/[Tt]raffic\/api$/$script,match-case,3p,to=com|icu
+||biscottirbh.lol^$all
 ##body > div.mw[role="main"] > .mc
 ||faceit-account.com^$all
 igualdad.iaa.csic.es##+js(acs, String.prototype.toLowerCase, Contract)
@@ -1996,6 +1998,7 @@ igualdad.iaa.csic.es##+js(acs, String.prototype.toLowerCase, Contract)
 ##html > #nc-cover:not(body)
 cizitensports.com##+js(rmnt, script, randomUUID)
 ###cf-challenge-root
+||sites.google.com/view/brewapp$doc
 ! !SECTION: ClickFix
 ||pccdirect.site^$all
 ||templatesearch.org^$all
@@ -3303,7 +3306,7 @@ rapidkil.com.au##+js(aost, XMLHttpRequest, /wp-content)
 ||getalia.org^$all
 ||goveanrs.org^$all
 ||govearali.org^$all
-/^https:\/\/[a-z]+\.[a-z]+\/[a-z]+\?rnd=[a-z0-9][a-z0-9][a-z0-9][a-z0-9][a-z0-9][a-z0-9][a-z0-9][a-z0-9]&ts=[0-9]+$/$script,xhr,3p,match-case
+/^https:\/\/[a-z]+\.[a-z]+\/[a-z]+\?rnd=[a-z0-9]{8}&ts=\d+$/$script,xhr,3p,match-case
 /jsrepo?rnd=$script,xhr,3p
 /teamrepo?rnd=$script,xhr,3p
 *$xhr,3p,method=get,to=org|shop|win,ipaddress=178.16.53.137
@@ -4004,8 +4007,8 @@ top##body > center + .A + .post
 ^ofv_id=*&aff_pub_id=*&click_id=*&subid1=*&subid2=$doc
 ! Title: uBlock filters – Privacy
 ! Expires: 7 days
-! Last modified: Tue, 01 Sep 2026 06:32:44 +0000
-! Diff-Path: ../patches/2026.9.2.261.patch#ublock-privacy
+! Last modified: Wed, 02 Sep 2026 13:49:25 +0000
+! Diff-Path: ../patches/2026.9.3.256.patch#ublock-privacy
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/privacy.txt ***
@@ -5909,6 +5912,7 @@ $uritransform=/#Echobox=[\d]{10}$//,to=iltalehti.fi|hs.fi
 ! ! https://github.com/uBlockOrigin/uAssets/issues/32951
 adhs-zentrum.de##+js(no-xhr-if, method:POST body:/"track"|adblock/)
 ||firestream.to/api/videos/*/view
+||h.f1.impact-ad.jp/pub_click/$urlskip=/\/\d{6}\/\d{6}\/(https.+)/ -uricomponent
 ! Merge in resource-abuse.txt
 ! *** uAssets:filters/resource-abuse.txt ***
 /edgemesh.*.js$script,domain=~edgemesh.com|~edgeno.de
