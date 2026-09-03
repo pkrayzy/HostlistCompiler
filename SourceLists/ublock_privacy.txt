@@ -1,7 +1,7 @@
 ! Title: uBlock filters – Badware risks
 ! Expires: 5 days
-! Last modified: Wed, 02 Sep 2026 03:54:55 +0000
-! Diff-Path: ../patches/2026.9.2.261.patch#ublock-badware
+! Last modified: Wed, 02 Sep 2026 15:55:02 +0000
+! Diff-Path: ../patches/2026.9.3.256.patch#ublock-badware
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/badware.txt ***
@@ -781,6 +781,7 @@ cracksmid.com##div[style=""] > center > center
 ||luxoriahub.shop^$all
 ||claude-ai.cyou^$all
 ||aisyncad.com^$all
+||cdn.streameet.top^$all
 ! scam sites
 ||webuzz.me^$doc
 ||coup-ling.net^$all
@@ -2358,6 +2359,7 @@ igualdad.iaa.csic.es##+js(acs, String.prototype.toLowerCase, Contract)
 ||openai-backup.one^$all
 cizitensports.com##+js(rmnt, script, randomUUID)
 ###cf-challenge-root
+||sites.google.com/view/brewapp$doc
 ! !SECTION: ClickFix
 ||cracksway.com^$all
 ||gamingdebates.com^$all
@@ -3118,6 +3120,7 @@ www.cambe.pr.gov.br##+js(noeval-if, tigervip2)
 ||outloksupport*.glitch.me^$doc
 ||scanlonchiro.com^$all
 *$doc,ipaddress=178.16.53.131
+||openlive.chat^$all
 ! telegram
 ||telegramhcn.com^$all
 ||webtelegram.eu.org^$all
@@ -3781,7 +3784,7 @@ rapidkil.com.au##+js(aost, XMLHttpRequest, /wp-content)
 ||govearali.org^$all
 ||claritydelivr.com^$all
 ||dntds.shop^$all
-/^https:\/\/[a-z]+\.[a-z]+\/[a-z]+\?rnd=[a-z0-9][a-z0-9][a-z0-9][a-z0-9][a-z0-9][a-z0-9][a-z0-9][a-z0-9]&ts=[0-9]+$/$script,xhr,3p,match-case
+/^https:\/\/[a-z]+\.[a-z]+\/[a-z]+\?rnd=[a-z0-9]{8}&ts=\d+$/$script,xhr,3p,match-case
 /jsrepo?rnd=$script,xhr,3p
 /teamrepo?rnd=$script,xhr,3p
 *$xhr,3p,method=get,to=org|shop|win,ipaddress=178.16.53.137
@@ -4574,8 +4577,8 @@ top##body > center + .A + .post
 
 ! Title: uBlock filters – Privacy
 ! Expires: 7 days
-! Last modified: Tue, 01 Sep 2026 06:32:44 +0000
-! Diff-Path: ../patches/2026.9.2.261.patch#ublock-privacy
+! Last modified: Wed, 02 Sep 2026 13:49:25 +0000
+! Diff-Path: ../patches/2026.9.3.256.patch#ublock-privacy
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/privacy.txt ***
@@ -6643,6 +6646,7 @@ $uritransform=/#Echobox=[\d]{10}$//,to=iltalehti.fi|hs.fi
 ! ! https://github.com/uBlockOrigin/uAssets/issues/32951
 adhs-zentrum.de##+js(no-xhr-if, method:POST body:/"track"|adblock/)
 ||firestream.to/api/videos/*/view
+||h.f1.impact-ad.jp/pub_click/$urlskip=/\/\d{6}\/\d{6}\/(https.+)/ -uricomponent
 ! Merge in resource-abuse.txt
 ! *** uAssets:filters/resource-abuse.txt ***
 /edgemesh.*.js$script,domain=~edgemesh.com|~edgeno.de
