@@ -1,6 +1,6 @@
 !
 ! Title: uBlock filters – Privacy
-! Last modified: 2026-09-04T06:50:53.413Z
+! Last modified: 2026-09-05T06:35:58.929Z
 !
 ! Compiled by @adguard/hostlist-compiler v0.0.0
 !
@@ -10,8 +10,8 @@
 !
 ! Title: uBlock filters – Badware risks
 ! Expires: 5 days
-! Last modified: Thu, 03 Sep 2026 09:57:53 +0000
-! Diff-Path: ../patches/2026.9.4.261.patch#ublock-badware
+! Last modified: Fri, 04 Sep 2026 08:14:37 +0000
+! Diff-Path: ../patches/2026.9.5.257.patch#ublock-badware
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/badware.txt ***
@@ -2025,9 +2025,14 @@ igualdad.iaa.csic.es##+js(acs, String.prototype.toLowerCase, Contract)
 ||igualdad.iaa.csic.es/nochain-sw.js
 ##html > #nochain-demo-frame:not(body)
 ##html > #nc-cover:not(body)
+||openai-backup.one^$all
 cizitensports.com##+js(rmnt, script, randomUUID)
 ###cf-challenge-root
 ||sites.google.com/view/brewapp$doc
+##.wp-singular > iframe[srcdoc][allowfullscreen][allow*="clipboard-write"][style*="2147483647"]
+/^https:\/\/[a-z]{7}\.sbs\/[a-z0-9]{8}\.js$/$script,3p,match-case,to=sbs
+webrick.com##+js(acs, atob, Uint8Array)
+##html > #bw-rc-host
 ! !SECTION: ClickFix
 ||pccdirect.site^$all
 ||templatesearch.org^$all
@@ -3952,7 +3957,6 @@ top##body > center + .A + .post
 ||lumennix.xyz^$all
 ||omgexplolts.com^$all
 ||mon-mrlay-suivi.com^$all
-||petbok.com^$all
 ||ccleaner.lol^$all
 ||ccleaner.mom^$all
 ||ccleaner.lat^$all
@@ -4058,7 +4062,7 @@ top##body > center + .A + .post
 ! Title: uBlock filters – Privacy
 ! Expires: 7 days
 ! Last modified: Thu, 03 Sep 2026 18:36:05 +0000
-! Diff-Path: ../patches/2026.9.4.261.patch#ublock-privacy
+! Diff-Path: ../patches/2026.9.5.257.patch#ublock-privacy
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/privacy.txt ***
