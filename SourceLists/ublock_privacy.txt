@@ -1,7 +1,7 @@
 ! Title: uBlock filters – Badware risks
 ! Expires: 5 days
 ! Last modified: Fri, 04 Sep 2026 08:14:37 +0000
-! Diff-Path: ../patches/2026.9.5.257.patch#ublock-badware
+! Diff-Path: ../patches/2026.9.6.350.patch#ublock-badware
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/badware.txt ***
@@ -4583,8 +4583,8 @@ top##body > center + .A + .post
 
 ! Title: uBlock filters – Privacy
 ! Expires: 7 days
-! Last modified: Thu, 03 Sep 2026 18:36:05 +0000
-! Diff-Path: ../patches/2026.9.5.257.patch#ublock-privacy
+! Last modified: Sat, 05 Sep 2026 10:35:28 +0000
+! Diff-Path: ../patches/2026.9.6.350.patch#ublock-privacy
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/privacy.txt ***
@@ -5180,7 +5180,6 @@ arstechnica.com,dermnetnz.org##.gsc-webResult a[data-cturl]:remove-attr(/^data-c
 !#if (!adguard_app_ios && !adguard_ext_android_cb && !adguard_ext_safari && !adguard_ext_chromium_mv3)
 ! Block Attribution reporting
 ||observe.runpod.io/static/web-vitals.js
-/e/*^ip=*^compression=
 /wp-content/plugins/google-site-kit/dist/assets/js/googlesitekit-consent-mode-
 /wp-content/plugins/google-site-kit/dist/assets/js/googlesitekit-events-provider-
 /wp-content/plugins/tmbi-assertive-yield/*
@@ -5191,6 +5190,7 @@ arstechnica.com,dermnetnz.org##.gsc-webResult a[data-cturl]:remove-attr(/^data-c
 /wp-content/plugins/tmbi*-affiliate
 !#endif
 /e/*^ip=*^beacon=
+/e/*^ip=*^compression=
 ! petametrics
 ||petametrics.com^$~script
 ||petametrics.com/*/__activity.
@@ -5568,6 +5568,7 @@ $removeparam=igshid,domain=instagram.com|threads.net
 ||open.spotify.com^$removeparam=referral
 ||open.spotify.com^$removeparam=si
 ||spotify.com/gabo-receiver-service/public/v3/events
+||spotify.com/gabo-receiver-service/v3/events
 !#if env_firefox
 ||reddit.com^$removeparam=rdt,doc
 !#endif
