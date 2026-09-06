@@ -1,6 +1,6 @@
 !
 ! Title: uBlock filters – Privacy
-! Last modified: 2026-09-05T06:35:58.929Z
+! Last modified: 2026-09-06T06:45:09.811Z
 !
 ! Compiled by @adguard/hostlist-compiler v0.0.0
 !
@@ -11,7 +11,7 @@
 ! Title: uBlock filters – Badware risks
 ! Expires: 5 days
 ! Last modified: Fri, 04 Sep 2026 08:14:37 +0000
-! Diff-Path: ../patches/2026.9.5.257.patch#ublock-badware
+! Diff-Path: ../patches/2026.9.6.350.patch#ublock-badware
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/badware.txt ***
@@ -131,6 +131,7 @@ majorgeeks.com##b:has(a[target^="reimage"])
 ||gmboxx.com^
 ||mr.media-bucket.com^
 ||discount.s3blog.org^
+||s3blog.org^$3p
 ||upload4earn.org^$doc
 ||abcdserver.com^$all
 ||embols.com^
@@ -1959,6 +1960,7 @@ ondigitalocean.app##+js(aeld, mousemove, loadSecret)
 ||carrymedias.com^$all
 ||homebuying-guide.com^$all
 ||ladesona.com^$all
+||luiosmardc.ink^$all
 $doc,ipaddress=185.100.85.248
 ##body.user-clicked[style="cursor: auto;"] > #root > .app-container
 /images/script.mp3|$media,1p
@@ -3619,6 +3621,7 @@ sport.elwatannews.com##+js(aost, Array.prototype.indexOf, isWin)
 ||ff-exchange.cloud^$doc
 ||us-aliexpress.com^$doc
 ||ff-exchange.help^$doc
+||cnangelly.online^$doc
 ||changely.at^$doc
 ||changeenow.at^$doc
 ||ff-exchange.space^$doc
@@ -4061,8 +4064,8 @@ top##body > center + .A + .post
 ^ofv_id=*&aff_pub_id=*&click_id=*&subid1=*&subid2=$doc
 ! Title: uBlock filters – Privacy
 ! Expires: 7 days
-! Last modified: Thu, 03 Sep 2026 18:36:05 +0000
-! Diff-Path: ../patches/2026.9.5.257.patch#ublock-privacy
+! Last modified: Sat, 05 Sep 2026 10:35:28 +0000
+! Diff-Path: ../patches/2026.9.6.350.patch#ublock-privacy
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/privacy.txt ***
@@ -4583,7 +4586,6 @@ arstechnica.com,dermnetnz.org##.gsc-webResult a[data-cturl]:remove-attr(/^data-c
 ! Test on uBO first
 ! Block Attribution reporting
 ||observe.runpod.io/static/web-vitals.js
-/e/*^ip=*^compression=
 /wp-content/plugins/google-site-kit/dist/assets/js/googlesitekit-consent-mode-
 /wp-content/plugins/google-site-kit/dist/assets/js/googlesitekit-events-provider-
 /wp-content/plugins/tmbi-assertive-yield/*
@@ -4593,6 +4595,7 @@ arstechnica.com,dermnetnz.org##.gsc-webResult a[data-cturl]:remove-attr(/^data-c
 /wp-content/plugins/tmbi-permutive
 /wp-content/plugins/tmbi*-affiliate
 /e/*^ip=*^beacon=
+/e/*^ip=*^compression=
 ! petametrics
 ||petametrics.com/*/__activity.
 ||paytr.com/securemetric/
@@ -4946,6 +4949,7 @@ $removeparam=igshid,domain=instagram.com|threads.net
 ||open.spotify.com^$removeparam=referral
 ||open.spotify.com^$removeparam=si
 ||spotify.com/gabo-receiver-service/public/v3/events
+||spotify.com/gabo-receiver-service/v3/events
 ||control.kochava.com^$removeparam=_rt
 ||control.kochava.com^$removeparam=device_id
 ||control.kochava.com^$removeparam=ftag

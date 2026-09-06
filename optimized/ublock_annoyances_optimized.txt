@@ -1,6 +1,6 @@
 !
 ! Title: uBlock filters – Annoyances
-! Last modified: 2026-09-05T06:36:08.489Z
+! Last modified: 2026-09-06T06:45:18.995Z
 !
 ! Compiled by @adguard/hostlist-compiler v0.0.0
 !
@@ -11,7 +11,7 @@
 ! Title: uBlock filters – Annoyances
 ! Expires: 7 days
 ! Last modified: Fri, 04 Sep 2026 08:26:03 +0000
-! Diff-Path: ../patches/2026.9.5.257.patch#ublock-annoyances
+! Diff-Path: ../patches/2026.9.6.350.patch#ublock-annoyances
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/annoyances.txt ***
@@ -4022,7 +4022,7 @@ firestream.to##+js(set, console.clear, trueFunc)
 firestream.to##+js(set, console.table, trueFunc)
 firestream.to##+js(set, console.log, trueFunc)
 ! Title: uBlock filters – Cookie Notices
-! Last modified: Wed, 02 Sep 2026 14:17:52 +0000
+! Last modified: Sat, 05 Sep 2026 22:51:39 +0000
 ! Expires: 7 days
 ! Description: Filters optimized for uBlock Origin, to be used with EasyList's and/or Adguard's "Cookie Notices" list(s)
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
@@ -8226,3 +8226,12 @@ gamescom.global##+js(trusted-set-cookie, OptanonConsent, groups=C0001%3A1%2CC000
 gamescom.global##+js(trusted-set-cookie, OptanonAlertBoxClosed, $currentDate$)
 ! https://github.com/AdguardTeam/AdguardFilters/issues/239843
 zonerai.com##+js(trusted-set-local-storage-item, 'cookie_consent', '{"necessary":true,"analytics":false,"marketing":false}')
+! https://github.com/uBlockOrigin/uAssets/issues/22533#issuecomment-5553415130
+! Necessary + functional
+vpg.no##+js(trusted-click-element, #cookieConsentModal.show .js-cookie-configuration-button .btn-primary, , 2000)
+vpg.no##+js(trusted-click-element, input[id="cookie_ønskeliste-og-andre-funksjoner"]:not(:checked), , 2500)
+vpg.no##+js(trusted-click-element, 'xpath://button[@class="btn btn-primary js-offcanvas-cookie-submit"][normalize-space(.)="Lagre"]', , 3000)
+vpg.no##.modal-backdrop.fade
+vpg.no##.offcanvas-backdrop.fade
+vpg.no###cookieConsentModal
+vpg.no##.js-offcanvas-singleton.offcanvas-start
