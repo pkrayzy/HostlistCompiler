@@ -1,6 +1,6 @@
 !
 ! Title: uBlock filters
-! Last modified: 2026-09-06T06:45:00.389Z
+! Last modified: 2026-09-07T06:54:16.023Z
 !
 ! Compiled by @adguard/hostlist-compiler v0.0.0
 !
@@ -10,8 +10,8 @@
 !
 ! Title: uBlock filters
 ! Expires: 5 days
-! Last modified: Sat, 05 Sep 2026 21:43:43 +0000
-! Diff-Path: ../patches/2026.9.6.350.patch#ublock-filters
+! Last modified: Mon, 07 Sep 2026 03:12:17 +0000
+! Diff-Path: ../patches/2026.9.7.267.patch#ublock-filters
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/filters.txt ***
@@ -4072,6 +4072,7 @@ canoe.com###postmedia_layouts_ad-top
 canoe.com##.ad__container
 moviflex.*##+js(acs, Math, XMLHttpRequest)
 moviflex.*##+js(nowoif)
+||wlct-three.de^$3p
 vladan.fr##+js(nostif, adb, 0)
 vladan.fr##body:style(background-image:none !important)
 vladan.fr###text-414857080 > .widget-wrap > .widgettitle.widget-title
@@ -7434,7 +7435,6 @@ cloubix.com##+js(nano-sib, remaining--, *)
 cloubix.com##+js(trusted-set-attr, #countdown, data-status, active)
 cloubix.com##+js(aeld, click, appendChild)
 ||getfinefile.com^$popup
-||annoyingnightmareedit.com^$popup
 paste4free.site##+js(nostif, getComputedStyle)
 paste4free.site##+js(nano-sib, secondsLeft)
 paste4free.site##a[href*="?key="][target="_blank"]
@@ -9569,7 +9569,7 @@ gayxx.net##+js(aopr, adsbyjuicy)
 explorecams.com,minecraft.buzz,rarepike.com##+js(aeld, np.detect)
 ! !SECTION: np.detect
 ! SECTION: Temporal
-community-scripts.org,massgrave.dev,natfrp.com#@#+js(prevent-clipboard-write, /^mshta |^msiexec |^(bash <<<|curl -kfsSL) \$\(echo .+? base64 -d\b|^cmd \/c .*?\bcurl .+?(\.exe|\.bat)\b|^cmd .*?\bfor \/f .*?\bdelims .*?\bpow |^powershell .*?-w(indowStyle)? h(idden)?\b|^powershell .*?-NoP\b|^powershell .*?-ep bypass\b|^powershell .*?-EP (B|U)\b|^powershell.+?-ExecutionPolicy (Bypass|Unrestricted)|\\PowerShell\.exe.+?-ep bypass\b|^powershell.+?\biex\(|^powershell.+?Invoke-Expression|^powershell.+?Invoke-WebRequest|^powershell.+?-UseBasicParsing|^cmd .*?\/c .+? -nop .+? iex\b|^(cmd|powershell)\b.+?recaptcha|^(cmd|powershell)\b.+?#(Verification|     )|^(cmd|powershell)\b.+?     #|^osascript .+?\bcurl http|^curl -s\b.+?\| (bash|sh|zsh)\b|^\/bin\/(bash|sh|zsh) -c\b.+?\bcurl|^bash -c\b.+?\$\(curl|^python3? -c\b.+?\b(exec|urllib|subprocess)\b|^echo .+?base64 .+?\b(bash|osascript|z?sh)\b|openssl base64 -d|^curl\b .+?chmod \+x.+?&&|^(bash|sh|osascript)\b.+?recaptcha|^(bash|sh|osascript)\b.+?#(Verification|     )|^(bash|sh|osascript)\b.+?     #|^wget .+?\| (bash|sh)\b|^curl\b.+?-o\b.+?\/tmp\/.+?&&|^nc .+?-e \/bin\/(bash|sh)\b|^\/tmp\/.+?chmod \+x.+?&&|^wget -q.+?\.(sh|py|bin|elf)\b|^cmd .+?\bcertutil .+?\b(\.exe|\.bat)\b|^powershell .+?\birm .+?\.[a-z]+\/.+?powershell|\bpcalua(\.exe)? .*?\b(curl|powershell|saps|cmd)\b|^cmd .+?\bcmdkey .+?\bschtasks|^Invoke-Command .+?Base64String|^c(onhost|md) .*?--headless |^iex\(i(rm|wr) |^irm .+? iex\b/msi, domAlert, 'Beware, uBlock Origin blocked a potential ClickFix attack: ${text}', excludeMatches, /Maintainer|Contributor|^git |^http|^import /i)
+christitus.com,community-scripts.org,massgrave.dev,natfrp.com#@#+js(prevent-clipboard-write, /^mshta |^msiexec |^(bash <<<|curl -kfsSL) \$\(echo .+? base64 -d\b|^cmd \/c .*?\bcurl .+?(\.exe|\.bat)\b|^cmd .*?\bfor \/f .*?\bdelims .*?\bpow |^powershell .*?-w(indowStyle)? h(idden)?\b|^powershell .*?-NoP\b|^powershell .*?-ep bypass\b|^powershell .*?-EP (B|U)\b|^powershell.+?-ExecutionPolicy (Bypass|Unrestricted)|\\PowerShell\.exe.+?-ep bypass\b|^powershell.+?\biex\(|^powershell.+?Invoke-Expression|^powershell.+?Invoke-WebRequest|^powershell.+?-UseBasicParsing|^cmd .*?\/c .+? -nop .+? iex\b|^(cmd|powershell)\b.+?recaptcha|^(cmd|powershell)\b.+?#(Verification|     )|^(cmd|powershell)\b.+?     #|^osascript .+?\bcurl http|^curl -s\b.+?\| (bash|sh|zsh)\b|^\/bin\/(bash|sh|zsh) -c\b.+?\bcurl|^bash -c\b.+?\$\(curl|^python3? -c\b.+?\b(exec|urllib|subprocess)\b|^echo .+?base64 .+?\b(bash|osascript|z?sh)\b|openssl base64 -d|^curl\b .+?chmod \+x.+?&&|^(bash|sh|osascript)\b.+?recaptcha|^(bash|sh|osascript)\b.+?#(Verification|     )|^(bash|sh|osascript)\b.+?     #|^wget .+?\| (bash|sh)\b|^curl\b.+?-o\b.+?\/tmp\/.+?&&|^nc .+?-e \/bin\/(bash|sh)\b|^\/tmp\/.+?chmod \+x.+?&&|^wget -q.+?\.(sh|py|bin|elf)\b|^cmd .+?\bcertutil .+?\b(\.exe|\.bat)\b|^powershell .+?\birm .+?\.[a-z]+\/.+?powershell|\bpcalua(\.exe)? .*?\b(curl|powershell|saps|cmd)\b|^cmd .+?\bcmdkey .+?\bschtasks|^Invoke-Command .+?Base64String|^c(onhost|md) .*?--headless |^iex\(i(rm|wr) |^irm .+? iex\b/msi, domAlert, 'Beware, uBlock Origin blocked a potential ClickFix attack: ${text}', excludeMatches, /Maintainer|Contributor|^git |^http|^import /i)
 ! Specific cases
 sites.google.com##+js(prevent-clipboard-write, /^mshta |^msiexec |^(bash <<<|curl -kfsSL) \$\(echo .+? base64 -d\b|^cmd \/c .*?\bcurl .+?(\.exe|\.bat)\b|^cmd .*?\bfor \/f .*?\bdelims .*?\bpow |^powershell .*?-w(indowStyle)? h(idden)?\b|^powershell .*?-NoP\b|^powershell .*?-ep bypass\b|^powershell .*?-EP (B|U)\b|^powershell.+?-ExecutionPolicy (Bypass|Unrestricted)|\\PowerShell\.exe.+?-ep bypass\b|^powershell.+?\biex\(|^powershell.+?Invoke-Expression|^powershell.+?Invoke-WebRequest|^powershell.+?-UseBasicParsing|^cmd .*?\/c .+? -nop .+? iex\b|^(cmd|powershell)\b.+?recaptcha|^(cmd|powershell)\b.+?#(Verification|     )|^(cmd|powershell)\b.+?     #|^osascript .+?\bcurl http|^curl -s\b.+?\| (bash|sh|zsh)\b|^\/bin\/(bash|sh|zsh) -c\b.+?\bcurl|^bash -c\b.+?\$\(curl|^python3? -c\b.+?\b(exec|urllib|subprocess)\b|^echo .+?base64 .+?\b(bash|osascript|z?sh)\b|openssl base64 -d|^curl\b .+?chmod \+x.+?&&|^(bash|sh|osascript)\b.+?recaptcha|^(bash|sh|osascript)\b.+?#(Verification|     )|^(bash|sh|osascript)\b.+?     #|^wget .+?\| (bash|sh)\b|^curl\b.+?-o\b.+?\/tmp\/.+?&&|^nc .+?-e \/bin\/(bash|sh)\b|^\/tmp\/.+?chmod \+x.+?&&|^wget -q.+?\.(sh|py|bin|elf)\b|^cmd .+?\bcertutil .+?\b(\.exe|\.bat)\b|^powershell .+?\birm .+?\.[a-z]+\/.+?powershell|\bpcalua(\.exe)? .*?\b(curl|powershell|saps|cmd)\b|^cmd .+?\bcmdkey .+?\bschtasks|^Invoke-Command .+?Base64String|^c(onhost|md) .*?--headless |^iex\(i(rm|wr) |^irm .+? iex\b/msi, domAlert, 'Beware. uBlock Origin blocked a potential ClickFix attack: ${text}', excludeMatches, /Maintainer|Contributor|^git |^http|^import /i)
 ! !SECTION: Temporal
@@ -16335,7 +16335,6 @@ imagetotext.info##+js(set, detectadsbocker, false)
 sportskart.*##+js(aopr, afScript)
 sportskart.*##^script:has-text(u_cfg)
 euro2024direct.ru##+js(acs, document.documentElement, break;case $.)
-||ss-mndsrv.b-cdn.net^
 ! *** uAssets:filters/filters-2023.txt ***
 filelions.*,streamwish.*,vidhidevip.com##+js(aopr, __Y)
 /assets/jquery/adult100.js?v=$script,1p
@@ -18852,7 +18851,6 @@ imagefap.com##+js(set-cookie, show_only_once_per_day2, 1)
 /adraw?zone=$doc
 /pu/?psid=$doc
 /pu/exralifk/*$doc
-||crmacd.livejasmin.com^$all
 alliptvlinks.com##+js(aeld, load, ads)
 alliptvlinks.com##+js(aopr, eazy_ad_unblocker)
 alliptvlinks.com###arlinablock
@@ -19990,6 +19988,7 @@ duneawakening.th.gl##div#dune-awakening-large-mobile-banner
 duneawakening.th.gl##div#dune-awakening-mobile-banner
 @@*$script,domain=th.gl,denyallow=amazon-adsystem.com|doubleclick.net|googlesyndication.com|avplayer.com|aniview.com|id5-sync.com
 *$script,3p,redirect-rule=noop.js,domain=th.gl,important
+||fewcents.co^$3p
 wetter3.de##+js(set, karte3, 18)
 @@||emailregex.com^$ghide
 emailregex.com##.adsbygoogle
@@ -23912,6 +23911,7 @@ newsammo.com##+js(nostif, .showModal)
 newsammo.com##+js(no-fetch-if, adsbygoogle)
 freezehost.pro##+js(rmnt, script, .offsetHeight)
 *$image,3p,denyallow=googleapis.com,domain=vipbox1.org
+@@||samplette.io^$ghide
 ! Title: uBO Lite filters
 ! Last modified: Fri, 04 Sep 2026 07:59:47 +0000
 ! Expires: 4 days
@@ -24069,8 +24069,8 @@ play.mercadolivre.com.br##+js(trusted-json-edit-fetch-response, $..durationInSec
 play.mercadolivre.com.br##+js(mpegdash-prune, Period:has(> EventStream[schemeIdUri="urn:sva:advertising-wg:ad-id-signaling"]), /dash)
 ! Title: uBlock filters – Quick fixes
 ! Expires: 12 hours
-! Last modified: Sat, 05 Sep 2026 21:46:20 +0000
-! Diff-Path: ../patches/2026.9.6.350.patch#ublock-quick-fixes
+! Last modified: Sun, 06 Sep 2026 20:23:40 +0000
+! Diff-Path: ../patches/2026.9.7.267.patch#ublock-quick-fixes
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/quick-fixes.txt ***
@@ -24358,3 +24358,4 @@ igorslab.de##a[target] img[src^="blob:"]
 igorslab.de##.herald-above-footer
 /^https:\/\/www\.igorslab\.de\/[a-z0-9]+\/[\/a-zA-Z0-9_-]+$/$image,1p,match-case,domain=igorslab.de,redirect=32x32.png
 sugoren.com#@#.widget
+||x.com/i/api/1.1/flow/timeline.json$badfilter
