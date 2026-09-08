@@ -1,6 +1,6 @@
 !
 ! Title: uBlock filters – Annoyances
-! Last modified: 2026-09-07T06:54:33.383Z
+! Last modified: 2026-09-08T06:50:27.611Z
 !
 ! Compiled by @adguard/hostlist-compiler v0.0.0
 !
@@ -10,8 +10,8 @@
 !
 ! Title: uBlock filters – Annoyances
 ! Expires: 7 days
-! Last modified: Sun, 06 Sep 2026 13:43:38 +0000
-! Diff-Path: ../patches/2026.9.7.267.patch#ublock-annoyances
+! Last modified: Mon, 07 Sep 2026 12:04:29 +0000
+! Diff-Path: ../patches/2026.9.8.354.patch#ublock-annoyances
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/annoyances.txt ***
@@ -4021,8 +4021,9 @@ parsatv.com##+js(rmnt, script, .offsetHeight)
 firestream.to##+js(set, console.clear, trueFunc)
 firestream.to##+js(set, console.table, trueFunc)
 firestream.to##+js(set, console.log, trueFunc)
+investidor10.com.br##+js(trusted-set-local-storage-item, guest_user_banner_aon_closed, $now$)
 ! Title: uBlock filters – Cookie Notices
-! Last modified: Sat, 05 Sep 2026 22:51:39 +0000
+! Last modified: Mon, 07 Sep 2026 15:46:26 +0000
 ! Expires: 7 days
 ! Description: Filters optimized for uBlock Origin, to be used with EasyList's and/or Adguard's "Cookie Notices" list(s)
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
@@ -4687,6 +4688,12 @@ erneuerbare-energien-aktuell.de,gearnews.com,glow25.de,h-f.at,hoerbert.com,horne
 globus.ru##+js(trusted-set-local-storage-item, notifications-ls, '{"state":{"isCookieNotified":true},"version":0}')
 ! https://github.com/uBlockOrigin/uAssets/issues/34353
 linsenplatz.de##+js(aeld, DOMContentLoaded, cookieConsent)
+! https://github.com/uBlockOrigin/uAssets/issues/34390
+! https://www.formula1.com/en/latest/article.team-preview-an-all-new-car-and-a-new-name-but-will-kick-saubers-changes.6ahHtgC6kekGu0Y64lfhZh.html - For videos
+! hide popup
+! formula1.com##[id^="sp_message_container_"]
+! reject consent
+consent.formula1.com##+js(trusted-click-element, button[aria-label="Essential only cookies"])
 !! Needs additional cookies
 ! Aceepting most cookies are required to view the content without payment
 ! https://github.com/AdguardTeam/AdguardFilters/issues/210256
@@ -4865,11 +4872,6 @@ saniweb.nl,bensanitair.nl##+js(trusted-set-cookie, cookiepreferences, necessary#
 uswitch.com##+js(trusted-set-cookie, cookie-preferences, '{"performance":false,"marketing":false,"functionality":true,"social":true,"essential":true}')
 ! Necessary + social
 ferienpiraten.ch,holidaypirates.com,piratinviaggio.it,travelpirates.com,urlaubspiraten.at,urlaubspiraten.de,vakantiepiraten.nl,viajerospiratas.es,voyagespirates.fr,wakacyjnipiraci.pl##+js(trusted-set-cookie, hp__gdpr_consent, !demographics=false!googletagmanager=false!facebook=true!twitter=true!instagram=true!youtube=true!optimize=false!helphero=false!fbpixel=false!iterable=false!kayakWidget=false!vimeo=true!lastminute=false!apple=true!google=true!hotjar=false!getYourGuide=false!gad=false, 1year, , reload, 1)
-! https://www.formula1.com/en/latest/article.team-preview-an-all-new-car-and-a-new-name-but-will-kick-saubers-changes.6ahHtgC6kekGu0Y64lfhZh.html - For videos
-! hide popup
-formula1.com##[id^="sp_message_container_"]
-! reject consent
-formula1.com##+js(trusted-click-element, [aria-label="REJECT ALL"], , 500)
 ! Necessary + Marketing - for maps, sample page: rhein-ruhr.stadtmobil.de
 stadtmobil.de##+js(trusted-set-cookie, CookieConsent, {stamp:%27Uv9YOAVP5djCBw71lxhE4rNAfTObaGck2Sn3rKWf9dPCYpqcWvAlpA==%27%2Cnecessary:true%2Cpreferences:false%2Cstatistics:false%2Cmarketing:true%2Cmethod:%27explicit%27%2Cver:1}, 1year)
 ! https://www.coinbase.com/ - Functional
