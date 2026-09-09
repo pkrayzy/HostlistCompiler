@@ -1,6 +1,6 @@
 !
 ! Title: uBlock filters – Annoyances
-! Last modified: 2026-09-08T06:50:27.611Z
+! Last modified: 2026-09-09T06:59:20.295Z
 !
 ! Compiled by @adguard/hostlist-compiler v0.0.0
 !
@@ -10,8 +10,8 @@
 !
 ! Title: uBlock filters – Annoyances
 ! Expires: 7 days
-! Last modified: Mon, 07 Sep 2026 12:04:29 +0000
-! Diff-Path: ../patches/2026.9.8.354.patch#ublock-annoyances
+! Last modified: Tue, 08 Sep 2026 16:00:32 +0000
+! Diff-Path: ../patches/2026.9.9.7.patch#ublock-annoyances
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/annoyances.txt ***
@@ -1217,6 +1217,7 @@ esscctv.com##.track_back:style(background: unset !important;)
 esscctv.com##.pg_main2, .panel_main, .panel_border2:style(background: unset !important; user-select: text !important; -ms-user-select: text !important; -moz-user-select: text !important; -khtml-user-select: text !important; -webkit-user-select: text !important; -webkit-touch-callout: default !important;)
 nullforums.net##+js(rmnt, script, contextmenu)
 mostream.us##+js(rmnt, script, /devtoolsDetector|keyCode|preventDefault/)
+kwik.cx##+js(aeld, contextmenu, preventDefault)
 kursnacukrzyce.pl##+js(acs, document.addEventListener, contextmenu)
 ||abstream.to/js/devtools-detector*.js
 abstream.to##+js(acs, document.onkeydown)
@@ -3636,7 +3637,7 @@ how-to-pc.info,programming-link.info##+js(set, pqdxwidthqt, false)
 with.is##*:style(-webkit-touch-callout: default !important; -webkit-user-select: text !important; -moz-user-select: text !important; -ms-user-select: text !important; user-select: text !important; -webkit-tap-highlight-color: revert !important;)
 movie-web.app##+js(noeval-if, debugger)
 redecanais.*,redecanaistv.*,redisex.*,xn-----0b4asja7ccgu2b4b0gd0edbjm2jpa1b1e9zva7a0347s4da2797e8qri.xn--1ck2e1b,xn--90afacv0clj6ac0dxa.xn--p1ai,xn--90afacv0cu2a3cr.xn--p1ai##+js(rmnt, script, /ctrlKey|clickNS|disableselect/, quitAfter, 2000)
-redecanais.*,redecanaistv.*,redisex.*,xn-----0b4asja7ccgu2b4b0gd0edbjm2jpa1b1e9zva7a0347s4da2797e8qri.xn--1ck2e1b,xn--90afacv0clj6ac0dxa.xn--p1ai,xn--90afacv0cu2a3cr.xn--p1ai##+js(nostif, new.target===undefined, 700)
+redecanais.*,redecanaistv.*,redisex.*,xn-----0b4asja7ccgu2b4b0gd0edbjm2jpa1b1e9zva7a0347s4da2797e8qri.xn--1ck2e1b,xn--90afacv0clj6ac0dxa.xn--p1ai,xn--90afacv0cu2a3cr.xn--p1ai##+js(set, document.fullscreenElement, true)
 lowcygier.pl##+js(aeld, error, browser-plugin)
 asheville.com##+js(nostif, adblock)
 theasianparent.com##+js(acs, document.onselectstart, disableselect)
@@ -4023,7 +4024,7 @@ firestream.to##+js(set, console.table, trueFunc)
 firestream.to##+js(set, console.log, trueFunc)
 investidor10.com.br##+js(trusted-set-local-storage-item, guest_user_banner_aon_closed, $now$)
 ! Title: uBlock filters – Cookie Notices
-! Last modified: Mon, 07 Sep 2026 15:46:26 +0000
+! Last modified: Tue, 08 Sep 2026 16:03:26 +0000
 ! Expires: 7 days
 ! Description: Filters optimized for uBlock Origin, to be used with EasyList's and/or Adguard's "Cookie Notices" list(s)
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
@@ -4085,6 +4086,8 @@ beitberl.ac.il,shimur.org###MavilixCookiesBox
 ! https://github.com/uBlockOrigin/uAssets/issues/34183
 ! https://github.com/uBlockOrigin/uAssets/discussions/34184
 ||rcommoncf.entrata.com/privacy_controller/
+! https://github.com/uBlockOrigin/uAssets/issues/34398
+||cdn.shopify.com/extensions/*/gdpr-cookie-consent-
 !!! Trusted scriptlets------------------------------------------------------------
 !! Accept mandatory cookies / reject all additional cookies
 ! Do not use trusted-set-cookie for Google - it will cause captcha prompts for many users (maybe Google's antibot systems don't like the same cookie value being shared?) The issue doesn't appear in every region though
