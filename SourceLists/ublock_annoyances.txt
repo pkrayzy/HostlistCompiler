@@ -1,7 +1,7 @@
 ! Title: uBlock filters – Annoyances
 ! Expires: 7 days
 ! Last modified: Wed, 09 Sep 2026 14:48:49 +0000
-! Diff-Path: ../patches/2026.9.10.272.patch#ublock-annoyances
+! Diff-Path: ../patches/2026.9.11.269.patch#ublock-annoyances
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/annoyances.txt ***
@@ -4282,7 +4282,7 @@ firestream.to##+js(set, console.log, trueFunc)
 investidor10.com.br##+js(trusted-set-local-storage-item, guest_user_banner_aon_closed, $now$)
 
 ! Title: uBlock filters – Cookie Notices
-! Last modified: Tue, 08 Sep 2026 16:03:26 +0000
+! Last modified: Fri, 11 Sep 2026 04:05:02 +0000
 ! Expires: 7 days
 ! Description: Filters optimized for uBlock Origin, to be used with EasyList's and/or Adguard's "Cookie Notices" list(s)
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
@@ -5008,6 +5008,8 @@ linsenplatz.de##+js(aeld, DOMContentLoaded, cookieConsent)
 ! formula1.com##[id^="sp_message_container_"]
 ! reject consent
 consent.formula1.com##+js(trusted-click-element, button[aria-label="Essential only cookies"])
+! https://github.com/uBlockOrigin/uAssets/issues/34442
+thomas-krenn.com##+js(trusted-set-cookie, copol_www_thomas-krenn_com_optin_categories, %5B%22essential%22%5D, , , domain, .www.thomas-krenn.com)
 
 !! Needs additional cookies
 
@@ -9949,7 +9951,10 @@ zenskirecenziraj.com##+js(trusted-set-cookie, zenski_cmp, basic)
 tlc.com##+js(trusted-click-element, .btn.btn-primary)
 
 ! https://www.eventim.ro/event/alifantis-mirica-gemini-2-0-casa-de-cultura-a-sindicatelor-21322560/ - maps breakage
-eventim.ro##+js(trusted-click-element, #cmpwrapper >>> .cmpboxbtnyes, , 1000)
+! https://github.com/uBlockOrigin/uAssets/issues/34452 - video breakage
+donaukurier.de#@#body:style(overflow: auto !important;)
+donaukurier.de#@##cmpwrapper
+donaukurier.de,eventim.ro##+js(trusted-click-element, #cmpwrapper >>> .cmpboxbtnyes)
 
 ! https://github.com/uBlockOrigin/uAssets/pull/33067
 lequipe.fr##+js(trusted-click-element, .CmpUnsubscriber .Cmp__action--yes, , 1000)
