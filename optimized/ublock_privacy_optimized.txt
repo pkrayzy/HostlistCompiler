@@ -1,6 +1,6 @@
 !
 ! Title: uBlock filters – Privacy
-! Last modified: 2026-09-11T06:55:13.911Z
+! Last modified: 2026-09-12T06:46:52.899Z
 !
 ! Compiled by @adguard/hostlist-compiler v0.0.0
 !
@@ -10,8 +10,8 @@
 !
 ! Title: uBlock filters – Badware risks
 ! Expires: 5 days
-! Last modified: Fri, 11 Sep 2026 02:31:42 +0000
-! Diff-Path: ../patches/2026.9.11.269.patch#ublock-badware
+! Last modified: Fri, 11 Sep 2026 11:10:25 +0000
+! Diff-Path: ../patches/2026.9.12.341.patch#ublock-badware
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/badware.txt ***
@@ -2032,7 +2032,6 @@ cizitensports.com##+js(rmnt, script, randomUUID)
 ##.wp-singular > iframe[srcdoc][allowfullscreen][allow*="clipboard-write"][style*="2147483647"]
 /^https:\/\/[a-z]{7,}\.sbs\/[a-z0-9]{8}\.js$/$script,3p,match-case,to=sbs
 ||sbs^$domain=testmyspeed.com
-||kusikowski.sbs^
 webrick.com##+js(acs, atob, Uint8Array)
 ##html > #bw-rc-host
 ||keelhaulably.com^
@@ -3371,7 +3370,6 @@ rapidkil.com.au##+js(aost, XMLHttpRequest, /wp-content)
 /captcha-loader.js?
 ! fake dating
 /^https:\/\/[0-9a-z]{7}\.([0-9a-z]{7})\.top\/[0-9a-z]{7}\?t=\1&cid=[0-9a-z]+/$doc,to=top,match-case
-||dtioykqj1u8de.cloudfront.net^$all
 !?id=*&p1=*&p2=*&p3=*&p4=$doc
 ||partners-tds.com^$all
 ||sentinelbotcore.co.in^$all
@@ -3481,6 +3479,7 @@ weightlossdiet.top##+js(acs, open, executeCode)
 ||z-lib.ai^$doc
 ||z-lib.club^$doc
 ||z-lib.ink^$doc
+||z-lib.nl^$doc
 ||z-library.cc^$doc
 ||z-lib.ws^$doc
 ||z-lib.lol^$doc
@@ -3669,6 +3668,7 @@ sport.elwatannews.com##+js(aost, Array.prototype.indexOf, isWin)
 ||washingtonpost-news.com^$doc
 ||v2-solavre.com^$doc
 ||app-defituna.github.io^$doc
+||perfume-yupoo.ru^$doc
 ||yupooz.com^$doc
 ||jersey-yupoo.com^$doc
 ||soccer-jersey-yupoo.com^$doc
@@ -3874,7 +3874,6 @@ ublockorigin.app###main::before:style(content: 'This is not the official uBlock 
 ||zhcn-googele.hl.cn^$all
 ||qishuui.com.cn^$all
 ||ms.kuugo.cc^$all
-||baiduwangpan.cc^$all
 ||apps-google-hl.hl.cn^$all
 ||google-chrrome-zh.hl.cn^$all
 -wps.com.cn^$doc
@@ -4069,10 +4068,11 @@ top##body > center + .A + .post
 ||aw-huorong.com.cn$all
 ||unikey.vn^$doc,reason=Trang web chinh thuc: https://unikey.org
 ||unikey.edu.vn^$all,reason=Trang web chinh thuc: https://unikey.org
+||mobel-wahls.shop^$doc
 ! Title: uBlock filters – Privacy
 ! Expires: 7 days
-! Last modified: Mon, 07 Sep 2026 11:24:24 +0000
-! Diff-Path: ../patches/2026.9.11.269.patch#ublock-privacy
+! Last modified: Fri, 11 Sep 2026 06:24:32 +0000
+! Diff-Path: ../patches/2026.9.12.341.patch#ublock-privacy
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/privacy.txt ***
@@ -5852,7 +5852,6 @@ digitalspy.com##section.inline-content-module
 ||cdn.jsdelivr.net/npm/statsig-js
 ||googletagmanager.com/gtm.js$important,domain=dmax.de
 dmax.de##.block-user:remove-class(block-user)
-||umami.webtor.io^
 ||netronline.dev^
 ! mail.zoho.in metrics
 ||murphy.zoho.in/murphy/*/clientmetricslog?logtype=clientmetrics
@@ -5985,8 +5984,8 @@ $uritransform=/#Echobox=[\d]{10}$//,to=iltalehti.fi|hs.fi
 adhs-zentrum.de##+js(no-xhr-if, method:POST body:/"track"|adblock/)
 ||firestream.to/api/videos/*/view
 ||h.f1.impact-ad.jp/pub_click/$urlskip=/\/\d{6}\/\d{6}\/(https.+)/ -uricomponent
-||analytics.meaww.com^
 ||analytics.freezehost.pro^
+||umami-*.sufrah.net^
 ! Merge in resource-abuse.txt
 ! *** uAssets:filters/resource-abuse.txt ***
 /edgemesh.*.js$script,domain=~edgemesh.com|~edgeno.de
