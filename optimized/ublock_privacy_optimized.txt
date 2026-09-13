@@ -1,6 +1,6 @@
 !
 ! Title: uBlock filters – Privacy
-! Last modified: 2026-09-12T06:46:52.899Z
+! Last modified: 2026-09-13T07:04:33.251Z
 !
 ! Compiled by @adguard/hostlist-compiler v0.0.0
 !
@@ -10,8 +10,8 @@
 !
 ! Title: uBlock filters – Badware risks
 ! Expires: 5 days
-! Last modified: Fri, 11 Sep 2026 11:10:25 +0000
-! Diff-Path: ../patches/2026.9.12.341.patch#ublock-badware
+! Last modified: Sat, 12 Sep 2026 09:05:04 +0000
+! Diff-Path: ../patches/2026.9.13.361.patch#ublock-badware
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/badware.txt ***
@@ -2035,6 +2035,8 @@ cizitensports.com##+js(rmnt, script, randomUUID)
 webrick.com##+js(acs, atob, Uint8Array)
 ##html > #bw-rc-host
 ||keelhaulably.com^
+pentest.blog##+js(rmnt, script, (self);)
+pentest.blog##+js(acs, atob, new )
 ! !SECTION: ClickFix
 ||pccdirect.site^$all
 ||templatesearch.org^$all
@@ -2762,6 +2764,7 @@ www.cambe.pr.gov.br##+js(noeval-if, tigervip2)
 ||outloksupport*.glitch.me^$doc
 ||scanlonchiro.com^$all
 *$doc,ipaddress=178.16.53.131
+||openlive.chat^$all
 ! telegram
 ||telegramhcn.com^$all
 ||webtelegram.eu.org^$all
@@ -3874,6 +3877,7 @@ ublockorigin.app###main::before:style(content: 'This is not the official uBlock 
 ||zhcn-googele.hl.cn^$all
 ||qishuui.com.cn^$all
 ||ms.kuugo.cc^$all
+||baiduwangpan.cc^$all
 ||apps-google-hl.hl.cn^$all
 ||google-chrrome-zh.hl.cn^$all
 -wps.com.cn^$doc
@@ -3928,6 +3932,7 @@ ublockorigin.app###main::before:style(content: 'This is not the official uBlock 
 ||360guard-360.cn^$all
 ||360weishi-360.cn^$all
 ||erahitopupikloss.com^$all
+||asionamedrafter.com^$all
 top##body > center + .A + .post
 ||labor-day-*.top^$doc
 ||top/single.php|$script,1p
@@ -4072,7 +4077,7 @@ top##body > center + .A + .post
 ! Title: uBlock filters – Privacy
 ! Expires: 7 days
 ! Last modified: Fri, 11 Sep 2026 06:24:32 +0000
-! Diff-Path: ../patches/2026.9.12.341.patch#ublock-privacy
+! Diff-Path: ../patches/2026.9.13.361.patch#ublock-privacy
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/privacy.txt ***
@@ -5984,6 +5989,7 @@ $uritransform=/#Echobox=[\d]{10}$//,to=iltalehti.fi|hs.fi
 adhs-zentrum.de##+js(no-xhr-if, method:POST body:/"track"|adblock/)
 ||firestream.to/api/videos/*/view
 ||h.f1.impact-ad.jp/pub_click/$urlskip=/\/\d{6}\/\d{6}\/(https.+)/ -uricomponent
+||analytics.meaww.com^
 ||analytics.freezehost.pro^
 ||umami-*.sufrah.net^
 ! Merge in resource-abuse.txt
