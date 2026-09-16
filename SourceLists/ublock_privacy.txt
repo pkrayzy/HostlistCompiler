@@ -1,7 +1,7 @@
 ! Title: uBlock filters – Badware risks
 ! Expires: 5 days
-! Last modified: Mon, 14 Sep 2026 12:51:34 +0000
-! Diff-Path: ../patches/2026.9.15.286.patch#ublock-badware
+! Last modified: Tue, 15 Sep 2026 16:33:05 +0000
+! Diff-Path: ../patches/2026.9.16.356.patch#ublock-badware
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/badware.txt ***
@@ -772,6 +772,8 @@ cracksmid.com##div[style=""] > center > center
 ||aisyncad.com^$all
 ||new.point-youtools.com^$all
 ||datinglive-jp.com^$all
+||download.guomeizuo.com^$all
+||app.suckmongif.com^$all
 ! scam sites
 ||webuzz.me^$doc
 ||coup-ling.net^$all
@@ -2190,6 +2192,7 @@ sgp1.cdn.digitaloceanspaces.com###frame[title="encrypted shop"][allowfullscreen]
 ||azureedge.net/*/esc.js
 ||azureedge.net/*/flscn.js
 /text_tel.js$domain=amplifyapp.com|app|azurestaticapps.net|dev|fit|me|on-forge.com|page|site|github.io|herokuapp.com
+||amplifyapp.com/support.js|$1p
 ||netlify.app/text.js|$1p
 ||github.io/my-new-app/text.js$1p
 /a0ler0tm0s.mp3$domain=dev|online|shop
@@ -2305,13 +2308,15 @@ cizitensports.com##+js(rmnt, script, randomUUID)
 ###cf-challenge-root
 ||sites.google.com/view/brewapp$doc
 ##.wp-singular > iframe[srcdoc][allowfullscreen][allow*="clipboard-write"][style*="2147483647"]
-/^https:\/\/[a-z]{7,}\.sbs\/[a-z0-9]{8}\.js$/$script,3p,match-case,to=sbs
-||sbs^$domain=testmyspeed.com
+/^https:\/\/[a-z]{7,}\.[a-z]{3,4}\/[a-z0-9]{8}\.js$/$script,3p,match-case,to=club|sbs
+/\/[a-z0-9]{8}\.js$/$script,3p,match-case,domain=testmyspeed.com
+||nutmann.club^
 ||kusikowski.sbs^
 ||swewart.sbs^
 ||guiglen.sbs^
 webrick.com##+js(acs, atob, Uint8Array)
 ##html > #bw-rc-host
+aspireatlas.com##+js(rmnt, script, String.fromCharCode)
 ||keelhaulably.com^
 pentest.blog##+js(rmnt, script, (self);)
 pentest.blog##+js(acs, atob, new )
@@ -2377,6 +2382,7 @@ pentest.blog##+js(acs, atob, new )
 ||vanced.pro^$all,domain=~revanced.app
 ||vancedmanager.$all,domain=~revanced.app
 ||revancedapps.$all,domain=~revanced.app
+||vanced.to^$doc
 ! LuckyPatcher - Official site: luckypatchers.com
 ||luckypatcher.*^$all,domain=~luckypatchers.com
 ||luckypatchers.*^$all,domain=~luckypatchers.com,to=~luckypatchers.com
@@ -4483,7 +4489,7 @@ top##body > center + .A + .post
 ! Title: uBlock filters – Privacy
 ! Expires: 7 days
 ! Last modified: Sun, 13 Sep 2026 10:22:27 +0000
-! Diff-Path: ../patches/2026.9.15.286.patch#ublock-privacy
+! Diff-Path: ../patches/2026.9.16.356.patch#ublock-privacy
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/privacy.txt ***
