@@ -1,6 +1,6 @@
 !
 ! Title: uBlock filters – Privacy
-! Last modified: 2026-09-18T06:57:28.381Z
+! Last modified: 2026-09-18T11:28:35.335Z
 !
 ! Compiled by @adguard/hostlist-compiler v0.0.0
 !
@@ -10,8 +10,8 @@
 !
 ! Title: uBlock filters – Badware risks
 ! Expires: 5 days
-! Last modified: Thu, 17 Sep 2026 17:23:16 +0000
-! Diff-Path: ../patches/2026.9.18.277.patch#ublock-badware
+! Last modified: Fri, 18 Sep 2026 09:34:23 +0000
+! Diff-Path: ../patches/2026.9.18.578.patch#ublock-badware
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/badware.txt ***
@@ -1973,6 +1973,7 @@ strand-co.com##+js(acs, document.createElement, .onerror)
 ||biscottirbh.lol^$all
 ##body > div.mw[role="main"] > .mc
 ||basednewsarticle.com^$all
+||google-meet-call.com^$all
 ||kook.bar^$all
 igualdad.iaa.csic.es##+js(acs, String.prototype.toLowerCase, Contract)
 ||igualdad.iaa.csic.es/nochain-sw.js
@@ -1991,6 +1992,8 @@ aspireatlas.com##+js(rmnt, script, String.fromCharCode)
 ||keelhaulably.com^
 pentest.blog##+js(rmnt, script, (self);)
 pentest.blog##+js(acs, atob, new )
+||soundcloudapp.com^$all
+##body[data-clipboard-code] > .main-wrapper
 ! !SECTION: ClickFix
 ||pccdirect.site^$all
 ||templatesearch.org^$all
@@ -3411,7 +3414,6 @@ weightlossdiet.top##+js(acs, open, executeCode)
 ||live/click.php?key=$doc
 ||pttavm.*.com.tr^$doc
 ! zlib
-||z-lib.ai^$doc
 ||z-lib.club^$doc
 ||z-lib.ink^$doc
 ||z-library.cc^$doc
@@ -3599,7 +3601,6 @@ sport.elwatannews.com##+js(aost, Array.prototype.indexOf, isWin)
 ||yupoo.site^$doc
 ||www.jersey-yupoo.com^$doc
 ||exodustrading-ai.com^$doc
-||yupoosunglasses.ru^$doc
 ||bestyupoo.com^$doc
 ||jerseyyupoo.com^$doc
 ||yupoo.biz^$doc
@@ -3978,8 +3979,8 @@ top##body > center + .A + .post
 ||mobel-wahls.shop^$doc
 ! Title: uBlock filters – Privacy
 ! Expires: 7 days
-! Last modified: Fri, 18 Sep 2026 03:13:37 +0000
-! Diff-Path: ../patches/2026.9.18.277.patch#ublock-privacy
+! Last modified: Fri, 18 Sep 2026 05:00:32 +0000
+! Diff-Path: ../patches/2026.9.18.578.patch#ublock-privacy
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/privacy.txt ***
@@ -5899,6 +5900,7 @@ adhs-zentrum.de##+js(no-xhr-if, method:POST body:/"track"|adblock/)
 ||analytics.freezehost.pro^
 ||umami-*.sufrah.net^
 ||igorslab.de/?ilgha_jump=$urlskip=/\?ilgha_jump=(ey[^.]+)\..+/ -base64 /"u":"(https?:[^"]+)"/
+||cinefreak.net/generate.php?id=$urlskip=?id -base64
 ! Merge in resource-abuse.txt
 ! *** uAssets:filters/resource-abuse.txt ***
 /edgemesh.*.js$script,domain=~edgemesh.com|~edgeno.de
