@@ -1,92 +1,115 @@
-# Hostlist compiler
+# Hostlist Compiler
 
-> **This repository has moved to GitHub.**
->
-> The project is now maintained at
-> [AdGuardSoftwareLimited/filters-hostlist-compiler][new-repo].
-> Please use GitHub for the latest code, issues, and pull requests.
+[![NPM][npm-badge]][npm]
 
-[new-repo]: https://github.com/AdGuardSoftwareLimited/filters-hostlist-compiler
+## Description
 
-[![NPM](https://nodei.co/npm/@adguard/hostlist-compiler.png?compact=true)](https://www.npmjs.com/package/@adguard/hostlist-compiler/)
+Hostlist Compiler is a Node.js CLI tool and library for filter list maintainers and developers. It
+compiles DNS hosts blocklists from multiple sources — `/etc/hosts` files and adblock-style filter
+lists — into a single filter list compatible with AdGuard Home and other AdGuard products with DNS
+filtering.
 
-This is a simple tool that makes it easier to compile a [hosts blocklist](https://adguard-dns.io/kb/general/dns-filtering-syntax/) compatible with AdGuard Home or any other AdGuard product with **DNS filtering**.
+Compiling a blocklist by hand is error-prone: sources use different syntaxes, rules must be
+deduplicated, dangerous or unsupported rules have to be removed, and lists need to be filtered
+through exclusion and inclusion rules. Hostlist Compiler automates this pipeline — it downloads
+or reads the configured sources, converts `/etc/hosts` rules to AdGuard syntax, resolves
+`!#include` directives, applies a fixed-order pipeline of transformations, and writes the
+resulting filter list.
 
 > **Note on repositories:** Active development happens in the private
-> [AdGuardSoftwareLimited/filters-hostlist-compiler](https://github.com/AdGuardSoftwareLimited/filters-hostlist-compiler)
-> repository; this public [AdguardTeam/HostlistCompiler](https://github.com/AdguardTeam/HostlistCompiler)
-> repository is a read-only mirror that is updated automatically from it.
+> [AdGuardSoftwareLimited/filters-hostlist-compiler][private-repo] repository;
+> this public [AdguardTeam/HostlistCompiler][public-mirror] repository is a
+> read-only mirror that is updated automatically from it.
 
+## Table of Contents
+
+- [Installation](#installation)
+- [Quick Start](#quick-start)
 - [Usage](#usage)
-  - [Configuration](#configuration)
-  - [Command-line](#command-line)
-  - [API](#api)
+- [Configuration](#configuration)
 - [Transformations](#transformations)
-  - [ConvertToAscii](#convert-to-ascii)
-  - [TrimLines](#trimlines)
-  - [RemoveComments](#remove-comments)
-  - [Compress](#compress)
-  - [RemoveModifiers](#remove-modifiers)
-  - [InvertAllow](#invertallow)
-  - [Validate](#validate)
-  - [ValidateAllowIp](#validate-allow-ip)
-  - [ValidateAllowPublicSuffix](#validate-allow-public-suffix)
-  - [ValidateAllowIpAndPublicSuffix](#validate-allow-ip-and-public-suffix)
-  - [Deduplicate](#deduplicate)
-  - [RemoveEmptyLines](#removeemptylines)
-  - [InsertFinalNewLine](#insertfinalnewline)
+- [API](#api)
 - [Documentation](#documentation)
 
-## <a name="usage"></a> Usage
+---
 
-First of all, install the `hostlist-compiler`:
+## Installation
+
+Requires Node.js 22.22.2 or newer.
+
+Install the package globally to get the `hostlist-compiler` command:
 
 ```bash
 npm i -g @adguard/hostlist-compiler
 ```
 
-After that you have two options.
+Or install it as a dependency to use the compiler as a library:
 
-**Quick hosts conversion**
-
-Convert and compress a `/etc/hosts`-syntax blocklist to [AdGuard syntax](https://adguard-dns.io/kb/general/dns-filtering-syntax/).
-
-```
-hostlist-compiler -i hosts.txt -i hosts2.txt -o output.txt
+```bash
+npm i @adguard/hostlist-compiler
 ```
 
-**Build a configurable blocklist from multiple sources**
+yarn is also supported:
 
-Prepare the list configuration (read more about that [below](#configuration)) and run the compiler:
+```bash
+yarn add @adguard/hostlist-compiler
+```
+
+## Quick Start
+
+Convert a `/etc/hosts`-syntax blocklist to an AdGuard-compatible filter list in one command:
+
+```bash
+hostlist-compiler -i hosts.txt -o output.txt
+```
+
+Or compile a configurable blocklist from multiple sources:
 
 ```bash
 hostlist-compiler -c configuration.json -o output.txt
 ```
 
-**All command line options**
+## Usage
 
+### Command-Line Options
+
+| Flag                        | Description                                                                                        |
+| --------------------------- | -------------------------------------------------------------------------------------------------- |
+| `--config, -c <path>`       | Path to the compiler configuration file                                                            |
+| `--input, -i <url-or-path>` | URL (or path to a file) to convert to an AdGuard-syntax blocklist. Can be specified multiple times |
+| `--input-type, -t <type>`   | Type of the input file: `hosts` or `adblock`                                                       |
+| `--output, -o <path>`       | Path to the output file (required)                                                                 |
+| `--verbose, -v`             | Run with verbose logging                                                                           |
+| `--version`                 | Show the version number                                                                            |
+| `-h, --help`                | Show help                                                                                          |
+
+The compiler exits with code `0` on success and `1` on failure; errors are printed to stderr.
+
+### Quick Hosts Conversion
+
+Convert and compress one or more `/etc/hosts`-syntax blocklists to
+[AdGuard syntax](https://adguard-dns.io/kb/general/dns-filtering-syntax/):
+
+```bash
+hostlist-compiler -i hosts.txt -i hosts2.txt -o output.txt
 ```
-Usage: hostlist-compiler [options]
 
-Options:
-  --config, -c      Path to the compiler configuration file             [string]
-  --input, -i       URL (or path to a file) to convert to an AdGuard-syntax
-                    blocklist. Can be specified multiple times.          [array]
-  --input-type, -t  Type of the input file (/etc/hosts, adguard)        [string]
-  --output, -o      Path to the output file                  [string] [required]
-  --verbose, -v     Run with verbose logging                           [boolean]
-  --version         Show version number                                [boolean]
-  -h, --help        Show help                                          [boolean]
+### Build a Configurable Blocklist from Multiple Sources
 
-Examples:
-  hostlist-compiler -c config.json -o       compile a blocklist and write the
-  output.txt                                output to output.txt
-  hostlist-compiler -i                      compile a blocklist from the URL and
-  https://example.org/hosts.txt -o          write the output to output.txt
-  output.txt
+Prepare the list configuration (read more about that
+[below](#configuration)) and run the compiler:
+
+```bash
+hostlist-compiler -c configuration.json -o output.txt
 ```
 
-### <a name="configuration"></a> Configuration
+A configurable blocklist can also be built from a remote URL without a configuration file:
+
+```bash
+hostlist-compiler -i https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts -o output.txt
+```
+
+## Configuration
 
 Configuration defines your filter list sources, and the transformations that are applied to the sources.
 
@@ -96,7 +119,7 @@ Here is an example of this configuration:
 {
   "name": "List name",
   "description": "List description",
-  "homepage": "https://example.org/",
+  "homepage": "https://github.com/AdguardTeam/AdguardSDNSFilter",
   "license": "GPLv3",
   "version": "1.0.0.0",
   "sources": [
@@ -112,8 +135,8 @@ Here is an example of this configuration:
     },
     {
       "name": "Remote rules",
-      "source": "https://example.org/rules",
-      "type": "hosts",
+      "source": "https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt",
+      "type": "adblock",
       "exclusions": ["excluded rule 1"]
     }
   ],
@@ -131,19 +154,31 @@ Here is an example of this configuration:
 - `license` - (optional) Filter list license.
 - `version` - (optional) Filter list version.
 - `sources` - (mandatory) array of the list sources.
-  - `.source` - (mandatory) path or URL of the source. It can be a traditional filter list or a hosts file.
-  - `.name` - (optional) name of the source.
-  - `.type` - (optional) type of the source. It could be `adblock` for Adblock-style lists or `hosts` for /etc/hosts style lists. If not specified, `adblock` is assumed.
-  - `.transformations` - (optional) a list of transformations to apply to the source rules. By default, **no transformations** are applied. Learn more about possible transformations [here](#transformations).
-  - `.exclusions` - (optional) a list of rules (or wildcards) to exclude from the source.
-  - `.exclusions_sources` - (optional) a list of files with exclusions.
-  - `.inclusions` - (optional) a list of wildcards to include from the source. All rules that don't match these wildcards won't be included.
-  - `.inclusions_sources` - (optional) a list of files with inclusions.
-- `transformations` - (optional) a list of transformations to apply to the final list of rules. By default, **no transformations** are applied. Learn more about possible transformations [here](#transformations).
-- `exclusions` - (optional) a list of rules (or wildcards) to exclude from the source.
+    - `.source` - (mandatory) path or URL of the source. It can be a
+      traditional filter list or a hosts file.
+    - `.name` - (optional) name of the source.
+    - `.type` - (optional) type of the source. It can be `adblock` for
+      Adblock-style lists or `hosts` for /etc/hosts style lists. The value is
+      validated against these two options; rule parsing auto-detects the
+      format, so the type does not affect parsing.
+    - `.transformations` - (optional) a list of transformations to apply to
+      the source rules. By default, **no transformations** are applied. Learn
+      more about the possible [transformations](#transformations).
+    - `.exclusions` - (optional) a list of rules (or wildcards) to exclude
+      from the source.
+    - `.exclusions_sources` - (optional) a list of files with exclusions.
+    - `.inclusions` - (optional) a list of wildcards to include from the
+      source. All rules that don't match these wildcards won't be included.
+    - `.inclusions_sources` - (optional) a list of files with inclusions.
+- `transformations` - (optional) a list of transformations to apply to the
+  final list of rules. By default, **no transformations** are applied. Learn
+  more about the possible [transformations](#transformations).
+- `exclusions` - (optional) a list of rules (or wildcards) to exclude from
+  the final list.
 - `exclusions_sources` - (optional) a list of files with exclusions.
-- `.inclusions` - (optional) a list of wildcards to include from the source. All rules that don't match these wildcards won't be included.
-- `.inclusions_sources` - (optional) a list of files with inclusions.
+- `inclusions` - (optional) a list of wildcards to include in the final
+  list. All rules that don't match these wildcards won't be included.
+- `inclusions_sources` - (optional) a list of files with inclusions.
 
 Here is an example of a minimal configuration:
 
@@ -158,13 +193,15 @@ Here is an example of a minimal configuration:
 }
 ```
 
-**Exclusion and inclusion rules**
+### Exclusion and Inclusion Rules
 
-Please note, that exclusion or inclusion rules may be a plain string, wildcard, or a regular expression.
+Please note, that exclusion or inclusion rules may be a plain string,
+wildcard, or a regular expression.
 
 - `plainstring` - every rule that contains `plainstring` will match the rule
 - `*.plainstring` - every rule that matches this wildcard will match the rule
-- `/regex/` - every rule that matches this regular expression, will match the rule. By default, regular expressions are case-insensitive.
+- `/regex/` - every rule that matches this regular expression, will match the
+  rule. By default, regular expressions are case-insensitive.
 - `! comment` - comments will be ignored.
 
 > [!IMPORTANT]
@@ -176,7 +213,7 @@ Here is an example:
 
 Rules in HOSTS syntax: `/hosts.txt`
 
-```txt
+```text
 0.0.0.0 ads.example.com
 0.0.0.0 tracking.example1.com
 0.0.0.0 example.com
@@ -184,7 +221,7 @@ Rules in HOSTS syntax: `/hosts.txt`
 
 Exclusion rules in adblock syntax: `/exclusions.txt`
 
-```txt
+```text
 ||example.com^
 ```
 
@@ -209,45 +246,29 @@ Configuration of the final list:
 
 Final filter output of `/hosts.txt` after applying the `Compress` transformation and exclusions:
 
-```txt
+```text
 ||ads.example.com^
 ||tracking.example1.com^
 ```
 
 The last rule now `||example.com^` will correctly match the rule from the exclusion list and will be excluded.
 
-### <a name="command-line"></a> Command-line
+## API
 
-Command-line arguments.
+The library exports a single function: `compile(configuration)`. It compiles
+the filter list and returns a `Promise` that resolves to an array of rule
+strings. TypeScript declarations are included with the package.
 
-```
-Usage: hostlist-compiler [options]
-
-Options:
-  --version      Show version number                                   [boolean]
-  --config, -c   Path to the compiler configuration file     [string] [required]
-  --output, -o   Path to the output file                     [string] [required]
-  --verbose, -v  Run with verbose logging                              [boolean]
-  -h, --help     Show help                                             [boolean]
-
-Examples:
-  hostlist-compiler -c config.json -o       compile a blocklist and write the
-  output.txt                                output to output.txt
-```
-
-### <a name="api"></a> API
-
-Install: `npm i @adguard/hostlist-compiler` or `yarn add @adguard/hostlist-compiler`
-
-#### JavaScript example:
+### JavaScript Example
 
 ```javascript
-const compile = require("@adguard/hostlist-compiler");
+const compile = require('@adguard/hostlist-compiler');
+const { writeFileSync } = require('fs');
 
 ;(async () => {
     // Compile filters
     const result = await compile({
-        name: 'Your Hostlist',
+        name: 'My hostlist',
         sources: [
             {
                 type: 'adblock',
@@ -259,11 +280,11 @@ const compile = require("@adguard/hostlist-compiler");
     });
 
     // Write to file
-    writeFileSync('your-hostlist.txt', result.join('\n'));
+    writeFileSync('output.txt', result.join('\n'));
 })();
 ```
 
-#### TypeScript example:
+### TypeScript Example
 
 ```typescript
 import compile from '@adguard/hostlist-compiler';
@@ -272,7 +293,7 @@ import { writeFileSync } from 'fs';
 ;(async () => {
     // Compile filters
     const result = await compile({
-        name: 'Your Hostlist',
+        name: 'My hostlist',
         sources: [
             {
                 type: 'adblock',
@@ -284,7 +305,7 @@ import { writeFileSync } from 'fs';
     });
 
     // Write to file
-    writeFileSync('your-hostlist.txt', result.join('\n'));
+    writeFileSync('output.txt', result.join('\n'));
 })();
 ```
 
@@ -297,7 +318,7 @@ import { writeFileSync } from 'fs';
 ;(async () => {
     // Configuration
     const config: HostlistCompilerConfiguration = {
-        name: 'Your Hostlist',
+        name: 'My hostlist',
         sources: [
             {
                 type: 'adblock',
@@ -312,11 +333,11 @@ import { writeFileSync } from 'fs';
     const result = await HostlistCompiler(config);
 
     // Write to file
-    writeFileSync('your-hostlist.txt', result.join('\n'));
+    writeFileSync('output.txt', result.join('\n'));
 })();
 ```
 
-## <a name="transformations"></a> Transformations
+## Transformations
 
 Here is the full list of transformations that are available:
 
@@ -344,7 +365,7 @@ This transformation converts all non-ASCII characters to their ASCII equivalents
 
 Original list:
 
-```
+```text
 ||*.рус^
 ||*.कॉम^
 ||*.セール^
@@ -352,7 +373,7 @@ Original list:
 
 Here's what we will have after applying this transformation:
 
-```
+```text
 ||*.xn--p1acf^
 ||*.xn--11b4c3d^
 ||*.xn--1qqw23a^
@@ -366,16 +387,16 @@ This is a very simple transformation that removes leading and trailing spaces/ta
 
 Original list:
 
-```
+```text
 rule1
    rule2
 rule3
-		rule4
+    rule4
 ```
 
 Here's what we will have after applying this transformation:
 
-```
+```text
 rule1
 rule2
 rule3
@@ -393,12 +414,20 @@ This is a very simple transformation that simply removes comments (e.g. all rule
 
 Here's what it does:
 
-1. It converts all rules to adblock-style rules. For instance, `0.0.0.0 example.org` will be converted to `||example.org^`.
-2. It discards the rules that are now redundant because of other existing rules. For instance, `||example.org` blocks `example.org` and all it's subdomains, therefore additional rules for the subdomains are now redundant.
+1. It converts all rules to adblock-style rules. For instance,
+   `0.0.0.0 example.org` will be converted to `||example.org^`.
+2. It discards the rules that are now redundant because of other existing
+   rules. For instance, `||example.org` blocks `example.org` and all it's
+   subdomains, therefore additional rules for the subdomains are now
+   redundant.
 
 ### <a name="remove-modifiers"></a> RemoveModifiers
 
-By default, [AdGuard Home](https://github.com/AdguardTeam/AdGuardHome) will ignore rules with unsupported modifiers, and all of the modifiers listed here are unsupported. However, the rules with these modifiers are likely to be okay for DNS-level blocking, that's why you might want to remove them when importing rules from a traditional filter list.
+By default, [AdGuard Home](https://github.com/AdguardTeam/AdGuardHome) will
+ignore rules with unsupported modifiers, and all of the modifiers listed here
+are unsupported. However, the rules with these modifiers are likely to be okay
+for DNS-level blocking, that's why you might want to remove them when importing
+rules from a traditional filter list.
 
 Here is the list of modifiers that will be removed:
 
@@ -414,7 +443,10 @@ Here is the list of modifiers that will be removed:
 
 ### <a name="invertallow"></a> InvertAllow
 
-This transformation converts blocking rules to "allow" rules. Note, that it does nothing to /etc/hosts rules (unless they were previously converted to adblock-style syntax by a different transformation, for example [Compress](#compress)).
+This transformation converts blocking rules to "allow" rules. Note, that it
+does nothing to /etc/hosts rules (unless they were previously converted to
+adblock-style syntax by a different transformation, for example
+[Compress](#compress)).
 
 There are two important notes about this transformation:
 
@@ -425,7 +457,7 @@ There are two important notes about this transformation:
 
 Original list:
 
-```
+```text
 ! comment 1
 rule1
 
@@ -436,7 +468,7 @@ rule1
 
 Here's what we will have after applying this transformation:
 
-```
+```text
 ! comment 1
 @@rule1
 
@@ -447,36 +479,47 @@ Here's what we will have after applying this transformation:
 
 ### <a name="validate"></a> Validate
 
-This transformation is really crucial if you're using a filter list for a traditional ad blocker as a source.
+This transformation is really crucial if you're using a filter list for a
+traditional ad blocker as a source.
 
 It removes dangerous or incompatible rules from the list.
 
 So here's what it does:
 
-- Discards domain-specific rules (e.g. `||example.org^$domain=example.com`). You don't want to have domain-specific rules working globally.
-- Discards rules with unsupported modifiers. [Click here](https://github.com/AdguardTeam/AdGuardHome/wiki/Hosts-Blocklists#-adblock-style-syntax) to learn more about which modifiers are supported.
+- Discards domain-specific rules (e.g. `||example.org^$domain=example.com`).
+  You don't want to have domain-specific rules working globally.
+- Discards rules with unsupported modifiers. Learn more about the
+  [supported modifiers](https://github.com/AdguardTeam/AdGuardHome/wiki/Hosts-Blocklists#-adblock-style-syntax).
 - Discards rules that are too short.
 - Discards IP addresses. If you need to keep IP addresses, use [ValidateAllowIp](#validate-allow-ip) instead.
 
 #### <a name="rejected-ip-patterns"></a>Rejected IP Patterns
 
-  The following IP patterns are rejected by all validation transformations (`Validate`, `ValidateAllowIp`, `ValidateAllowPublicSuffix`, `ValidateAllowIpAndPublicSuffix`) as they are either unsafe or ambiguous:
+The following IP patterns are rejected by all validation transformations
+(`Validate`, `ValidateAllowIp`, `ValidateAllowPublicSuffix`,
+`ValidateAllowIpAndPublicSuffix`) as they are either unsafe or ambiguous:
 
-  - `||192.168.1^` — 3-octet with `^` - does not work
-  - `192.168.1` — Ambiguous: would match `192.168.11`, `192.168.111`, etc.
-  - `1.2.` or `1.2.*` — Too wide (1-2 octets), use regex instead
+- `||192.168.1^` — 3-octet with `^` - does not work
+- `192.168.1` — Ambiguous: would match `192.168.11`, `192.168.111`, etc.
+- `1.2.` or `1.2.*` — Too wide (1-2 octets), use regex instead
 
-- Removes rules that block entire top-level domains (TLDs) like `||*.org^`, unless they have specific limiting modifiers such as `$denyallow`, `$badfilter`, or `$client`.
-  Examples:
-  - `||*.org^` - this rule will be removed
-  - `||*.org^$denyallow=example.com` - this rule will be kept because it has a limiting modifier
-  If such rules must be saved, use [ValidateAllowPublicSuffix](#validate-allow-public-suffix) or [ValidateAllowIpAndPublicSuffix](#validate-allow-ip-and-public-suffix).
+- Removes rules that block entire top-level domains (TLDs) like `||*.org^`,
+  unless they have specific limiting modifiers such as `$denyallow`,
+  `$badfilter`, or `$client`. Examples:
+    - `||*.org^` - this rule will be removed
+    - `||*.org^$denyallow=example.com` - this rule will be kept because it
+      has a limiting modifier
+  If such rules must be saved, use
+  [ValidateAllowPublicSuffix](#validate-allow-public-suffix) or
+  [ValidateAllowIpAndPublicSuffix](#validate-allow-ip-and-public-suffix).
 
 If there are comments preceding the invalid rule, they will be removed as well.
 
 ### <a name="validate-allow-ip"></a> ValidateAllowIp
 
-This transformation extends [Validate](#validate) to allow IP addresses in the lists. It also **normalizes IP rules** in Adblock-style to the safe format `||ip^`.
+This transformation extends [Validate](#validate) to allow IP addresses in
+the lists. It also **normalizes IP rules** in Adblock-style to the safe format
+`||ip^`.
 
 #### IP Rule Normalization
 
@@ -491,25 +534,47 @@ This transformation extends [Validate](#validate) to allow IP addresses in the l
 
 Modifiers like `$important`, `$client`, `$denyallow`, `$badfilter` are preserved during normalization.
 
-> **Note:** Invalid IP patterns are rejected solely by the base [Validate](#validate) logic — normalization only converts valid patterns to canonical form and passes everything else through unchanged. See [Rejected IP Patterns](#rejected-ip-patterns) for details.
+> **Note:** Invalid IP patterns are rejected solely by the base
+> [Validate](#validate) logic — normalization only converts valid patterns to
+> canonical form and passes everything else through unchanged. See
+> [Rejected IP Patterns](#rejected-ip-patterns) for details.
 
 ### <a name="validate-allow-public-suffix"></a> ValidateAllowPublicSuffix
 
-This transformation exactly repeats the behavior of [Validate](#validate), but leaves rules that match whole public suffixes (e.g. `||hl.cn^`, `||org^`) in the list.
+This transformation exactly repeats the behavior of [Validate](#validate),
+but leaves rules that match whole public suffixes (e.g. `||hl.cn^`, `||org^`)
+in the list.
 
-It still filters out invalid syntax rules and unsupported modifiers, but does not reject public-suffix rules unless the rule itself is malformed.
+It still filters out invalid syntax rules and unsupported modifiers, but does
+not reject public-suffix rules unless the rule itself is malformed.
 
-> **Note:** Combining any `Validate`, `ValidateAllowIp`, `ValidateAllowPublicSuffix`, and `ValidateAllowIpAndPublicSuffix` in one transformation list is not allowed and will result in an error. Each runs its own validator on the already-filtered output of the previous one, so allow-modes become silently ineffective.
+> **Note:** Combining any `Validate`, `ValidateAllowIp`,
+> `ValidateAllowPublicSuffix`, and `ValidateAllowIpAndPublicSuffix` in one
+> transformation list is not allowed and will result in an error. Each runs
+> its own validator on the already-filtered output of the previous one, so
+> allow-modes become silently ineffective.
 
-> **Important:** Validation transformations also cannot be used at both source-level and top-level simultaneously. For example, if a source uses `ValidateAllowPublicSuffix` and the top-level configuration uses `Validate`, the compiler will throw an error. This is because the top-level `Validate` would override the source-level validation, making `ValidateAllowPublicSuffix` ineffective. Use validation transformations at only one level.
+> **Important:** Validation transformations also cannot be used at both
+> source-level and top-level simultaneously. For example, if a source uses
+> `ValidateAllowPublicSuffix` and the top-level configuration uses `Validate`,
+> the compiler will throw an error. This is because the top-level `Validate`
+> would override the source-level validation, making
+> `ValidateAllowPublicSuffix` ineffective. Use validation transformations at
+> only one level.
 
 ### <a name="validate-allow-ip-and-public-suffix"></a> ValidateAllowIpAndPublicSuffix
 
-This transformation combines the behavior of [ValidateAllowIp](#validate-allow-ip) and [ValidateAllowPublicSuffix](#validate-allow-public-suffix). It allows both IP addresses and public suffix rules in the list.
+This transformation combines the behavior of
+[ValidateAllowIp](#validate-allow-ip) and
+[ValidateAllowPublicSuffix](#validate-allow-public-suffix). It allows both IP
+addresses and public suffix rules in the list.
 
-Like `ValidateAllowIp`, it normalizes incomplete IP rules to the safe format `||ip^` before validation. See [IP Rule Normalization](#ip-rule-normalization) for details.
+Like `ValidateAllowIp`, it normalizes incomplete IP rules to the safe format
+`||ip^` before validation. See [IP Rule Normalization](#ip-rule-normalization)
+for details.
 
-Like `ValidateAllowPublicSuffix`, it keeps rules that match whole public suffixes (e.g. `||hl.cn^`, `||org^`).
+Like `ValidateAllowPublicSuffix`, it keeps rules that match whole public
+suffixes (e.g. `||hl.cn^`, `||org^`).
 
 ### <a name="deduplicate"></a> Deduplicate
 
@@ -518,11 +583,12 @@ This transformation simply removes the duplicates from the specified source.
 There are two important notes about this transformation:
 
 1. It keeps the original rules order.
-2. It ignores comments. However, if the comments precede the rule that is being removed, the comments will be also removed.
+2. It ignores comments. However, if the comments precede the rule that is
+   being removed, the comments will be also removed.
 
 For instance:
 
-```
+```text
 ! rule1 comment 1
 rule1
 ! rule1 comment 2
@@ -531,7 +597,7 @@ rule1
 
 Here's what will be left after the transformation:
 
-```
+```text
 ! rule1 comment 2
 rule1
 ```
@@ -544,7 +610,7 @@ This is a very simple transformation that removes empty lines.
 
 Original list:
 
-```
+```text
 rule1
 
 rule2
@@ -555,7 +621,7 @@ rule3
 
 Here's what we will have after applying this transformation:
 
-```
+```text
 rule1
 rule2
 rule3
@@ -569,7 +635,7 @@ This is a very simple transformation that inserts a final newline.
 
 Original list:
 
-```
+```text
 rule1
 rule2
 rule3
@@ -577,7 +643,7 @@ rule3
 
 Here's what we will have after applying this transformation:
 
-```
+```text
 rule1
 rule2
 rule3
@@ -586,8 +652,14 @@ rule3
 
 `RemoveEmptyLines` doesn't delete this empty row due to the execution order.
 
-## <a name="documentation"></a> Documentation
+## Documentation
 
-- [Development guide](DEVELOPMENT.md) — how to set up the environment, build, test, and contribute
+- [Development](DEVELOPMENT.md) — how to set up the environment, build, test, and contribute
+- [Deployment and configuration](DEPLOYMENT.md) — release pipeline, CI/CD, and Docker build
 - [LLM agent rules](AGENTS.md) — code guidelines and project conventions
 - [Changelog](CHANGELOG.md) — release history
+
+[npm-badge]: https://nodei.co/npm/@adguard/hostlist-compiler.png?compact=true
+[npm]: https://www.npmjs.com/package/@adguard/hostlist-compiler/
+[private-repo]: https://github.com/AdGuardSoftwareLimited/filters-hostlist-compiler
+[public-mirror]: https://github.com/AdguardTeam/HostlistCompiler

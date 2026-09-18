@@ -25,7 +25,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- `ValidateAllowIpAndPublicSuffix` validation that keeps both IP address rules and rules matching whole public suffixes (e.g. `||185.149.120.173^`, `.org^`). [#126]
+- `ValidateAllowIpAndPublicSuffix` validation that keeps both IP address rules
+  and rules matching whole public suffixes (e.g. `||185.149.120.173^`, `.org^`).
+  [#126]
 
 ### Changed
 
@@ -35,12 +37,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - 3-octet patterns with `^` are rejected (e.g. `192.168.1^`, `||192.168.1^`)
     - 3-octet patterns without trailing dot/wildcard are rejected (e.g. `192.168.1`, `||192.168.1`)
     - 1-2 octet patterns are rejected (too wide, use regex instead)
-    - Normalization (`ip-normalize.js`) is now purely a normalization step: it only rewrites valid patterns to canonical form and passes everything else through unchanged. Rejection of invalid patterns is the responsibility of the validator (`validate.js`), eliminating double-rejection.
+    - Normalization (`ip-normalize.js`) is now purely a normalization step:
+      it only rewrites valid patterns to canonical form and passes everything
+      else through unchanged. Rejection of invalid patterns is the responsibility
+      of the validator (`validate.js`), eliminating double-rejection.
 
 ### Fixed
 
-- `ValidateAllowPublicSuffix` was letting through terminated ICANN TLDs (e.g. `xn--jlq61u9w7b`) because `tldts` v5.x had stale Public Suffix List data. Updated `tldts` from v5 to v7 which has the current PSL. [#128]
-- Hardened `validHostname()` to reject hostnames that do not contain any alphanumeric character (e.g. `..`), covering a behavioral change in `tldts` v7.
+- `ValidateAllowPublicSuffix` was letting through terminated ICANN TLDs
+  (e.g. `xn--jlq61u9w7b`) because `tldts` v5.x had stale Public Suffix List data.
+  Updated `tldts` from v5 to v7 which has the current PSL. [#128]
+- Hardened `validHostname()` to reject hostnames that do not contain any
+  alphanumeric character (e.g. `..`), covering a behavioral change in `tldts` v7.
 
 [Unreleased]: https://github.com/AdguardTeam/HostlistCompiler/compare/v2.1.1...HEAD
 [2.1.1]: https://github.com/AdguardTeam/HostlistCompiler/compare/v2.1.0...v2.1.1
@@ -53,12 +61,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- `ValidateAllowPublicSuffix` transformation option that allows rules matching whole public suffixes (e.g. `||hl.cn^`, `||org^`). [#124]
+- `ValidateAllowPublicSuffix` transformation option that allows rules matching
+  whole public suffixes (e.g. `||hl.cn^`, `||org^`). [#124]
 
 ### Changed
 
-- `Validate` now rejects rules matching whole public suffixes consistently across syntactic variants such as `||org^`, `||*.org^`, `.org^`, and `*.org^`. Use `ValidateAllowPublicSuffix` if you need to keep such rules.
-- The compiler now warns when incompatible validation transformations are combined at runtime, and configuration validation rejects combining `Validate`, `ValidateAllowIp`, and `ValidateAllowPublicSuffix` in the same transformations list.
+- `Validate` now rejects rules matching whole public suffixes consistently
+  across syntactic variants such as `||org^`, `||*.org^`, `.org^`, and `*.org^`.
+  Use `ValidateAllowPublicSuffix` if you need to keep such rules.
+- The compiler now warns when incompatible validation transformations are
+  combined at runtime, and configuration validation rejects combining `Validate`,
+  `ValidateAllowIp`, and `ValidateAllowPublicSuffix` in the same transformations list.
 
 [2.0.0]: https://github.com/AdguardTeam/HostlistCompiler/compare/v1.0.39...v2.0.0
 [#124]: https://github.com/AdguardTeam/HostlistCompiler/issues/124

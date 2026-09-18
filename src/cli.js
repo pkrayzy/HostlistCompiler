@@ -36,7 +36,7 @@ const { argv } = require('yargs')
     .option('input-type', {
         alias: 't',
         type: 'string',
-        description: 'Type of the input file (/etc/hosts, adguard)',
+        description: 'Type of the input file (/etc/hosts, adblock)',
         nargs: 1,
     })
     .option('output', {

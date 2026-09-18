@@ -5,9 +5,6 @@
 FROM adguard/node-ssh:22.22--0 AS base
 SHELL ["/bin/bash", "-lc"]
 
-# Install specific pnpm version for deterministic builds
-RUN npm install -g pnpm@10.12.4
-
 WORKDIR /hostlist-compiler
 
 # pnpm store directory — set once here, no need for pnpm config set in every RUN
