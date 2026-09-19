@@ -1,7 +1,7 @@
 ! Title: uBlock filters – Annoyances
 ! Expires: 7 days
 ! Last modified: Wed, 16 Sep 2026 05:16:44 +0000
-! Diff-Path: ../patches/2026.9.19.345.patch#ublock-annoyances
+! Diff-Path: ../patches/2026.9.19.650.patch#ublock-annoyances
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/annoyances.txt ***
@@ -4283,7 +4283,7 @@ investidor10.com.br##+js(trusted-set-local-storage-item, guest_user_banner_aon_c
 snowcrows.com##+js(rmnt, script, .onerror)
 
 ! Title: uBlock filters – Cookie Notices
-! Last modified: Wed, 16 Sep 2026 11:29:52 +0000
+! Last modified: Sat, 19 Sep 2026 07:38:11 +0000
 ! Expires: 7 days
 ! Description: Filters optimized for uBlock Origin, to be used with EasyList's and/or Adguard's "Cookie Notices" list(s)
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
@@ -10029,3 +10029,7 @@ vpg.no##.js-offcanvas-singleton.offcanvas-start
 ! https://github.com/uBlockOrigin/uAssets/pull/34438
 ! https://notthebee.com/article/did-netflix-just-make-a-charlie-kirk-murder-joke-on-the-anniversary-of-his-assassination - embeds
 notthebee.com##+js(trusted-click-element, ';when-visible:xpath:/html/body/div[contains(@class,"bottom-0")]/div[@role="dialog"]//button[contains(text(),"Accept Cookies")]')
+
+! Accept all
+shop-sks.com##+js(trusted-click-element, .js-cookie-accept-all-button > button, , 4000)
+shop-sks.com##.cookie-permission-container
