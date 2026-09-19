@@ -1,7 +1,7 @@
 ! Title: uBlock filters – Badware risks
 ! Expires: 5 days
-! Last modified: Fri, 18 Sep 2026 09:34:23 +0000
-! Diff-Path: ../patches/2026.9.18.578.patch#ublock-badware
+! Last modified: Sat, 19 Sep 2026 01:32:22 +0000
+! Diff-Path: ../patches/2026.9.19.345.patch#ublock-badware
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/badware.txt ***
@@ -775,6 +775,7 @@ cracksmid.com##div[style=""] > center > center
 ||download.guomeizuo.com^$all
 ||app.suckmongif.com^$all
 ||rerrioara.live^$3p
+||gbelitesolutions.com^$all
 ! scam sites
 ||webuzz.me^$doc
 ||coup-ling.net^$all
@@ -2324,6 +2325,13 @@ pentest.blog##+js(rmnt, script, (self);)
 pentest.blog##+js(acs, atob, new )
 ||soundcloudapp.com^$all
 ##body[data-clipboard-code] > .main-wrapper
+||get-verification.to^$all
+||interseq.at^
+/captcha/api|$script,3p
+##html > .cfmd-shadow-host
+||guildpass.one^$doc,reason=malicious
+||guildbase.org^$doc,reason=malicious
+||guildkit.org^$doc,reason=malicious
 ! !SECTION: ClickFix
 ||cracksway.com^$all
 ||gamingdebates.com^$all
@@ -4494,7 +4502,7 @@ top##body > center + .A + .post
 ! Title: uBlock filters – Privacy
 ! Expires: 7 days
 ! Last modified: Fri, 18 Sep 2026 05:00:32 +0000
-! Diff-Path: ../patches/2026.9.18.578.patch#ublock-privacy
+! Diff-Path: ../patches/2026.9.19.345.patch#ublock-privacy
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/privacy.txt ***
