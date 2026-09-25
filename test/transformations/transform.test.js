@@ -1,6 +1,71 @@
-const { transform } = require('../../src/transformations/transform');
+const {
+    transform,
+    DEFAULT_TRANSFORMATIONS,
+    TRANSFORMATIONS_IN_ORDER,
+} = require('../../src/transformations/transform');
+const { TRANSFORMATIONS } = require('../../src/transformations/enum');
+
+describe('DEFAULT_TRANSFORMATIONS', () => {
+    it('is frozen', () => {
+        expect(Object.isFrozen(DEFAULT_TRANSFORMATIONS)).toBe(true);
+    });
+
+    it('contains the default pipeline for the quick conversion mode', () => {
+        expect(DEFAULT_TRANSFORMATIONS).toEqual([
+            TRANSFORMATIONS.RemoveComments,
+            TRANSFORMATIONS.Deduplicate,
+            TRANSFORMATIONS.Compress,
+            TRANSFORMATIONS.Validate,
+            TRANSFORMATIONS.TrimLines,
+            TRANSFORMATIONS.InsertFinalNewLine,
+        ]);
+    });
+
+    it('converts /etc/hosts rules to a valid adblock list', async () => {
+        const rules = [
+            '0.0.0.0 example.com',
+            '0.0.0.0 example.com',
+            '! comment',
+            '',
+        ];
+
+        const filtered = await transform(rules, {}, DEFAULT_TRANSFORMATIONS);
+
+        expect(filtered).toEqual(['||example.com^', '']);
+    });
+});
 
 describe('Transform', () => {
+    it('dispatches every transformation declared in the TRANSFORMATIONS enum', () => {
+        const dispatched = TRANSFORMATIONS_IN_ORDER.map(([name]) => name);
+
+        expect(new Set(dispatched)).toEqual(new Set(Object.values(TRANSFORMATIONS)));
+    });
+
+    it('pins the fixed execution order of TRANSFORMATIONS_IN_ORDER', () => {
+        // A literal list, independent of the implementation: the dispatch
+        // order IS the execution order and MUST match the order list in
+        // README.md. Unlike Set equality, toEqual also catches reorders and
+        // duplicate entries.
+        const expectedOrder = [
+            'ConvertToAscii',
+            'TrimLines',
+            'RemoveComments',
+            'Compress',
+            'RemoveModifiers',
+            'InvertAllow',
+            'Validate',
+            'ValidateAllowIp',
+            'ValidateAllowPublicSuffix',
+            'ValidateAllowIpAndPublicSuffix',
+            'Deduplicate',
+            'RemoveEmptyLines',
+            'InsertFinalNewLine',
+        ];
+
+        expect(TRANSFORMATIONS_IN_ORDER.map(([name]) => name)).toEqual(expectedOrder);
+    });
+
     it('no transformations', async () => {
         const rules = `! test comment
 rule1

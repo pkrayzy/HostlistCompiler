@@ -60,15 +60,19 @@ inclusion/exclusion rules, and `!#include` directive resolution via
 │   ├── cli.js                  # CLI entry point (hashbang, yargs, config loading)
 │   ├── index.js                # Library entry point: compile(configuration)
 │   ├── index.d.ts              # TypeScript type declarations for consumers
-│   ├── compile-source.js       # Downloads and compiles a single source
-│   ├── configuration.js        # Configuration validation (AJV + schema)
-│   ├── filter.js               # Include/exclude wildcard filtering, downloads
+│   ├── compile-source.js       # Compiles a single source
+│   ├── configuration.js        # Configuration creation and validation (AJV + schema)
+│   ├── download.js             # Central download layer (wraps FiltersDownloader)
+│   ├── filter.js               # Include/exclude wildcard filtering
 │   ├── rule.js                 # Rule parsing (adblock, /etc/hosts)
 │   ├── ip-normalize.js         # Internal helper: IP rule normalization (used by transformations)
+│   ├── source-types.js         # Source-type vocabulary (SOURCE_TYPES) for the schema and the CLI
+│   ├── validation-conflicts.js # Validation-conflict rules (runtime checks + generated schema fragments)
 │   ├── utils.js                # String, IP, and wildcard utilities
-│   ├── schemas/                # JSON schema for configuration validation
+│   ├── schemas/                # Configuration schema (transformation names + conflict rules)
 │   └── transformations/        # 15 transformations + fixed-order pipeline
-│       ├── transform.js        # Pipeline orchestrator (TRANSFORMATIONS enum)
+│       ├── enum.js             # TRANSFORMATIONS enum + VALIDATION_TRANSFORMATIONS (single source of truth)
+│       ├── transform.js        # Pipeline orchestrator
 │       ├── exclude.js          # Exclusion rules (async, ungated)
 │       ├── include.js          # Inclusion rules (async, ungated)
 │       └── # ... (13 simple transforms: compress, validate, deduplicate, etc.)
@@ -183,7 +187,7 @@ CLI entry (src/cli.js)
     ↓
 Library entry / orchestration (src/index.js)
     ↓
-Configuration validation (src/configuration.js, src/schemas/configuration.schema.json)
+Configuration creation and validation (src/configuration.js, src/schemas/configuration.schema.js)
 Per-source compilation (src/compile-source.js)
     ↓
 Transformation pipeline (src/transformations/transform.js)
@@ -192,12 +196,15 @@ Transformations (src/transformations/*.js)
     ↓
 Rule parsing (src/rule.js)   Filtering (src/filter.js)   Utilities (src/utils.js)
     ↓
+Central download layer (src/download.js) (used by compile-source.js and filter.js)
+    ↓
 @adguard/filters-downloader (external package, downloads sources and includes)
 ```
 
 Each layer may call the layers below it; no layer depends on a layer above it.
-`utils.js` is the leaf module (only depends on `lodash`); there are no circular
-dependencies.
+`utils.js` and `download.js` are the leaf modules (they depend only on external
+packages — `lodash` and `@adguard/filters-downloader` respectively); there are
+no circular dependencies.
 
 Universal design principles the codebase should follow:
 
@@ -217,27 +224,27 @@ Universal design principles the codebase should follow:
   JSON schema; incompatible transformation combinations are rejected at
   runtime and in the schema. Less critical at compile time: the project is
   plain JavaScript, so runtime validation carries this burden.
+- **Single Source of Truth for Transformation Names** — the `TRANSFORMATIONS`
+  enum in `src/transformations/enum.js` is the single source of truth for
+  transformation *names*: the configuration schema's accepted names and the
+  validation-conflict rules are derived from it, so renaming a transformation
+  in the enum updates those automatically. Registering a *new* transformation
+  is still a multi-step process — add the enum entry (`enum.js`), register the
+  implementation in the pipeline (`src/transformations/transform.js`), and
+  update the exported `Transformation` type (`src/index.d.ts`) and the order
+  list (`README.md`) by hand; a test asserts the pipeline covers every enum
+  entry. The steps are documented in DEVELOPMENT.md.
+- **Single Source of Truth for Conflict Rules** — validation-conflict rules
+  (which validation transformations conflict, and at which levels) live in
+  `src/validation-conflicts.js`; the schema conflict rules and the runtime
+  checks are generated from that module, so they cannot drift apart. The list
+  of validation transformations (`VALIDATION_TRANSFORMATIONS`) is defined next
+  to the enum in `src/transformations/enum.js`, so the conflict-rule side of
+  adding a validator is a single-file change.
 - **Observability Built-in** — all logging goes through `consola`; see the
   logging and error-handling rules in [Code Quality](#code-quality).
 - **Keep It Boring** — plain CommonJS modules, no framework magic, simple
   synchronous or async transformation functions.
-
-**Known exclusions** (to be fixed):
-
-- Each item below is tracked in the issue tracker (see the `AG-…` comment on
-  the item). Remove an entry as soon as it is fixed, so this list never drifts
-  out of sync.
-- Business logic in the CLI layer: `createConfig()` in `src/cli.js` hardcodes
-  the default transformation pipeline and the `hosts` input type instead of
-  delegating to a lower layer.
-  <!-- AG-58264 -->
-- Network I/O in the filtering layer: `src/filter.js` downloads exclusion and
-  inclusion sources directly, duplicating the download call in
-  `src/compile-source.js`; there is no central download layer.
-  <!-- AG-58265 -->
-- Validation-conflict rules are enforced in three places (JSON schema,
-  `transform.js`, `index.js`), which can drift out of sync.
-  <!-- AG-58267 -->
 
 ### Code Quality
 
@@ -277,6 +284,10 @@ Universal design principles the codebase should follow:
   ranges). When adding or updating a dependency, pin it to the version
   resolved in `pnpm-lock.yaml`; never lower a version below what the lockfile
   currently resolves to.
+- **Do not commit the `packageManager` field** — pnpm 10 auto-adds it to
+  `package.json` when pnpm commands are run. The `engines.pnpm` field is the
+  single source of truth for the pnpm version; revert `packageManager` before
+  committing if pnpm added it.
 - **Prefer vanilla solutions** — use the language's standard library and
   built-in APIs when they adequately solve the problem. Only add a dependency
   when it provides significant value over a vanilla implementation.
@@ -303,7 +314,7 @@ vulnerabilities, supply chain risks, and long-term maintenance costs.
 ### Configuration & Documentation
 
 - The compiler is controlled by a JSON configuration object validated against
-  `src/schemas/configuration.schema.json` (draft-07) via AJV; unknown keys are
+  `src/schemas/configuration.schema.js` (draft-07) via AJV; unknown keys are
   rejected (`additionalProperties: false`).
 - Runtime behavior is selected via CLI flags (`-c` config file, `-i` quick
   hosts conversion, `-o` output file, `-v` verbose logging); there is no
@@ -312,9 +323,13 @@ vulnerabilities, supply chain risks, and long-term maintenance costs.
   `whitelist`) and are used for manual testing.
 - Keep documentation in sync with code: update `README.md` when adding or
   reordering transformations (the transformation order in `README.md` MUST
-  match `src/transformations/transform.js`), update `CHANGELOG.md` for
-  user-facing changes, update `src/schemas/configuration.schema.json` when
-  adding configuration options, update `src/index.d.ts` when changing the
+  match `src/transformations/transform.js`), the default quick-conversion
+  pipeline documented in the `README.md` "Quick Hosts Conversion" section MUST
+  match `DEFAULT_TRANSFORMATIONS` in `src/transformations/transform.js`,
+  update `CHANGELOG.md` for user-facing changes, update
+  `src/schemas/configuration.schema.js` when adding configuration options
+  (transformation names come from `src/transformations/enum.js`, source types
+  from `src/source-types.js`), update `src/index.d.ts` when changing the
   public API, and update `DEPLOYMENT.md` when changing the Dockerfile, CI
   workflows, or deployment setup.
 - No secrets or credentials are used anywhere in the project; configuration
