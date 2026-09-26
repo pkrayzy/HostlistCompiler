@@ -1,7 +1,7 @@
 ! Title: uBlock filters – Annoyances
 ! Expires: 7 days
-! Last modified: Fri, 25 Sep 2026 15:26:09 +0000
-! Diff-Path: ../patches/2026.9.26.88.patch#ublock-annoyances
+! Last modified: Sat, 26 Sep 2026 14:47:38 +0000
+! Diff-Path: ../patches/2026.9.26.1025.patch#ublock-annoyances
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/annoyances.txt ***
@@ -1399,6 +1399,9 @@ one.oregon.gov##input[onpaste="return false"]:remove-attr(onpaste)
 !#else
 one.oregon.gov##+js(ra, onpaste, input[onpaste="return false"], complete)
 !#endif
+voedingswaardetabel.nl##+js(set, document.oncontextmenu, null)
+voedingswaardetabel.nl##+js(set, document.onselectstart, null)
+voedingswaardetabel.nl##*:style(-webkit-touch-callout: auto !important; -moz-touch-callout: auto !important; -ms-touch-callout: auto !important; -o-touch-callout: auto !important; touch-callout: auto !important; -webkit-user-select: auto !important; -moz-user-select: auto !important; -ms-user-select: auto !important; -o-user-select: auto !important; user-select: auto !important; -ms-touch-action: auto)
 ! ================================================ END: Anti copy, right-click, devtools, text select etc. ==========================================================================
 ! ================================================================START: Anti-adblock ===============================================================================================
 @@||socialblade.com^$ghide
@@ -4283,7 +4286,7 @@ investidor10.com.br##+js(trusted-set-local-storage-item, guest_user_banner_aon_c
 snowcrows.com##+js(rmnt, script, .onerror)
 
 ! Title: uBlock filters – Cookie Notices
-! Last modified: Sat, 19 Sep 2026 17:12:39 +0000
+! Last modified: Sat, 26 Sep 2026 11:11:53 +0000
 ! Expires: 7 days
 ! Description: Filters optimized for uBlock Origin, to be used with EasyList's and/or Adguard's "Cookie Notices" list(s)
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
@@ -4381,6 +4384,9 @@ beitberl.ac.il,shimur.org###MavilixCookiesBox
 ||cdn.shopify.com/extensions/*/gdpr-cookie-consent-
 ! https://github.com/uBlockOrigin/uAssets/issues/34509
 ||cdn.privacy-mgmt.com/consent/$domain=support.theguardian.com,important
+! https://github.com/uBlockOrigin/uAssets/issues/34622
+metro-cc.hr##cms-cookie-disclaimer
+metro-cc.hr##body:style(overflow: auto !important;)
 
 !!! Trusted scriptlets------------------------------------------------------------
 
@@ -5013,6 +5019,8 @@ linsenplatz.de##+js(aeld, DOMContentLoaded, cookieConsent)
 consent.formula1.com##+js(trusted-click-element, button[aria-label="Essential only cookies"])
 ! https://github.com/uBlockOrigin/uAssets/issues/34442
 thomas-krenn.com##+js(trusted-set-cookie, copol_www_thomas-krenn_com_optin_categories, %5B%22essential%22%5D, , , domain, .www.thomas-krenn.com)
+! https://github.com/uBlockOrigin/uAssets/issues/34611
+platoapp.com##+js(trusted-set-local-storage-item, trackingConsent, not-granted)
 
 !! Needs additional cookies
 
