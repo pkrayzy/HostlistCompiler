@@ -1,7 +1,7 @@
 ! Title: uBlock filters – Annoyances
 ! Expires: 7 days
-! Last modified: Sat, 26 Sep 2026 14:47:38 +0000
-! Diff-Path: ../patches/2026.9.26.1362.patch#ublock-annoyances
+! Last modified: Sun, 27 Sep 2026 03:52:11 +0000
+! Diff-Path: ../patches/2026.9.28.403.patch#ublock-annoyances
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/annoyances.txt ***
@@ -1402,6 +1402,7 @@ one.oregon.gov##+js(ra, onpaste, input[onpaste="return false"], complete)
 voedingswaardetabel.nl##+js(set, document.oncontextmenu, null)
 voedingswaardetabel.nl##+js(set, document.onselectstart, null)
 voedingswaardetabel.nl##*:style(-webkit-touch-callout: auto !important; -moz-touch-callout: auto !important; -ms-touch-callout: auto !important; -o-touch-callout: auto !important; touch-callout: auto !important; -webkit-user-select: auto !important; -moz-user-select: auto !important; -ms-user-select: auto !important; -o-user-select: auto !important; user-select: auto !important; -ms-touch-action: auto)
+tvtun.com##+js(aeld, contextmenu)
 ! ================================================ END: Anti copy, right-click, devtools, text select etc. ==========================================================================
 ! ================================================================START: Anti-adblock ===============================================================================================
 @@||socialblade.com^$ghide
@@ -4286,7 +4287,7 @@ investidor10.com.br##+js(trusted-set-local-storage-item, guest_user_banner_aon_c
 snowcrows.com##+js(rmnt, script, .onerror)
 
 ! Title: uBlock filters – Cookie Notices
-! Last modified: Sat, 26 Sep 2026 11:11:53 +0000
+! Last modified: Mon, 28 Sep 2026 04:05:14 +0000
 ! Expires: 7 days
 ! Description: Filters optimized for uBlock Origin, to be used with EasyList's and/or Adguard's "Cookie Notices" list(s)
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
@@ -4385,7 +4386,7 @@ beitberl.ac.il,shimur.org###MavilixCookiesBox
 ! https://github.com/uBlockOrigin/uAssets/issues/34509
 ||cdn.privacy-mgmt.com/consent/$domain=support.theguardian.com,important
 ! https://github.com/uBlockOrigin/uAssets/issues/34622
-metro-cc.hr##cms-cookie-disclaimer
+metro-cc.hr##.consent-disclaimer
 metro-cc.hr##body:style(overflow: auto !important;)
 
 !!! Trusted scriptlets------------------------------------------------------------
@@ -10036,7 +10037,10 @@ vpg.no##.js-offcanvas-singleton.offcanvas-start
 
 ! https://github.com/uBlockOrigin/uAssets/pull/34438
 ! https://notthebee.com/article/did-netflix-just-make-a-charlie-kirk-murder-joke-on-the-anniversary-of-his-assassination - embeds
-notthebee.com##+js(trusted-click-element, ';when-visible:xpath:/html/body/div[contains(@class,"bottom-0")]/div[@role="dialog"]//button[contains(text(),"Accept Cookies")]')
+! https://notthebee.com/article/scientists-have-detected-radio-waves-coming-from-another-planet
+notthebee.com##section[aria-label="Opt-Out Request Honored"]
+notthebee.com##+js(trusted-click-element, div[aria-label="Article content"] > div button:has(+ div > a[href="/privacy-choices"]))
+notthebee.com##+js(trusted-click-element, ';xpath:/html/body/section[@aria-label="Cookie choices"]/div[@class="consent-banner"]/div[@class="consent-banner-actions"]/div/button[contains(text(),"Accept all")]')
 
 ! Accept all
 shop-sks.com##+js(trusted-click-element, .js-cookie-accept-all-button > button, , 4000)
