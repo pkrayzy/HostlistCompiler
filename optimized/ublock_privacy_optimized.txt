@@ -1,6 +1,6 @@
 !
 ! Title: uBlock filters – Privacy
-! Last modified: 2026-09-28T08:05:52.797Z
+! Last modified: 2026-09-29T07:46:37.027Z
 !
 ! Compiled by @adguard/hostlist-compiler v0.0.0
 !
@@ -10,8 +10,8 @@
 !
 ! Title: uBlock filters – Badware risks
 ! Expires: 5 days
-! Last modified: Mon, 28 Sep 2026 05:46:08 +0000
-! Diff-Path: ../patches/2026.9.28.403.patch#ublock-badware
+! Last modified: Mon, 28 Sep 2026 15:55:35 +0000
+! Diff-Path: ../patches/2026.9.28.1312.patch#ublock-badware
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/badware.txt ***
@@ -388,7 +388,6 @@ howtoremove.guide###gray_de
 ||chemiclk.com^$all
 ||vcnbbtrack.com^$all
 ||latenightlovers.com^$all
-||date2night.b-cdn.net^
 ||ntfck.com^$all
 ||malenirt.site^$all
 /post/FileRotator_ID*/download.php?subid=$xhr
@@ -2249,14 +2248,18 @@ darumasushiantofagasta.cl##+js(aost, Function, /bxslider|wow/)
 ##body.wp-singular > div[id$="-overlay"] > div[id$="-container"] > div[class*="-container"] > div[id$="-checkbox-window"]
 ||lichsuvanhoa.net^$all
 ||diabetescareth.com^$all
-||clickzona.net^$all
-||trackerredirect.online^$all
 ||campaigntracker.icu^$all
 ||entry-verifed-cdn.
 /^https:\/\/[a-z]{15,}\.[a-z]{3,}\/embed\.js\?v=\d+$/$script,3p,match-case,to=~com|~net|~org
 /^https:\/\/[a-z]{8,}\.[a-z]+\/[a-zA-Z][a-z]+_[Pp]roliv\/api\?ver=\d\.\d\.\d$/$script,3p,match-case
 /^https:\/\/[-a-z]{9,}\.net\/embed\/[a-f0-9]{16}\?embed=1&host=/$frame,3p,match-case,to=net
 ||way-to-ai.com^$all
+/checking?domain=*&captchashowed=$xhr,3p
+||ikeymate.co.nz^$all
+||59na.com^$all
+##body > .cf-page-wrap
+||third-party.com^$all
+##body > .main-wrapper > .main-content > .intro > .checkbox-window
 ! !SECTION: ClickFix
 ||bonzi.link^$all
 ||pccdirect.site^$all
@@ -3545,7 +3548,6 @@ webflow.io##html.w-mod-js:not(.wf-active) > body:not([class]):not([id]) > a[clas
 ||bteux.com^$doc
 ||childrenoftheclouds.com^$doc
 ||dating-express.com^$doc
-||emailservicesnetau.com^$doc
 ||euromaillinnk.com^$doc
 ||glaters.com^$doc
 ||mybach.xyz^$doc
@@ -3983,6 +3985,7 @@ ublockorigin.app###main::before:style(content: 'This is not the official uBlock 
 ||claude-code-$doc,to=edgeone.app|pages.dev|squarespace.com
 ||romsns.com^$all
 ##body > div[data-captcha-enable="true"] > div.cleanslate[id^="google-captcha-"] > div.captcha-box
+||rpcs4.com^$all
 ||rpcs5.com^$all
 ||cyrexmods.cc^$all
 ||audiveris.com^$doc
@@ -4243,10 +4246,11 @@ top##body > center + .A + .post
 ||unikey.edu.vn^$all,reason=Trang web chinh thuc: https://unikey.org
 ||mobel-wahls.shop^$doc
 ||flingtrainer.io^$all
+||koboldcpp.com^$all
 ! Title: uBlock filters – Privacy
 ! Expires: 7 days
 ! Last modified: Sun, 27 Sep 2026 06:52:43 +0000
-! Diff-Path: ../patches/2026.9.28.403.patch#ublock-privacy
+! Diff-Path: ../patches/2026.9.28.1312.patch#ublock-privacy
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/privacy.txt ***
@@ -6029,7 +6033,6 @@ digitalspy.com##section.inline-content-module
 ||cdn.jsdelivr.net/npm/statsig-js
 ||googletagmanager.com/gtm.js$important,domain=dmax.de
 dmax.de##.block-user:remove-class(block-user)
-||umami.webtor.io^
 ||netronline.dev^
 ! mail.zoho.in metrics
 ||murphy.zoho.in/murphy/*/clientmetricslog?logtype=clientmetrics
