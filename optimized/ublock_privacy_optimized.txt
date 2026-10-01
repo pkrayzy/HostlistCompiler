@@ -1,6 +1,6 @@
 !
 ! Title: uBlock filters – Privacy
-! Last modified: 2026-09-30T07:49:44.294Z
+! Last modified: 2026-10-01T08:08:59.624Z
 !
 ! Compiled by @adguard/hostlist-compiler v0.0.0
 !
@@ -11,7 +11,7 @@
 ! Title: uBlock filters – Badware risks
 ! Expires: 5 days
 ! Last modified: Tue, 29 Sep 2026 12:24:04 +0000
-! Diff-Path: ../patches/2026.9.30.397.patch#ublock-badware
+! Diff-Path: ../patches/2026.10.1.122.patch#ublock-badware
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/badware.txt ***
@@ -208,7 +208,6 @@ howtoremove.guide###gray_de
 .xyz/video.php?=*&dating_xyz_0&&0$frame
 /click?pid=*&sub1=$doc
 ||internetspeedtracker.com^$all
-||system-update-new-2021.com^$all
 ||privatesinglesmeet.com^$all
 ||readytosinglesmeet.com^$all
 ||theshoparound.com^$all
@@ -482,7 +481,6 @@ howtoremove.guide###gray_de
 ||youtuba.com^$all
 ! Typosquatting: redirects to scam sites
 ||bestbut.com^$all
-||girhub.com^$all
 ||linkefdin.com^
 ||yautube.com^$all
 ||youtunbe.com^$all
@@ -4253,8 +4251,8 @@ top##body > center + .A + .post
 ||koboldcpp.com^$all
 ! Title: uBlock filters – Privacy
 ! Expires: 7 days
-! Last modified: Sun, 27 Sep 2026 06:52:43 +0000
-! Diff-Path: ../patches/2026.9.30.397.patch#ublock-privacy
+! Last modified: Wed, 30 Sep 2026 16:51:16 +0000
+! Diff-Path: ../patches/2026.10.1.122.patch#ublock-privacy
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/privacy.txt ***
@@ -4694,7 +4692,7 @@ lit.link##+js(href-sanitizer, a[href^="/redirects/link-ad?redirectUrl=aHR0c"], ?
 ! tencent click trackers
 ||c.pc.qq.com^$urlskip=?url
 ||c.pc.qq.com^$urlskip=?pfurl
-/^https:\/\/link\.theverge\.com\/click\/[0-9]+\.[0-9]+\/aHR0c/$doc,urlskip=/(aHR0c[a-zA-Z0-9%_-]+)/ -base64
+/^https:\/\/link\.theverge\.com\/click\/[0-9]+\.[0-9]+\/aHR0c/$doc,urlskip=/(aHR0c[a-zA-Z0-9%_-]+)/ -safebase64
 ||s.click.aliexpress.com/deep_link.*^dl_target_url=http$doc,urlskip=?dl_target_url
 ! Click Trackers
 html.duckduckgo.com,lite.duckduckgo.com##+js(href-sanitizer, a[href^="//duckduckgo.com/l/?uddg="], ?uddg)
@@ -6181,6 +6179,9 @@ okteve.com##+js(no-fetch-if, method:POST body:tracker)
 ||securepaste.top/?url=$urlskip=?url -base64
 ||minhatela.xyz/api/rpc/sig/hit
 ||minhatela.xyz/api/rpc/sig/b
+oklivetv.com##+js(no-fetch-if, method:POST body:tracker)
+||oklivetv.com/xplay/embed-beacon.php
+||oklivetv.com/p/e
 ! Merge in resource-abuse.txt
 ! *** uAssets:filters/resource-abuse.txt ***
 /edgemesh.*.js$script,domain=~edgemesh.com|~edgeno.de
