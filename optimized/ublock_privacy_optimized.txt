@@ -1,6 +1,6 @@
 !
 ! Title: uBlock filters – Privacy
-! Last modified: 2026-10-08T08:16:50.694Z
+! Last modified: 2026-10-09T00:19:15.552Z
 !
 ! Compiled by @adguard/hostlist-compiler v0.0.0
 !
@@ -11,7 +11,7 @@
 ! Title: uBlock filters – Badware risks
 ! Expires: 5 days
 ! Last modified: Wed, 07 Oct 2026 13:10:06 +0000
-! Diff-Path: ../patches/2026.10.7.1316.patch#ublock-badware
+! Diff-Path: ../patches/2026.10.8.1320.patch#ublock-badware
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/badware.txt ***
@@ -111,6 +111,7 @@ majorgeeks.com##b:has(a[target^="reimage"])
 ||gmboxx.com^
 ||mr.media-bucket.com^
 ||discount.s3blog.org^
+||s3blog.org^$3p
 ||abcdserver.com^$all
 ||embols.com^
 ||goneleft.com^
@@ -118,7 +119,6 @@ majorgeeks.com##b:has(a[target^="reimage"])
 ||newsbreakshere.com^
 ||rilenews.com^
 ||voxtribune.com^
-||checkisreal.com^
 ||developsincelock.com^
 ||gabriellalovecats.com^
 ||tomorrowwillbehotmaybe.com^
@@ -553,6 +553,7 @@ cracksmid.com##div[style=""] > center > center
 ||hostt.link^$doc
 ||ncracked.com^$doc
 ||fullsetup.pro^$doc
+||akashopc.info^$doc
 ||techblogs.cc^$doc
 ||up-community.wiki^$doc
 ||getprocrack.net^$doc
@@ -668,6 +669,7 @@ cracksmid.com##div[style=""] > center > center
 ||luxoriahub.shop^$all
 ||claude-ai.cyou^$all
 ||new.point-youtools.com^$all
+||datinglive-jp.com^$all
 ||download.guomeizuo.com^$all
 ||app.suckmongif.com^$all
 ||gbelitesolutions.com^$all
@@ -1426,7 +1428,6 @@ cracksmid.com##div[style=""] > center > center
 ||tenkeiya.com^$doc
 ||tenkeiza.com^$doc
 ||loto-4x.com^$doc
-||epicpotec.com^$doc
 ||nxishctcjccry.com^$doc
 ||daily-description.com^$doc
 ||divine.alegria-verte.com^$doc
@@ -1490,6 +1491,7 @@ cracksmid.com##div[style=""] > center > center
 ||tadadeai.weebly.com^$doc
 ||play.google.com/store/apps/details?id=gift.tadaapo.tadadeai&$doc
 ||improveyourhand.online^$doc
+||irrigation085.com^$doc
 ||atlier-ad.jp^$doc
 ||atelier-happiness.co.jp^$doc
 ||atelier-hp.jp^$doc
@@ -1836,6 +1838,7 @@ cracksmid.com##div[style=""] > center > center
 ||latterantithesis.com^$doc
 ||fullth-loto.com^$doc
 ||fast-mm.com^$doc
+||int-minint.com^$doc
 ||jipso.jp^$doc
 ||okanenokami.com^$doc
 ||lovers-line.com^$doc
@@ -2307,7 +2310,6 @@ darumasushiantofagasta.cl##+js(aost, Function, /bxslider|wow/)
 ! Magisk manager - Official site: https://github.com/topjohnwu/Magisk
 ||magiskmanager.com^$all
 ||magiskroot.com^$all
-||magisks.com^$all
 ||magiskzip.*^$all,domain=~magiskzip.com,to=~magiskzip.com
 ||magiskmodule.com^$all
 ! LibreTube - Official site: libretube.dev
@@ -3730,6 +3732,7 @@ weightlossdiet.top##+js(acs, open, executeCode)
 ||kmspico.dev^$doc
 ||kmspico.download^$doc
 ||kmspico.micaesoft.com^$doc
+||micaesoft.com^$doc
 ||kmspico10.com^$doc
 ||kmspicoativador.org^$doc
 ||kmspicofficial.pages.dev^$doc
@@ -3863,13 +3866,11 @@ sport.elwatannews.com##+js(aost, Array.prototype.indexOf, isWin)
 ||wakabairo.net^$doc
 ||wakayoyo.tokyo^$doc
 ||fuku-fuku.net^$doc
-||fuku-fukuu.com^$doc
 ||mtes.jp^$doc
 ||chiyouranai.base.shop^$doc
 ||enisaflower.com^$doc
 ||enisaflowersaku.com^$doc
 ||fukunotsuru.com^$doc
-||sb-z-uzou-fukunoturu.discover-news.tokyo^$doc
 ||cra-ttine.site^$doc
 ||cra-ttine.tech^$doc
 ||webexodus.created.app^$doc
@@ -4204,7 +4205,6 @@ top##body > center + .A + .post
 ||movemouse.net^$doc
 ||mumuplayer.app^$doc
 ||nircmd.net^$doc
-||noisium.com^$doc
 ||notatnikonline.com^$doc
 ||ocrmypdf.com^$doc
 ||power-toys.com^$doc
@@ -4265,8 +4265,8 @@ msm-wroclaw.pl##+js(noeval-if, _0x)
 ||bringmelove.icu^$all
 ! Title: uBlock filters – Privacy
 ! Expires: 7 days
-! Last modified: Mon, 05 Oct 2026 10:20:29 +0000
-! Diff-Path: ../patches/2026.10.7.1316.patch#ublock-privacy
+! Last modified: Thu, 08 Oct 2026 09:32:02 +0000
+! Diff-Path: ../patches/2026.10.8.1320.patch#ublock-privacy
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/privacy.txt ***
@@ -4366,12 +4366,10 @@ search.brave.com##+js(no-fetch-if, body:browser)
 /^https?:\/\/(?!assets|script|static)(?:[0-9a-z]{10,13}|[0-9a-z]{6})\.[0-9A-Za-z.\-_]+\/(?=[0-9a-z+\/\-]*[A-Z])[0-9A-Za-z+\/\-]{80,106}$/$script,1p,match-case,strict3p
 /dataunlocker$script,1p,domain=~dataunlocker.com
 ||data-saver-cindi.herokuapp.com^
-||franchiseplus.nl^$csp=script-src * 'unsafe-inline' 'wasm-unsafe-eval' data: blob: mediastream: filesystem:
 ||a.stateless.me^
-dataunlocker.com,androidacy.com,bolighub.dk##+js(set, _hjSettings, undefined)
-dataunlocker.com,androidacy.com,bolighub.dk##+js(set, google_tag_manager, undefined)
-@@||stats.g.doubleclick.net/g/$xhr,domain=androidacy.com
-||stats.g.doubleclick.net/g/$removeparam,domain=androidacy.com
+||bolighub.dk/tma/$script,1p
+dataunlocker.com,bolighub.dk##+js(set, _hjSettings, undefined)
+dataunlocker.com,bolighub.dk##+js(set, google_tag_manager, undefined)
 comicleaks.com,ping.gg,nookgaming.com,creatordrop.com,bitdomain.biz,fort-shop.kiev.ua,accuretawealth.com,tracktheta.com,adaptive.marketing,camberlion.com,segops.madisonspecs.com,stresshelden-coaching.de,controlconceptsusa.com,ryaktive.com,tip.etip-staging.etip.io##+js(rmnt, script, /join\(\'\'\)/)
 furucombo.app##+js(rmnt, script, /join\(\"\"\)/)
 intercity.technology,freelancer.taxmachine.be,adria.gg,fjlaboratories.com,abhijith.page,helpmonks.com##+js(rmnt, script, api.dataunlocker.com)
@@ -6195,6 +6193,7 @@ okteve.com##+js(no-fetch-if, method:POST body:tracker)
 oklivetv.com##+js(no-fetch-if, method:POST body:tracker)
 ||oklivetv.com/xplay/embed-beacon.php
 ||oklivetv.com/p/e
+||ua.xstory-fr.com^
 ! Merge in resource-abuse.txt
 ! *** uAssets:filters/resource-abuse.txt ***
 /edgemesh.*.js$script,domain=~edgemesh.com|~edgeno.de
