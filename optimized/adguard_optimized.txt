@@ -3,10 +3,24 @@
 ! Description: Compilation of AdGuard Base Filters, Excluding Domains Blocked by DNS
 ! Homepage: https://github.com/AdguardTeam/AdguardSDNSFilter
 ! License: GPLv3
-! Last modified: 2026-10-09T00:26:30.818Z
+! Last modified: 2026-10-09T08:25:56.446Z
 !
 ! Compiled by @adguard/hostlist-compiler v0.0.0
 !
+!
+! Source name: EasyList
+! Source: https://raw.githubusercontent.com/pkrayzy/HostlistCompiler/master/SourceLists/adguard.txt
+!
+!
+! This section contains generic element hiding rules that block ads.
+!
+! Good: ##.adv
+! Bad: example.org##.adv (should be in specific.txt)
+!
+!
+!
+!+ NOT_OPTIMIZED
+##.ad-placeholder-wrapper
 ! fly.inc
 ##div[style="margin: 10px 0; position: relative;"] > div[id="overlay"][style="position: absolute; width: 100%; height: 100%; z-index: 99999;"]
 ##div[style="text-align:center;margin:0 0 8px 0;"] > div[class^="ad-"][class$="-wrapper"]
@@ -1287,6 +1301,14 @@ tvtoss.com$$script[tag-content="ads-wrap"]
 ! https://github.com/AdguardTeam/AdguardFilters/commit/76971ea821a06ab04ada21f1291e6081ad54c428#commitcomment-104226681
 /asset/angular.min.js?t=$xmlhttprequest,~third-party
 /asset/jquery/slim-3.2.min.js?*&t=$xmlhttprequest,~third-party
+! TODO: remove 20.03.2023 if generic rules will not cause problems
+! /asset/angular.min.js$domain=avple.video|javhdfree.icu|nekolink.site|mambast.tk|netflav.com|fembed-hd.com|ndrama.xyz|pornhole.club|ffem.club|jvembed.com|dzmdplay.xyz|jav247.top|yuistream.xyz|javfu.net|iframe2videos.xyz|viplayer.cc|watchjavnow.xyz|cdn-myhdjav.info|embed-media.com|fembed9hd.com|cloudrls.com|vidgo.top
+! /asset/jquery/slim-3.2.min.js$domain=avple.video|javhdfree.icu|nekolink.site|mambast.tk|netflav.com|fembed-hd.com|ndrama.xyz|pornhole.club|ffem.club|jvembed.com|dzmdplay.xyz|jav247.top|yuistream.xyz|javfu.net|iframe2videos.xyz|viplayer.cc|watchjavnow.xyz|cdn-myhdjav.info|embed-media.com|fembed9hd.com|cloudrls.com|vidgo.top
+!
+!
+! Phishing
+! https://github.com/AdguardTeam/AdguardFilters/issues/243491
+/pc64r_ua/*$all
 ! Dangerous sites in ads / Fake captcha
 ! https://urlscan.io/search/#page.url%3A%22%2Fl%2FDMP_picture_captcha%3F%22
 /l/DMP_picture_captcha?$document,popup
@@ -1622,15 +1644,15 @@ http://www.ads.$third-party
 ?tid=*&red=1&*&abt=$redirect=nooptext,important
 /?&pid=*&subid=$redirect=nooptext,important
 /?&subid=*&pid=$redirect=nooptext,important
-! Checksum: 1Zae9HC+iyOmFgITFzyymg
-! Diff-Path: ../patches/2_optimized/2_optimized-s-1791500897-3600.patch
+! Checksum: KGQt9DVPwaW3y6ZQbnxsWQ
+! Diff-Path: ../patches/2_optimized/2_optimized-s-1791509618-3600.patch
 ! Title: AdGuard Base filter (Optimized)
 ! Description: EasyList + AdGuard English filter. This filter is necessary for quality ad blocking.
-! Version: 2.4.95.98
-! TimeUpdated: 2026-10-08T23:05:28+00:00
+! Version: 2.4.96.0
+! TimeUpdated: 2026-10-09T01:29:33+00:00
 ! Expires: 5 days (update frequency)
-||srt94.click^
 ||cod.buzzingnippy.com^
+||fat.hypehuddle.com^
 ||tray.ackvainly.com^
 ||fort.toovaliantly.com^
 ||dish.yippeeidle.com^
@@ -1716,11 +1738,13 @@ http://www.ads.$third-party
 ||static.gsrv.dev^
 ||serving.laimroll.ru^
 ||a.fapcat.com^
+||a.guidehub.lol^
 ||asg.mainos.pro^
 ||atk.pxointr.com^
 ||b1.hentaibaka.one^
 ||cdnjs.contentsprinter.xyz^
 ||f-g-l-j.22yy6.com^
+||oio.porntez.com^
 ||rs.picmega.com^
 ||static.donkeyhug.com^
 ||www.atlas-3ib.com^
@@ -30154,247 +30178,76 @@ spoilertv.com#@##adsensewide
 lagruyere.ch#@##adv-top
 embed.wcostream.com#@#.ad-unit
 browsershots.org#@#.advert_area
-||4xfreedom.com^
-||72xlpn3pli94ml8gl16riyfzzyofyi.rest^
-||8kjqhjz82xu6fb4b4516829.cfd^
-||aaomf.com^
+||3v14lgwnojml1i9ekvi175yeunr5c1qom8.rest^
+||700be1edfc.com^
 ||ab1n.net^
 ||admd.ink^
 ||admitad.com^
 ||ads-static.conde.digital^
 ||ads.lemmatechnologies.com^
-||adscoreip.com^
 ||adspeed.net^
 ||affiliatefuture.com^
-||affixsisel.com^
-||agdojnohlriv.in^
-||airlesscalmnesssuppose.com^
-||ajxyjzwhhcznj.space^
-||alarmpenguinmelt.com^
-||alcogelsild.cfd^
 ||alitems.co^
 ||alitems.com^
 ||alitems.site^
-||anakaberu.cyou^
-||anselmohioan.cyou^
 ||atdmt.com^
-||audileuntwindcactoid.cyou^
-||bbuybhauwbrwz.site^
-||behessmmnvoee.site^
-||beleavenbg.com^
-||betweenbrr.com^
+||bdoliutpjjvfc.website^
 ||bfast.com^
-||bfiibjmwyhkde.space^
-||biwfzaffpksun.online^
-||blaineearlsmanjeet.cfd^
-||blamsdaribah.com^
-||bokharabeteem.cfd^
-||bowablejusting.cfd^
-||bozptgequnhzm.site^
-||bsurggbhxbm.com^
-||bugsuntress.cfd^
-||butyrhopers.com^
+||bolitamanly.com^
 ||buyeasy.by^
-||buzzingnippy.com^
-||cbgbvcpnmokpv.online^
 ||cc-dt.com^
-||cecalselionsplays.cfd^
-||cgtlrvzqjmbjc.online^
-||chapsoutroop.cyou^
-||charaupspout.cfd^
-||chordcoolies.com^
-||cieapkjfmavqd.site^
-||ckbxxryowtyne.website^
-||claquesvividlysherd.cfd^
 ||clcktrck.com^
 ||clickiocdn.com^
-||cmefahzqwudju.space^
 ||commission-junction.com^
-||compaaopaline.com^
 ||contextweb.com^
-||craniavestas.com^
-||createlouisville.org^
-||cyamusmakuk.cfd^
-||cymarintroth.cyou^
-||definehaughty.com^
-||dekingcossack.top^
-||dengueblellum.cyou^
-||dhexdnikblnsk.website^
-||dibbledbest.com^
-||dobbyporn.com^
+||crpwpagkgotiq.space^
+||cziehvdoyiltn.space^
+||darkingtuyer.cyou^
 ||dt51.net^
-||dubashtoxodonniata.cyou^
-||dusqghom.com^
 ||eacdn.com^
-||ejmpeymopqcaf.site^
-||estuarybethel.cfd^
-||evnrubshwdvyq.com^
-||fashionslake.cyou^
-||fcuggvyfcvxfg.website^
-||ferthhagboat.com^
+||eqpnkqbsftdqs.space^
 ||floejjeohkn.com^
-||fmbvrfalmzayi.online^
-||footfulthirsty.com^
-||fortuneswungenpikas.cfd^
-||forwrapbahmani.cfd^
-||fumariclycian.cfd^
+||fobsbetalk.cfd^
 ||fwmrm.net^
-||fyiagfbaqknmi.space^
-||fzdgvcwwlddmp.site^
-||fzjzttppcyaij.space^
 ||gannett.gcion.com^
-||geomysbangash.cfd^
-||geoodigfrlxto.site^
-||glbxoucyygluq.online^
 ||go2jump.org^
 ||googletagservices.com^
 ||gotrackier.com^
-||gravicjibbs.com^
-||grt1pkpu9kb3hnzjg.rest^
-||guidehub.lol^
-||guysmiasthrives.cfd^
-||gyadqicrlqnyg.space^
-||gylhoperszqyh.site^
-||halmfrisii.com^
-||heatenpyropus.com^
-||hficukpfywa.in^
-||hgbdprpi.com^
-||hldkhuflnbahs.space^
-||hpzlybjsvphzs.site^
-||hsmfomoatfzds.site^
-||htuxcnfthocuo.online^
-||hypehuddle.com^
-||ijrjdilztqnos.site^
+||idhubypictjkv.space^
 ||imasdk.googleapis.com^
-||inhviwwmqvtxr.space^
-||io7tigb4h24elnfknt5bf6fuqgcygn4zz117.rest^
-||isodosetourne.cyou^
 ||jdoqocy.com^
-||jicamasmiscrop.qpon^
-||jonasfrozepyjamas.com^
-||jtktdlkjrh.com^
-||jtm34bqyb7t51k4qy522y3qjbe9.rest^
-||juponsteered.cfd^
-||kbbdixrcvqets.space^
-||ketosescosset.cfd^
-||keyhamates.com^
-||kkrwdgpszlybm.site^
-||kpzfnvlpfnugl.site^
-||kvavkvcohyxxe.site^
-||lcgrbvlmfboij.online^
-||limulusbenshi.cyou^
-||loupesstavedtriene.cyou^
-||maomaoschout.com^
-||metasvss.com^
-||metrozubr.com^
-||mjbkluvqxfple.space^
-||mlxogllalrjbo.site^
-||monasapotomac.com^
+||jiwwtotahc.in^
+||kittletopcoat.cyou^
+||lauccedsuskyv.site^
+||litvakbihalve.qpon^
+||mijvwqhqxgmqr.space^
 ||monetag.com^
-||mooleydoctor.qpon^
-||moriorilimbs.com^
-||mvnpjimjcqike.site^
-||nouvglmwpxwth.website^
-||nqhtwgphsgujn.space^
 ||ntv.io^
-||nxvtxnrhaisyu.online^
-||nylastmangy.com^
-||ocxuggtpjdwzb.space^
-||officialplenty.com^
 ||ojrq.net^
-||overaptpretjaburan.cyou^
-||ovnccdqzclehr.site^
 ||paid.outbrain.com^
-||pehlnisosyxpa.online^
-||picklerrisser.cyou^
-||pkcqlfxxbbobu.online^
-||porntez.com^
-||preampsciboney.cyou^
+||peplapiitissoulack.cfd^
+||prdflwwhmqein.site^
 ||prod.untd.com^
-||psycholsatineduessa.cfd^
-||ptisanarbust.cfd^
-||ptjotkhu.com^
-||pvfouuovllqve.site^
-||pxb9nb3bghif9j8.cfd^
-||pzgvinjka.com^
-||qcytinjky.in^
-||qdmwrrtpfokna.online^
-||qebnkbtmjdlwe.site^
 ||qksrv.net^
-||quarlyachan.cyou^
-||quasiph.qpon^
-||r324842te63wnm3y9c7cf.rest^
-||rancemalars.com^
-||rdhrtfdrttyuyk.site^
+||r71y7eil6p3rpkt141clch461quuj7pnblf.cfd^
 ||redirectingat.com^
-||remixespickerseggcup.cfd^
-||repandtarpan.cyou^
-||rightyrely.com^
-||rjwglpzvppgco.site^
-||rntoughen.com^
-||roguerygentle.qpon^
-||rosabelhobssort.cyou^
 ||rubiconproject.com^
-||ryxpsssrmbhzl.site^
-||saidithicky.cyou^
-||schmelzpoddingburbler.qpon^
-||shchcyrbeuhgx.site^
+||sacchawaxbird.cyou^
+||seabedswitney.cyou^
 ||smugnow.com^
-||sopranishamim.com^
-||sovietgolds.cyou^
-||soylrpvbnwrua.website^
+||somalosclentlucian.qpon^
 ||spurgesanoiaerthly.qpon^
-||steppescooeed.cyou^
-||stogeysfaxes.cyou^
+||stucketouffeulu.cyou^
 ||stvkr.com^
-||tairgerdobos.com^
-||tayrascutatesnitchy.cyou^
-||tefbawbee.top^
-||termagewaving.com^
-||thistlyangili.com^
-||tilljoyfully.com^
-||toskbuffier.cyou^
+||sulfatesoluble.com^
+||tgqykrsjo.com^
 ||trck.wargaming.net^
-||tundishfence.qpon^
-||twmgghomevcxv.website^
-||tyol8xnp41pvrzp.cfd^
-||uctuyqxbzfwys.website^
-||ugtmmctzpvhdp.space^
-||undhertouchingth.org^
-||uvvohmdaslonq.site^
-||uy2h2i6m84cv495t4erlr.cfd^
-||valesalon.cfd^
-||verstespremiss.com^
-||vflfrwugmxhjr.space^
 ||videoplaza.tv^
-||vitting.org^
-||vizardwelder.com^
-||vjfsjdjhuckpzb.com^
-||vtkfotftpbd.com^
-||wendishalisospocoson.cfd^
-||wkkfypqwrmgud.online^
-||wmvxardtelhfb.site^
-||wnicpzqfqnrwu.site^
-||wocnb.org^
+||vnieorcejbbqv.online^
+||vqmurqsfoycha.online^
 ||wpnrtnmrewunrtok.xyz^
-||wthrlcikushhbq.com^
-||wunbeigy.cyou^
-||wyncdcdugoiti.site^
-||xbozdbithuwgq.website^
-||xhvewcaloiiyk.site^
-||xjyhfuwzlwrrg.online^
 ||xpglvruebmgj.com^
 ||xqqjjgdjiuqcs.space^
-||xtrkyx5k52822om8igf89v47.cfd^
-||xvlbjcauwrpoa.space^
-||xwvjjjyxtusalw.com^
-||xwwglzogmn.com^
-||ydrwwqazbmkru.online^
-||ymzvbetxdrbfy.site^
-||zmqjwpuftbdsj.site^
-||znstbgrhakvyy.space^
-||zowieamid.com^
-||zzjelayprxxca.site^
 ||gotrackier.com^$document
 ||opera.com^*PWNgames$document
 ||paid.outbrain.com^$document
@@ -30425,7 +30278,6 @@ browsershots.org#@#.advert_area
 ||cdn.iople.com^
 ||cdn.nuqwe.com^
 ||cdn.viowrel.com^
-||reallywire.com^
 ||158.247.208.
 ||162.252.214.4^
 ||185.149.120.173^
@@ -30433,7 +30285,6 @@ browsershots.org#@#.advert_area
 ||23.109.87.
 ||24click.top^$popup
 ||3xyy.com^$popup
-||adscoreip.com^$popup
 ||blendfencingprune.com^$popup
 ||concealmentmimic.com^$popup
 ||noohapou.com^$popup
@@ -30528,7 +30379,6 @@ browsershots.org#@#.advert_area
 ||playgama.com/ads/
 ||pn.ybp.yahoo.com/ab/imp/
 ||prebid.cwi.re^
-||ptr.duckier.com^
 ||refinery89.com/performance/
 ||rentalcars.com/partners/
 ||sascdn.com/diff/$image,script
@@ -30716,6 +30566,7 @@ browsershots.org#@#.advert_area
 ||nyaa.land/static/p2.jpg
 ||nzherald.co.nz/pf/resources/dist/scripts/global-ad-script.js
 ||openalternative.co/_proxy/revinel/
+||openapk.net/include/affiliate-units.js
 ||ownedcore.com/forums/ocpbanners/
 ||pandora.com/api/v1/ad/
 ||paypalobjects.com/web/res/*/js/ad.js
@@ -42244,7 +42095,6 @@ biteki.com#$?#.slick-slide > div[id] + script:upward(1) { remove: true; }
 ##a[href^="https://top.mail.ru/jump"]
 ##img[src*="counter.yadro.ru"]
 ##img[src^="http://c.bigmir.net/"]
-||analytics-event.com^
 ||rtb.dynotech.io^
 ||sync.adsp.io^
 ||sync.gonet-ads.com^
@@ -43284,11 +43134,6 @@ biteki.com#$?#.slick-slide > div[id] + script:upward(1) { remove: true; }
 ||wellheatershop-ss.checkoutera.com^
 ||wiggydogshop-ss.checkoutera.com^
 ||zapfieshop-ss.checkoutera.com^
-||stat.s.ee^
-||anonymous.qub.ca
-||tracker.mida-app.io^
-||m-chromadrone.prod.suno.com^
-||track.esteban.fr^
 ||servt.ergadx.com^
 ||tag-v*.kuzen.io^
 ||mtag-*.wedevs.com^
