@@ -1,6 +1,6 @@
 !
 ! Title: uBlock filters – Privacy
-! Last modified: 2026-10-11T08:07:54.397Z
+! Last modified: 2026-10-11T14:46:42.117Z
 !
 ! Compiled by @adguard/hostlist-compiler v0.0.0
 !
@@ -10,8 +10,8 @@
 !
 ! Title: uBlock filters – Badware risks
 ! Expires: 5 days
-! Last modified: Sat, 10 Oct 2026 17:24:39 +0000
-! Diff-Path: ../patches/2026.10.11.108.patch#ublock-badware
+! Last modified: Sun, 11 Oct 2026 07:47:42 +0000
+! Diff-Path: ../patches/2026.10.11.522.patch#ublock-badware
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/badware.txt ***
@@ -206,7 +206,6 @@ howtoremove.guide###gray_de
 .xyz/video.php?=*&dating_xyz_0&&0$frame
 /click?pid=*&sub1=$doc
 ||internetspeedtracker.com^$all
-||system-update-new-2021.com^$all
 ||privatesinglesmeet.com^$all
 ||readytosinglesmeet.com^$all
 ||theshoparound.com^$all
@@ -2258,6 +2257,7 @@ webrick.com##+js(acs, atob, Uint8Array)
 aspireatlas.com##+js(rmnt, script, String.fromCharCode)
 pentest.blog##+js(rmnt, script, (self);)
 pentest.blog##+js(acs, atob, new )
+||soundcloudapp.com^$all
 ##body[data-clipboard-code] > .main-wrapper
 ||get-verification.to^$all
 /captcha/api|$script,3p
@@ -4003,7 +4003,6 @@ ublockorigin.app###main::before:style(content: 'This is not the official uBlock 
 ||claude-code-$doc,to=edgeone.app|pages.dev|squarespace.com
 ||romsns.com^$all
 ##body > div[data-captcha-enable="true"] > div.cleanslate[id^="google-captcha-"] > div.captcha-box
-||rpcs5.com^$all
 ||cyrexmods.cc^$all
 ||audiveris.com^$doc
 ! phishing emails - https://storage.googleapis.com/hmdbox/hmd_v2.html
@@ -4268,8 +4267,8 @@ msm-wroclaw.pl##+js(noeval-if, _0x)
 ||timbuk2.com.de^$all
 ! Title: uBlock filters – Privacy
 ! Expires: 7 days
-! Last modified: Sat, 10 Oct 2026 15:34:05 +0000
-! Diff-Path: ../patches/2026.10.11.108.patch#ublock-privacy
+! Last modified: Sun, 11 Oct 2026 04:23:35 +0000
+! Diff-Path: ../patches/2026.10.11.522.patch#ublock-privacy
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/privacy.txt ***
@@ -5179,6 +5178,9 @@ $removeparam=igshid,domain=instagram.com|threads.net
 ||sonar.viously.com^$removeparam=r
 ! Exceptions
 @@||web.archive.org/*/http$removeparam
+@@||archive.*/http$removeparam,doc,to=archive.fo|archive.is|archive.li|archive.md|archive.ph|archive.vn
+@@||wayback.archive-it.org/*/http$removeparam
+@@||megalodon.jp/*/http$removeparam
 @@||urldefense.com^$removeparam
 @@||shop.pilotinstitute.com/*^cls=*&cls=$doc,removeparam
 /dp/*/ref=$doc,uritransform=/\/ref=[^\/?#]+//,to=www.amazon.*|www.amazon.ae|www.amazon.ca|www.amazon.cn|www.amazon.co.jp|www.amazon.co.uk|www.amazon.com|www.amazon.com.au|www.amazon.de|www.amazon.es|www.amazon.fr|www.amazon.in|www.amazon.nl|www.amazon.sg
