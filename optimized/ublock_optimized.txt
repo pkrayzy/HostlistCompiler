@@ -1,6 +1,6 @@
 !
 ! Title: uBlock filters
-! Last modified: 2026-10-11T08:07:44.816Z
+! Last modified: 2026-10-11T14:46:32.142Z
 !
 ! Compiled by @adguard/hostlist-compiler v0.0.0
 !
@@ -10,8 +10,8 @@
 !
 ! Title: uBlock filters
 ! Expires: 5 days
-! Last modified: Sat, 10 Oct 2026 16:41:27 +0000
-! Diff-Path: ../patches/2026.10.11.108.patch#ublock-filters
+! Last modified: Sun, 11 Oct 2026 04:46:14 +0000
+! Diff-Path: ../patches/2026.10.11.522.patch#ublock-filters
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/filters.txt ***
@@ -15666,6 +15666,7 @@ kpopjams.com##+js(acs, dataLayer, detectAdBlock)
 @@||emailnator.com^$ghide
 emailnator.com##+js(nostif, adsbygoogle)
 emailnator.com##.position-relative tr:has(a[href="https://tools-ai.online"])
+emailnator.com##ins.adsbygoogle
 bluedollar.net##+js(acs, jQuery, adblock)
 bluedollar.net##div[id^="aub"]
 bluedollar.net##.ads
@@ -15812,6 +15813,7 @@ dropmms.*##+js(acs, document.onkeydown)
 *$frame,script,3p,domain=dropmms.*
 @@||challenges.cloudflare.com/cdn-cgi/$subdocument,domain=dropmms.*
 ||dropmms.*/adprovider.js^
+||spiddefrexpron.com^
 bloground.ro##+js(nostif, show)
 witcherhour.com##+js(nostif, show)
 witcherhour.com##+js(no-fetch-if, ads)
@@ -24128,6 +24130,8 @@ gowatchseries.net##+js(nostif, /bait|AdBlock/i)
 gowatchseries.net##+js(nowoif, _blank)
 gowatchseries.net###gw-ad-root
 sudinfo.be##.pane-partenaires-outbrain-sidebar
+partner.nonamejose.sx##+js(set-local-storage-item, removeAdv, true)
+partner.nonamejose.sx##+js(nostif, , 15000)
 ! Title: uBO Lite filters
 ! Last modified: Mon, 28 Sep 2026 15:55:35 +0000
 ! Expires: 4 days
@@ -24282,8 +24286,8 @@ geo.dailymotion.com##+js(set, DMP_ENABLE_ADS, false)
 ! https://github.com/uBlockOrigin/uBOL-home/issues/624
 ! Title: uBlock filters – Quick fixes
 ! Expires: 12 hours
-! Last modified: Sat, 10 Oct 2026 16:30:42 +0000
-! Diff-Path: ../patches/2026.10.11.108.patch#ublock-quick-fixes
+! Last modified: Sun, 11 Oct 2026 02:59:49 +0000
+! Diff-Path: ../patches/2026.10.11.522.patch#ublock-quick-fixes
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/quick-fixes.txt ***
@@ -24680,6 +24684,7 @@ genshin-soku.com,monhan-soku.com,xn--gckdevd5myivf.site,yamiisoku.com##+js(json-
 genshin-soku.com,monhan-soku.com,xn--gckdevd5myivf.site,yamiisoku.com##+js(prevent-innerHTML)
 genshin-soku.com,monhan-soku.com,xn--gckdevd5myivf.site,yamiisoku.com##+js(trusted-suppress-native-method, DOMParser.prototype.parseFromString, '"/<[Aa]/"')
 genshin-soku.com,monhan-soku.com,xn--gckdevd5myivf.site,yamiisoku.com##+js(no-fetch-if, method:POST)
+genshin-soku.com,monhan-soku.com,xn--gckdevd5myivf.site,yamiisoku.com##+js(rmnt, script, adsbygoogle)
 ligainsider.de##+js(trusted-replace-argument, document.getElementById, 0, '', condition, /^wall-backdrop$/)
 ligainsider.de##+js(nostif, /unknown|BLOCKED/i)
 iplookup.flagfox.net##.adsbygoogle
