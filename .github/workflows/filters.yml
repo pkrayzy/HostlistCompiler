@@ -87,7 +87,7 @@ jobs:
             curl -s https://raw.githubusercontent.com/brave/adblock-lists/master/brave-lists/brave-ios-specific.txt
             echo ""
             curl -s https://raw.githubusercontent.com/liamengland1/miscfilters/master/amazonannoyances.txt
-            } | sed '/!#safari_cb_affinity/d' > ./SourceLists/easylist.txt
+            } | sed '/!#safari_cb_affinity/d' | grep -vE 'nytimes\.com##|nytimes\.com#@#|nytimes\.com,nytimesn7cgmftshazwhfgzm37qxb44r64ytbb2dj3x62d2lljsciiyd\.onion#@#|nytimes\.com,nytimesn7cgmftshazwhfgzm37qxb44r64ytbb2dj3x62d2lljsciiyd\.onion##|domain=nytimes\.com' > ./SourceLists/easylist.txt
 
       - name: Build EasyPrivacy
         run: |             
@@ -96,7 +96,7 @@ jobs:
             echo ""
             curl -s https://filters.adtidy.org/ios/filters/118_optimized.txt
             # curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/SpywareFilter/sections/general_extensions.txt 
-            } | sed '/!#safari_cb_affinity/d' > ./SourceLists/easyprivacy.txt
+            } | sed '/!#safari_cb_affinity/d' | grep -vE 'nytimes\.com##|nytimes\.com#@#|nytimes\.com,nytimesn7cgmftshazwhfgzm37qxb44r64ytbb2dj3x62d2lljsciiyd\.onion#@#|nytimes\.com,nytimesn7cgmftshazwhfgzm37qxb44r64ytbb2dj3x62d2lljsciiyd\.onion##|domain=nytimes\.com' > ./SourceLists/easyprivacy.txt
 
       - name: Build EasyCookie
         run: |             
@@ -109,7 +109,7 @@ jobs:
             # curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/AnnoyancesFilter/Popups/sections/push-notifications_general.txt
             # curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/AnnoyancesFilter/Popups/sections/popups_general.txt
             # curl -s https://filters.adtidy.org/ios/filters/18_optimized.txt
-            } > ./SourceLists/easycookie.txt
+            } | grep -vE 'nytimes\.com##|nytimes\.com#@#|nytimes\.com,nytimesn7cgmftshazwhfgzm37qxb44r64ytbb2dj3x62d2lljsciiyd\.onion#@#|nytimes\.com,nytimesn7cgmftshazwhfgzm37qxb44r64ytbb2dj3x62d2lljsciiyd\.onion##|domain=nytimes\.com' > ./SourceLists/easycookie.txt
 
       - name: Build Scriptlets
         run: |              
