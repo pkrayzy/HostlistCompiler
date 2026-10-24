@@ -1,6 +1,6 @@
 !
 ! Title: uBlock filters – Privacy
-! Last modified: 2026-10-23T06:50:37.325Z
+! Last modified: 2026-10-24T06:46:47.445Z
 !
 ! Compiled by @adguard/hostlist-compiler v0.0.0
 !
@@ -10,8 +10,8 @@
 !
 ! Title: uBlock filters – Badware risks
 ! Expires: 5 days
-! Last modified: Wed, 21 Oct 2026 04:56:18 +0000
-! Diff-Path: ../patches/2026.10.23.85.patch#ublock-badware
+! Last modified: Fri, 23 Oct 2026 13:42:14 +0000
+! Diff-Path: ../patches/2026.10.24.343.patch#ublock-badware
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/badware.txt ***
@@ -2269,6 +2269,8 @@ darumasushiantofagasta.cl##+js(aost, Function, /bxslider|wow/)
 ||precisionproving.com^$3p
 /apph5/?enHash=$doc
 ##html[data-page="macos-download"] > body[data-platform="macos"] > .app_wrap
+||r2.dev/Verifyd1.html$doc
+r2.dev##body > .main-wrapper > .main-content:has(> #checkbox-window.checkbox-window)
 ! !SECTION: ClickFix
 ||bonzi.link^$all
 ||pccdirect.site^$all
@@ -3985,6 +3987,7 @@ ublockorigin.app###main::before:style(content: 'This is not the official uBlock 
 ##body > div[data-captcha-enable="true"] > div.cleanslate[id^="google-captcha-"] > div.captcha-box
 ||cyrexmods.cc^$all
 ||audiveris.com^$doc
+||audiveris.net^$doc
 ! phishing emails - https://storage.googleapis.com/hmdbox/hmd_v2.html
 ||storage.googleapis.com/hmdbox/$doc
 ||hmdv2.gogomailbali.eu.org^$doc
@@ -4131,7 +4134,6 @@ top##body > center + .A + .post
 ! Typosquatting which redirects to scam
 ||e261.net^$all
 ||imtolenplex.com^$all
-||immanitys.com^$all
 ||tagesschau.tech^$doc
 ||shuru-baidu.com.cn^$all
 ||roblox.com.$all,to=~cloudflare.net
@@ -4251,8 +4253,8 @@ msm-wroclaw.pl##+js(noeval-if, _0x)
 ||ledger.net.cn^$all
 ! Title: uBlock filters – Privacy
 ! Expires: 7 days
-! Last modified: Sun, 18 Oct 2026 10:08:44 +0000
-! Diff-Path: ../patches/2026.10.23.85.patch#ublock-privacy
+! Last modified: Sat, 24 Oct 2026 04:43:33 +0000
+! Diff-Path: ../patches/2026.10.24.343.patch#ublock-privacy
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/privacy.txt ***
@@ -6186,6 +6188,7 @@ oklivetv.com##+js(no-fetch-if, method:POST body:tracker)
 ||sentry.efabrica.sk^
 ||crunchyscan.st/api/insights
 ||emudesk.com/api/analytics/
+||go.portail-assurance.ca^
 ! Merge in resource-abuse.txt
 ! *** uAssets:filters/resource-abuse.txt ***
 /edgemesh.*.js$script,domain=~edgemesh.com|~edgeno.de
