@@ -777,12 +777,12 @@ _social_tracking.js^
 _tracking.php?b=
 /aegis-sdk/*$script
 
-! Checksum: yYGtHpGIxImzHwvMIwezEA
-! Diff-Path: ../patches/118_optimized/118_optimized-s-1792977274-14400.patch
+! Checksum: NGwK9cNrwBDxIneaD85CCg
+! Diff-Path: ../patches/118_optimized/118_optimized-s-1793005065-14400.patch
 ! Title: EasyPrivacy (Optimized)
 ! Description: Privacy protection supplement for EasyList.
-! Version: 2.1.73.79
-! TimeUpdated: 2026-10-26T01:11:17+00:00
+! Version: 2.1.73.80
+! TimeUpdated: 2026-10-26T08:53:53+00:00
 ! Expires: 5 days (update frequency)
 &&sub19=undefined&sub20=undefined
 &action=js_stats
@@ -57166,8 +57166,8 @@ search.rakuten.co.jp#%#//scriptlet('ubo-aeld', 'mouseup', 'sendClickEvent')
 @@rutracker.*/tracker.php?
 ! Title: uBlock filters – Privacy
 ! Expires: 7 days
-! Last modified: Sun, 25 Oct 2026 16:58:36 +0000
-! Diff-Path: ../patches/2026.10.26.362.patch#ublock-privacy
+! Last modified: Mon, 26 Oct 2026 09:38:59 +0000
+! Diff-Path: ../patches/2026.10.26.769.patch#ublock-privacy
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/privacy.txt ***
@@ -59269,6 +59269,8 @@ oklivetv.com##+js(no-fetch-if, method:POST body:tracker)
 ||emudesk.com/api/analytics/
 ||go.portail-assurance.ca^
 ||proxyhog.com^
+||bol.com/rs/v*/batch|
+bol.com##+js(json-edit-fetch-request, $[?.operationName=="sendExperimentMeasurementReferences"].*, propsToMatch, /graphql)
 ! Merge in resource-abuse.txt
 ! *** uAssets:filters/resource-abuse.txt ***
 /edgemesh.*.js$script,domain=~edgemesh.com|~edgeno.de
