@@ -1,6 +1,6 @@
 !
 ! Title: uBlock filters – Privacy
-! Last modified: 2026-10-27T07:10:50.456Z
+! Last modified: 2026-10-27T13:09:23.069Z
 !
 ! Compiled by @adguard/hostlist-compiler v0.0.0
 !
@@ -10,8 +10,8 @@
 !
 ! Title: uBlock filters – Badware risks
 ! Expires: 5 days
-! Last modified: Sun, 25 Oct 2026 14:56:46 +0000
-! Diff-Path: ../patches/2026.10.27.293.patch#ublock-badware
+! Last modified: Tue, 27 Oct 2026 10:17:31 +0000
+! Diff-Path: ../patches/2026.10.27.626.patch#ublock-badware
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/badware.txt ***
@@ -2262,6 +2262,7 @@ darumasushiantofagasta.cl##+js(aost, Function, /bxslider|wow/)
 ##html[data-page="macos-download"] > body[data-platform="macos"] > .app_wrap
 ||r2.dev/Verifyd1.html$doc
 r2.dev##body > .main-wrapper > .main-content:has(> #checkbox-window.checkbox-window)
+##div.grid[aria-hidden="true"]:not([id]):not([style]) + main:not([class]):not([id]):not([style]) ~ div[style="position: fixed; inset: 0px; z-index: 2147483647;"]:not([class]):not([id])
 ! !SECTION: ClickFix
 ||bonzi.link^$all
 ||pccdirect.site^$all
@@ -2321,7 +2322,7 @@ r2.dev##body > .main-wrapper > .main-content:has(> #checkbox-window.checkbox-win
 ||balenaetcher.$all,domain=~etcher.balena.io
 ! Vencord - Official site: vencord.dev
 ! NewPipe - Official site: newpipe.net
-||newpipe.*^$all,domain=~newpipe.net,to=~newpipe.net
+||newpipe.$doc,to=~newpipe.net|~schabi.org
 ! Z-Library - Official sites: singlelogin.se, singlelogin.re, z-library.se, zlibrary-global.se, go-to-zlibrary.se
 ||z-lib.id^$all
 ||zlib-official.com^$all
@@ -3658,7 +3659,6 @@ rapidkil.com.au##+js(aost, XMLHttpRequest, /wp-content)
 ||kveesh6.il-$doc
 /^https:\/\/[0-9a-z]{6,8}\.[a-z]{2,10}\/[!.+,=?@\[][\/0-9a-z]{20,30}\.[-a-z]{2,7}$/$doc,to=agency|art|asia|auction|bar|beauty|beer|best|biz|bond|business|cam|cards|casa|click|cloud|coupons|courses|cv|digital|diy|fashion|food|forum|gay|guru|hair|info|life|live|living|link|ltd|my|ooo|property|pw|qpon|republican|rocks|run|sale|sbs|services|shop|skin|store|studio|support|surf|tattoo|tech|today|top|uno|watch|work,match-case
 /door/?ad_campaign_id=$doc
-||play-lustgoddess.com^$all
 ://booking.*.com/sign-in?op_token=$doc
 ||deltaexploits.com^$all
 ||x_x-askfollow-us.translate.goog^$all
@@ -4245,8 +4245,8 @@ msm-wroclaw.pl##+js(noeval-if, _0x)
 ||despegar.vercel.app^$all
 ! Title: uBlock filters – Privacy
 ! Expires: 7 days
-! Last modified: Mon, 26 Oct 2026 09:38:59 +0000
-! Diff-Path: ../patches/2026.10.27.293.patch#ublock-privacy
+! Last modified: Tue, 27 Oct 2026 05:42:38 +0000
+! Diff-Path: ../patches/2026.10.27.626.patch#ublock-privacy
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/privacy.txt ***
@@ -6183,6 +6183,7 @@ oklivetv.com##+js(no-fetch-if, method:POST body:tracker)
 ||go.portail-assurance.ca^
 ||bol.com/rs/v*/batch|
 bol.com##+js(json-edit-fetch-request, $[?.operationName=="sendExperimentMeasurementReferences"].*, propsToMatch, /graphql)
+||tarnkappe.info/matABC.js
 ! Merge in resource-abuse.txt
 ! *** uAssets:filters/resource-abuse.txt ***
 /edgemesh.*.js$script,domain=~edgemesh.com|~edgeno.de
