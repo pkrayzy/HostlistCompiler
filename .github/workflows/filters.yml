@@ -77,10 +77,14 @@ jobs:
       - name: Build EasyList Optimized
         run: |             
           {
-            # curl -s https://filters.adtidy.org/ios/filters/101_optimized.txt | grep -v "^bing\.com#"
-            curl -s https://filters.adtidy.org/extension/ublock/filters/2_optimized.txt | grep -v "^bing\.com#"
+            curl -s https://filters.adtidy.org/ios/filters/101_optimized.txt | grep -v "^bing\.com#"
             echo ""
-            curl -s https://filters.adtidy.org/extension/ublock/filters/11_optimized.txt
+            curl -s https://filters.adtidy.org/extension/ublock/filters/2_without_easylist.txt | grep -v "^bing\.com#"
+            # curl -s https://ublockorigin.github.io/uAssetsCDN/filters/filters.min.txt | sed -E '/youtube\.com.*##\+js|##\+js.*youtube\.com/d'
+            # echo ""
+            # curl -s https://ublockorigin.github.io/uAssetsCDN/filters/ubol-filters.txt | sed -E '/youtube\.com.*##\+js|##\+js.*youtube\.com/d'
+            echo ""
+            curl -s https://filters.adtidy.org/ios/filters/11_optimized.txt
             echo ""
             curl -s https://raw.githubusercontent.com/brave/adblock-lists/master/brave-lists/brave-firstparty.txt
             echo ""
@@ -94,7 +98,7 @@ jobs:
           {
             curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/SpywareFilter/sections/general_url.txt
             echo ""
-            curl -s https://filters.adtidy.org/extension/ublock/filters/118_optimized.txt
+            curl -s https://filters.adtidy.org/ios/filters/118_optimized.txt
             echo ""
             curl -s https://ublockorigin.github.io/uAssetsCDN/filters/privacy.min.txt | sed -E '/youtube\.com.*##\+js|##\+js.*youtube\.com/d'
             # curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/SpywareFilter/sections/general_extensions.txt 
@@ -103,9 +107,9 @@ jobs:
       - name: Build EasyCookie
         run: |             
           {
-            curl -s https://filters.adtidy.org/extension/ublock/filters/122_optimized.txt
+            curl -s https://filters.adtidy.org/ios/filters/122_optimized.txt
             echo ""
-            curl -s https://filters.adtidy.org/extension/ublock/filters/207_optimized.txt
+            curl -s https://filters.adtidy.org/ios/filters/207_optimized.txt
             echo ""
             curl -s https://ublockorigin.github.io/uAssetsCDN/filters/annoyances-cookies.txt
             # curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/AnnoyancesFilter/Cookies/sections/cookies_general.txt
