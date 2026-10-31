@@ -126,16 +126,18 @@ jobs:
             echo ""
             curl -s https://filters.adtidy.org/ios/filters/5.txt | sed -n '/! YouTube ads/,/! Allowlist/p'
             echo ""
-            curl -s https://filters.adtidy.org/ios/filters/2.txt | sed -n '/! This section contains the list of domain-specific rules that block ads./,/! NOTE: Specific rules/p'
-            } | sed '/!#safari_cb_affinity/d' > ./SourceLists/adguard_scriptlets.txt
+            curl -s https://raw.githubusercontent.com/pkrayzy/Krayzylist/main/Blocklist | grep -F '#%#(()=>'
+            } | sed '/!#safari_cb_affinity/d' > ./SourceLists/scriptlets.txt
 
-      - name: Build Youtube Scriptlets
+      - name: Build Scriptlets
         run: |              
           {
             curl -s https://filters.adtidy.org/ios/filters/2.txt | sed -n '/! START: Youtube whitescreen fix/,/! END: Youtube whitescreen fix/p'
             echo ""
             curl -s https://filters.adtidy.org/ios/filters/5.txt | sed -n '/! YouTube ads/,/! Allowlist/p'
-            } | sed '/!#safari_cb_affinity/d' | grep "#%#(()=>{" > ./SourceLists/youtube_scriptlets.txt
+            echo ""
+            curl -s https://filters.adtidy.org/ios/filters/5.txt | sed -n '/! YouTube ads/,/! Allowlist/p'
+            } | sed '/!#safari_cb_affinity/d' | grep "#%#(()=>{" > ./SourceLists/scriptlets.txt
 
       - name: Build uBlock filters
         run: |              
