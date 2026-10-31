@@ -1,6 +1,6 @@
 !
 ! Title: uBlock filters – Annoyances
-! Last modified: 2026-10-31T07:53:09.946Z
+! Last modified: 2026-10-31T16:56:21.866Z
 !
 ! Compiled by @adguard/hostlist-compiler v0.0.0
 !
@@ -10,8 +10,8 @@
 !
 ! Title: uBlock filters – Annoyances
 ! Expires: 7 days
-! Last modified: Thu, 29 Oct 2026 16:47:02 +0000
-! Diff-Path: ../patches/2026.10.31.135.patch#ublock-annoyances
+! Last modified: Sat, 31 Oct 2026 15:06:46 +0000
+! Diff-Path: ../patches/2026.10.31.941.patch#ublock-annoyances
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/annoyances.txt ***
@@ -1330,6 +1330,7 @@ b98.tv,supercartoons.net,funniermoments.net,toontales.net,megacartoons.net##+js(
 fileditchvids.st##+js(aeld, contextmenu)
 fiio.com##+js(aeld, /dragstart|selectstart|touchstart|mouse/, , elements, .w-slide)
 fiio.com##.w-slide div[ctype="text"]:style(cursor: auto !important; height: auto !important;)
+historicaerials.com##+js(alert-buster)
 ! ================================================ END: Anti copy, right-click, devtools, text select etc. ==========================================================================
 ! ================================================================START: Anti-adblock ===============================================================================================
 @@||socialblade.com^$ghide
@@ -4065,7 +4066,7 @@ firestream.site##+js(set, console.table, trueFunc)
 firestream.site##+js(aeld, keydown, ||_0x)
 ||thehindu.com/assets/deferred.min.js
 ! Title: uBlock filters – Cookie Notices
-! Last modified: Sat, 24 Oct 2026 13:40:20 +0000
+! Last modified: Sat, 31 Oct 2026 03:55:34 +0000
 ! Expires: 7 days
 ! Description: Filters optimized for uBlock Origin, to be used with EasyList's and/or Adguard's "Cookie Notices" list(s)
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
@@ -4142,6 +4143,9 @@ metro-cc.hr##body:style(overflow: auto !important;)
 ||cdn.ing.com/ing-feat-cookie-preference/
 ! https://github.com/uBlockOrigin/uAssets/issues/22663#issuecomment-6218657450
 /wrapperMessagingWithoutDetection.js$important,domain=tomsguide.com
+! https://github.com/uBlockOrigin/uAssets/pull/35108
+home-appliances.philips##vers-anonymous-consent-management-banner
+home-appliances.philips##body.modal-open:style(overflow: auto !important;)
 !!! Trusted scriptlets------------------------------------------------------------
 !! Accept mandatory cookies / reject all additional cookies
 ! Do not use trusted-set-cookie for Google - it will cause captcha prompts for many users (maybe Google's antibot systems don't like the same cookie value being shared?) The issue doesn't appear in every region though
