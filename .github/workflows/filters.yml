@@ -79,7 +79,8 @@ jobs:
           {
             curl -s https://filters.adtidy.org/ios/filters/101_optimized.txt | grep -v "^bing\.com#"
             echo ""
-            curl -s https://filters.adtidy.org/extension/ublock/filters/2_without_easylist.txt | grep -v "^bing\.com#"
+            curl -s https://filters.adtidy.org/ios/filters/2.txt | sed -n '/! START: Ad-Shield ad reinsertion/,/! END: Ad-Shield ad reinsertion/p'
+            curl -s https://filters.adtidy.org/extension/ublock/filters/2_without_easylist.txt | grep -v "^bing\.com#"            
             # curl -s https://ublockorigin.github.io/uAssetsCDN/filters/filters.min.txt | sed -E '/youtube\.com.*##\+js|##\+js.*youtube\.com/d'
             # echo ""
             # curl -s https://ublockorigin.github.io/uAssetsCDN/filters/ubol-filters.txt | sed -E '/youtube\.com.*##\+js|##\+js.*youtube\.com/d'
@@ -122,22 +123,12 @@ jobs:
       - name: Build Scriptlets
         run: |              
           {
-            curl -s https://filters.adtidy.org/ios/filters/2.txt | sed -n '/! START: Youtube whitescreen fix/,/! END: Youtube whitescreen fix/p'
-            echo ""
-            curl -s https://filters.adtidy.org/ios/filters/5.txt | sed -n '/! YouTube ads/,/! Allowlist/p'
-            echo ""
             curl -s https://raw.githubusercontent.com/pkrayzy/Krayzylist/main/Blocklist | grep -F '#%#(()=>'
-            } | sed '/!#safari_cb_affinity/d' > ./SourceLists/scriptlets.txt
-
-      - name: Build Scriptlets
-        run: |              
-          {
+            echo ""
             curl -s https://filters.adtidy.org/ios/filters/2.txt | sed -n '/! START: Youtube whitescreen fix/,/! END: Youtube whitescreen fix/p'
             echo ""
             curl -s https://filters.adtidy.org/ios/filters/5.txt | sed -n '/! YouTube ads/,/! Allowlist/p'
-            echo ""
-            curl -s https://filters.adtidy.org/ios/filters/5.txt | sed -n '/! YouTube ads/,/! Allowlist/p'
-            } | sed '/!#safari_cb_affinity/d' | grep "#%#(()=>{" > ./SourceLists/scriptlets.txt
+            } | sed '/!#safari_cb_affinity/d' > ./SourceLists/scriptlets.txt
 
       - name: Build uBlock filters
         run: |              
