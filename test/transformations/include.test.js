@@ -1,23 +1,29 @@
 const nock = require('nock');
 const mock = require('mock-fs');
+const consola = require('consola');
 const path = require('path');
 const include = require('../../src/transformations/include');
 
 const testDirPath = path.resolve(__dirname, 'test/dir');
 const inclusionsFilePath = path.resolve(testDirPath, 'inclusions.txt');
 
-describe('Exclusions', () => {
+describe('Inclusions', () => {
     afterEach(() => {
         // make sure FS is restored after running tests
         mock.restore();
+        // restore spies so they do not leak into other tests
+        jest.restoreAllMocks();
     });
 
     it('simple inclusion', async () => {
+        const infoSpy = jest.spyOn(consola, 'info');
         const rules = ['rule1', 'rule2'];
         const filtered = await include(rules, ['rule2']);
 
         expect(filtered).toHaveLength(1);
         expect(filtered).toContain('rule2');
+        // the logged count must be the filtered count, not the input count
+        expect(infoSpy).toHaveBeenLastCalledWith('Included 1 rules');
     });
 
     it('include host-level only', async () => {
