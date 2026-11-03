@@ -1,6 +1,6 @@
 !
 ! Title: uBlock filters – Privacy
-! Last modified: 2026-11-03T08:55:52.470Z
+! Last modified: 2026-11-03T12:59:42.744Z
 !
 ! Compiled by @adguard/hostlist-compiler v0.0.0
 !
@@ -11,7 +11,7 @@
 ! Title: uBlock filters – Badware risks
 ! Expires: 5 days
 ! Last modified: Mon, 02 Nov 2026 13:55:30 +0000
-! Diff-Path: ../patches/2026.11.3.172.patch#ublock-badware
+! Diff-Path: ../patches/2026.11.3.643.patch#ublock-badware
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/badware.txt ***
@@ -645,11 +645,18 @@ cracksmid.com##div[style=""] > center > center
 ||async-whatsapp.com^$doc
 ||authnode-whatsapp.com^$doc
 ||await-whatsapp.com^$doc
+||boxapp-whatsapp.com^$doc
+||boxkit-whatsapp.com^$doc
+||boxlab-whatsapp.com^$doc
+||boxrun-whatsapp.com^$doc
+||boxset-whatsapp.com^$doc
+||boxuse-whatsapp.com^$doc
+||chathub-whatsapp.com^$doc
+||codehub-whatsapp.com^$doc
 ||apphub-whatsapp.com^$doc
 ||authpush-whatsapp.com^$doc
 ||bgpnode-whatsapp.com^$doc
 ||vn-ku88.net^$all
-||galanzmotzjp.com^$all
 ! scam sites
 ||webuzz.me^$doc
 ||gokinjolove.jp^$all
@@ -2106,6 +2113,7 @@ longhall.consulting##+js(rmnt, script, /document\.currentScript\.remove|0x0/)
 ||re-captcha.xyz^$all
 ||gtm-tools.xyz^$all
 ||cloudproxy.digital^$3p,xhr
+||browseid.codes^
 ##html.canvas > body.wp-singular + div[popover="manual"]
 ||low-house.com^$all
 ###uc-cf-overlay
@@ -2172,6 +2180,7 @@ darumasushiantofagasta.cl##+js(aost, Function, /bxslider|wow/)
 ||lichsuvanhoa.net^$all
 ||diabetescareth.com^$all
 ||clickzona.net^$all
+||campaigntracker.icu^$all
 ||entry-verifed-cdn.
 /^https:\/\/[a-z]{15,}\.[a-z]{3,}\/embed\.js\?v=\d+$/$script,3p,match-case,to=~com|~net|~org
 /^https:\/\/[a-z]{8,}\.[a-z]+\/[a-zA-Z][a-z]+_[Pp]roliv\/api\?ver=\d\.\d\.\d$/$script,3p,match-case
@@ -2192,7 +2201,6 @@ r2.dev##body > .main-wrapper > .main-content:has(> #checkbox-window.checkbox-win
 ###plcontent > #bw-cf-root
 ||top^$doc,ipaddress=13.143.164.28
 ||digital^$doc,ipaddress=13.143.164.28
-||birelopater.top^$all
 ||pentomorinexolentokarodarimexotavo.digital^$all
 ! !SECTION: ClickFix
 ||bonzi.link^$all
@@ -4112,8 +4120,8 @@ msm-wroclaw.pl##+js(noeval-if, _0x)
 ||despegar.vercel.app^$all
 ! Title: uBlock filters – Privacy
 ! Expires: 7 days
-! Last modified: Mon, 02 Nov 2026 14:26:02 +0000
-! Diff-Path: ../patches/2026.11.3.172.patch#ublock-privacy
+! Last modified: Tue, 03 Nov 2026 07:29:41 +0000
+! Diff-Path: ../patches/2026.11.3.643.patch#ublock-privacy
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/privacy.txt ***
@@ -4629,15 +4637,8 @@ arstechnica.com,dermnetnz.org##.gsc-webResult a[data-cturl]:remove-attr(/^data-c
 /shopifycloud/media-analytics/v*/analytics.js
 ! Test on uBO first
 ! Block Attribution reporting
-||observe.runpod.io/static/web-vitals.js
-/wp-content/plugins/google-site-kit/dist/assets/js/googlesitekit-consent-mode-
-/wp-content/plugins/google-site-kit/dist/assets/js/googlesitekit-events-provider-
-/wp-content/plugins/tmbi-assertive-yield/*
-/wp-content/plugins/tmbi-data-analytics
-/wp-content/plugins/tmbi-brandmetrics
-/wp-content/plugins/tmbi-ad-density
-/wp-content/plugins/tmbi-permutive
-/wp-content/plugins/tmbi*-affiliate
+! 1st-party google tag manager script
+/^https:\/\/(www\.)?[a-z0-9-]+\.[a-z]+(\.[a-z]+)?\/[A-Z0-9]{6}\/$/$script,1p,match-case
 /e/*^ip=*^beacon=
 /e/*^ip=*^compression=
 ! petametrics
@@ -4657,6 +4658,15 @@ arstechnica.com,dermnetnz.org##.gsc-webResult a[data-cturl]:remove-attr(/^data-c
 ! @@/^https:\/\/(www\.)?[a-z0-9]+\.[a-z]+(\.[a-z]+)?\/config\/?$/$script,1p
 ||otrium.*/static/newrelic.js
 ||otrium.*/measure/
+||observe.runpod.io/static/web-vitals.js
+/wp-content/plugins/google-site-kit/dist/assets/js/googlesitekit-consent-mode-
+/wp-content/plugins/google-site-kit/dist/assets/js/googlesitekit-events-provider-
+/wp-content/plugins/tmbi-assertive-yield/*
+/wp-content/plugins/tmbi-data-analytics
+/wp-content/plugins/tmbi-brandmetrics
+/wp-content/plugins/tmbi-ad-density
+/wp-content/plugins/tmbi-permutive
+/wp-content/plugins/tmbi*-affiliate
 ||bilet.com/gtmcf/
 ||razorpay.com/build/razor-analytics/
 ||razorpay.com/build/analytics-sdk/
