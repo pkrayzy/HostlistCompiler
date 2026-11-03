@@ -77,6 +77,7 @@ inclusion/exclusion rules, and `!#include` directive resolution via
 │       ├── include.js          # Inclusion rules (async, ungated)
 │       └── # ... (13 simple transforms: compress, validate, deduplicate, etc.)
 ├── test/                       # Jest test suites mirroring src/
+│   ├── helpers/                # Shared test helpers (HTTP mocking)
 │   ├── resources/              # Test fixture files
 │   └── transformations/        # Transformation-specific tests
 ├── examples/                   # Example configurations (sdn, energized, china, whitelist)
@@ -269,8 +270,8 @@ Universal design principles the codebase should follow:
 
 - **Framework**: Jest, running in Node environment with `--runInBand
   --detectOpenHandles` and `silent: true`.
-- **Mocking**: `mock-fs` for filesystem mocks, `nock` for HTTP request
-  interception.
+- **Mocking**: `mock-fs` for filesystem mocks, `undici` MockAgent for HTTP
+  request interception.
 - Test files follow the naming convention `<module>.test.js` under `test/`,
   mirroring the structure of `src/`.
 - Each transformation has its own test file under `test/transformations/`.
@@ -317,8 +318,10 @@ vulnerabilities, supply chain risks, and long-term maintenance costs.
   `src/schemas/configuration.schema.js` (draft-07) via AJV; unknown keys are
   rejected (`additionalProperties: false`).
 - Runtime behavior is selected via CLI flags (`-c` config file, `-i` quick
-  hosts conversion, `-o` output file, `-v` verbose logging); there is no
-  environment-variable configuration and no `.env` files.
+  hosts conversion, `-o` output file, `-v` verbose logging). The compiler
+  defines no environment variables of its own and reads no `.env` files, but
+  the native `fetch` honors the standard proxy variables (`HTTP_PROXY`,
+  `HTTPS_PROXY`, `NO_PROXY`) when `NODE_USE_ENV_PROXY=1` is set.
 - Example configurations live in `examples/` (`sdn`, `energized`, `china`,
   `whitelist`) and are used for manual testing.
 - Keep documentation in sync with code: update `README.md` when adding or
