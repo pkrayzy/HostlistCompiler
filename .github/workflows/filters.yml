@@ -30,7 +30,10 @@ jobs:
         run: |
           (curl -s https://filters.adtidy.org/ios/filters/15_optimized.txt | grep -v "\*" | grep -v "^@@") > ./SourceLists/adguard_dns.txt
           (curl -s https://raw.githubusercontent.com/brave/adblock-lists/master/brave-lists/brave-ios-specific.txt | sed -n '/^! Admiral$/,$p') > ./SourceLists/brave_admiral.txt
-          (curl -s "https://raw.githubusercontent.com/AdguardTeam/AdGuardSDNSFilter/master/Filters/exceptions.txt" | \sed 's/^@@||//g; s/^@@|//g; s/|$//g; /^!/!s/^/||/') > ./SourceLists/dns_whitelist.txt
+          {
+            curl -s https://filters.adtidy.org/ios/filters/15_optimized.txt | grep '^@@' | tr -d '\r' | sed 's/^@@//; s/\^|$/^/; s/^|\([^|]\)/||\1/'
+            curl -s https://raw.githubusercontent.com/AdguardTeam/AdGuardSDNSFilter/master/Filters/exceptions.txt | sed 's/^@@||//g; s/^@@|//g; s/|$//g; /^!/!s/^/||/'
+          } > ./SourceLists/dns_whitelist.txt
 
       - name: Build Adguard Optimized
         run: |             
