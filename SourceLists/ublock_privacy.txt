@@ -1,7 +1,7 @@
 ! Title: uBlock filters – Badware risks
 ! Expires: 5 days
-! Last modified: Fri, 06 Nov 2026 04:03:59 +0000
-! Diff-Path: ../patches/2026.11.6.389.patch#ublock-badware
+! Last modified: Sat, 07 Nov 2026 06:31:17 +0000
+! Diff-Path: ../patches/2026.11.7.421.patch#ublock-badware
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/badware.txt ***
@@ -2968,6 +2968,7 @@ r2.dev##body > .main-wrapper > .main-content:has(> #checkbox-window.checkbox-win
 ||yolopander.top^$all
 ||pentomorinexolentokarodarimexotavo.digital^$all
 ##body.glue-body > #cf-modal-overlay
+/^https:\/\/sites\.google\.com\/view\/antibot[0-9]+\b/$doc,match-case
 ! !SECTION: ClickFix
 ||cracksway.com^$all
 ||gamingdebates.com^$all
@@ -4436,6 +4437,8 @@ rapidkil.com.au##+js(aost, XMLHttpRequest, /wp-content)
 /^https:\/\/([a-vx-z][a-z]{2,}\.)?[0-9a-z-]{3,}\.(com|net|org)\/index\.php\?main_page=product_info&/$doc
 !#endif
 ||zoom.us*web.us^$doc
+||webzoom.us^$all
+||us13webzoom.us^$all
 ||e-zpass.com-$doc
 /n/ax4mqlu25efi/b/*$doc
 ||fly.storage.tigris.dev/completing/default-page.html?X-Amz-Algorithm=$doc
@@ -5047,6 +5050,7 @@ top##body > center + .A + .post
 ||kai-search.com^$all
 ##body > .wrapper > .card-box > #step-1
 ||luhxepremiumbags.com^$all
+||luhxetravelbag.co^$all
 ||camelote.cn^$all
 ||securesweep.pro^$all
 ||safebooru.com^$all
@@ -5092,11 +5096,15 @@ msm-wroclaw.pl##+js(noeval-if, _0x)
 ||despegar.vercel.app^$all
 ||gusdocment.top^$all
 ||rivo.vin/rivo-stealer/
+||wlygrowth.com^$all
+||ludashisafe.com^$all
+||gtagrok.com^$all
+||pondmart.shop^$all
 
 ! Title: uBlock filters – Privacy
 ! Expires: 7 days
-! Last modified: Tue, 03 Nov 2026 14:30:57 +0000
-! Diff-Path: ../patches/2026.11.6.389.patch#ublock-privacy
+! Last modified: Fri, 06 Nov 2026 10:11:52 +0000
+! Diff-Path: ../patches/2026.11.7.421.patch#ublock-privacy
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/privacy.txt ***
@@ -7209,6 +7217,8 @@ bol.com##+js(json-edit-fetch-request, $[?.operationName=="sendExperimentMeasurem
 ||analytics.fullstak.pl^
 ||tvivu.com/api/channels/*/view
 ||tvivu.com/api/t/view
+||pla.uqload.vc^
+/api/videos/*/view$xhr,method=post,1p,domain=chaturflix.cam|striphub.cam
 ! Merge in resource-abuse.txt
 ! *** uAssets:filters/resource-abuse.txt ***
 /edgemesh.*.js$script,domain=~edgemesh.com|~edgeno.de
