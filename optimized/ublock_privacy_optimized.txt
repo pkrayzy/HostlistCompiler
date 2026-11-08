@@ -1,6 +1,6 @@
 !
 ! Title: uBlock filters – Privacy
-! Last modified: 2026-11-07T08:07:49.923Z
+! Last modified: 2026-11-08T08:27:23.888Z
 !
 ! Compiled by @adguard/hostlist-compiler v0.0.0
 !
@@ -10,8 +10,8 @@
 !
 ! Title: uBlock filters – Badware risks
 ! Expires: 5 days
-! Last modified: Sat, 07 Nov 2026 06:31:17 +0000
-! Diff-Path: ../patches/2026.11.7.421.patch#ublock-badware
+! Last modified: Sat, 07 Nov 2026 23:09:30 +0000
+! Diff-Path: ../patches/2026.11.8.141.patch#ublock-badware
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/badware.txt ***
@@ -136,7 +136,6 @@ howtoremove.guide###gray_de
 2-spyware.com,novirus.uk,faravirus.ro,uirusu.jp,virusi.hr,wubingdu.cn,avirus.hu,odstranitvirus.cz,tanpavirus.web.id,utanvirus.se,virukset.fi,losvirus.es,virusler.info.tr,semvirus.pt,lesvirus.fr,senzavirus.it,dieviren.de,viruset.no,usunwirusa.pl,zondervirus.nl,bedynet.ru,virusai.lt,virusi.bg,viirused.ee,udenvirus.dk##a:has-text(SpyHunter)
 ||tncrun.net^$all
 ||procdnvids.net^
-||mybestclick.net^$3p
 ||smsiak.pl^$doc
 ! redirecting domains / fraud
 ||video-adblock.com^$all
@@ -375,6 +374,7 @@ howtoremove.guide###gray_de
 /click.php?key=*&PLACEMENT_ID=$doc
 ://xml-eu-v4.*.com/click?$doc
 ||9ty1.com^$doc
+||cdn.710k.com^$all
 .com/s/*?track=$doc
 ||cdnservice.ink^$all
 .co.in/a0x1/?cid=$doc
@@ -430,6 +430,7 @@ howtoremove.guide###gray_de
 ||freefiles-upload.com^$doc
 ||projecthygieia.com^$all
 ||iridia.me^$doc
+||nexusmops.com^$doc
 ! fake software updaters /redirections
 ||atnpx.com^
 ||webpushcloud.top^
@@ -669,6 +670,27 @@ cracksmid.com##div[style=""] > center > center
 ||prohub-whatsapp.com^$doc
 ||prokit-whatsapp.com^$doc
 ||prolab-whatsapp.com^$doc
+||proset-whatsapp.com^$doc
+||prouse-whatsapp.com^$doc
+||runapi-whatsapp.com^$doc
+||runapp-whatsapp.com^$doc
+||rundev-whatsapp.com^$doc
+||runops-whatsapp.com^$doc
+||runsec-whatsapp.com^$doc
+||runuse-whatsapp.com^$doc
+||sechub-whatsapp.com^$doc
+||seclab-whatsapp.com^$doc
+||secnet-whatsapp.com^$doc
+||secops-whatsapp.com^$doc
+||secpro-whatsapp.com^$doc
+||secsys-whatsapp.com^$doc
+||setapp-whatsapp.com^$doc
+||setdev-whatsapp.com^$doc
+||setkit-whatsapp.com^$doc
+||setrun-whatsapp.com^$doc
+||setuse-whatsapp.com^$doc
+||setweb-whatsapp.com^$doc
+||softhub-whatsapp.com^$doc
 ||apphub-whatsapp.com^$doc
 ||authpush-whatsapp.com^$doc
 ||bgpnode-whatsapp.com^$doc
@@ -3716,12 +3738,11 @@ msm-wroclaw.pl##+js(noeval-if, _0x)
 ||despegar.vercel.app^$all
 ||rivo.vin/rivo-stealer/
 ||wlygrowth.com^$all
-||gtagrok.com^$all
 ||pondmart.shop^$all
 ! Title: uBlock filters – Privacy
 ! Expires: 7 days
 ! Last modified: Fri, 06 Nov 2026 10:11:52 +0000
-! Diff-Path: ../patches/2026.11.7.421.patch#ublock-privacy
+! Diff-Path: ../patches/2026.11.8.141.patch#ublock-privacy
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/privacy.txt ***
@@ -3815,7 +3836,6 @@ tweakers.net##+js(aost, btoa, send)
 search.brave.com##+js(no-fetch-if, body:browser)
 ||d3bch4rrbnbe5n.cloudfront.net/pxl.png^
 /visilabs.min.js
-||civicscience.com^$3p
 /\/[a-z0-9]{12}\/[a-zA-Z0-9\/\+\-]{97,106}$/$match-case,script,1p,strict1p
 /^https?:\/\/(?!assets|script|static)(?:[0-9a-z]{10,13}|[0-9a-z]{6})\.[0-9A-Za-z.\-_]+\/(?=[0-9a-z+\/\-]*[A-Z])[0-9A-Za-z+\/\-]{80,106}$/$script,1p,match-case,strict3p
 /dataunlocker$script,1p,domain=~dataunlocker.com
