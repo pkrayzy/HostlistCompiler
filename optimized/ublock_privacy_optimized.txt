@@ -1,6 +1,6 @@
 !
 ! Title: uBlock filters – Privacy
-! Last modified: 2026-11-09T01:21:12.130Z
+! Last modified: 2026-11-09T08:57:40.406Z
 !
 ! Compiled by @adguard/hostlist-compiler v0.0.0
 !
@@ -11,7 +11,7 @@
 ! Title: uBlock filters – Badware risks
 ! Expires: 5 days
 ! Last modified: Sun, 08 Nov 2026 05:22:06 +0000
-! Diff-Path: ../patches/2026.11.9.46.patch#ublock-badware
+! Diff-Path: ../patches/2026.11.9.472.patch#ublock-badware
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/badware.txt ***
@@ -3981,8 +3981,8 @@ msm-wroclaw.pl##+js(noeval-if, _0x)
 ||pondmart.shop^$all
 ! Title: uBlock filters – Privacy
 ! Expires: 7 days
-! Last modified: Fri, 06 Nov 2026 10:11:52 +0000
-! Diff-Path: ../patches/2026.11.9.46.patch#ublock-privacy
+! Last modified: Mon, 09 Nov 2026 03:13:24 +0000
+! Diff-Path: ../patches/2026.11.9.472.patch#ublock-privacy
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/privacy.txt ***
@@ -5924,6 +5924,14 @@ bol.com##+js(json-edit-fetch-request, $[?.operationName=="sendExperimentMeasurem
 ||tvivu.com/api/channels/*/view
 ||tvivu.com/api/t/view
 /api/videos/*/view$xhr,method=post,1p,domain=chaturflix.cam|striphub.cam
+tiktok.com##+js(set, AppLogBridge.hasStarted, trueFunc)
+tiktok.com##+js(set, AppLogBridge.onEventV3, noopFunc)
+tiktok.com##+js(set, AppLogBridge.profileSet, noopFunc)
+tiktok.com##+js(set, AppLogBridge.profileSetOnce, noopFunc)
+tiktok.com##+js(set, AppLogBridge.profileIncrement, noopFunc)
+tiktok.com##+js(set, AppLogBridge.profileUnset, noopFunc)
+tiktok.com##+js(set, AppLogBridge.profileAppend, noopFunc)
+tiktok.com##+js(set-local-storage-item, /__tea_cache_events_.*/, $remove$)
 ! Merge in resource-abuse.txt
 ! *** uAssets:filters/resource-abuse.txt ***
 /edgemesh.*.js$script,domain=~edgemesh.com|~edgeno.de
