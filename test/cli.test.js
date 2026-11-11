@@ -23,10 +23,12 @@ describe('CLI', () => {
         exitSpy.mockRestore();
     });
 
-    it('prints the error cause when compilation fails', async () => {
-        const cause = new Error('connect ECONNREFUSED 127.0.0.1:80');
+    it('prints the error cause chain when compilation fails', async () => {
+        const networkError = new Error('connect ECONNREFUSED 127.0.0.1:80');
+        const fetchError = new TypeError('fetch failed');
+        fetchError.cause = networkError;
         const error = new Error('Failed to request url https://example.org/hosts.txt');
-        error.cause = cause;
+        error.cause = fetchError;
         compile.mockRejectedValue(error);
 
         // Loading the module runs main() with the process.argv prepared above.
@@ -35,7 +37,11 @@ describe('CLI', () => {
         // Let main() settle before asserting on the logged errors.
         await new Promise((resolve) => { setImmediate(resolve); });
 
-        expect(consola.error.mock.calls).toEqual([[error], [cause]]);
+        expect(consola.error.mock.calls).toEqual([
+            [error],
+            ['Caused by: fetch failed'],
+            ['Caused by: connect ECONNREFUSED 127.0.0.1:80'],
+        ]);
         expect(exitSpy).toHaveBeenCalledWith(1);
     });
 });

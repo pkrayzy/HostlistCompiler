@@ -11,6 +11,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Updated [@adguard/filters-downloader] to v3.0.1. This version removes
+  `axios` and downloads filters with native `fetch` in Node.js. It requires
+  Node.js 22.22.2 or newer, and Node.js 23.x is not supported. Environment
+  proxy variables now require `NODE_USE_ENV_PROXY=1`. [#130]
+- Remote bodies that look like JSON (e.g. `[]`, `123`, `{"a":1}`) are now
+  treated as plain text instead of failing with
+  `filter.trim is not a function`. A JSON file served as `text/plain` now
+  adds its content to the list. [#130]
 - The internal configuration schema moved from `src/schemas/configuration.schema.json` to
   `src/schemas/configuration.schema.js`; the documented API is unchanged.
 
@@ -20,12 +28,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- CLI to print the original network error (`cause`) when a compile fails.
+- CLI to print the original network error (`cause` chain) when a compile fails.
 
 ### Security
 
 - Updated lodash to 4.17.21 to fix the ReDoS in `_.trim`
   (GHSA-29mw-wpgm-hmr9).
+- The password in a filter URL no longer appears in
+  `@adguard/filters-downloader` error messages. [#130]
 
 ## [2.1.1] - 2026-08-21
 
@@ -64,6 +74,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#126]: https://github.com/AdguardTeam/HostlistCompiler/issues/126
 [#127]: https://github.com/AdguardTeam/HostlistCompiler/issues/127
 [#128]: https://github.com/AdguardTeam/HostlistCompiler/issues/128
+[#130]: https://github.com/AdguardTeam/HostlistCompiler/issues/130
 
 ## [2.0.0] - 2026-04-02
 

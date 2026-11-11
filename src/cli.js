@@ -79,6 +79,48 @@ async function readConfig() {
 }
 
 /**
+ * Logs an error and every error in its `cause` and `errors` chains.
+ *
+ * `fetch` wraps the original network error, so the useful message can be
+ * several levels deep. A connection failure to a host with both an IPv4 and an
+ * IPv6 address is an `AggregateError` with an empty message, and its useful
+ * messages are in the `errors` array. The causes are logged as strings because
+ * `consola` throttles identical log entries, and different error objects
+ * serialize to the same empty value.
+ *
+ * @param {Error} error - error to log.
+ */
+function logError(error) {
+    consola.error(error);
+
+    const logged = new Set();
+
+    const logCause = (cause) => {
+        if (cause === null || cause === undefined || logged.has(cause)) {
+            return;
+        }
+
+        if (typeof cause === 'object') {
+            logged.add(cause);
+        }
+
+        const isAggregate = Array.isArray(cause.errors) && cause.errors.length > 0;
+
+        if (!isAggregate || cause.message) {
+            consola.error(`Caused by: ${cause.message || cause}`);
+        }
+
+        if (isAggregate) {
+            cause.errors.forEach(logCause);
+        }
+
+        logCause(cause.cause);
+    };
+
+    logCause(error.cause);
+}
+
+/**
  * Runs the compiler: builds the configuration from the CLI options (or reads
  * it from the config file) and writes the compiled list to the output file.
  */
@@ -100,10 +142,7 @@ async function main() {
         await fs.writeFile(argv.output, lines.join('\n'));
         consola.info('Finished compiling');
     } catch (ex) {
-        consola.error(ex);
-        if (ex.cause) {
-            consola.error(ex.cause);
-        }
+        logError(ex);
         process.exit(1);
     }
 }
