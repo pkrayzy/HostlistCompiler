@@ -1,7 +1,7 @@
 ! Title: uBlock filters – Badware risks
 ! Expires: 5 days
-! Last modified: Wed, 11 Nov 2026 16:29:40 +0000
-! Diff-Path: ../patches/2026.11.12.173.patch#ublock-badware
+! Last modified: Thu, 12 Nov 2026 16:59:43 +0000
+! Diff-Path: ../patches/2026.11.13.470.patch#ublock-badware
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/badware.txt ***
@@ -2972,6 +2972,8 @@ r2.dev##body > .main-wrapper > .main-content:has(> #checkbox-window.checkbox-win
 ||pentomorinexolentokarodarimexotavo.digital^$all
 ##body.glue-body > #cf-modal-overlay
 /^https:\/\/sites\.google\.com\/view\/antibot[0-9]+\b/$doc,match-case
+||browse-cloud.codes^$all
+||encodelp.com^$all
 ! !SECTION: ClickFix
 ||cracksway.com^$all
 ||gamingdebates.com^$all
@@ -5078,6 +5080,7 @@ top##body > center + .A + .post
 ||unikey.edu.vn^$all,reason=Trang web chinh thuc: https://unikey.org
 ||flingtrainer.io^$all
 ||koboldcpp.com^$all
+||koboldcpp.cc^$all
 msm-wroclaw.pl##+js(noeval-if, _0x)
 ||bringmeday.icu^$all
 ||bringmelove.icu^$all
@@ -5110,8 +5113,8 @@ msm-wroclaw.pl##+js(noeval-if, _0x)
 
 ! Title: uBlock filters – Privacy
 ! Expires: 7 days
-! Last modified: Wed, 11 Nov 2026 15:49:48 +0000
-! Diff-Path: ../patches/2026.11.12.173.patch#ublock-privacy
+! Last modified: Thu, 12 Nov 2026 19:33:05 +0000
+! Diff-Path: ../patches/2026.11.13.470.patch#ublock-privacy
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/privacy.txt ***
@@ -7164,7 +7167,7 @@ webex.com##+js(no-xhr-if, svc.webex.com/metrics)
 ||directg.jp/js/fingerprint2.js$script,redirect=fingerprint2.js,important
 /fingerprint2.js$script,redirect=fingerprint2.js
 /fingerprint2.min.js$script,redirect=fingerprint2.js
-||curiosity.sheepesports.com^
+||rainbow.sheepesports.com^
 mashable.com##+js(href-sanitizer, a[href^="https://zdcs.link/"], ?u)
 ||prydwen.gg/api/v1/ping/
 vaughn.live##+js(no-fetch-if, method:POST body:zaraz)
@@ -7237,6 +7240,7 @@ tiktok.com##+js(set-local-storage-item, /__tea_cache_events_.*/, $remove$)
 ||analytics.fsicomics.com^
 ||mediamarkt.be/api/v1/msg
 ||1.1.1.1/dns-query$domain=mediamarkt.be,method=post,xhr
+||pxtrkapp.com^
 ! Merge in resource-abuse.txt
 ! *** uAssets:filters/resource-abuse.txt ***
 /edgemesh.*.js$script,domain=~edgemesh.com|~edgeno.de
