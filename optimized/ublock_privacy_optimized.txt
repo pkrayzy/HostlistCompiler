@@ -1,6 +1,6 @@
 !
 ! Title: uBlock filters – Privacy
-! Last modified: 2026-11-13T08:59:50.204Z
+! Last modified: 2026-11-14T08:26:39.993Z
 !
 ! Compiled by @adguard/hostlist-compiler v0.0.0
 !
@@ -10,8 +10,8 @@
 !
 ! Title: uBlock filters – Badware risks
 ! Expires: 5 days
-! Last modified: Thu, 12 Nov 2026 16:59:43 +0000
-! Diff-Path: ../patches/2026.11.13.470.patch#ublock-badware
+! Last modified: Fri, 13 Nov 2026 13:10:12 +0000
+! Diff-Path: ../patches/2026.11.14.185.patch#ublock-badware
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/badware.txt ***
@@ -178,6 +178,7 @@ howtoremove.guide###gray_de
 /?pl=*&sm=$doc
 ||fortuneadvert.com^$all
 .com/go/*?clickid=$doc
+/c1/*?externalId=*&cv1=$doc
 ! hacked and abused for redirect
 ||clicks.affstrack.com^
 ?zoneid=*&cost=0.$doc
@@ -3916,8 +3917,8 @@ msm-wroclaw.pl##+js(noeval-if, _0x)
 ||gover.top^$all
 ! Title: uBlock filters – Privacy
 ! Expires: 7 days
-! Last modified: Thu, 12 Nov 2026 19:33:05 +0000
-! Diff-Path: ../patches/2026.11.13.470.patch#ublock-privacy
+! Last modified: Fri, 13 Nov 2026 10:20:28 +0000
+! Diff-Path: ../patches/2026.11.14.185.patch#ublock-privacy
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/privacy.txt ***
@@ -5804,7 +5805,6 @@ webex.com##+js(no-xhr-if, svc.webex.com/metrics)
 ||directg.jp/js/fingerprint2.js$script,redirect=fingerprint2.js,important
 /fingerprint2.js$script,redirect=fingerprint2.js
 /fingerprint2.min.js$script,redirect=fingerprint2.js
-||rainbow.sheepesports.com^
 mashable.com##+js(href-sanitizer, a[href^="https://zdcs.link/"], ?u)
 ||prydwen.gg/api/v1/ping/
 vaughn.live##+js(no-fetch-if, method:POST body:zaraz)
@@ -5828,6 +5828,8 @@ $uritransform=/#Echobox=[\d]{10}$//,to=iltalehti.fi|hs.fi
 ||nuviatoon.com/nuvia-api/analytics/
 ||index.hr/tracking-beacon
 ||index.hr/api/Stats/
+||index.hr/api/homepage/seen
+||index.hr/setabcookie
 ||sms24.me/numbers/pixel
 ||narto-drama.com/presence/heartbeat
 ! ! https://github.com/uBlockOrigin/uAssets/issues/32951
