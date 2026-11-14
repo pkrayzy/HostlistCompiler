@@ -1,7 +1,7 @@
 ! Title: uBlock filters – Badware risks
 ! Expires: 5 days
-! Last modified: Thu, 12 Nov 2026 16:59:43 +0000
-! Diff-Path: ../patches/2026.11.13.470.patch#ublock-badware
+! Last modified: Fri, 13 Nov 2026 13:10:12 +0000
+! Diff-Path: ../patches/2026.11.14.185.patch#ublock-badware
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/badware.txt ***
@@ -228,6 +228,7 @@ howtoremove.guide###gray_de
 ||fortuneadvert.com^$all
 ||lalielynaualish.com^$all
 .com/go/*?clickid=$doc
+/c1/*?externalId=*&cv1=$doc
 ! hacked and abused for redirect
 ||clicks.affstrack.com^
 ?zoneid=*&cost=0.$doc
@@ -5113,8 +5114,8 @@ msm-wroclaw.pl##+js(noeval-if, _0x)
 
 ! Title: uBlock filters – Privacy
 ! Expires: 7 days
-! Last modified: Thu, 12 Nov 2026 19:33:05 +0000
-! Diff-Path: ../patches/2026.11.13.470.patch#ublock-privacy
+! Last modified: Fri, 13 Nov 2026 10:20:28 +0000
+! Diff-Path: ../patches/2026.11.14.185.patch#ublock-privacy
 ! Diff-Expires: 317 minutes
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! *** uAssets:filters/privacy.txt ***
@@ -7192,6 +7193,8 @@ $uritransform=/#Echobox=[\d]{10}$//,to=iltalehti.fi|hs.fi
 ||stats.index.hr^
 ||index.hr/tracking-beacon
 ||index.hr/api/Stats/
+||index.hr/api/homepage/seen
+||index.hr/setabcookie
 ||sms24.me/numbers/pixel
 ||narto-drama.com/presence/heartbeat
 ! ! https://github.com/uBlockOrigin/uAssets/issues/32951
