@@ -195,6 +195,12 @@ Here is an example of this configuration:
   list. All rules that don't match these wildcards won't be included.
 - `inclusions_sources` - (optional) a list of files with inclusions.
 
+Sources that produce no rules are skipped with a warning. This includes an
+empty file, a source whose only lines are blank, compiler-recognized comments,
+or an Adblock Plus format header. It also includes a source whose
+transformations remove every rule. The compiler does not add the skipped
+source or its header to the output, and the build still succeeds.
+
 Here is an example of a minimal configuration:
 
 ```json
@@ -506,6 +512,13 @@ So here's what it does:
 - Discards rules with unsupported modifiers. Learn more about the
   [supported modifiers](https://github.com/AdguardTeam/AdGuardHome/wiki/Hosts-Blocklists#-adblock-style-syntax).
 - Discards rules that are too short.
+- Validates complete `||domain` rules that have no `^` separator like
+  `||domain^` rules. Whole-public-suffix rules (`||org`, `||co.uk`) and
+  single-label rules (`||rule1`) are therefore discarded.
+- Keeps valid non-hostname `||` patterns that have no `^` separator:
+  trailing-dot rules such as `||popunder.` (they match the name under any TLD
+  and AdGuard lists use them), label-prefix masks such as `||countly-`, and
+  wildcard patterns such as `||*.example.org`.
 - Discards IP addresses. If you need to keep IP addresses, use [ValidateAllowIp](#validate-allow-ip) instead.
 
 #### <a name="rejected-ip-patterns"></a>Rejected IP Patterns
