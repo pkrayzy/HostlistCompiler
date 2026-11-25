@@ -48,7 +48,7 @@ jobs:
             curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/MobileFilter/sections/general_extensions.txt
             curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/MobileFilter/sections/general_url.txt
             curl -s https://filters.adtidy.org/ios/filters/11_optimized.txt | grep -v "^bing\.com#"
-          } | sed '/!#safari_cb_affinity/d' > ./SourceLists/adguard.txt
+          } | sed '/!#safari_cb_affinity/d; /^!+/d' > ./SourceLists/adguard.txt
 
       - name: Build Adguard Privacy Protection
         run: |             
@@ -56,7 +56,7 @@ jobs:
             curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/SpywareFilter/sections/general_url.txt
             curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/SpywareFilter/sections/general_extensions.txt
             curl -s https://filters.adtidy.org/ios/filters/3_optimized.txt            
-          } | sed '/!#safari_cb_affinity/d' > ./SourceLists/adguard_privacy.txt
+          } | sed '/!#safari_cb_affinity/d; /^!+/d' > ./SourceLists/adguard_privacy.txt
 
       - name: Build Adguard Annoyances
         run: |             
@@ -75,7 +75,7 @@ jobs:
             curl -s https://filters.adtidy.org/ios/filters/20_optimized.txt
             curl -s https://filters.adtidy.org/ios/filters/21_optimized.txt
             curl -s https://filters.adtidy.org/ios/filters/22_optimized.txt      
-          } | sed '/!#safari_cb_affinity/d' > ./SourceLists/adguard_annoyances.txt
+          } | sed '/!#safari_cb_affinity/d; /^!+/d' > ./SourceLists/adguard_annoyances.txt
 
       - name: Build EasyList Optimized
         run: |             
@@ -93,7 +93,7 @@ jobs:
             curl -s https://raw.githubusercontent.com/brave/adblock-lists/master/brave-lists/brave-ios-specific.txt
             echo ""
             curl -s https://raw.githubusercontent.com/liamengland1/miscfilters/master/amazonannoyances.txt
-            } | sed '/!#safari_cb_affinity/d' > ./SourceLists/easylist.txt
+            } | sed '/!#safari_cb_affinity/d; /^!+/d' > ./SourceLists/easylist.txt
 
       - name: Build EasyPrivacy
         run: |             
@@ -104,7 +104,7 @@ jobs:
             echo ""
             curl -s https://ublockorigin.github.io/uAssetsCDN/filters/privacy.min.txt | sed -E '/youtube\.com.*##\+js|##\+js.*youtube\.com/d'
             # curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/SpywareFilter/sections/general_extensions.txt 
-            } | sed '/!#safari_cb_affinity/d' > ./SourceLists/easyprivacy.txt
+            } | sed '/!#safari_cb_affinity/d; /^!+/d' > ./SourceLists/easyprivacy.txt
 
       - name: Build EasyCookie
         run: |             
@@ -119,7 +119,7 @@ jobs:
             # curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/AnnoyancesFilter/Popups/sections/push-notifications_general.txt
             # curl -s https://raw.githubusercontent.com/AdguardTeam/AdguardFilters/master/AnnoyancesFilter/Popups/sections/popups_general.txt
             # curl -s https://filters.adtidy.org/ios/filters/18_optimized.txt
-            } | sed '/!#safari_cb_affinity/d' > ./SourceLists/easycookie.txt
+            } | sed '/!#safari_cb_affinity/d; /^!+/d' > ./SourceLists/easycookie.txt
 
       - name: Build Scriptlets
         run: |              
