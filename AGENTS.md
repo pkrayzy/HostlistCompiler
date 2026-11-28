@@ -254,6 +254,12 @@ Universal design principles the codebase should follow:
   restated here.
 - Use `lodash` helpers (e.g., `_.startsWith`, `_.isEmpty`, `_.trim`) where they
   are already used — stay consistent with the existing style.
+- Declare a regular expression that new or changed code uses as a named
+  module-level constant before the functions that use it, and keep the pattern
+  and its flags together. Do not embed a new regex literal in a function body,
+  even if the function uses it only once. Keep existing literals in unchanged
+  code in place. When a class builds a pattern from its own state (see
+  `Wildcard` in `src/utils.js`), keep the pattern in the class.
 - Prefer `for...of` loops over `Array.forEach` for async iteration (the
   codebase disables `no-restricted-syntax` where needed).
 - Use JSDoc comments for public functions (parameters and return values), e.g.
@@ -354,6 +360,11 @@ vulnerabilities, supply chain risks, and long-term maintenance costs.
   `CHANGELOG.md` entry, for example `[#129]`, and place its link definition at
   the very bottom of `CHANGELOG.md`. A reader of the public changelog must be
   able to find the problem report.
+- Write each `CHANGELOG.md` entry for a user: one or two sentences about what
+  changes for them, about as long as the neighboring entries, one bullet per
+  user-visible effect. Do not narrate the old behavior or what did not change,
+  and leave out internal mechanics and follow-up tickets. When an example needs
+  a domain, use `example.com` or `example.org`.
 - The repository stores no secrets or credentials of its own and commits all
   configuration files. A configuration can still contain credentialed source
   URLs. The compiler sends them to the downloader as Basic auth. It MUST
